@@ -1,0 +1,118 @@
+{% extends "t_standard.html" %}
+{% block body %}
+
+  <img src="{{ url_for('static', filename='ezPiC.svg') }}" width="96" height="96" class="float-right align-top mr-0" alt="">
+
+  <table>
+      <tbody>
+          <tr valign="baseline">
+              <td><div class="display-1"><i>e&middot;z&middot;Pi&middot;C</i></div></td>
+              <td><div class="text-muted d-align-bottom">[&#716;i&#720;zi &#712;pi&#720;zi]</div></td>
+          </tr>
+      </tbody>
+  </table>
+
+
+  <h2><u>E</u>a<u>sy</u> Raspberry-<u>Pi</u> <u>C</u>ontroller for IoT Devices</h2>
+
+  <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae neque nisi. Vivamus consectetur sapien eget venenatis faucibus. Quisque elementum, neque ut accumsan scelerisque, sapien augue dictum nibh, id porttitor ex felis sed neque. Aenean imperdiet venenatis arcu nec hendrerit. Suspendisse ultricies massa elementum ligula vehicula, ut tristique leo dignissim. Sed sed urna fringilla, tempor mi quis, efficitur quam. Etiam ut enim purus. Donec convallis pretium nibh vel gravida.
+  </p>
+  <p>
+      Fusce dolor leo, ornare vitae dolor nec, varius aliquam tellus. Phasellus mollis velit ut neque eleifend, sed gravida tellus placerat. Cras nisl sapien, gravida eget elit eu, facilisis fringilla erat. Nulla maximus ullamcorper tortor, quis vulputate est dapibus non. Aliquam dui sem, ultrices non nunc eu, molestie interdum diam. Ut rhoncus ipsum nisl. Nulla consequat convallis blandit. Morbi eu ipsum massa. Fusce id diam eget nisl tincidunt egestas maximus eget leo. Aenean nec erat vitae arcu posuere luctus id non turpis. Mauris ultricies nunc ante, id sollicitudin nulla tempus venenatis. Nulla facilisi. Vestibulum tincidunt nunc ac eros sollicitudin, in tincidunt ante porttitor. Duis a fermentum arcu. Nullam sollicitudin facilisis rhoncus. Nam gravida arcu in tortor dapibus, eu congue purus vehicula.
+  </p>
+  <p>
+      Nulla consequat, dui in viverra convallis, tortor elit scelerisque velit, ac eleifend erat ante sit amet quam. Suspendisse viverra, augue a lobortis egestas, massa massa tempor mi, a tempor ex dolor sit amet lectus. Suspendisse malesuada vitae justo at tempus. Proin vitae aliquet sem. Nam tempus lacinia lorem sit amet eleifend. Etiam sollicitudin ac lacus ac vehicula. Nam mollis felis eget tellus vulputate lobortis. Phasellus lacinia suscipit quam, in malesuada augue iaculis nec. Vestibulum quam sapien, molestie vitae mauris vel, lacinia posuere enim. In id metus purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque vitae ipsum non odio sollicitudin posuere. Fusce cursus eros sit amet consequat egestas.
+  </p>
+
+  <h2>Hello, world!</h2>
+
+  <br />
+
+  <form method=post>
+
+      <h2><span class="badge badge-dark col-sm-12">Example heading</span></h2>
+
+      <div class="form-group row">
+          <label for="exampleInputEmail1" class="col-sm-2 form-text">Email address</label>
+          <div class="col-sm-3">
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <small class="col-sm-7 form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+
+      <div class="form-group row">
+          <label for="exampleInputPassword1" class="col-sm-2">Password</label>
+          <div class="col-sm-6">
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+      </div>
+
+      <div class="form-group row">
+          <label for="exampleInputT" class="col-sm-2">Text</label>
+          <div class="col-sm-10">
+              <input type="text" class="form-control" id="exampleInputT">
+          </div>
+      </div>
+
+      <div class="form-group row align-items-center">
+          <label for="exampleInputBtn" class="col-sm-2">Test</label>
+          <div class="col-sm-3">
+              <a class="btn btn-primary" href="#" role="button">Link</a>
+
+          </div>
+      </div>
+
+      <h3><span class="badge badge-secondary col-sm-12">Example heading</span></h3>
+
+      <div class="form-group row">
+          <label for="exampleInputNum" class="col-sm-2 form-text">Number</label>
+          <div class="input-group col-sm-3">
+              <input type="number" class="form-control" id="exampleInputNum" value="123">
+              <span class="input-group-addon" id="basic-addon2">sec</span>
+          </div>
+          [sec]
+      </div>
+
+      <div class="form-group row">
+          <div class="col-sm-2 form-text">Checkbox</div>
+          <div class="col-sm-10">
+              <div class="form-check">
+                  <label class="form-check-label form-text">
+                      <input class="form-check-input" type="checkbox" checked> Enable
+                  </label>
+              </div>
+          </div>
+      </div>
+
+      <div class="form-group row align-items-center">
+          <label for="exampleFormControlSelect1" class="col-sm-2">Example select</label>
+          <div class="col-sm-3">
+              <select class="form-control" id="exampleFormControlSelect1">
+                  <option value="1">Lorem</option>
+                  <option value="2">Ipsum</option>
+                  <option value="3" selected>Dolor</option>
+                  <option value="4">Sit</option>
+                  <option value="5">Amet</option>
+              </select>
+          </div>
+      </div>
+
+      <div class="form-group row">
+          <label for="exampleFormControlTextarea1" class="col-sm-2">Example textarea</label>
+          <div class="col-sm-10">
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5">Lorem ipsum dolor sit amet</textarea>
+          </div>
+      </div>
+
+
+   
+      <hr>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
+
+
+
+{% endblock %}

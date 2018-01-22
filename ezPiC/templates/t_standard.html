@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+  <title>e&middot;z&middot;Pi&middot;C</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+
+</head>
+
+<body>
+  <main class="container mt-5" role="main">
+  <header>
+    <!-- fixed-top -->
+    <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark py-1">
+        <a class="navbar-brand p-0" href="/">
+            <img src="{{ url_for('static', filename='ezPiC.svg') }}" width="32" height="32" class="d-inline-block align-top m-0" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link {% if menu=='main' %}active{% endif %}" href="/main/">Main</a>
+                <a class="nav-item nav-link {% if menu=='devices' %}active{% endif %}" href="/devices/">Devices</a>
+                <a class="nav-item nav-link {% if menu=='gateways' %}active{% endif %}" href="/gateways/">Gateways</a>
+                <a class="nav-item nav-link {% if menu=='rules' %}active{% endif %}" href="/rules/">Rules</a>
+                <a class="nav-item nav-link {% if menu=='config' %}active{% endif %}" href="/config/">Config</a>
+                <a class="nav-item nav-link {% if menu=='test' %}active{% endif %} disabled" href="#">Disabled</a>
+                {% if not session.logged_in %}
+                  <a class="nav-item nav-link" href="{{ url_for('login') }}">log in</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="{{ url_for('logout') }}">log out</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+  </header>
+  
+  {% if error %}
+    <div class="alert alert-danger hide" role="alert">
+      <strong>Error:</strong> {{ error }}
+    </div>
+  {% endif %}
+  {% for message in get_flashed_messages() %}
+    <div class="alert alert-info hide" role="alert">
+      {{ message }}
+    </div>
+  {% endfor %}
+
+  {% block body %}{% endblock %}
+</main>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</body>
+</html>
