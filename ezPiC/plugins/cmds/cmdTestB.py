@@ -5,13 +5,13 @@ import logging
 
 ###################################################################################################
 
-def cmd_b(params, cmd, index) -> str:
+def cmd_b(params, cmd, index) -> tuple:
     """
     Handle command 'b' ...
     """
     logging.debug('cmdB ' + str(params))
     x = params.get('x', '0')
-    return None
+    return (None, None)
 
 ###################################################################################################
 # Globals:

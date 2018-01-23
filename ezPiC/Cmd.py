@@ -41,12 +41,13 @@ def run():
 
 ###################################################################################################
 
-def excecute(cmd: str):
+def excecute(cmd: str) -> tuple:
     """
     Excecutes a command and route to specified handler
     cmd: Command line with command and params as string
     return: Answer from excecuted command. Can be any object type or None
     """
+    err = -1
     ret = 'Unknown command'
 
     for reCmdC, reParC, fHandler in COMMANDS_C:
@@ -77,11 +78,11 @@ def excecute(cmd: str):
                     pass   # invalid params
 
             try:
-                ret = fHandler(params=params, cmd=cmd, index=index)
+                err, ret = fHandler(params=params, cmd=cmd, index=index)
             except Exception as e:
-                ret = 'Fail to call handler - ' + e
+                err, ret =  (-9, 'Fail to call handler - ' + e)
             break   # stop scanning after first match
-    return ret
+    return (err, ret)
 
 
 #p = re.compile(r'(?P<cmd>^"[^"]*"|\S*) *(?P<prm>.*)?')

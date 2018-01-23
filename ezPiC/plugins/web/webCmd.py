@@ -13,8 +13,10 @@ import Cmd
 @APP.route('/cmd/', methods=['GET', 'POST'])
 def web_cmd():
     """ TODO """
-    ret = '?'
     cmd = ''
+    err = ''
+    ret = ''
+
     if request.method == 'POST':
         cmd = request.form['cmd']
     else: # GET
@@ -22,13 +24,13 @@ def web_cmd():
             cmd = request.args.get('cmd')
 
     if cmd:
-        print(cmd)
-        ret = Cmd.excecute(cmd)
-        ret = str(ret) + '<a>&äüöÄÖÜß|'
+        #print(cmd)
+        err, ret = Cmd.excecute(cmd)
+        ret = str(ret)
         #ret = html.escape(ret)
         t = 'Cmd ' + cmd + ' -> ' + str(ret)
         logging.debug(t)
 
-    return render_template('cmd.html', menu='tools', cmd=cmd, ret=ret)
+    return render_template('cmd.html', menu='tools', cmd=cmd, err=err, ret=ret)
 
 ###################################################################################################

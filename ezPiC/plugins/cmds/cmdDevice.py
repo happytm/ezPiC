@@ -6,7 +6,7 @@ import Device
 
 ###################################################################################################
 
-def cmd_device_list(params, cmd, index) -> str:
+def cmd_device_list(params, cmd, index) -> tuple:
     """
     Handle command 'device list' ...
     """
@@ -14,11 +14,11 @@ def cmd_device_list(params, cmd, index) -> str:
     #x = params.get('x', '0')
     ret = Device.get_device_list()
     print(ret)
-    return str(ret)
+    return (None, ret)
 
 ###################################################################################################
 
-def cmd_device_task_list(params, cmd, index) -> str:
+def cmd_device_task_list(params, cmd, index) -> tuple:
     """
     Handle command 'device[] list' ...
     """
@@ -26,11 +26,11 @@ def cmd_device_task_list(params, cmd, index) -> str:
     #x = params.get('x', '0')
     ret = Device.get_device_task_list()
     print(ret)
-    return str(ret)
+    return (None, ret)
 
 ###################################################################################################
 
-def cmd_device_info(params, cmd, index) -> str:
+def cmd_device_info(params, cmd, index) -> tuple:
     """
     Handle command 'a' ...
     """
@@ -40,16 +40,16 @@ def cmd_device_info(params, cmd, index) -> str:
         #Device.get
     #logging.debug('cmdA ' + str(params))
     x = params.get('x', '0')
-    return str(ids)
+    return (None, ids)
 
 ###################################################################################################
 
-def cmd_ping(params, cmd, index) -> str:
+def cmd_ping(params, cmd, index) -> tuple:
     """
     Handle command 'ping' and returns string 'ping'
     """
     logging.debug('Ping')
-    return 'dpong' + str(list(params.keys()))
+    return (None, 'dpong' + str(list(params.keys())))
 
 ###################################################################################################
 # Globals:

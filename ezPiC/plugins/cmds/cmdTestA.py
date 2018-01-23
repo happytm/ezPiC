@@ -5,22 +5,22 @@ import logging
 
 ###################################################################################################
 
-def cmd_a(params, cmd, index) -> None:
+def cmd_a(params, cmd, index) -> tuple:
     """
     Handle command 'a' ...
     """
     logging.debug('cmdA ' + str(params))
     x = params.get('x', '0')
-    return None
+    return (None, None)
 
 ###################################################################################################
 
-def cmd_ping(params, cmd, index) -> str:
+def cmd_ping(params, cmd, index) -> tuple:
     """
     Handle command 'ping' and returns string 'ping'
     """
     logging.debug('Ping')
-    return 'pong'
+    return (None, 'pong')
 
 ###################################################################################################
 # Globals:
