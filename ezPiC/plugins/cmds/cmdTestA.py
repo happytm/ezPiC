@@ -2,9 +2,11 @@
 ...TODO
 """
 import logging
+import Cmd
 
 ###################################################################################################
 
+@Cmd.route(r'aaaaa')
 def cmd_a(params, cmd, index) -> tuple:
     """
     Handle command 'a' ...
@@ -15,9 +17,10 @@ def cmd_a(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
+@Cmd.route(r'ping')
 def cmd_ping(params, cmd, index) -> tuple:
     """
-    Handle command 'ping' and returns string 'ping'
+    Handle command 'ping' and returns string 'pong'
     """
     logging.debug('Ping')
     return (None, 'pong')
@@ -27,9 +30,9 @@ def cmd_ping(params, cmd, index) -> tuple:
 
 COMMANDS = [
     (r'bbbbb\w*[#-=]?(?P<index>\d+)',   r'[\s,]+(\w+(?::\w+)?)',        cmd_a),
-    (r'bbbbb',                          r'',                            cmd_a),
+    #(r'bbbbb',                          r'',                            cmd_a),
     (r'ccccc',                          r'',                            cmd_a),
-    (r'ping',                       r'',                            cmd_ping),
+    #(r'ping',                       r'',                            cmd_ping),
     ]
 
 ###################################################################################################

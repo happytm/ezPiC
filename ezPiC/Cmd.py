@@ -2,7 +2,7 @@
 ...TODO
 """
 import re
-#import logging
+import logging
 import Tool
 
 ###################################################################################################
@@ -10,6 +10,25 @@ import Tool
 
 COMMANDS = []
 COMMANDS_C = []
+
+###################################################################################################
+#Decorator
+
+def route(re_command, re_param=None):
+    """ Adds a command handler function to the command list """
+    def route_decorator(func):
+        global COMMANDS
+
+        #def function_wrapper(*args, **kwargs):
+        #    print(re_command + ", " + func.__name__ + " returns:")
+        #    return func(*args, **kwargs)
+        #return function_wrapper
+
+        item = (re_command, re_param, func)
+        COMMANDS.append(item)
+        logging.debug(' - Added command "%s" with function "%s()"', re_command, func.__name__)
+        return func
+    return route_decorator
 
 ###################################################################################################
 
@@ -56,8 +75,8 @@ def excecute(cmd: str) -> tuple:
             params = {}
             index = None
 
-            print(m)
-            print(m.groups())
+            #print(m)
+            #print(m.groups())
 
             if m.groups():
                 if m.group('index'):
@@ -66,7 +85,7 @@ def excecute(cmd: str) -> tuple:
             if reParC:
                 paramList = reParC.findall(cmd)
                 if paramList:   # params found and valid
-                    print(paramList)
+                    #print(paramList)
                     #print()
                     for param in paramList:
                         keyvalue = param.split(sep=':', maxsplit=1)
