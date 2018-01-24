@@ -85,6 +85,13 @@ def cmd_device_cmd(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
+@Cmd.route(r'device\[(?P<index>\d+)\]\s*html')
+def cmd_device_html(params, cmd, index) -> tuple:
+    """ Handle command 'device[#] html' """
+    return (None, 'devices/XXX.html')
+
+###################################################################################################
+
 @Cmd.route(r'device\[(?P<index>\d+)\]\s*event')
 def cmd_device_event(params, cmd, index) -> tuple:
     """ Handle command 'device[#] event' """
