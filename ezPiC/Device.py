@@ -115,7 +115,7 @@ def task_del(idx: int):
 
 ###################################################################################################
 
-def get_device_list():
+def get_device_list() -> list:
     """ TODO """
     dl = []
     DEVICELOCK.acquire()
@@ -126,7 +126,7 @@ def get_device_list():
 
 ###################################################################################################
 
-def get_device_task_list():
+def get_device_task_list() -> list:
     """ TODO """
     dtl = []
     DEVICELOCK.acquire()
@@ -135,6 +135,43 @@ def get_device_task_list():
         dtl.append((idx, inst.get_id(), inst.get_name(), inst.get_info(), inst))
     DEVICELOCK.release()
     return dtl
+
+###################################################################################################
+
+def task_get_param(idx: int, key: str=None) -> tuple:
+    """ TODO """
+    err = None
+    ret = None
+
+    DEVICELOCK.acquire()
+    try:
+        inst = DEVICETASKS[idx]['inst']
+        ret = inst.get_param(key)
+    except:
+        err = -1
+    DEVICELOCK.release()
+
+    return (err, ret)
+
+###################################################################################################
+
+def task_set_param(idx: int, params: dict) -> tuple:
+    """ TODO """
+    err = None
+    ret = None
+
+    DEVICELOCK.acquire()
+    try:
+        inst = DEVICETASKS[idx]['inst']
+        ret = inst.set_param(params)
+    except:
+        err = -1
+    DEVICELOCK.release()
+
+    return (err, ret)
+
+###################################################################################################
+
 
 ###################################################################################################
 ###################################################################################################

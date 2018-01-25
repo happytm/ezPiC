@@ -46,20 +46,41 @@ def web_device_add(duid=None):
 
 ###################################################################################################
 
-@APP.route('/devices/edit/<int:idx>/')
+@APP.route('/devices/edit/<int:idx>/', methods=['GET', 'POST'])
 def web_device_edit(idx=-1):
     """ TODO """
-    cmd = 'device[{}] edit'.format(idx)
+    cmd = 'device[{}] get'.format(idx)
     err, ret = Cmd.excecute(cmd)
     if err:
-        msg = 'Error "{0}" - Can not edit device task [{1}]'.format(err, idx)
+        msg = 'Error "{0}" - Can not get params from device [{1}]'.format(err, idx)
         flash(msg, 'danger')
-        return redirect(url_for('web_devices_list'))
-    else:
-        msg = 'Device "{}" edit'.format(idx)
-        flash(msg, 'info')
+        return redirect(url_for('web_devices'))
 
-    return redirect(url_for('web_devices_list'))
+    params = {}
+    params['name'] = 'Test-Name'
+    params.update(ret)
+
+    cmd = ''
+    err = ''
+    ret = ''
+
+    if request.method == 'POST':
+        for key, value in params.items():
+            if key in request.form:
+                params[key] = request.form[key]
+        #params.update(request.form)
+        cmd = 'device[{}] set {}'.format(idx, Tool.params_to_str(params))
+        err, ret = Cmd.excecute(cmd)
+    else: # GET
+        if 'cmd' in request.args:
+            cmd = request.args.get('cmd')
+
+    cmd = 'device[{}] html'.format(idx)
+    err, html = Cmd.excecute(cmd)
+
+    params['index'] = idx
+    
+    return render_template('devices/test.html', menu='devices', **params)
 
 ###################################################################################################
 

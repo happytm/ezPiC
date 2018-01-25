@@ -1,23 +1,25 @@
 {% extends "t_standard.html" %}
 {% block body %}
 
-  <h2>Hello, world!</h2>
+<h2>Active Devices</h2>
 
-  <br />
+Choose a device and click the [/] button to edit
 
-      <h2><span class="badge badge-dark col-sm-12">Example heading</span></h2>
+<br />
 
-      <h3><span class="badge badge-secondary col-sm-12">Example heading</span></h3>
+<h2><span class="badge badge-dark col-sm-12">Example heading</span></h2>
 
-      {% for index, duid, name, info, _ in device_list %}
-      <div class="card">
+<h3><span class="badge badge-secondary col-sm-12">Example heading</span></h3>
+
+{% for index, duid, name, info, _ in device_list %}
+    <div class="card">
         <div class="card-header p-2" role="tab" id="heading{{ index }}">
             <h5 class="d-flex align-items-start m-0 ">
                 <a class="btn btn-secondary btn-sm mx-1 ml-0 mr-3" data-toggle="collapse" href="#collapse{{ index }}" aria-expanded="false" aria-controls="collapse{{ id }}">
                     <i class="fas fa-chevron-down"></i>
                 </a>
                 <a class="mr-auto" data-toggle="collapse" href="#collapse{{ index }}" aria-expanded="false" aria-controls="collapse{{ index }}">
-                #{{ index }} {{ name }} [{{ duid }}]
+                    #{{ index }} {{ name }} [{{ duid }}]
                 </a>
                 <a href="/devices/edit/{{ index }}/" class="btn btn-warning btn-sm mx-1"><i class="fas fa-pencil-alt"></i></a>
                 <a href="/devices/del/{{ index }}/" class="btn btn-danger btn-sm mx-1"><i class="fas fa-trash-alt"></i></a>
@@ -25,15 +27,14 @@
         </div>
         <div id="collapse{{ index }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ index }}">
             <div class="card-body">
-            {{ info }}
+                {{ info }}
             </div>
         </div>
-      </div>
-    {% endfor %}
-
-
-
-      <br/>
-      <a class="btn btn-success" href="/devices/list/" role="button"><i class="fas fa-plus"></i> Add Device</a>
+    </div>
+{% endfor %}
+ 
+<br/>
+<a class="btn btn-success" href="/devices/list/" role="button"><i class="fas fa-plus"></i> Add Device</a>
+<br/>
 
 {% endblock %}

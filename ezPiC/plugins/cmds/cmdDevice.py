@@ -4,6 +4,7 @@
 import logging
 import Device
 import Cmd
+import Tool
 
 ###################################################################################################
 
@@ -67,13 +68,16 @@ def cmd_device_del(params, cmd, index) -> tuple:
 @Cmd.route(r'device\[(?P<index>\d+)\]\s*get')
 def cmd_device_get(params, cmd, index) -> tuple:
     """ Handle command 'device[#] get <param> (no <param> for all)' """
-    return (None, None)
+    err, ret = Device.task_get_param(index)
+    return (err, ret)
 
 ###################################################################################################
 
 @Cmd.route(r'device\[(?P<index>\d+)\]\s*set')
 def cmd_device_set(params, cmd, index) -> tuple:
     """ Handle command 'device[#] set <param>:<value> ...' """
+    paramdict = Tool.str_to_params(cmd)
+    err, ret = Device.task_set_param(index, paramdict)
     return (None, None)
 
 ###################################################################################################
