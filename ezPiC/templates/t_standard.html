@@ -35,9 +35,9 @@
           <a class="nav-item nav-link {% if menu=='config' %}active{% endif %}" href="/config/">Config</a>
           <a class="nav-item nav-link {% if menu=='test' %}active{% endif %} disabled" href="#">Disabled</a>
           {% if not session.logged_in %}
-            <a class="nav-item nav-link" href="{{ url_for('login') }}">log in</a>
+            <a class="nav-item nav-link float-right" href="{{ url_for('login') }}">log in</a>
           {% else %}
-            <a class="nav-item nav-link" href="{{ url_for('logout') }}">log out</a>
+            <a class="nav-item nav-link float-right" href="{{ url_for('logout') }}">log out</a>
           {% endif %}
         </div>
       </div>

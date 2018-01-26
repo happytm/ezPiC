@@ -14,7 +14,7 @@ COMMANDS_C = []
 ###################################################################################################
 #Decorator
 
-def route(re_command, re_param=None):
+def route(re_command):
     """ Adds a command handler function to the command list """
     def route_decorator(func):
         global COMMANDS
@@ -24,12 +24,14 @@ def route(re_command, re_param=None):
         #    return func(*args, **kwargs)
         #return function_wrapper
 
-        item = (re_command, re_param, func)
+        item = (re_command, func)
         COMMANDS.append(item)
         logging.debug(' - Added command "%s" with function "%s()"', re_command, func.__name__)
         return func
     return route_decorator
 
+###################################################################################################
+###################################################################################################
 ###################################################################################################
 
 def init():
@@ -38,20 +40,16 @@ def init():
 
     plugins = Tool.load_plugins('cmds', 'cmd')
     #print(plugins)
-    for plugin in plugins:
-        try:
-            COMMANDS += plugin.COMMANDS
-        except:
-            pass
+    #for plugin in plugins:
+    #    try:
+    #        COMMANDS += plugin.COMMANDS
+    #    except:
+    #        pass
 
     # precompile all regex for plugin-commands
-    for reCmd, rePar, fHandler in COMMANDS:
+    for reCmd, fHandler in COMMANDS:
         reCmdC = re.compile(reCmd, re.IGNORECASE)
-        if rePar:
-            reParC = re.compile(rePar, re.IGNORECASE)
-        else:
-            reParC = None
-        COMMANDS_C.append((reCmdC, reParC, fHandler))
+        COMMANDS_C.append((reCmdC, fHandler))
 
 ###################################################################################################
 
@@ -69,32 +67,37 @@ def excecute(cmd: str) -> tuple:
     err = -1
     ret = 'Unknown command'
 
-    for reCmdC, reParC, fHandler in COMMANDS_C:
+    for reCmdC, fHandler in COMMANDS_C:
         m = reCmdC.match(cmd)
         if m:   # command found
             params = {}
             index = None
 
-            #print(m)
-            #print(m.groups())
-
             if m.groups():
-                if m.group('index'):
-                    index = int(m.group('index'))
+                print(m.groups())
+                print(m.groupdict())
+                for key, value in m.groupdict().items():
+                    if key == 'index' or key == 'idx':
+                        index = int(value)
+                    elif key == 'params':
+                        p = Tool.str_to_params(value)
+                        params.update(p)
+                    else:
+                        params[key] = value
 
-            if reParC:
-                paramList = reParC.findall(cmd)
-                if paramList:   # params found and valid
-                    #print(paramList)
-                    #print()
-                    for param in paramList:
-                        keyvalue = param.split(sep=':', maxsplit=1)
-                        if len(keyvalue) > 1:
-                            params[keyvalue[0]] = keyvalue[1]
-                        else:
-                            params[keyvalue[0]] = None
-                else:
-                    pass   # invalid params
+            #if reParC:
+            #    paramList = reParC.findall(cmd)
+            #    if paramList:   # params found and valid
+            #        #print(paramList)
+            #        #print()
+            #        for param in paramList:
+            #            keyvalue = param.split(sep=':', maxsplit=1)
+            #            if len(keyvalue) > 1:
+            #                params[keyvalue[0]] = keyvalue[1]
+            #            else:
+            #                params[keyvalue[0]] = None
+            #    else:
+            #        pass   # invalid params
 
             try:
                 err, ret = fHandler(params=params, cmd=cmd, index=index)
@@ -103,7 +106,4 @@ def excecute(cmd: str) -> tuple:
             break   # stop scanning after first match
     return (err, ret)
 
-
-#p = re.compile(r'(?P<cmd>^"[^"]*"|\S*) *(?P<prm>.*)?')
-#r = re.compile(r'(?P<key>[^\s]+[\s\w]*)(?:[\s]*:[\s]*)(?P<value>\b[^,:]+\b)')
-#print(r)
+###################################################################################################

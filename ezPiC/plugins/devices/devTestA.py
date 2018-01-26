@@ -18,13 +18,14 @@ AAA = 1
 ###################################################################################################
 
 class PluginDevice(Device.PluginDeviceBase):
-    CID = 'TestA'
-    address = 123
-    param = {'abc':123, 'xyz':456}
-    timer_period = 3.1415
+    """ TODO """
 
     def __init__(self, module):
         super().__init__(module)
+        self.CID = 'TestA'
+        self.address = 123
+        self.param = {'abc':123, 'xyz':456, 'sel':2, 'qwe':'Lorem ipsum', 'asd':[1,2,3,4,5]}
+        self.timer_period = 3.1415
 
     def init(self):
         pass

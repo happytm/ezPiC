@@ -19,7 +19,7 @@ def login():
             session['logged_in'] = True
             session['username'] = request.form['username']
             flash('You were logged in')
-            return redirect(url_for('index'))
+            return redirect(url_for('web_index'))
     return render_template('login.html', error=error)
 
 ###################################################################################################
@@ -29,6 +29,6 @@ def logout():
     """ TODO """
     session.pop('logged_in', None)
     flash('You were logged out')
-    return redirect(url_for('index'))
+    return redirect(url_for('web_index'))
 
 ###################################################################################################

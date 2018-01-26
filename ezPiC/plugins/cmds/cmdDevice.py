@@ -14,9 +14,9 @@ def cmd_device_list(params, cmd, index) -> tuple:
     """ Handle command 'device list' """
     #logging.debug('cmdA ' + str(params))
     #x = params.get('x', '0')
-    ret = Device.get_device_list()
+    err, ret = Device.get_device_list()
     #print(ret)
-    return (None, ret)
+    return (err, ret)
 
 ###################################################################################################
 
@@ -25,13 +25,13 @@ def cmd_device_task_list(params, cmd, index) -> tuple:
     """ Handle command 'device[] list' """
     #logging.debug('cmdA ' + str(params))
     #x = params.get('x', '0')
-    ret = Device.get_device_task_list()
+    err, ret = Device.get_device_task_list()
     #print(ret)
-    return (None, ret)
+    return (err, ret)
 
 ###################################################################################################
 
-@Cmd.route(r'device\s*info', r'[\s,]+(\w+)+')
+@Cmd.route(r'device\s*info')
 def cmd_device_info(params, cmd, index) -> tuple:
     """ Handle command 'device info <duid>' """
     ids = list(params.keys())
@@ -51,34 +51,37 @@ def cmd_device_clear(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'device\[\]\s*add')
+@Cmd.route(r'device\[\]\s*add\s+(?P<duid>\w+)')
 def cmd_device_add(params, cmd, index) -> tuple:
     """ Handle command 'device[] add <duid>' """
-    return (None, None)
+    err, ret = Device.task_add(params.get('duid', None))
+    return (err, ret)
 
 ###################################################################################################
 
 @Cmd.route(r'device\[(?P<index>\d+)\]\s*del')
 def cmd_device_del(params, cmd, index) -> tuple:
     """ Handle command 'device[#] del' """
-    return (None, None)
-
-###################################################################################################
-
-@Cmd.route(r'device\[(?P<index>\d+)\]\s*get')
-def cmd_device_get(params, cmd, index) -> tuple:
-    """ Handle command 'device[#] get <param> (no <param> for all)' """
-    err, ret = Device.task_get_param(index)
+    err, ret = Device.task_del(index)
     return (err, ret)
 
 ###################################################################################################
 
-@Cmd.route(r'device\[(?P<index>\d+)\]\s*set')
+@Cmd.route(r'device\[(?P<index>\d+)\]\s*get\s*(?P<param>\w+)?')
+def cmd_device_get(params, cmd, index) -> tuple:
+    """ Handle command 'device[#] get <param> (no <param> for all)' """
+    param = params.get('param', None)
+    err, ret = Device.task_get_param(index, param)
+    return (err, ret)
+
+###################################################################################################
+
+@Cmd.route(r'device\[(?P<index>\d+)\]\s*set\s+(?P<params>.+)')
 def cmd_device_set(params, cmd, index) -> tuple:
     """ Handle command 'device[#] set <param>:<value> ...' """
-    paramdict = Tool.str_to_params(cmd)
-    err, ret = Device.task_set_param(index, paramdict)
-    return (None, None)
+    #paramdict = Tool.str_to_params(cmd)
+    err, ret = Device.task_set_param(index, params)
+    return (err, ret)
 
 ###################################################################################################
 
@@ -92,7 +95,8 @@ def cmd_device_cmd(params, cmd, index) -> tuple:
 @Cmd.route(r'device\[(?P<index>\d+)\]\s*html')
 def cmd_device_html(params, cmd, index) -> tuple:
     """ Handle command 'device[#] html' """
-    return (None, 'devices/XXX.html')
+    err, ret = Device.task_get_html(index)
+    return (err, ret)
 
 ###################################################################################################
 
@@ -118,8 +122,8 @@ def cmd_device__(params, cmd, index) -> tuple:
 ###################################################################################################
 ###################################################################################################
 
-@Cmd.route(r'xping', r'[\s,]+(\w+)+')
-@Cmd.route(r'yping\b', r'[\s,]+(\w+)+')
+@Cmd.route(r'xping')
+@Cmd.route(r'yping\b')
 @Cmd.route(r'zping')
 def cmd_testping(params, cmd, index) -> tuple:
     """ Handle command 'ping' and returns string 'pong' """
@@ -127,9 +131,4 @@ def cmd_testping(params, cmd, index) -> tuple:
     return (None, 'dpong' + str(list(params.keys())))
 
 ###################################################################################################
-###################################################################################################
-# Globals:
-
-COMMANDS = []
-
 ###################################################################################################

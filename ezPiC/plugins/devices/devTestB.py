@@ -18,11 +18,12 @@ BBB = 1
 ###################################################################################################
 
 class PluginDevice(Device.PluginDeviceBase):
-    param = {'abc':12345, 'xyz':67890}
-    timer_period = 5.5555
+    """ TODO """
 
     def __init__(self, module):
         super().__init__(module)
+        self.param = {'abc':12345, 'xyz':67890}
+        self.timer_period = 5.5555
 
     def timer(self):
         print('B' + str(time.time()))

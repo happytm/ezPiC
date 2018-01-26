@@ -82,9 +82,14 @@ def run():
     Scheduler.add_event(DEVICETIMER, device_time_handler)
 
 ###################################################################################################
+###################################################################################################
+###################################################################################################
 
-def task_add(plugin_id: str):
+def task_add(plugin_id: str) -> tuple:
     """ TODO """
+    err = None
+    ret = None
+
     DEVICELOCK.acquire()
     try:
         module = DEVICES.get(plugin_id, None)
@@ -96,45 +101,60 @@ def task_add(plugin_id: str):
             if inst.timer_period:
                 inst.timer_next = time.time() + inst.timer_period
             inst.init()
-    except:
-        pass
+        else:
+            err = 'Unknown DUID'
+    except Exception as e:
+        err = e
     DEVICELOCK.release()
+
+    return (err, ret)
 
 ###################################################################################################
 
-def task_del(idx: int):
+def task_del(idx: int) -> tuple:
     """ TODO """
+    err = None
+    ret = None
+
     DEVICELOCK.acquire()
     try:
         inst = DEVICETASKS[idx]['inst']
         inst.exit()
         del DEVICETASKS[idx]
-    except:
-        pass
+    except Exception as e:
+        err = e
     DEVICELOCK.release()
+
+    return (err, ret)
 
 ###################################################################################################
 
-def get_device_list() -> list:
+def get_device_list() -> tuple:
     """ TODO """
     dl = []
+    err = None
+
     DEVICELOCK.acquire()
     for duid, module in DEVICES.items():
         dl.append((module.DUID, module.NAME, module.INFO, module))
     DEVICELOCK.release()
-    return dl
+
+    return (err, dl)
 
 ###################################################################################################
 
-def get_device_task_list() -> list:
+def get_device_task_list() -> tuple:
     """ TODO """
     dtl = []
+    err = None
+
     DEVICELOCK.acquire()
     for idx, task in enumerate(DEVICETASKS):
         inst = task['inst']
         dtl.append((idx, inst.get_id(), inst.get_name(), inst.get_info(), inst))
     DEVICELOCK.release()
-    return dtl
+
+    return (err, dtl)
 
 ###################################################################################################
 
@@ -147,8 +167,8 @@ def task_get_param(idx: int, key: str=None) -> tuple:
     try:
         inst = DEVICETASKS[idx]['inst']
         ret = inst.get_param(key)
-    except:
-        err = -1
+    except Exception as e:
+        err = e
     DEVICELOCK.release()
 
     return (err, ret)
@@ -164,8 +184,25 @@ def task_set_param(idx: int, params: dict) -> tuple:
     try:
         inst = DEVICETASKS[idx]['inst']
         ret = inst.set_param(params)
-    except:
-        err = -1
+    except Exception as e:
+        err = e
+    DEVICELOCK.release()
+
+    return (err, ret)
+
+###################################################################################################
+
+def task_get_html(idx: int) -> tuple:
+    """ TODO """
+    err = None
+    ret = 'None'
+
+    DEVICELOCK.acquire()
+    try:
+        inst = DEVICETASKS[idx]['inst']
+        ret = inst.get_html()
+    except Exception as e:
+        err = e
     DEVICELOCK.release()
 
     return (err, ret)
@@ -178,12 +215,13 @@ def task_set_param(idx: int, params: dict) -> tuple:
 
 class PluginDeviceBase():
     """ TODO """
-    param = {}
-    timer_next = None
-    timer_period = None
+    version = '1.0'
 
     def __init__(self, module):
         self.module = module
+        self.param = {}
+        self.timer_next = None
+        self.timer_period = None
 
     def init(self):
         """ init a new instance after adding to task list or reinit an existing instance after loading/changing params """
@@ -193,15 +231,15 @@ class PluginDeviceBase():
         """ exit an existing instance after removing from task list """
         pass
 
-    def get_id(self):
+    def get_id(self) -> str:
         """ get the unique device id from the module """
         return self.module.DUID
 
-    def get_name(self):
+    def get_name(self) -> str:
         """ get the name from the module """
         return self.module.NAME
 
-    def get_info(self):
+    def get_info(self) -> str:
         """ get the description from the module """
         return self.module.INFO
 
@@ -215,6 +253,10 @@ class PluginDeviceBase():
     def set_param(self, param_new: dict):
         """ updates the param key-value pairs with given dict """
         self.param.update(param_new)
+
+    def get_html(self) -> str:
+        """ get the html template name from the module """
+        return 'devices/{}.html'.format(self.module.DUID)
 
     def meas(self) -> (dict, float):
         return ({}, 0.0)

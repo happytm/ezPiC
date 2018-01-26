@@ -80,7 +80,7 @@ def web_device_edit(idx=-1):
 
     params['index'] = idx
     
-    return render_template('devices/test.html', menu='devices', **params)
+    return render_template(html, menu='devices', **params)
 
 ###################################################################################################
 

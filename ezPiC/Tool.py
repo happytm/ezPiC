@@ -81,7 +81,7 @@ def make_random_password(length=12, symbols='abcdefghijklmnopqrstuvwxyzABCDEFGHI
 
 ###################################################################################################
 
-def params_to_str(params:dict) -> str:
+def params_to_str2(params:dict) -> str:
     """ TODO """
     ret = ''
 
@@ -90,6 +90,7 @@ def params_to_str(params:dict) -> str:
             if ret:
                 ret += ', '
             separators = (' ', ',')
+            value = str(value)
             if any(s in value for s in separators):
                 ret += '{}:"{}"'.format(param, value)
             else:
@@ -102,7 +103,7 @@ def params_to_str(params:dict) -> str:
 re_str_to_params = '(\w+)(?:\s*:\s*(\w+|"[^"]*"))?'
 re_str_to_params_c = re.compile(re_str_to_params, re.IGNORECASE)
 
-def str_to_params(paramstr:str) -> dict:
+def str_to_params2(paramstr:str) -> dict:
     """ TODO """
     global re_str_to_params_c
 
@@ -121,16 +122,30 @@ def str_to_params(paramstr:str) -> dict:
     else:
         pass   # invalid params
 
-    #if paramstr:
-    #    paramstr = paramstr.trim()
-    #    if paramstr[0] != '{':
-    #        paramstr = '{' + paramstr
-    #    if paramstr[-1] != '}':
-    #        paramstr = paramstr + '}'
-    #    try:
-    #        ret = ast.literal_eval(paramstr)
-    #    except Exception as e:
-    #        pass
+    return ret
+
+###################################################################################################
+
+def params_to_str(params:dict) -> str:
+    """ TODO """
+    return str(params)
+
+###################################################################################################
+
+def str_to_params(paramstr:str) -> dict:
+    """ TODO """
+    ret = {}
+
+    if paramstr:
+        paramstr = paramstr.strip()
+        if paramstr[0] != '{':
+            paramstr = '{' + paramstr
+        if paramstr[-1] != '}':
+            paramstr = paramstr + '}'
+        try:
+            ret = ast.literal_eval(paramstr)
+        except Exception as e:
+            pass
 
     return ret
 
