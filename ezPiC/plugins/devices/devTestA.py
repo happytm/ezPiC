@@ -24,7 +24,17 @@ class PluginDevice(Device.PluginDeviceBase):
         super().__init__(module)
         self.CID = 'TestA'
         self.address = 123
-        self.param = {'abc':123, 'xyz':456, 'sel':2, 'qwe':'Lorem ipsum', 'asd':[1,2,3,4,5]}
+        self.param = {
+            'name':'A',
+            'name_t':'T',
+            'name_h':'H',
+            'name_p':'P',
+            'abc':123,
+            'xyz':456,
+            'sel':2,
+            'qwe':'Lorem ipsum',
+            'asd':[1,2,3,4,5],
+            }
         self.timer_period = 3.1415
 
     def init(self):

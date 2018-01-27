@@ -67,6 +67,14 @@ def cmd_device_del(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
+@Cmd.route(r'device\[\]\s*del\s?all')
+def cmd_device_del_all(params, cmd, index) -> tuple:
+    """ Handle command 'device[] del all' """
+    err, ret = Device.task_del_all()
+    return (err, ret)
+
+###################################################################################################
+
 @Cmd.route(r'device\[(?P<index>\d+)\]\s*get\s*(?P<param>\w+)?')
 def cmd_device_get(params, cmd, index) -> tuple:
     """ Handle command 'device[#] get <param> (no <param> for all)' """

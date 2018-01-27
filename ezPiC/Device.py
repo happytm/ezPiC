@@ -54,7 +54,7 @@ def init():
     #TEST
     module = DEVICES['TestA']
     dev = module.PluginDevice(module)
-    x = dev.get_id()
+    #x = dev.get_id()
     x = dev.get_info()
     x = dev.get_param('abc')
     x = dev.get_param()
@@ -129,6 +129,26 @@ def task_del(idx: int) -> tuple:
 
 ###################################################################################################
 
+def task_del_all() -> tuple:
+    """ TODO """
+    global DEVICETASKS
+    err = None
+    ret = None
+
+    DEVICELOCK.acquire()
+    for task in DEVICETASKS:
+        try:
+            inst = task['inst']
+            inst.exit()
+        except Exception as e:
+            err = e
+    DEVICETASKS = []
+    DEVICELOCK.release()
+
+    return (err, ret)
+
+###################################################################################################
+
 def get_device_list() -> tuple:
     """ TODO """
     dl = []
@@ -151,7 +171,7 @@ def get_device_task_list() -> tuple:
     DEVICELOCK.acquire()
     for idx, task in enumerate(DEVICETASKS):
         inst = task['inst']
-        dtl.append((idx, inst.get_id(), inst.get_name(), inst.get_info(), inst))
+        dtl.append((idx, inst.module.DUID, inst.module.NAME, inst.get_name(), inst.get_info(), inst))
     DEVICELOCK.release()
 
     return (err, dtl)
@@ -231,13 +251,9 @@ class PluginDeviceBase():
         """ exit an existing instance after removing from task list """
         pass
 
-    def get_id(self) -> str:
-        """ get the unique device id from the module """
-        return self.module.DUID
-
     def get_name(self) -> str:
         """ get the name from the module """
-        return self.module.NAME
+        return self.param.get('name', 'Unknown')
 
     def get_info(self) -> str:
         """ get the description from the module """
