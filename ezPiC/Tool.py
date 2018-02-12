@@ -45,6 +45,48 @@ def load_plugins(package: str, startswith: str='') -> list:
 
     return modules
 
+# =================================================================================================
+
+def load_pluginsEx(path: str, pre :str=None) -> list:
+    """
+    Imports all python modules from given path inside the plugin folder
+    path: Relative path name
+    pre: (optional) Filter python files/modules with start string
+    return: List of imported modules
+    """
+    try:
+        full_path = os.path.join(os.path.dirname(__file__), PLUGINDIR, path)
+    except:   # MicroPython has no os.path
+        full_path = path
+        if PLUGINDIR:
+            full_path = PLUGINDIR + '/' + full_path
+    print ('Loading plugins from path {}'.format(full_path))
+
+    modules = []
+
+    files = os.listdir(full_path)
+    print(files)
+    for file in files:
+        if file.startswith('__'):
+            continue
+        if not file.endswith('.py'):
+            continue
+        if pre and not file.startswith(pre):
+            continue
+        
+        module_name = path + '.' + file[:-3]
+        if PLUGINDIR:
+            module_name = PLUGINDIR + '.' + module_name
+        print(module_name)
+        try:
+            module = __import__(module_name, globals(), locals(), ['object'], 0)
+            print(module)
+            modules.append(module)
+        except Exception as e:
+            print('Error on importing module {} -> {}'.format(module_name, e))
+
+    return modules
+
 ###################################################################################################
 
 def get_random_string(length=12, allowed_chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'):
