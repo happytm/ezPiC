@@ -9,6 +9,7 @@ import Cmd
 import Device
 import Gateway
 import Rule
+import Reading
 import Scheduler
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)-15s %(levelname).1s %(threadName).5s %(message)s',)
@@ -23,6 +24,7 @@ def main():
     Device.init()
     Gateway.init()
     Rule.init()
+    Reading.init()
     Web.init()
 
     logging.debug('Starting main run')
@@ -31,6 +33,7 @@ def main():
     Device.run()
     Gateway.run()
     Rule.run()
+    Reading.run()
     Web.run()   # this call never comes back ... normally
 
     logging.error('PANIC! Web server terminated')

@@ -13,7 +13,7 @@ PLUGINDIR = 'plugins'
 
 ###################################################################################################
 
-def load_plugins(package: str, startswith: str='') -> list:
+def load_pluginsOld(package: str, startswith: str='') -> list:
     """
     Imports all python modules from given path/package
     package: Relative path name
@@ -47,7 +47,7 @@ def load_plugins(package: str, startswith: str='') -> list:
 
 # =================================================================================================
 
-def load_pluginsEx(path: str, pre :str=None) -> list:
+def load_plugins(path: str, pre :str=None) -> list:
     """
     Imports all python modules from given path inside the plugin folder
     path: Relative path name
@@ -60,7 +60,7 @@ def load_pluginsEx(path: str, pre :str=None) -> list:
         full_path = path
         if PLUGINDIR:
             full_path = PLUGINDIR + '/' + full_path
-    print ('Loading plugins from path {}'.format(full_path))
+    logging.info('Loading plugins from path "{}"'.format(full_path))
 
     modules = []
 
@@ -77,13 +77,12 @@ def load_pluginsEx(path: str, pre :str=None) -> list:
         module_name = path + '.' + file[:-3]
         if PLUGINDIR:
             module_name = PLUGINDIR + '.' + module_name
-        print(module_name)
         try:
             module = __import__(module_name, globals(), locals(), ['object'], 0)
-            print(module)
             modules.append(module)
+            logging.info('Import plugin "{}"'.format(module_name))
         except Exception as e:
-            print('Error on importing module {} -> {}'.format(module_name, e))
+            logging.error('Fail to import plugin "{}"\n{}'.format(module_name, e))
 
     return modules
 
