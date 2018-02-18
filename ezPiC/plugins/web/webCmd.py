@@ -7,6 +7,7 @@ import html
 from G import APP
 import Tool
 import Cmd
+import json
 
 ###################################################################################################
 
@@ -26,6 +27,11 @@ def web_cmd():
     if cmd:
         #print(cmd)
         err, ret = Cmd.excecute(cmd)
+        #ret = str(ret)
+        try:
+            ret = json.dumps(ret, indent=2)
+        except:
+            pass
         ret = str(ret)
         #ret = html.escape(ret)
         t = 'Cmd ' + cmd + ' -> ' + str(ret)

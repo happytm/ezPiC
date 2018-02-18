@@ -7,6 +7,7 @@ import time
 #import logging
 import Tool
 import Scheduler
+from collections import namedtuple
 
 ###################################################################################################
 # Globals:
@@ -15,6 +16,9 @@ DEVICES = {}
 DEVICETASKS = []
 DEVICELOCK = RLock()
 DEVICETIMER = 0
+
+DEVICETUPLE = namedtuple('Device', 'DUID NAME INFO module')
+DEVICETASKTUPLE = namedtuple('DeviceTask', 'idx DUID NAME instname info inst')
 
 ###################################################################################################
 
@@ -156,7 +160,7 @@ def get_device_list() -> tuple:
 
     DEVICELOCK.acquire()
     for duid, module in DEVICES.items():
-        dl.append((module.DUID, module.NAME, module.INFO, module))
+        dl.append(DEVICETUPLE(module.DUID, module.NAME, module.INFO, module.__name__))
     DEVICELOCK.release()
 
     return (err, dl)
@@ -171,7 +175,7 @@ def get_device_task_list() -> tuple:
     DEVICELOCK.acquire()
     for idx, task in enumerate(DEVICETASKS):
         inst = task['inst']
-        dtl.append((idx, inst.module.DUID, inst.module.NAME, inst.get_name(), inst.get_info(), inst))
+        dtl.append(DEVICETASKTUPLE(idx, inst.module.DUID, inst.module.NAME, inst.get_name(), inst.get_info(), None))
     DEVICELOCK.release()
 
     return (err, dtl)
