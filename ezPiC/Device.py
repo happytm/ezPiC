@@ -2,12 +2,17 @@
 ...TODO
 """
 import re
-from threading import RLock
+from collections import namedtuple
 import time
+
+try:
+    from threading import RLock
+except:
+    from _thread import allocate_lock as RLock
+
 #import logging
 import Tool
 import Scheduler
-from collections import namedtuple
 
 ###################################################################################################
 # Globals:
@@ -28,18 +33,17 @@ def device_time_handler():
     DEVICETIMER += 0.1
     Scheduler.add_event(DEVICETIMER, device_time_handler)
 
-    DEVICELOCK.acquire()
-    t = time.time()
+    with DEVICELOCK:
+        t = time.time()
 
-    for idx, task in enumerate(DEVICETASKS):
-        inst = task['inst']
-        if inst.timer_next and (t >= inst.timer_next):
-            if inst.timer_period:
-                inst.timer_next += inst.timer_period
-                if inst.timer_next < t:
-                    inst.timer_next = t + inst.timer_period
-            inst.timer()
-    DEVICELOCK.release()
+        for idx, task in enumerate(DEVICETASKS):
+            inst = task['inst']
+            if inst.timer_next and (t >= inst.timer_next):
+                if inst.timer_period:
+                    inst.timer_next += inst.timer_period
+                    if inst.timer_next < t:
+                        inst.timer_next = t + inst.timer_period
+                inst.timer()
 
 ###################################################################################################
 
@@ -94,22 +98,21 @@ def task_add(plugin_id: str) -> tuple:
     err = None
     ret = None
 
-    DEVICELOCK.acquire()
-    try:
-        module = DEVICES.get(plugin_id, None)
-        if module:
-            task = {}
-            inst = module.PluginDevice(module)
-            task['inst'] = inst
-            DEVICETASKS.append(task)
-            if inst.timer_period:
-                inst.timer_next = time.time() + inst.timer_period
-            inst.init()
-        else:
-            err = 'Unknown DUID'
-    except Exception as e:
-        err = e
-    DEVICELOCK.release()
+    with DEVICELOCK:
+        try:
+            module = DEVICES.get(plugin_id, None)
+            if module:
+                task = {}
+                inst = module.PluginDevice(module)
+                task['inst'] = inst
+                DEVICETASKS.append(task)
+                if inst.timer_period:
+                    inst.timer_next = time.time() + inst.timer_period
+                inst.init()
+            else:
+                err = 'Unknown DUID'
+        except Exception as e:
+            err = e
 
     return (err, ret)
 
@@ -120,14 +123,13 @@ def task_del(idx: int) -> tuple:
     err = None
     ret = None
 
-    DEVICELOCK.acquire()
-    try:
-        inst = DEVICETASKS[idx]['inst']
-        inst.exit()
-        del DEVICETASKS[idx]
-    except Exception as e:
-        err = e
-    DEVICELOCK.release()
+    with DEVICELOCK:
+        try:
+            inst = DEVICETASKS[idx]['inst']
+            inst.exit()
+            del DEVICETASKS[idx]
+        except Exception as e:
+            err = e
 
     return (err, ret)
 
@@ -139,15 +141,14 @@ def task_del_all() -> tuple:
     err = None
     ret = None
 
-    DEVICELOCK.acquire()
-    for task in DEVICETASKS:
-        try:
-            inst = task['inst']
-            inst.exit()
-        except Exception as e:
-            err = e
-    DEVICETASKS = []
-    DEVICELOCK.release()
+    with DEVICELOCK:
+        for task in DEVICETASKS:
+            try:
+                inst = task['inst']
+                inst.exit()
+            except Exception as e:
+                err = e
+        DEVICETASKS = []
 
     return (err, ret)
 
@@ -158,10 +159,9 @@ def get_device_list() -> tuple:
     dl = []
     err = None
 
-    DEVICELOCK.acquire()
-    for duid, module in DEVICES.items():
-        dl.append(DEVICETUPLE(module.DUID, module.NAME, module.INFO, module.__name__))
-    DEVICELOCK.release()
+    with DEVICELOCK:
+        for duid, module in DEVICES.items():
+            dl.append(DEVICETUPLE(module.DUID, module.NAME, module.INFO, module.__name__))
 
     return (err, dl)
 
@@ -172,11 +172,10 @@ def get_device_task_list() -> tuple:
     dtl = []
     err = None
 
-    DEVICELOCK.acquire()
-    for idx, task in enumerate(DEVICETASKS):
-        inst = task['inst']
-        dtl.append(DEVICETASKTUPLE(idx, inst.module.DUID, inst.module.NAME, inst.get_name(), inst.get_info(), None))
-    DEVICELOCK.release()
+    with DEVICELOCK:
+        for idx, task in enumerate(DEVICETASKS):
+            inst = task['inst']
+            dtl.append(DEVICETASKTUPLE(idx, inst.module.DUID, inst.module.NAME, inst.get_name(), inst.get_info(), None))
 
     return (err, dtl)
 
@@ -187,13 +186,12 @@ def task_get_param(idx: int, key: str=None) -> tuple:
     err = None
     ret = None
 
-    DEVICELOCK.acquire()
-    try:
-        inst = DEVICETASKS[idx]['inst']
-        ret = inst.get_param(key)
-    except Exception as e:
-        err = e
-    DEVICELOCK.release()
+    with DEVICELOCK:
+        try:
+            inst = DEVICETASKS[idx]['inst']
+            ret = inst.get_param(key)
+        except Exception as e:
+            err = e
 
     return (err, ret)
 
@@ -204,13 +202,12 @@ def task_set_param(idx: int, params: dict) -> tuple:
     err = None
     ret = None
 
-    DEVICELOCK.acquire()
-    try:
-        inst = DEVICETASKS[idx]['inst']
-        ret = inst.set_param(params)
-    except Exception as e:
-        err = e
-    DEVICELOCK.release()
+    with DEVICELOCK:
+        try:
+            inst = DEVICETASKS[idx]['inst']
+            ret = inst.set_param(params)
+        except Exception as e:
+            err = e
 
     return (err, ret)
 
@@ -221,19 +218,16 @@ def task_get_html(idx: int) -> tuple:
     err = None
     ret = 'None'
 
-    DEVICELOCK.acquire()
-    try:
-        inst = DEVICETASKS[idx]['inst']
-        ret = inst.get_html()
-    except Exception as e:
-        err = e
-    DEVICELOCK.release()
+    with DEVICELOCK:
+        try:
+            inst = DEVICETASKS[idx]['inst']
+            ret = inst.get_html()
+        except Exception as e:
+            err = e
 
     return (err, ret)
 
 ###################################################################################################
-
-
 ###################################################################################################
 ###################################################################################################
 

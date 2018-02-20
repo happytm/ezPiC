@@ -5,45 +5,45 @@ import os
 import logging
 import random
 import re
-import importlib
-import ast
+#import importlib
+#import ast
 
 #random = random.SystemRandom()
 PLUGINDIR = 'plugins'
 
 ###################################################################################################
 
-def load_pluginsOld(package: str, startswith: str='') -> list:
-    """
-    Imports all python modules from given path/package
-    package: Relative path name
-    startswith: (optional) Filter python files/modules with start string
-    return: List of imported modules
-    """
-    global PLUGINDIR
+# def load_pluginsOld(package: str, startswith: str='') -> list:
+#     """
+#     Imports all python modules from given path/package
+#     package: Relative path name
+#     startswith: (optional) Filter python files/modules with start string
+#     return: List of imported modules
+#     """
+#     global PLUGINDIR
 
-    pysearchre = re.compile('.py$', re.IGNORECASE)
-    pluginfiles = filter(pysearchre.search, os.listdir(os.path.join(os.path.dirname(__file__), PLUGINDIR, package)))
-    form_module = lambda fp: '.' + os.path.splitext(fp)[0]
-    plugins = map(form_module, pluginfiles)
+#     pysearchre = re.compile('.py$', re.IGNORECASE)
+#     pluginfiles = filter(pysearchre.search, os.listdir(os.path.join(os.path.dirname(__file__), PLUGINDIR, package)))
+#     form_module = lambda fp: '.' + os.path.splitext(fp)[0]
+#     plugins = map(form_module, pluginfiles)
 
-    package = PLUGINDIR + '.' + package
+#     package = PLUGINDIR + '.' + package
 
-    importlib.import_module(package) # import parent module / namespace
+#     importlib.import_module(package) # import parent module / namespace
 
-    modules = []
-    for plugin in plugins:
-        if not plugin.startswith('__'):
-            if not startswith or plugin.startswith('.' + startswith):
-                try:
-                    module = importlib.import_module(plugin, package=package)
-                    #module.ID
-                    modules.append(module)
-                    logging.info('Import plugin "{}{}"'.format(package, plugin))
-                except Exception as e:
-                    logging.error('Fail to import plugin "{}{}"\n{}'.format(package, plugin, e))
+#     modules = []
+#     for plugin in plugins:
+#         if not plugin.startswith('__'):
+#             if not startswith or plugin.startswith('.' + startswith):
+#                 try:
+#                     module = importlib.import_module(plugin, package=package)
+#                     #module.ID
+#                     modules.append(module)
+#                     logging.info('Import plugin "{}{}"'.format(package, plugin))
+#                 except Exception as e:
+#                     logging.error('Fail to import plugin "{}{}"\n{}'.format(package, plugin, e))
 
-    return modules
+#     return modules
 
 # =================================================================================================
 
@@ -142,7 +142,7 @@ def params_to_str2(params:dict) -> str:
 ###################################################################################################
 
 re_str_to_params = '(\w+)(?:\s*:\s*(\w+|"[^"]*"))?'
-re_str_to_params_c = re.compile(re_str_to_params, re.IGNORECASE)
+re_str_to_params_c = re.compile(re_str_to_params)
 
 def str_to_params2(paramstr:str) -> dict:
     """ TODO """

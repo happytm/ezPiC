@@ -7,6 +7,7 @@ import sched, time
 import Tool
 import Cmd
 import G
+import _thread
 
 ###################################################################################################
 # Globals:
@@ -88,6 +89,26 @@ def add_cmd(t: float, cmd: str):
 
     SCHED.enter(t, 5, handler_cmd, argument=(cmd,))
 
+###################################################################################################
+
+TIMEHANDLER = []
+
+def add_time_handler(time_handler):
+    TIMEHANDLER.append(time_handler)
+
+def thread_handler_loop():
+    while True:
+        for th in TIMEHANDLER:
+            try:
+                th()
+            except:
+                pass
+        time.sleep(0.100)
+
+def init2():
+    _thread.start_new_thread(thread_handler_loop)
+
+    
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
