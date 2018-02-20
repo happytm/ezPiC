@@ -94,10 +94,18 @@ def add_cmd(t: float, cmd: str):
 TIMEHANDLER = []
 
 def add_time_handler(time_handler):
+    """ TODO """
+    global TIMEHANDLER
+
     TIMEHANDLER.append(time_handler)
 
+# =================================================================================================
+
 def thread_handler_loop():
-    while True:
+    """ TODO """
+    global TIMEHANDLER
+
+    while G.RUN:
         for th in TIMEHANDLER:
             try:
                 th()
@@ -105,8 +113,19 @@ def thread_handler_loop():
                 pass
         time.sleep(0.100)
 
+# =================================================================================================
+
 def init2():
-    _thread.start_new_thread(thread_handler_loop)
+    """ TODO """
+    global TIMEHANDLER
+
+# =================================================================================================
+
+def run2():
+    """ TODO """
+    global TIMEHANDLER
+
+    _thread.start_new_thread(thread_handler_loop, ())
 
     
 ###################################################################################################
