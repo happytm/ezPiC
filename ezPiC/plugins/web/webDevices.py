@@ -34,15 +34,17 @@ def web_devices_list():
 def web_device_add(duid=None):
     """ TODO """
     cmd = 'device[] add {}'.format(duid)
-    err, ret = Cmd.excecute(cmd)
+    err, idx = Cmd.excecute(cmd)
     if err:
         msg = 'Error "{0}" - Can not add device "{1}"'.format(err, duid)
         flash(msg, 'danger')
     else:
+        err, ret = Cmd.excecute('save')
         msg = 'Device "{}" added'.format(duid)
         flash(msg, 'info')
 
-    return redirect(url_for('web_devices'))
+    return redirect(url_for('web_device_edit', idx = idx))
+    # return render_template(html, menu='devices', **params)
 
 ###################################################################################################
 
@@ -71,6 +73,7 @@ def web_device_edit(idx=-1):
         #params.update(request.form)
         cmd = 'device[{}] set {}'.format(idx, Tool.params_to_str(params))
         err, ret = Cmd.excecute(cmd)
+        err, ret = Cmd.excecute('save')
     else: # GET
         if 'cmd' in request.args:
             cmd = request.args.get('cmd')
@@ -94,6 +97,7 @@ def web_device_del(idx=-1):
         flash(msg, 'danger')
         return redirect(url_for('web_devices_list'))
     else:
+        err, ret = Cmd.excecute('save')
         msg = 'Device task deleted'
         flash(msg, 'info')
 

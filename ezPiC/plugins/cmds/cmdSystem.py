@@ -4,6 +4,9 @@
 import logging
 import Device
 import Cmd
+import json
+
+CONFIG_FILE = 'config.json'
 
 ###################################################################################################
 
@@ -45,14 +48,40 @@ def cmd_system_logout(params, cmd, index) -> tuple:
 @Cmd.route(r'save')
 def cmd_system_save(params, cmd, index) -> tuple:
     """ Handle command 'save' """
-    return (None, None)
+
+    err = None
+
+    with open(CONFIG_FILE, 'w') as outfile:
+        try:
+            save_dict = {}
+            Device.save(save_dict)
+            # add other stuff like Gateway
+            json.dump(save_dict, outfile, indent=2)
+        except Exception as e:
+            err = e
+
+    return (err, None)
 
 ###################################################################################################
 
 @Cmd.route(r'load')
 def cmd_system_load(params, cmd, index) -> tuple:
     """ Handle command 'load' """
-    return (None, None)
+
+    err = None
+
+    try:
+        with open(CONFIG_FILE, 'r') as infile:
+            config_all = json.load(infile)
+            Device.load(config_all)
+            # Gateway(s?).load(...)
+            # ...
+    except FileNotFoundError as e:
+        pass
+    except Exception as e:
+        err = e
+
+    return (err, None)
 
 ###################################################################################################
 

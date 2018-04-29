@@ -44,7 +44,7 @@ def init():
         DEBUG=False,
         USERNAME='admin',
         PASSWORD='12345',
-        SERVER_NAME='localhost',
+        SERVER_NAME='localhost:8080',
         ))
     app.config.from_object(Config())
     app.config.from_pyfile('ezPiC.cfg', silent=True)
@@ -73,7 +73,7 @@ def run():
         debug=app.debug,
         use_reloader=False,
         host='localhost',
-        port=80,
+        port=8080,
         threaded=True
         )
     #app.run(threaded=True)
