@@ -34,6 +34,9 @@ def main():
     Gateway.run()
     Rule.run()
     Reading.run()
+
+    Cmd.excecute("load")
+
     Web.run()   # this call never comes back ... normally
 
     logging.error('PANIC! Web server terminated')

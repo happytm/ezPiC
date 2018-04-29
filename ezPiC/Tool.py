@@ -5,6 +5,7 @@ import os
 import logging
 import random
 import re
+import json
 #import importlib
 #import ast
 
@@ -169,26 +170,30 @@ def str_to_params2(paramstr:str) -> dict:
 
 def params_to_str(params:dict) -> str:
     """ TODO """
-    return str(params)
+    # return str(params)
+    return json.dumps(params)
 
 ###################################################################################################
 
 def str_to_params(paramstr:str) -> dict:
     """ TODO """
-    ret = {}
 
-    if paramstr:
-        paramstr = paramstr.strip()
-        if paramstr[0] != '{':
-            paramstr = '{' + paramstr
-        if paramstr[-1] != '}':
-            paramstr = paramstr + '}'
-        try:
-            ret = ast.literal_eval(paramstr)
-        except Exception as e:
-            pass
+    return json.loads(paramstr)
 
-    return ret
+    # ret = {}
+
+    # if paramstr:
+    #     paramstr = paramstr.strip()
+    #     if paramstr[0] != '{':
+    #         paramstr = '{' + paramstr
+    #     if paramstr[-1] != '}':
+    #         paramstr = paramstr + '}'
+    #     try:
+    #         ret = ast.literal_eval(paramstr)
+    #     except Exception as e:
+    #         pass
+
+    # return ret
 
 ###################################################################################################
 ###################################################################################################

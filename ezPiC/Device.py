@@ -10,7 +10,9 @@ try:
 except:
     from _thread import allocate_lock as RLock
 
-#import logging
+import json
+
+import logging
 import Tool
 import Scheduler
 
@@ -52,32 +54,46 @@ def init():
     global DEVICES
 
     plugins = Tool.load_plugins('devices', 'dev')
-    #print(plugins)
     for plugin in plugins:
         try:
             DEVICES[plugin.DUID] = plugin
         except:
             pass
 
-    #TEST
-    module = DEVICES['TestA']
-    dev = module.PluginDevice(module)
-    #x = dev.get_id()
-    x = dev.get_info()
-    x = dev.get_param('abc')
-    x = dev.get_param()
-    #DEVICETASKS.append(dev)
-    #dev0 = DEVICETASKS[0]
+def load(config_all: dict):
+    if not "devices" in config_all:
+        return
+    for config in config_all["devices"]:
+        duid = config["duid"]
+        loaded_version = config["version"]
+        params = config["params"]
+        err, idx = task_add(duid, params)
+        running_version = DEVICETASKS[idx]['inst'].version
 
+        if not err and loaded_version != running_version:
+            logging.warn("task " +  duid + " has change version form " + loaded_version + " to " + running_version)
 
-    task_add('TestA')
-    task_add('TestB')
-    x = get_device_list()
-    x = get_device_task_list()
+def save(append: dict = None):
+    err = None
+    ret = []
+    with DEVICELOCK:
+        for task in DEVICETASKS:
+            try:
+                inst = task['inst']
+                config = {}
+                config["duid"] = inst.module.DUID
+                config["version"] = inst.version
+                config["params"] = inst.get_param()
+                ret.append(config)
+            except Exception as e:
+                err = e
+                print(e)
 
-    dev1 = DEVICETASKS[1]
-    x = 0
-
+    if not append is None:
+        append["devices"] = ret
+        return (err, append)
+    
+    return (err, {"devices": ret})
 
 ###################################################################################################
 
@@ -93,7 +109,7 @@ def run():
 ###################################################################################################
 ###################################################################################################
 
-def task_add(plugin_id: str) -> tuple:
+def task_add(plugin_id: str, params: dict = None) -> tuple:
     """ TODO """
     err = None
     ret = None
@@ -106,6 +122,9 @@ def task_add(plugin_id: str) -> tuple:
                 inst = module.PluginDevice(module)
                 task['inst'] = inst
                 DEVICETASKS.append(task)
+                ret = len(DEVICETASKS) - 1
+                if params:
+                    inst.set_param(params)
                 if inst.timer_period:
                     inst.timer_next = time.time() + inst.timer_period
                 inst.init()
