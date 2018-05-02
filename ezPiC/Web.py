@@ -3,12 +3,13 @@
 """
 import logging
 from flask import Flask
-#from flask_apscheduler import APScheduler
+from MicroWebSrv.microWebSrv import MicroWebSrv
 import Tool
 import G
 
 app = Flask('ezPiC')
 G.APP = app
+mws = None
 
 ###################################################################################################
 
@@ -35,23 +36,15 @@ def job1(a, b):
 
 def init():
     """ Prepare module vars and load plugins """
-    global app
-
-    # Load default config and override config from an environment variable
-    app.config.update(dict(
-        #DATABASE=os.path.join(app.root_path, 'flaskr.db'),
-        SECRET_KEY=Tool.get_secret_key(),
-        DEBUG=False,
-        USERNAME='admin',
-        PASSWORD='12345',
-        SERVER_NAME='localhost:8080',
-        ))
-    app.config.from_object(Config())
-    app.config.from_pyfile('ezPiC.cfg', silent=True)
-    app.config.from_envvar('EZPIC_SETTINGS', silent=True)
+    global app, mws
 
     www = Tool.load_plugins('web', 'web')
     #print(www)
+
+    mws = MicroWebSrv(webPath='www/') # TCP port 80 and files in /flash/www
+    #mws = MicroWebSrv(webPath='MicroWebSrv/www/') # TCP port 80 and files in /flash/www
+    G.MWS = mws
+
 
     #app.logger.debug('Starting flask')
     #app.logger.warning('A warning occurred (%d apples)', 42)
@@ -65,17 +58,20 @@ def init():
 
 def run():
     """ TODO """
-    global app
+    global app, mws
 
     logging.debug('Starting web server')
-    app.run(
-        use_debugger=True,
-        debug=app.debug,
-        use_reloader=False,
-        host='localhost',
-        port=8080,
-        threaded=True
-        )
+
+    mws.Start(threaded=False)         # Starts server in a new thread
+
+    #app.run(
+    #    use_debugger=True,
+    #    debug=app.debug,
+    #    use_reloader=False,
+    #    host='localhost',
+    #    port=8080,
+    #    threaded=True
+    #    )
     #app.run(threaded=True)
 
 ###################################################################################################

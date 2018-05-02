@@ -3,6 +3,8 @@
 """
 from flask import request, session, g, redirect, url_for, abort, render_template, flash, escape
 from G import APP
+from G import MWS
+from MicroWebSrv.microWebSrv import MicroWebSrv
 import Cmd
 
 ###################################################################################################
@@ -38,5 +40,37 @@ def web_error(error):
 def web_main():
     """ TODO """
     return render_template('main.html', menu='main')
+
+@MicroWebSrv.route('/main')
+def web_mainx(httpClient, httpResponse):
+    """ TODO """
+    return httpResponse.WriteResponsePyHTMLFile('www/main.pyhtml', headers=None)
+
+@MicroWebSrv.route('/test')
+def _httpHandlerTestGet(httpClient, httpResponse) :
+	content = """\
+	<!DOCTYPE html>
+	<html lang=en>
+        <head>
+        	<meta charset="UTF-8" />
+            <title>TEST GET</title>
+        </head>
+        <body>
+            <h1>TEST GET</h1>
+            Client IP address = %s
+            <br />
+			<form action="/test" method="post" accept-charset="ISO-8859-1">
+				First name: <input type="text" name="firstname"><br />
+				Last name: <input type="text" name="lastname"><br />
+				<input type="submit" value="Submit">
+			</form>
+        </body>
+    </html>
+	""" % httpClient.GetIPAddr()
+	httpResponse.WriteResponseOk( headers		 = None,
+								  contentType	 = "text/html",
+								  contentCharset = "UTF-8",
+								  content 		 = content )
+
 
 ###################################################################################################
