@@ -1,0 +1,4 @@
+[submodule "MicroWebSrv"]
+	path = MicroWebSrv
+	url = E:/GITHUB/ezPiC/MicroWebSrv
+	branch = refs/heads/master
