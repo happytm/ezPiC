@@ -1,11 +1,10 @@
-{% extends "t_standard.html" %}
-{% block body %}
+{{ include t_std_head.pyhtml }}
 
     <h2>Command</h2>
 
   <br />
 
-  <form action="{{ url_for('web_cmd') }}" method=get>
+  <form action="/cmd" method=post>
 
 
     <div class="input-group">
@@ -34,4 +33,4 @@
 
   <hr>
 
-{% endblock %}
+{{ include t_std_foot.pyhtml }}

@@ -1,50 +1,45 @@
 """
 ...TODO
 """
-from flask import request, session, g, redirect, url_for, abort, render_template, flash, escape
-from G import APP
-from G import MWS
 from MicroWebSrv.microWebSrv import MicroWebSrv
 import Cmd
 
 ###################################################################################################
 
-@APP.route('/')
-def web_index():
+@MicroWebSrv.route('/xxx')
+@MicroWebSrv.route('/')
+def web_index(httpClient, httpResponse):
     """ TODO """
-    error = None
-    #if 'username' in session:
-    #    pass #error = 'Logged in as %s' % escape(session['username'])
-    #else:
-    #    error = 'You are not logged in | ' + APP.config['USERNAME'] + ' | ' + APP.config['PASSWORD']
-
-    if 'cmd' in request.args:
-        cmd = request.args.get('cmd')
+    queryParams  = httpClient.GetRequestQueryParams()
+    if queryParams and 'cmd' in queryParams:
+        cmd = queryParams.get('cmd')
         err, ret = Cmd.excecute(cmd)
-        if not err:
-            err = 'OK'
-        return '[{}] {}'.format(err, ret)
+        json = {'error': err, 'result': ret}
+        return httpResponse.WriteResponseJSONOk(json)
 
-    return render_template('index.html', error=error)
+    vars = {'error': None, 'message': None}
+    vars['menu'] = ''
 
-###################################################################################################
-
-@APP.errorhandler(404)
-def web_error(error):
-    """ TODO """
-    return render_template('error.html', error=error), 404
+    return httpResponse.WriteResponsePyHTMLFile('www/index.pyhtml', headers=None, vars=vars)
 
 ###################################################################################################
 
-@APP.route('/main/')
-def web_main():
-    """ TODO """
-    return render_template('main.html', menu='main')
+#@APP.errorhandler(404)
+#def web_error(error):
+#    """ TODO """
+#    return render_template('error.html', error=error), 404
+
+###################################################################################################
 
 @MicroWebSrv.route('/main')
-def web_mainx(httpClient, httpResponse):
+def web_main(httpClient, httpResponse):
     """ TODO """
-    return httpResponse.WriteResponsePyHTMLFile('www/main.pyhtml', headers=None)
+    vars = {'error': None, 'message': None}
+    vars['menu'] = 'main'
+
+    return httpResponse.WriteResponsePyHTMLFile('www/main.pyhtml', headers=None, vars=vars)
+
+###################################################################################################
 
 @MicroWebSrv.route('/test')
 def _httpHandlerTestGet(httpClient, httpResponse) :

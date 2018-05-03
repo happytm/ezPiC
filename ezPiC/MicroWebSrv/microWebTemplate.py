@@ -53,18 +53,18 @@ class MicroWebTemplate :
     # ===( Functions )============================================================
     # ============================================================================
 
-	def Validate(self) :
+	def Validate(self, pyGlobalVars=None, pyLocalVars=None) :
 		try :
-			self._parseCode(execute=False)
+			self._parseCode(pyGlobalVars, pyLocalVars, execute=True)
 			return None
 		except Exception as ex :
 			return str(ex)
 
 	# ----------------------------------------------------------------------------
 
-	def Execute(self) :
+	def Execute(self, pyGlobalVars=None, pyLocalVars=None) :
 		try :
-			self._parseCode(execute=True)
+			self._parseCode(pyGlobalVars, pyLocalVars, execute=True)
 			return self._rendered
 		except Exception as ex :
 			raise Exception(str(ex))
@@ -73,9 +73,11 @@ class MicroWebTemplate :
     # ===( Utils  )===============================================================
     # ============================================================================
 	
-	def _parseCode(self, execute) :
-		self._pyGlobalVars = { }
-		self._pyLocalVars  = { }
+	def _parseCode(self, pyGlobalVars, pyLocalVars, execute) :
+		if pyGlobalVars:
+			self._pyGlobalVars = pyGlobalVars
+		if pyLocalVars:
+			self._pyLocalVars  = pyLocalVars
 		self._rendered	   = ''
 		newTokenToProcess  = self._parseBloc(execute)
 		if newTokenToProcess is not None :
@@ -208,9 +210,15 @@ class MicroWebTemplate :
 		if instructionBody is not None :
 			if execute :
 				try :
-					result = eval(instructionBody, self._pyGlobalVars, self._pyLocalVars)
-					if not isinstance(result, bool) :
-						raise Exception('"%s" is not a boolean expression (line %s)' % (instructionBody, self._line))
+					if (' ' not in instructionBody) and \
+					   ('=' not in instructionBody) and \
+					   ('<' not in instructionBody) and \
+					   ('>' not in instructionBody) and \
+					   (instructionBody not in self._pyGlobalVars) and \
+					   (instructionBody not in self._pyLocalVars):
+						result = False
+					else:
+						result = bool(eval(instructionBody, self._pyGlobalVars, self._pyLocalVars))
 				except Exception as ex :
 					raise Exception('%s (line %s)' % (str(ex), self._line))
 			else :

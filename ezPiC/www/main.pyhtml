@@ -1,5 +1,7 @@
 {{ include t_std_head.pyhtml }}
 
+<img src="/static/ezPiC.svg" width="150" height="150" class="float-right align-top mr-0" alt="">
+
   <h2>Hello, world!</h2>
 
   <br />

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel=stylesheet type=text/css href="static/style.css">
+  <link rel=stylesheet type=text/css href="/static/style.css">
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -21,19 +21,19 @@
     <!-- fixed-top -->
     <nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark py-1">
       <a class="navbar-brand p-0" href="/">
-        <img src="static/ezPiC.svg" width="32" height="32" class="d-inline-block align-top m-0" alt="">
+        <img src="/static/ezPiC.svg" width="32" height="32" class="d-inline-block align-top m-0" alt="">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link {% if menu=='main' %}active{% endif %}" href="/main/">Main</a>
-          <a class="nav-item nav-link {% if menu=='devices' %}active{% endif %}" href="/devices/">Devices</a>
-          <a class="nav-item nav-link {% if menu=='gateways' %}active{% endif %}" href="/gateways/">Gateways</a>
-          <a class="nav-item nav-link {% if menu=='rules' %}active{% endif %}" href="/rules/">Rules</a>
-          <a class="nav-item nav-link {% if menu=='config' %}active{% endif %}" href="/config/">Config</a>
-          <a class="nav-item nav-link {% if menu=='test' %}active{% endif %} disabled" href="#">Disabled</a>
+          <a class="nav-item nav-link {{ if menu=='main' }}active{{ end }}" href="/main/">Main</a>
+          <a class="nav-item nav-link {{ if menu=='devices' }}active{{ end }}" href="/devices/">Devices</a>
+          <a class="nav-item nav-link {{ if menu=='gateways' }}active{{ end }}" href="/gateways/">Gateways</a>
+          <a class="nav-item nav-link {{ if menu=='rules' }}active{{ end }}" href="/rules/">Rules</a>
+          <a class="nav-item nav-link {{ if menu=='config' }}active{{ end }}" href="/config/">Config</a>
+          <a class="nav-item nav-link {{ if menu=='test' }}active{{ end }} disabled" href="#">Disabled</a>
           {% if not session.logged_in %}
             <a class="nav-item nav-link float-right" href="{-{ url_for('login') }}">log in</a>
           {% else %}
@@ -44,18 +44,14 @@
     </nav>
   </header>
   
-  {-{ if error }}
+  {{ if errorx }}
     <div class="alert alert-danger hide" role="alert">
       <strong>Error:</strong> {-{ error }}
     </div>
-  {-{ end }}
+  {{ end }}
 
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-        <div class="alert alert-{-{ category }} hide" role="alert">
-          <strong>{-{ category }}:</strong> {-{ message }}
-        </div>
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
+  {{ if message }}
+    <div class="alert alert-{-{ category }} hide" role="alert">
+      <strong>{-{ category }}:</strong> {-{ message }}
+    </div>
+  {{ end }}

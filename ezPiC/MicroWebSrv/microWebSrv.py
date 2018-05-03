@@ -622,13 +622,13 @@ class MicroWebSrv :
 
         # ------------------------------------------------------------------------
 
-        def WriteResponsePyHTMLFile(self, filepath, headers=None) :
+        def WriteResponsePyHTMLFile(self, filepath, headers=None, vars=None) :
             if 'MicroWebTemplate' in globals() :
                 with open(filepath, 'r') as file :
                     code = file.read()
                 mWebTmpl = MicroWebTemplate(code, escapeStrFunc=MicroWebSrv.HTMLEscape, filepath=filepath)
                 try :
-                    tmplResult = mWebTmpl.Execute()
+                    tmplResult = mWebTmpl.Execute(None, vars)
                     return self.WriteResponse(200, headers, "text/html", "UTF-8", tmplResult)
                 except Exception as ex :
                     return self.WriteResponse( 500,
