@@ -31,6 +31,6 @@ def web_config(httpClient, httpResponse):
     else: # GET
         pass
 
-    return httpResponse.WriteResponsePyHTMLFile('www/config.pyhtml', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/config.html', headers=None, vars=vars)
 
 ###################################################################################################

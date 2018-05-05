@@ -47,6 +47,6 @@ def web_cmd(httpClient, httpResponse):
     vars['err'] = err
     vars['ret'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/cmd.pyhtml', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/cmd.html', headers=None, vars=vars)
 
 ###################################################################################################

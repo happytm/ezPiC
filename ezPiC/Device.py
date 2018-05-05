@@ -289,7 +289,7 @@ class PluginDeviceBase():
 
     def get_html(self) -> str:
         """ get the html template name from the module """
-        return 'www/devices/{}.pyhtml'.format(self.module.DUID)
+        return 'www/devices/{}.html'.format(self.module.DUID)
 
     def meas(self) -> (dict, float):
         return ({}, 0.0)

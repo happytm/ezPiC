@@ -20,7 +20,7 @@ def web_index(httpClient, httpResponse):
     vars = {'error': None, 'message': None}
     vars['menu'] = ''
 
-    return httpResponse.WriteResponsePyHTMLFile('www/index.pyhtml', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/index.html', headers=None, vars=vars)
 
 ###################################################################################################
 
@@ -37,7 +37,7 @@ def web_main(httpClient, httpResponse):
     vars = {'error': None, 'message': None}
     vars['menu'] = 'main'
 
-    return httpResponse.WriteResponsePyHTMLFile('www/main.pyhtml', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/main.html', headers=None, vars=vars)
 
 ###################################################################################################
 

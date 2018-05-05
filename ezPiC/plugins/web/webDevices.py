@@ -21,7 +21,7 @@ def web_devices(httpClient, httpResponse):
 
     vars['device_list'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/devices.pyhtml', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/devices.html', headers=None, vars=vars)
 
 ###################################################################################################
 
@@ -38,7 +38,7 @@ def web_devices_list(httpClient, httpResponse):
 
     vars['device_list'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/devices_list.pyhtml', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/devices_list.html', headers=None, vars=vars)
 
 ###################################################################################################
 

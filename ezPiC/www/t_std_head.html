@@ -33,23 +33,12 @@
           <a class="nav-item nav-link {{ if menu=='gateways' }}active{{ end }}" href="/gateways/">Gateways</a>
           <a class="nav-item nav-link {{ if menu=='rules' }}active{{ end }}" href="/rules/">Rules</a>
           <a class="nav-item nav-link {{ if menu=='config' }}active{{ end }}" href="/config/">Config</a>
-          <a class="nav-item nav-link {{ if menu=='test' }}active{{ end }} disabled" href="#">Disabled</a>
-          {% if not session.logged_in %}
-            <a class="nav-item nav-link float-right" href="{-{ url_for('login') }}">log in</a>
-          {% else %}
-            <a class="nav-item nav-link float-right" href="{-{ url_for('logout') }}">log out</a>
-          {% endif %}
+          <a class="nav-item nav-link {{ if menu=='test' }}active{{ end }} disabled" href="#">Test</a>
         </div>
       </div>
     </nav>
   </header>
   
-  {{ if errorx }}
-    <div class="alert alert-danger hide" role="alert">
-      <strong>Error:</strong> {-{ error }}
-    </div>
-  {{ end }}
-
   {{ if MESSAGE_TEXT }}
     <div class="alert alert-{{ MESSAGE_STYLE }} hide" role="alert">
       <strong>{{ MESSAGE_TEXT }}</strong>

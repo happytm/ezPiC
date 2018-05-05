@@ -3,5 +3,8 @@
 		{
 			"path": "ezPiC"
 		}
-	]
+	],
+	"settings": {
+		"python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe"
+	}
 }
