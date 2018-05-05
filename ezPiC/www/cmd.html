@@ -4,23 +4,18 @@
 
   <br />
 
-  <form action="/cmd" method=post>
-
+  <form action="/cmd" method="post">
 
     <div class="input-group">
-        <span class="input-group-addon" id="basic-addon1">Command:</span>
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Command:</span>
+        </div>
         <input type="text" class="form-control" placeholder="type a command" aria-describedby="basic-addon1" id="cmd" name="cmd" value="{{cmd}}">
-        <span class="input-group-btn">
-          <button class="btn btn-primary" type="submit">Excecute</button>
-        </span>
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="button">Excecute</button>
+        </div>
+        
     </div><!-- /input-group -->
-
-    <!--
-    <input type="text" class="form-control" id="cmd" name="cmd" value="{{cmd}}">
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <input type=submit class="btn btn-primary" value=Submit>
-    -->
 
   </form>
 
