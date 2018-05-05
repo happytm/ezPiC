@@ -24,6 +24,9 @@ class MicroWebTemplate :
 	INSTRUCTION_END			= 'end'
 	INSTRUCTION_INCLUDE		= 'include'
 
+	MESSAGE_TEXT            = ''
+	MESSAGE_STYLE           = ''
+	
     # ============================================================================
     # ===( Constructor )==========================================================
     # ============================================================================
@@ -75,14 +78,18 @@ class MicroWebTemplate :
 	
 	def _parseCode(self, pyGlobalVars, pyLocalVars, execute) :
 		if pyGlobalVars:
-			self._pyGlobalVars = pyGlobalVars
+			self._pyGlobalVars.update(pyGlobalVars) 
 		if pyLocalVars:
-			self._pyLocalVars  = pyLocalVars
+			self._pyLocalVars.update(pyLocalVars)
+		self._pyLocalVars['MESSAGE_TEXT'] = MicroWebTemplate.MESSAGE_TEXT
+		self._pyLocalVars['MESSAGE_STYLE'] = MicroWebTemplate.MESSAGE_STYLE
 		self._rendered	   = ''
 		newTokenToProcess  = self._parseBloc(execute)
 		if newTokenToProcess is not None :
 			raise Exception( '"%s" instruction is not valid here (line %s)'
 							 % (newTokenToProcess, self._line) )
+		MicroWebTemplate.MESSAGE_TEXT  = ''
+		MicroWebTemplate.MESSAGE_STYLE = ''
 
     # ----------------------------------------------------------------------------
 

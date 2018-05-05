@@ -50,8 +50,8 @@
     </div>
   {{ end }}
 
-  {{ if message }}
-    <div class="alert alert-{-{ category }} hide" role="alert">
-      <strong>{-{ category }}:</strong> {-{ message }}
+  {{ if MESSAGE_TEXT }}
+    <div class="alert alert-{{ MESSAGE_STYLE }} hide" role="alert">
+      <strong>{{ MESSAGE_TEXT }}</strong>
     </div>
   {{ end }}

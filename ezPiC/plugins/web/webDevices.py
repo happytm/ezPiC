@@ -1,62 +1,82 @@
 """
 ...TODO
 """
-from flask import request, session, g, redirect, url_for, abort, render_template, flash, escape
-from G import APP
+from MicroWebSrv.microWebSrv import MicroWebSrv
+
 import Tool
 import Cmd
 
 ###################################################################################################
 
-@APP.route('/devices/')
-def web_devices():
+@MicroWebSrv.route('/devices')
+def web_devices(httpClient, httpResponse):
     """ TODO """
+
+    vars = {'error': None, 'message': None}
+    vars['menu'] = 'devices'
+
     err, ret = Cmd.excecute('device[] list')
     if err:
         ret = []
 
-    return render_template('devices.html', menu='devices', device_list=ret)
+    vars['device_list'] = ret
+
+    return httpResponse.WriteResponsePyHTMLFile('www/devices.pyhtml', headers=None, vars=vars)
 
 ###################################################################################################
 
-@APP.route('/devices/list/')
-def web_devices_list():
+@MicroWebSrv.route('/devices/list/')
+def web_devices_list(httpClient, httpResponse):
     """ TODO """
+
+    vars = {'error': None, 'message': None}
+    vars['menu'] = 'devices'
+
     err, ret = Cmd.excecute('device list')
     if err:
         ret = []
 
-    return render_template('devices_list.html', menu='devices', device_list=ret)
+    vars['device_list'] = ret
+
+    return httpResponse.WriteResponsePyHTMLFile('www/devices_list.pyhtml', headers=None, vars=vars)
 
 ###################################################################################################
 
-@APP.route('/devices/add/<duid>/')
-def web_device_add(duid=None):
+@MicroWebSrv.route('/devices/add/<duid>/')
+def web_device_add(httpClient, httpResponse, args):
     """ TODO """
+    duid = args['duid']
+
+    vars = {'error': None, 'message': None}
+    vars['menu'] = 'devices'
+
     cmd = 'device[] add {}'.format(duid)
     err, idx = Cmd.excecute(cmd)
     if err:
         msg = 'Error "{0}" - Can not add device "{1}"'.format(err, duid)
-        flash(msg, 'danger')
+        httpResponse.FlashMessage(msg, 'danger')
     else:
-        err, ret = Cmd.excecute('save')
+        Cmd.excecute('save')
         msg = 'Device "{}" added'.format(duid)
-        flash(msg, 'info')
+        httpResponse.FlashMessage(msg, 'info')
 
-    return redirect(url_for('web_device_edit', idx = idx))
-    # return render_template(html, menu='devices', **params)
+    return httpResponse.WriteResponseRedirect('/devices')
 
 ###################################################################################################
 
-@APP.route('/devices/edit/<int:idx>/', methods=['GET', 'POST'])
-def web_device_edit(idx=-1):
+@MicroWebSrv.route('/devices/edit/<idx>/')
+@MicroWebSrv.route('/devices/edit/<idx>/', 'POST')
+def web_device_edit(httpClient, httpResponse, args):
     """ TODO """
+    idx = int(args['idx'])
+
+    vars = {'error': None, 'message': None}
+
     cmd = 'device[{}] get'.format(idx)
     err, ret = Cmd.excecute(cmd)
     if err:
-        msg = 'Error "{0}" - Can not get params from device [{1}]'.format(err, idx)
-        flash(msg, 'danger')
-        return redirect(url_for('web_devices'))
+        vars['message'] = 'Error "{0}" - Can not get params from device [{1}]'.format(err, idx)
+        return httpResponse.WriteResponseRedirect('/devices')
 
     params = {}
     params['name'] = 'Test-Name'
@@ -66,41 +86,48 @@ def web_device_edit(idx=-1):
     err = ''
     ret = ''
 
-    if request.method == 'POST':
-        for key, value in params.items():
-            if key in request.form:
-                params[key] = request.form[key]
-        #params.update(request.form)
+    if httpClient.GetRequestMethod() == 'POST':
+        formParams = httpClient.ReadRequestPostedFormData()
+        if formParams:
+            for key, value in params.items():
+                if key in formParams:
+                    params[key] = formParams.get(key)
         cmd = 'device[{}] set {}'.format(idx, Tool.params_to_str(params))
         err, ret = Cmd.excecute(cmd)
         err, ret = Cmd.excecute('save')
     else: # GET
-        if 'cmd' in request.args:
-            cmd = request.args.get('cmd')
+        pass
+
+    vars['menu'] = 'devices'
+    vars['name'] = 'TEST'
+    vars['index'] = idx
+    vars.update(params)
 
     cmd = 'device[{}] html'.format(idx)
     err, html = Cmd.excecute(cmd)
 
-    params['index'] = idx
-    
-    return render_template(html, menu='devices', **params)
+    return httpResponse.WriteResponsePyHTMLFile(html, headers=None, vars=vars)
 
 ###################################################################################################
 
-@APP.route('/devices/del/<int:idx>/')
-def web_device_del(idx=-1):
+@MicroWebSrv.route('/devices/del/<idx>/')
+def web_device_del(httpClient, httpResponse, args):
     """ TODO """
+    idx = int(args['idx'])
+
+    vars = {'error': None, 'message': None}
+
     cmd = 'device[{}] del'.format(idx)
     err, ret = Cmd.excecute(cmd)
     if err:
         msg = 'Error "{0}" - Can not delete device task [{1}]'.format(err, idx)
-        flash(msg, 'danger')
-        return redirect(url_for('web_devices_list'))
+        httpResponse.FlashMessage(msg, 'danger')
+        return httpResponse.WriteResponseRedirect('/devices')
     else:
         err, ret = Cmd.excecute('save')
         msg = 'Device task deleted'
-        flash(msg, 'info')
+        httpResponse.FlashMessage(msg, 'info')
 
-    return redirect(url_for('web_devices'))
+    return httpResponse.WriteResponseRedirect('/devices')
 
 ###################################################################################################

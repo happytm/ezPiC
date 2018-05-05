@@ -17,7 +17,7 @@ except :
     pass
 
 try :
-    from microWebSocket import MicroWebSocket
+    from .microWebSocket import MicroWebSocket
 except :
     pass
 
@@ -744,6 +744,13 @@ class MicroWebSrv :
 
         def WriteResponseNotImplemented(self) :
             return self.WriteResponseError(501)
+
+        # ------------------------------------------------------------------------
+
+        def FlashMessage(self, messageText, messageStyle='') :
+            if 'MicroWebTemplate' in globals() :
+                MicroWebTemplate.MESSAGE_TEXT = messageText
+                MicroWebTemplate.MESSAGE_STYLE = messageStyle
 
         # ------------------------------------------------------------------------
 

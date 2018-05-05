@@ -1,5 +1,4 @@
-{% extends "t_standard.html" %}
-{% block body %}
+{{ include ../t_std_head.pyhtml }}
 
 <h2>Device Configuration TestB ({{ name }}) #{{index}}</h2>
 
@@ -73,5 +72,4 @@
 </form>
 
 
-
-{% endblock %}
+{{ include ../t_std_foot.pyhtml }}

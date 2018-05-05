@@ -1,5 +1,4 @@
-{% extends "t_standard.html" %}
-{% block body %}
+{{ include t_std_head.pyhtml }}
 
 <h2>Active Devices</h2>
 
@@ -8,7 +7,8 @@
 Choose a device and click the [<i class="fas fa-pencil-alt"></i>] button to edit
 </p>
 
-{% for index, duid, module, name, info, _ in device_list %}
+{{ for device in device_list }}
+    {{ py }} index, duid, module, name, info, _ = device {{ end }}
     <div class="card">
         <div class="card-header p-2" role="tab" id="heading{{ index }}">
             <h5 class="d-flex align-items-start m-0 ">
@@ -28,6 +28,6 @@ Choose a device and click the [<i class="fas fa-pencil-alt"></i>] button to edit
             </div>
         </div>
     </div>
-{% endfor %}
+{{ end }}
 
-{% endblock %}
+{{ include t_std_foot.pyhtml }}

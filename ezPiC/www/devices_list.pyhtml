@@ -1,13 +1,13 @@
-{% extends "t_standard.html" %}
-{% block body %}
+{{ include t_std_head.pyhtml }}
 
 <h2>Available Device Plugins</h2>
 
 <p>
-  Choose a device plugin and click the [+] button to add to the active device list
+    Choose a device plugin and click the [+] button to add to the active device list
 </p>
 
-{% for duid, name, info, _ in device_list %}
+{{ for device in device_list }}
+    {{ py }} duid, name, info, _ = device {{ end }}
   <div class="card">
     <div class="card-header p-2" role="tab" id="heading{{ duid }}">
       <h5 class="d-flex align-items-start m-0 ">
@@ -26,6 +26,6 @@
       </div>
     </div>
   </div>
-{% endfor %}
+{{ end }}
   
-{% endblock %}
+{{ include t_std_foot.pyhtml }}
