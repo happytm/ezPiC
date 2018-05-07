@@ -48,7 +48,7 @@ def init():
 
     # precompile all regex for plugin-commands
     for reCmd, fHandler in COMMANDS:
-        reCmdC = re.compile(reCmd, re.IGNORECASE)
+        reCmdC = re.compile(reCmd)
         COMMANDS_C.append((reCmdC, fHandler))
 
 ###################################################################################################

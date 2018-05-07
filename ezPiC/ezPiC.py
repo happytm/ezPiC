@@ -37,7 +37,7 @@ def main():
 
     Cmd.excecute("load")
 
-    Web.run()   # this call never comes back ... normally
+    Web.run()   # this call never comes back .. normally
 
     logging.error('PANIC! Web server terminated')
     G.RUN = False

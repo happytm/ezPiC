@@ -2,8 +2,12 @@
 Measurements
 """
 import os
-from threading import RLock
 import logging
+
+try:
+    from threading import RLock
+except:
+    from _thread import allocate_lock as RLock
 
 #random = random.SystemRandom()
 

@@ -1,13 +1,18 @@
 """
 ...TODO
 """
-from threading import Thread
 import logging
 import sched, time
 import Tool
 import Cmd
 import G
 import _thread
+
+try:
+    from threading import RLock
+    from threading import Thread
+except:
+    from _thread import allocate_lock as RLock
 
 ###################################################################################################
 # Globals:
@@ -57,6 +62,8 @@ def init():
     if not THREAD:
         THREAD = Thread(name='Sched', target=thread_loop)
         THREAD.setDaemon(True)
+
+    #_thread.start_new_thread(thread_loop, ())
 
 ###################################################################################################
 
