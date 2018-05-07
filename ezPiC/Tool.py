@@ -1,15 +1,19 @@
 """
 Common tools
 """
-import os
-import logging
-import random
-import re
-import json
-#import importlib
-#import ast
+try:   # CPython
+    import os
+    import re
+    import json
+    import random
+except:   # MicroPython
+    import uos as os
+    import ure as re
+    import ujson as json
+    import urandom as random
 
-#random = random.SystemRandom()
+import logging
+
 PLUGINDIR = 'plugins'
 
 ###################################################################################################
@@ -65,7 +69,12 @@ def load_plugins(path: str, pre :str=None) -> list:
 
     modules = []
 
-    files = os.listdir(full_path)
+    try:
+        files = os.listdir(full_path)
+    except:   # Micropython on WIN32
+        files = []
+        for f in os.ilistdir(full_path):
+            files.append(f[0])
     print(files)
     for file in files:
         if file.startswith('__'):

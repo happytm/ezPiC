@@ -1,6 +1,17 @@
 """
 ...TODO
 """
+try:   # CPython
+    import os
+    import re
+    import json
+    import random
+except:   # MicroPython
+    import uos as os
+    import ure as re
+    import ujson as json
+    import urandom as random
+
 import logging
 import Gateway
 import Cmd
@@ -26,7 +37,7 @@ def cmd_gateway_task_list(params, cmd, index) -> tuple:
 
 @Cmd.route(r'gateway\s*info')
 def cmd_gateway_info(params, cmd, index) -> tuple:
-    """ Handle command 'gateway info <duid>' """
+    """ Handle command 'gateway info <guid>' """
     ids = list(params.keys())
     return (None, ids)
 
@@ -39,10 +50,10 @@ def cmd_gateway_clear(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\[\]\s*add\s+(?P<duid>\w+)')
+@Cmd.route(r'gateway\[\]\s*add\s+(?P<guid>\w+)')
 def cmd_gateway_add(params, cmd, index) -> tuple:
-    """ Handle command 'gateway[] add <duid>' """
-    err, ret = Gateway.task_add(params.get('duid', None))
+    """ Handle command 'gateway[] add <guid>' """
+    err, ret = Gateway.task_add(params.get('guid', None))
     return (err, ret)
 
 ###################################################################################################

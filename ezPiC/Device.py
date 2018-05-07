@@ -1,7 +1,18 @@
 """
 ...TODO
 """
-import re
+try:   # CPython
+    import os
+    import re
+    import json
+    import random
+except:   # MicroPython
+    import uos as os
+    import ure as re
+    import ujson as json
+    import urandom as random
+
+import logging
 from collections import namedtuple
 import time
 
@@ -10,9 +21,6 @@ try:
 except:
     from _thread import allocate_lock as RLock
 
-import json
-
-import logging
 import Tool
 import Scheduler
 
