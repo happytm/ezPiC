@@ -36,6 +36,7 @@ def main():
     Reading.run()
 
     Cmd.excecute("xxx 123 456 789")
+    Cmd.excecute("xxx.99 123 456 789")
 
     Cmd.excecute("load")
 

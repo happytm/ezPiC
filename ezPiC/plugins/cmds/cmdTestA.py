@@ -17,7 +17,7 @@ import Cmd
 
 ###################################################################################################
 
-@Cmd.route(r'xxx', 'a b c')
+@Cmd.route(r'xxx.#', 'a b c')
 def cmd_xxx(cmd: dict) -> tuple:
     """
     Handle command 'xxx' ...
