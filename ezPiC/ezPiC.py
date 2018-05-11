@@ -12,7 +12,7 @@ import Rule
 import Reading
 import Scheduler
 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)-15s %(levelname).1s %(threadName).5s %(message)s',)
+#logging.basicConfig(level=logging.DEBUG, format='%(asctime)-15s %(levelname).1s %(threadName).5s %(message)s',)
 
 ###################################################################################################
 
@@ -34,6 +34,8 @@ def main():
     Gateway.run()
     Rule.run()
     Reading.run()
+
+    Cmd.excecute("xxx 123 456 789")
 
     Cmd.excecute("load")
 

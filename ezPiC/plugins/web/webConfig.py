@@ -14,7 +14,7 @@ import Cmd
 def web_config(httpClient, httpResponse):
     """ TODO """
 
-    vars = {'error': None, 'message': None}
+    vars = {}
     vars['menu'] = 'config'
     vars['xyz'] = 'XYZ'
     vars['abc'] = '12345'

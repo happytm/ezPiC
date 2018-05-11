@@ -47,7 +47,7 @@ def web_device_add(httpClient, httpResponse, args):
     """ TODO """
     duid = args['duid']
 
-    vars = {'error': None, 'message': None}
+    vars = {}
     vars['menu'] = 'devices'
 
     cmd = 'device[] add {}'.format(duid)
@@ -70,7 +70,7 @@ def web_device_edit(httpClient, httpResponse, args):
     """ TODO """
     idx = int(args['idx'])
 
-    vars = {'error': None, 'message': None}
+    vars = {}
 
     cmd = 'device[{}] get'.format(idx)
     err, ret = Cmd.excecute(cmd)
@@ -115,7 +115,7 @@ def web_device_del(httpClient, httpResponse, args):
     """ TODO """
     idx = int(args['idx'])
 
-    vars = {'error': None, 'message': None}
+    vars = {}
 
     cmd = 'device[{}] del'.format(idx)
     err, ret = Cmd.excecute(cmd)

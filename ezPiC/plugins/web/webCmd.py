@@ -41,7 +41,7 @@ def web_cmd(httpClient, httpResponse):
         t = 'Cmd ' + cmd + ' -> ' + str(ret)
         logging.debug(t)
 
-    vars = {'error': None, 'message': None}
+    vars = {}
     vars['menu'] = 'tools'
     vars['cmd'] = cmd
     vars['err'] = err

@@ -19,12 +19,11 @@ import Tool
 # Globals:
 
 COMMANDS = []
-COMMANDS_C = []
 
 ###################################################################################################
 #Decorator
 
-def route(re_command):
+def route(command: str, arg_keys: str=None):
     """ Adds a command handler function to the command list """
     def route_decorator(func):
         global COMMANDS
@@ -34,9 +33,23 @@ def route(re_command):
         #    return func(*args, **kwargs)
         #return function_wrapper
 
-        item = (re_command, func)
+        item = {}
+        if command.endswith('.#'):
+            item['command'] = command[:-2]
+            item['has_index'] = True
+        else:
+            item['command'] = command
+            item['has_index'] = False
+
+        if arg_keys:
+            item['args'] = arg_keys.split()
+        else:
+            item['args'] = None
+
+        item['func'] = func
+
         COMMANDS.append(item)
-        logging.debug(' - Added command "%s" with function "%s()"', re_command, func.__name__)
+        logging.debug(' - Added command "%s" with function "%s()"', command, func.__name__)
         return func
     return route_decorator
 
@@ -56,11 +69,6 @@ def init():
     #    except:
     #        pass
 
-    # precompile all regex for plugin-commands
-    for reCmd, fHandler in COMMANDS:
-        reCmdC = re.compile(reCmd)
-        COMMANDS_C.append((reCmdC, fHandler))
-
 ###################################################################################################
 
 def run():
@@ -68,7 +76,7 @@ def run():
 
 ###################################################################################################
 
-def excecute(cmd: str) -> tuple:
+def excecute(cmd_str: str) -> tuple:
     """
     Excecutes a command and route to specified handler
     cmd: Command line with command and params as string
@@ -77,43 +85,37 @@ def excecute(cmd: str) -> tuple:
     err = -1
     ret = 'Unknown command'
 
-    for reCmdC, fHandler in COMMANDS_C:
-        m = reCmdC.match(cmd)
-        if m:   # command found
-            params = {}
-            index = None
+    for c in COMMANDS:
+        if cmd_str.startswith(c['command']):   # command found
+            cmd_params = {}
 
-            if m.groups():
-                print(m.groups())
-                print(m.groupdict())
-                for key, value in m.groupdict().items():
-                    if key == 'index' or key == 'idx':
-                        index = int(value)
-                    elif key == 'params':
-                        p = Tool.str_to_params(value)
-                        params.update(p)
+            cmd_arg = cmd_str.split(' ', 1)
+            cmd = cmd_arg[0]
+            cmd_params['CMD'] = cmd
+
+            if c['has_index']:
+                l = len(c['command'])
+                cmd_params['IDX'] = int(cmd[l+1:])
+
+            if c['args'] and len(cmd_arg)>1:
+                args = cmd_arg[1].split()
+                i = 0
+                for key in c['args']:
+                    if i<len(args):
+                        value = args[i]
+                        cmd_params[key] = value
                     else:
-                        params[key] = value
-
-            #if reParC:
-            #    paramList = reParC.findall(cmd)
-            #    if paramList:   # params found and valid
-            #        #print(paramList)
-            #        #print()
-            #        for param in paramList:
-            #            keyvalue = param.split(sep=':', maxsplit=1)
-            #            if len(keyvalue) > 1:
-            #                params[keyvalue[0]] = keyvalue[1]
-            #            else:
-            #                params[keyvalue[0]] = None
-            #    else:
-            #        pass   # invalid params
+                        cmd_params[key] = None
+                    i += 1
+                
+            fHandler = c['func']
 
             try:
-                err, ret = fHandler(params=params, cmd=cmd, index=index)
+                err, ret = fHandler(cmd=cmd_params)
             except Exception as e:
-                err, ret =  (-9, 'Fail to call handler - ' + e)
+                err, ret =  (-9, 'Fail to call handler - ' + str(e))
             break   # stop scanning after first match
+
     return (err, ret)
 
 ###################################################################################################

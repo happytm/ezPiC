@@ -19,7 +19,7 @@ import Tool
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\s*list')
+@Cmd.route(r'plugin.gateway.list')
 def cmd_gateway_list(params, cmd, index) -> tuple:
     """ Handle command 'gateway list' """
     err, ret = Gateway.get_gateway_list()
@@ -27,7 +27,7 @@ def cmd_gateway_list(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\[\]\s*list')
+@Cmd.route(r'gateway.list')
 def cmd_gateway_task_list(params, cmd, index) -> tuple:
     """ Handle command 'gateway[] list' """
     err, ret = Gateway.get_gateway_task_list()
@@ -35,7 +35,7 @@ def cmd_gateway_task_list(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\s*info')
+@Cmd.route(r'plugin.gateway.info', 'duid')
 def cmd_gateway_info(params, cmd, index) -> tuple:
     """ Handle command 'gateway info <guid>' """
     ids = list(params.keys())
@@ -43,14 +43,14 @@ def cmd_gateway_info(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\[\]\s*clear')
+@Cmd.route(r'gateway.clear')
 def cmd_gateway_clear(params, cmd, index) -> tuple:
     """ Handle command '' """
     return (None, None)
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\[\]\s*add\s+(?P<guid>\w+)')
+@Cmd.route(r'gateway.add', 'duid')
 def cmd_gateway_add(params, cmd, index) -> tuple:
     """ Handle command 'gateway[] add <guid>' """
     err, ret = Gateway.task_add(params.get('guid', None))
@@ -58,7 +58,7 @@ def cmd_gateway_add(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\[(?P<index>\d+)\]\s*del')
+@Cmd.route(r'gateway.del.#')
 def cmd_gateway_del(params, cmd, index) -> tuple:
     """ Handle command 'gateway[#] del' """
     err, ret = Gateway.task_del(index)
@@ -66,7 +66,7 @@ def cmd_gateway_del(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\[\]\s*del\s?all')
+@Cmd.route(r'gateway.del.all')
 def cmd_gateway_del_all(params, cmd, index) -> tuple:
     """ Handle command 'gateway[] del all' """
     err, ret = Gateway.task_del_all()
@@ -74,7 +74,7 @@ def cmd_gateway_del_all(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\[(?P<index>\d+)\]\s*get\s*(?P<param>\w+)?')
+@Cmd.route(r'gateway.getparam.#', 'key')
 def cmd_gateway_get(params, cmd, index) -> tuple:
     """ Handle command 'gateway[#] get <param> (no <param> for all)' """
     param = params.get('param', None)
@@ -83,7 +83,7 @@ def cmd_gateway_get(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\[(?P<index>\d+)\]\s*set\s+(?P<params>.+)')
+@Cmd.route(r'gateway.setparam.#', 'params_json')
 def cmd_gateway_set(params, cmd, index) -> tuple:
     """ Handle command 'gateway[#] set <param>:<value> ...' """
     err, ret = Gateway.task_set_param(index, params)
@@ -91,14 +91,14 @@ def cmd_gateway_set(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\[(?P<index>\d+)\]\s*cmd')
+@Cmd.route(r'gateway.cmd.#')
 def cmd_gateway_cmd(params, cmd, index) -> tuple:
     """ Handle command 'gateway[#] cmd <command>' """
     return (None, None)
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\[(?P<index>\d+)\]\s*html')
+@Cmd.route(r'gateway.gethtml.#')
 def cmd_gateway_html(params, cmd, index) -> tuple:
     """ Handle command 'gateway[#] html' """
     err, ret = Gateway.task_get_html(index)
@@ -106,14 +106,14 @@ def cmd_gateway_html(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\[(?P<index>\d+)\]\s*event')
+@Cmd.route(r'gateway.event.#')
 def cmd_gateway_event(params, cmd, index) -> tuple:
     """ Handle command 'gateway[#] event' """
     return (None, None)
 
 ###################################################################################################
 
-@Cmd.route(r'gateway\s*help')
+@Cmd.route(r'gateway.help')
 def cmd_gateway_help(params, cmd, index) -> tuple:
     """ Handle command 'gateway help' """
     return (None, 'Help?!?')

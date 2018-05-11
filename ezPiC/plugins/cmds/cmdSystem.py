@@ -41,7 +41,7 @@ def cmd_system_about(params, cmd, index) -> tuple:
 
 ###################################################################################################
 
-@Cmd.route(r'login')
+@Cmd.route(r'login', 'name password')
 def cmd_system_login(params, cmd, index) -> tuple:
     """ Handle command 'login' """
     return (None, None)

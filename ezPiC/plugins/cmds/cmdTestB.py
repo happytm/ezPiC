@@ -17,7 +17,7 @@ import Cmd
 
 ###################################################################################################
 
-@Cmd.route(r'b\b')
+@Cmd.route(r'b')
 def cmd_b(params, cmd, index) -> tuple:
     """
     Handle command 'b' ...

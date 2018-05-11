@@ -17,19 +17,19 @@ import Cmd
 
 ###################################################################################################
 
-@Cmd.route(r'aaaaa')
-def cmd_a(params, cmd, index) -> tuple:
+@Cmd.route(r'xxx', 'a b c')
+def cmd_xxx(cmd: dict) -> tuple:
     """
-    Handle command 'a' ...
+    Handle command 'xxx' ...
     """
-    logging.debug('cmdA ' + str(params))
-    x = params.get('x', '0')
+    #logging.debug('cmdA ' + str(params))
+    x = cmd.get('a', '0')
     return (None, None)
 
 ###################################################################################################
 
 @Cmd.route(r'ping')
-def cmd_ping(params, cmd, index) -> tuple:
+def cmd_ping(cmd: dict) -> tuple:
     """
     Handle command 'ping' and returns string 'pong'
     """
