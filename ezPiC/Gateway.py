@@ -27,8 +27,8 @@ import Scheduler
 ###################################################################################################
 # Globals:
 
-GATEWAYS = {}
-GATEWAYTASKS = []
+GATEWAYPLUGINS = {}
+GATEWAYS = []
 GATEWAYLOCK = RLock()
 GATEWAYTIMER = 0
 
@@ -38,7 +38,7 @@ GATEWAYTASKTUPLE = namedtuple('GatewayTask', 'idx GUID NAME instname info inst')
 ###################################################################################################
 
 def gateway_time_handler():
-    global GATEWAYTASKS, GATEWAYTIMER
+    global GATEWAYS, GATEWAYTIMER
 
     GATEWAYTIMER += 0.1
     Scheduler.add_event(GATEWAYTIMER, gateway_time_handler)
@@ -46,7 +46,7 @@ def gateway_time_handler():
     with GATEWAYLOCK:
         t = time.time()
 
-        for idx, task in enumerate(GATEWAYTASKS):
+        for idx, task in enumerate(GATEWAYS):
             inst = task['inst']
             if inst.timer_next and (t >= inst.timer_next):
                 if inst.timer_period:
@@ -59,12 +59,12 @@ def gateway_time_handler():
 
 def init():
     """ Prepare module vars and load plugins """
-    global GATEWAYS
+    global GATEWAYPLUGINS
 
     plugins = Tool.load_plugins('gateways', 'gtw')
     for plugin in plugins:
         try:
-            GATEWAYS[plugin.GUID] = plugin
+            GATEWAYPLUGINS[plugin.GUID] = plugin
         except:
             pass
 
@@ -75,8 +75,8 @@ def load(config_all: dict):
         guid = config["guid"]
         loaded_version = config["version"]
         params = config["params"]
-        err, idx = task_add(guid, params)
-        running_version = GATEWAYTASKS[idx]['inst'].version
+        err, idx = add(guid, params)
+        running_version = GATEWAYS[idx]['inst'].version
 
         if not err and loaded_version != running_version:
             logging.warn("task " +  guid + " has change version form " + loaded_version + " to " + running_version)
@@ -85,7 +85,7 @@ def save(append: dict = None):
     err = None
     ret = []
     with GATEWAYLOCK:
-        for task in GATEWAYTASKS:
+        for task in GATEWAYS:
             try:
                 inst = task['inst']
                 config = {}
@@ -107,7 +107,7 @@ def save(append: dict = None):
 
 def run():
     """ TODO """
-    global GATEWAYS, GATEWAYTIMER
+    global GATEWAYPLUGINS, GATEWAYTIMER
 
     GATEWAYTIMER = int(time.time() + 3)
     print(GATEWAYTIMER)
@@ -117,20 +117,20 @@ def run():
 ###################################################################################################
 ###################################################################################################
 
-def task_add(plugin_id: str, params: dict = None) -> tuple:
+def add(plugin_id: str, params: dict = None) -> tuple:
     """ TODO """
     err = None
     ret = None
 
     with GATEWAYLOCK:
         try:
-            module = GATEWAYS.get(plugin_id, None)
+            module = GATEWAYPLUGINS.get(plugin_id, None)
             if module:
                 task = {}
                 inst = module.PluginGateway(module)
                 task['inst'] = inst
-                GATEWAYTASKS.append(task)
-                ret = len(GATEWAYTASKS) - 1
+                GATEWAYS.append(task)
+                ret = len(GATEWAYS) - 1
                 if params:
                     inst.set_param(params)
                 if inst.timer_period:
@@ -145,16 +145,16 @@ def task_add(plugin_id: str, params: dict = None) -> tuple:
 
 ###################################################################################################
 
-def task_del(idx: int) -> tuple:
+def delete(idx: int) -> tuple:
     """ TODO """
     err = None
     ret = None
 
     with GATEWAYLOCK:
         try:
-            inst = GATEWAYTASKS[idx]['inst']
+            inst = GATEWAYS[idx]['inst']
             inst.exit()
-            del GATEWAYTASKS[idx]
+            del GATEWAYS[idx]
         except Exception as e:
             err = e
 
@@ -162,45 +162,45 @@ def task_del(idx: int) -> tuple:
 
 ###################################################################################################
 
-def task_del_all() -> tuple:
+def clear() -> tuple:
     """ TODO """
-    global GATEWAYTASKS
+    global GATEWAYS
     err = None
     ret = None
 
     with GATEWAYLOCK:
-        for task in GATEWAYTASKS:
+        for task in GATEWAYS:
             try:
                 inst = task['inst']
                 inst.exit()
             except Exception as e:
                 err = e
-        GATEWAYTASKS = []
+        GATEWAYS = []
 
     return (err, ret)
 
 ###################################################################################################
 
-def get_gateway_list() -> tuple:
+def get_plugin_list() -> tuple:
     """ TODO """
     dl = []
     err = None
 
     with GATEWAYLOCK:
-        for guid, module in GATEWAYS.items():
+        for guid, module in GATEWAYPLUGINS.items():
             dl.append(GATEWAYTUPLE(module.GUID, module.NAME, module.INFO, module.__name__))
 
     return (err, dl)
 
 ###################################################################################################
 
-def get_gateway_task_list() -> tuple:
+def get_list() -> tuple:
     """ TODO """
     dtl = []
     err = None
 
     with GATEWAYLOCK:
-        for idx, task in enumerate(GATEWAYTASKS):
+        for idx, task in enumerate(GATEWAYS):
             inst = task['inst']
             dtl.append(GATEWAYTASKTUPLE(idx, inst.module.GUID, inst.module.NAME, inst.get_name(), inst.get_info(), None))
 
@@ -208,14 +208,14 @@ def get_gateway_task_list() -> tuple:
 
 ###################################################################################################
 
-def task_get_param(idx: int, key: str=None) -> tuple:
+def get_param(idx: int, key: str=None) -> tuple:
     """ TODO """
     err = None
     ret = None
 
     with GATEWAYLOCK:
         try:
-            inst = GATEWAYTASKS[idx]['inst']
+            inst = GATEWAYS[idx]['inst']
             ret = inst.get_param(key)
         except Exception as e:
             err = e
@@ -224,14 +224,14 @@ def task_get_param(idx: int, key: str=None) -> tuple:
 
 ###################################################################################################
 
-def task_set_param(idx: int, params: dict) -> tuple:
+def set_param(idx: int, params: dict) -> tuple:
     """ TODO """
     err = None
     ret = None
 
     with GATEWAYLOCK:
         try:
-            inst = GATEWAYTASKS[idx]['inst']
+            inst = GATEWAYS[idx]['inst']
             ret = inst.set_param(params)
         except Exception as e:
             err = e
@@ -240,14 +240,14 @@ def task_set_param(idx: int, params: dict) -> tuple:
 
 ###################################################################################################
 
-def task_get_html(idx: int) -> tuple:
+def get_html(idx: int) -> tuple:
     """ TODO """
     err = None
     ret = 'None'
 
     with GATEWAYLOCK:
         try:
-            inst = GATEWAYTASKS[idx]['inst']
+            inst = GATEWAYS[idx]['inst']
             ret = inst.get_html()
         except Exception as e:
             err = e

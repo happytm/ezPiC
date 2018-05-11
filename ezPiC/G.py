@@ -16,6 +16,5 @@ import logging
 
 MWS = None
 RUN = True
-SERVER = True
-CLIENT = True
-HYBRID = True
+WEBSERVER = True
+IOT = True

@@ -20,43 +20,43 @@ CONFIG_FILE = 'config.json'
 
 ###################################################################################################
 
-@Cmd.route(r'info')
-def cmd_system_info(params, cmd, index) -> tuple:
+@Cmd.route('info')
+def cmd_system_info(cmd: dict) -> dict:
     """ Handle command 'info' """
-    return (None, None)
+    return Cmd.ret()
 
 ###################################################################################################
 
-@Cmd.route(r'version')
-def cmd_system_version(params, cmd, index) -> tuple:
+@Cmd.route('version')
+def cmd_system_version(cmd: dict) -> dict:
     """ Handle command 'version' """
-    return (None, None)
+    return Cmd.ret('0.0.?')
 
 ###################################################################################################
 
-@Cmd.route(r'about')
-def cmd_system_about(params, cmd, index) -> tuple:
+@Cmd.route('about')
+def cmd_system_about(cmd: dict) -> dict:
     """ Handle command 'about' """
-    return (None, None)
+    return Cmd.ret('ezPiC by JK')
 
 ###################################################################################################
 
-@Cmd.route(r'login', 'name password')
-def cmd_system_login(params, cmd, index) -> tuple:
+@Cmd.route('login', 'name password')
+def cmd_system_login(cmd: dict) -> dict:
     """ Handle command 'login' """
-    return (None, None)
+    return Cmd.ret()
 
 ###################################################################################################
 
-@Cmd.route(r'logout')
-def cmd_system_logout(params, cmd, index) -> tuple:
+@Cmd.route('logout')
+def cmd_system_logout(cmd: dict) -> dict:
     """ Handle command 'logout' """
-    return (None, None)
+    return Cmd.ret()
 
 ###################################################################################################
 
-@Cmd.route(r'save')
-def cmd_system_save(params, cmd, index) -> tuple:
+@Cmd.route('save')
+def cmd_system_save(cmd: dict) -> dict:
     """ Handle command 'save' """
 
     err = None
@@ -68,17 +68,15 @@ def cmd_system_save(params, cmd, index) -> tuple:
             # add other stuff like Gateway
             json.dump(save_dict, outfile, indent=2)
         except Exception as e:
-            err = e
+            return Cmd.ret(None, -100, 'Error on collectin save values - ' + str(e))
 
-    return (err, None)
+    return Cmd.ret()
 
 ###################################################################################################
 
-@Cmd.route(r'load')
-def cmd_system_load(params, cmd, index) -> tuple:
+@Cmd.route('load')
+def cmd_system_load(cmd: dict) -> dict:
     """ Handle command 'load' """
-
-    err = None
 
     try:
         with open(CONFIG_FILE, 'r') as infile:
@@ -89,9 +87,9 @@ def cmd_system_load(params, cmd, index) -> tuple:
     except FileNotFoundError as e:
         pass
     except Exception as e:
-        err = e
+            return Cmd.ret(None, -101, 'Error on collectin load values - ' + str(e))
 
-    return (err, None)
+    return Cmd.ret()
 
 ###################################################################################################
 

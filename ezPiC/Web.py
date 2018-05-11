@@ -29,12 +29,12 @@ def init():
 
 ###################################################################################################
 
-def run():
+def run(threaded=False):
     """ TODO """
     global MWS
 
     logging.debug('Starting web server')
 
-    MWS.Start(threaded=False)         # Starts server in a new thread
+    MWS.Start(threaded=threaded)         # Starts server in a new thread
 
 ###################################################################################################

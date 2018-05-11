@@ -66,15 +66,24 @@ def run():
 
 ###################################################################################################
 
-def excecute_line(cmd_str: str, source=None) -> tuple:
+def ret(result=None, code: int=0, error: str='') -> dict:
+    params = {}
+
+    params['RESULT'] = result
+    params['CODE'] = code
+    if error:
+        params['ERROR'] = error
+
+    return params
+
+###################################################################################################
+
+def _excecute_line(cmd_str: str, source=None) -> dict:
     """
     Excecutes a command and route to specified handler
     cmd: Command line with command and params as string
     return: Answer from excecuted command. Can be any object type or None
     """
-    err = -900
-    ret = 'Unknown command'
-
     try:
         for c in COMMANDS:
             if cmd_str.startswith(c['command']):   # command found
@@ -90,8 +99,7 @@ def excecute_line(cmd_str: str, source=None) -> tuple:
                     if index_str:
                         cmd_params['IDX'] = int(index_str)
                     else:
-                        err, ret =  (-903, 'Command needs index')
-                        break   # stop scanning after first match
+                        return ret(None, -903, 'Command needs index')
 
                 if c['args'] and len(cmd_arg)>1:
                     arg_str = cmd_arg[1].strip()
@@ -111,35 +119,31 @@ def excecute_line(cmd_str: str, source=None) -> tuple:
                 fHandler = c['func']
 
                 try:
-                    err, ret = fHandler(cmd=cmd_params)
+                    return fHandler(cmd=cmd_params)
                 except Exception as e:
-                    err, ret =  (-901, 'Fail to call handler - ' + str(e))
-                break   # stop scanning after first match
+                    return ret(None, -901, 'Fail to call handler - ' + str(e))
 
     except Exception as e:
-        err, ret =  (-902, 'Fail to interpret command - ' + str(e))
+        return ret(None, -902, 'Fail to interpret command - ' + str(e))
 
-    return (err, ret)
+    return ret(None, -900, 'Unknown command')
 
 ###################################################################################################
 
-def excecute_json(cmd_str: str, source=None) -> tuple:
+def _excecute_json(cmd_str: str, source=None) -> dict:
     """
     Excecutes a command and route to specified handler
     cmd: Command line with command and params as string
     return: Answer from excecuted command. Can be any object type or None
     """
     cmd_params = {}
-    err = -900
-    ret = 'Unknown command'
 
     try:
         cmd_params = json.loads(cmd_str)
 
         command = cmd_params,get('CMD', None)
         if not command:
-            err, ret =  (-911, 'JSON-Command has no item "CMD"')
-            break
+            return ret(None, -911, 'JSON-Command has no item "CMD"')
         
         for c in COMMANDS:
             if command == c['command']:   # command found
@@ -147,28 +151,26 @@ def excecute_json(cmd_str: str, source=None) -> tuple:
                 if c['has_index']:
                     l = len(c['command'])
                     index_str = cmd[l+1:]
-                    if cmd_params.get('IDX', None)
-                        err, ret =  (-913, 'JSON-Command needs index')
-                        break
+                    if cmd_params.get('IDX', None):
+                        return ret(None, -903, 'Command needs index')
 
                 cmd_params['SRC'] = source
                     
                 fHandler = c['func']
 
                 try:
-                    err, ret = fHandler(cmd=cmd_params)
+                    return fHandler(cmd=cmd_params)
                 except Exception as e:
-                    err, ret =  (-901, 'Fail to call handler - ' + str(e))
-                break   # stop scanning after first match
+                    return ret(None, -901, 'Fail to call handler - ' + str(e))
 
     except Exception as e:
-        err, ret =  (-902, 'Fail to interpret command - ' + str(e))
+        return ret(None, -902, 'Fail to interpret command - ' + str(e))
 
-    return (err, ret)
+    return ret(None, -900, 'Unknown command')
 
 ###################################################################################################
 
-def excecute(cmd_str: str, source=None) -> tuple:
+def excecute(cmd_str: str, source=None) -> dict:
     """
     Excecutes a command and route to specified handler
     cmd: Command line with command and params as string
@@ -176,7 +178,7 @@ def excecute(cmd_str: str, source=None) -> tuple:
     """
     cmd_str = cmd_str.strip()
 
-    if cmd_str.beginswith('{') and cmd_str.endswith('}'):
-        return excecute_json(cmd_str, source)
+    if cmd_str.startswith('{') and cmd_str.endswith('}'):
+        return _excecute_json(cmd_str, source)
     else:
-        return excecute_line(cmd_str, source)
+        return _excecute_line(cmd_str, source)

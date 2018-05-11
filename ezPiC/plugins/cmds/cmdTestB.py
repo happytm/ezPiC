@@ -18,12 +18,12 @@ import Cmd
 ###################################################################################################
 
 @Cmd.route(r'b')
-def cmd_b(params, cmd, index) -> tuple:
+def cmd_b(cmd: dict) -> dict:
     """
     Handle command 'b' ...
     """
     logging.debug('cmdB ' + str(params))
     x = params.get('x', '0')
-    return (None, 'b')
+    return Cmd.ret('b')
 
 ###################################################################################################

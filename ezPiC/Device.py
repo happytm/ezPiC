@@ -27,8 +27,8 @@ import Scheduler
 ###################################################################################################
 # Globals:
 
-DEVICES = {}
-DEVICETASKS = []
+DEVICEPLUGINS = {}
+DEVICES = []
 DEVICELOCK = RLock()
 DEVICETIMER = 0
 
@@ -38,7 +38,7 @@ DEVICETASKTUPLE = namedtuple('DeviceTask', 'idx DUID NAME instname info inst')
 ###################################################################################################
 
 def device_time_handler():
-    global DEVICETASKS, DEVICETIMER
+    global DEVICES, DEVICETIMER
 
     DEVICETIMER += 0.1
     Scheduler.add_event(DEVICETIMER, device_time_handler)
@@ -46,7 +46,7 @@ def device_time_handler():
     with DEVICELOCK:
         t = time.time()
 
-        for idx, task in enumerate(DEVICETASKS):
+        for idx, task in enumerate(DEVICES):
             inst = task['inst']
             if inst.timer_next and (t >= inst.timer_next):
                 if inst.timer_period:
@@ -59,12 +59,12 @@ def device_time_handler():
 
 def init():
     """ Prepare module vars and load plugins """
-    global DEVICES
+    global DEVICEPLUGINS
 
     plugins = Tool.load_plugins('devices', 'dev')
     for plugin in plugins:
         try:
-            DEVICES[plugin.DUID] = plugin
+            DEVICEPLUGINS[plugin.DUID] = plugin
         except:
             pass
 
@@ -75,8 +75,8 @@ def load(config_all: dict):
         duid = config["duid"]
         loaded_version = config["version"]
         params = config["params"]
-        err, idx = task_add(duid, params)
-        running_version = DEVICETASKS[idx]['inst'].version
+        err, idx = add(duid, params)
+        running_version = DEVICES[idx]['inst'].version
 
         if not err and loaded_version != running_version:
             logging.warn("task " +  duid + " has change version form " + loaded_version + " to " + running_version)
@@ -85,7 +85,7 @@ def save(append: dict = None):
     err = None
     ret = []
     with DEVICELOCK:
-        for task in DEVICETASKS:
+        for task in DEVICES:
             try:
                 inst = task['inst']
                 config = {}
@@ -107,7 +107,7 @@ def save(append: dict = None):
 
 def run():
     """ TODO """
-    global DEVICES, DEVICETIMER
+    global DEVICEPLUGINS, DEVICETIMER
 
     DEVICETIMER = int(time.time() + 3)
     print(DEVICETIMER)
@@ -117,20 +117,20 @@ def run():
 ###################################################################################################
 ###################################################################################################
 
-def task_add(plugin_id: str, params: dict = None) -> tuple:
+def add(plugin_id: str, params: dict = None) -> tuple:
     """ TODO """
     err = None
     ret = None
 
     with DEVICELOCK:
         try:
-            module = DEVICES.get(plugin_id, None)
+            module = DEVICEPLUGINS.get(plugin_id, None)
             if module:
                 task = {}
                 inst = module.PluginDevice(module)
                 task['inst'] = inst
-                DEVICETASKS.append(task)
-                ret = len(DEVICETASKS) - 1
+                DEVICES.append(task)
+                ret = len(DEVICES) - 1
                 if params:
                     inst.set_param(params)
                 if inst.timer_period:
@@ -145,16 +145,16 @@ def task_add(plugin_id: str, params: dict = None) -> tuple:
 
 ###################################################################################################
 
-def task_del(idx: int) -> tuple:
+def delete(idx: int) -> tuple:
     """ TODO """
     err = None
     ret = None
 
     with DEVICELOCK:
         try:
-            inst = DEVICETASKS[idx]['inst']
+            inst = DEVICES[idx]['inst']
             inst.exit()
-            del DEVICETASKS[idx]
+            del DEVICES[idx]
         except Exception as e:
             err = e
 
@@ -162,45 +162,45 @@ def task_del(idx: int) -> tuple:
 
 ###################################################################################################
 
-def task_del_all() -> tuple:
+def clear() -> tuple:
     """ TODO """
-    global DEVICETASKS
+    global DEVICES
     err = None
     ret = None
 
     with DEVICELOCK:
-        for task in DEVICETASKS:
+        for task in DEVICES:
             try:
                 inst = task['inst']
                 inst.exit()
             except Exception as e:
                 err = e
-        DEVICETASKS = []
+        DEVICES = []
 
     return (err, ret)
 
 ###################################################################################################
 
-def get_device_list() -> tuple:
+def get_plugin_list() -> tuple:
     """ TODO """
     dl = []
     err = None
 
     with DEVICELOCK:
-        for duid, module in DEVICES.items():
+        for duid, module in DEVICEPLUGINS.items():
             dl.append(DEVICETUPLE(module.DUID, module.NAME, module.INFO, module.__name__))
 
     return (err, dl)
 
 ###################################################################################################
 
-def get_device_task_list() -> tuple:
+def get_list() -> tuple:
     """ TODO """
     dtl = []
     err = None
 
     with DEVICELOCK:
-        for idx, task in enumerate(DEVICETASKS):
+        for idx, task in enumerate(DEVICES):
             inst = task['inst']
             dtl.append(DEVICETASKTUPLE(idx, inst.module.DUID, inst.module.NAME, inst.get_name(), inst.get_info(), None))
 
@@ -208,14 +208,14 @@ def get_device_task_list() -> tuple:
 
 ###################################################################################################
 
-def task_get_param(idx: int, key: str=None) -> tuple:
+def get_param(idx: int, key: str=None) -> tuple:
     """ TODO """
     err = None
     ret = None
 
     with DEVICELOCK:
         try:
-            inst = DEVICETASKS[idx]['inst']
+            inst = DEVICES[idx]['inst']
             ret = inst.get_param(key)
         except Exception as e:
             err = e
@@ -224,14 +224,14 @@ def task_get_param(idx: int, key: str=None) -> tuple:
 
 ###################################################################################################
 
-def task_set_param(idx: int, params: dict) -> tuple:
+def set_param(idx: int, params: dict) -> tuple:
     """ TODO """
     err = None
     ret = None
 
     with DEVICELOCK:
         try:
-            inst = DEVICETASKS[idx]['inst']
+            inst = DEVICES[idx]['inst']
             ret = inst.set_param(params)
         except Exception as e:
             err = e
@@ -240,14 +240,14 @@ def task_set_param(idx: int, params: dict) -> tuple:
 
 ###################################################################################################
 
-def task_get_html(idx: int) -> tuple:
+def get_html(idx: int) -> tuple:
     """ TODO """
     err = None
     ret = 'None'
 
     with DEVICELOCK:
         try:
-            inst = DEVICETASKS[idx]['inst']
+            inst = DEVICES[idx]['inst']
             ret = inst.get_html()
         except Exception as e:
             err = e
