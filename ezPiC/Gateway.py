@@ -32,9 +32,6 @@ GATEWAYS = []
 GATEWAYLOCK = RLock()
 GATEWAYTIMER = 0
 
-GATEWAYTUPLE = namedtuple('Gateway', 'GUID NAME INFO module')
-GATEWAYTASKTUPLE = namedtuple('GatewayTask', 'idx GUID NAME instname info inst')
-
 ###################################################################################################
 
 def gateway_time_handler():
@@ -46,14 +43,13 @@ def gateway_time_handler():
     with GATEWAYLOCK:
         t = time.time()
 
-        for idx, task in enumerate(GATEWAYS):
-            inst = task['inst']
-            if inst.timer_next and (t >= inst.timer_next):
-                if inst.timer_period:
-                    inst.timer_next += inst.timer_period
-                    if inst.timer_next < t:
-                        inst.timer_next = t + inst.timer_period
-                inst.timer()
+        for idx, gateway in enumerate(GATEWAYS):
+            if gateway.timer_next and (t >= gateway.timer_next):
+                if gateway.timer_period:
+                    gateway.timer_next += gateway.timer_period
+                    if gateway.timer_next < t:
+                        gateway.timer_next = t + gateway.timer_period
+                gateway.timer()
 
 ###################################################################################################
 
@@ -76,7 +72,7 @@ def load(config_all: dict):
         loaded_version = config["version"]
         params = config["params"]
         err, idx = add(guid, params)
-        running_version = GATEWAYS[idx]['inst'].version
+        running_version = GATEWAYS[idx].version
 
         if not err and loaded_version != running_version:
             logging.warn("task " +  guid + " has change version form " + loaded_version + " to " + running_version)
@@ -85,17 +81,16 @@ def save(append: dict = None):
     err = None
     ret = []
     with GATEWAYLOCK:
-        for task in GATEWAYS:
+        for gateway in GATEWAYS:
             try:
-                inst = task['inst']
                 config = {}
-                config["guid"] = inst.module.GUID
-                config["version"] = inst.version
-                config["params"] = inst.get_param()
+                config["guid"] = gateway.module.GUID
+                config["version"] = gateway.version
+                config["params"] = gateway.get_param()
                 ret.append(config)
             except Exception as e:
-                err = e
-                print(e)
+                err = -1
+                ret = str(e)
 
     if not append is None:
         append["gateways"] = ret
@@ -126,20 +121,19 @@ def add(plugin_id: str, params: dict = None) -> tuple:
         try:
             module = GATEWAYPLUGINS.get(plugin_id, None)
             if module:
-                task = {}
-                inst = module.PluginGateway(module)
-                task['inst'] = inst
-                GATEWAYS.append(task)
+                gateway = module.PluginGateway(module)
+                GATEWAYS.append(gateway)
                 ret = len(GATEWAYS) - 1
                 if params:
-                    inst.set_param(params)
-                if inst.timer_period:
-                    inst.timer_next = time.time() + inst.timer_period
-                inst.init()
+                    gateway.set_param(params)
+                if gateway.timer_period:
+                    gateway.timer_next = time.time() + gateway.timer_period
+                gateway.init()
             else:
                 err = 'Unknown GUID'
         except Exception as e:
-            err = e
+            err = -1
+            ret = str(e)
 
     return (err, ret)
 
@@ -152,11 +146,12 @@ def delete(idx: int) -> tuple:
 
     with GATEWAYLOCK:
         try:
-            inst = GATEWAYS[idx]['inst']
-            inst.exit()
+            gateway = GATEWAYS[idx]
+            gateway.exit()
             del GATEWAYS[idx]
         except Exception as e:
-            err = e
+            err = -1
+            ret = str(e)
 
     return (err, ret)
 
@@ -169,12 +164,12 @@ def clear() -> tuple:
     ret = None
 
     with GATEWAYLOCK:
-        for task in GATEWAYS:
+        for gateway in GATEWAYS:
             try:
-                inst = task['inst']
-                inst.exit()
+                gateway.exit()
             except Exception as e:
-                err = e
+                err = -1
+                ret = str(e)
         GATEWAYS = []
 
     return (err, ret)
@@ -183,28 +178,38 @@ def clear() -> tuple:
 
 def get_plugin_list() -> tuple:
     """ TODO """
-    dl = []
+    pl = []
     err = None
 
     with GATEWAYLOCK:
         for guid, module in GATEWAYPLUGINS.items():
-            dl.append(GATEWAYTUPLE(module.GUID, module.NAME, module.INFO, module.__name__))
+            p = {}
+            p['GUID'] = module.GUID
+            p['NAME'] = module.NAME
+            p['INFO'] = module.INFO
+            p['MODULE'] = module.__name__
+            pl.append(p)
 
-    return (err, dl)
+    return (err, pl)
 
 ###################################################################################################
 
 def get_list() -> tuple:
     """ TODO """
-    dtl = []
+    gl = []
     err = None
 
-    with GATEWAYLOCK:
-        for idx, task in enumerate(GATEWAYS):
-            inst = task['inst']
-            dtl.append(GATEWAYTASKTUPLE(idx, inst.module.GUID, inst.module.NAME, inst.get_name(), inst.get_info(), None))
+    with DEVICELOCK:
+        for idx, gateway in enumerate(GATEWAYS):
+            g = {}
+            g['idx'] = idx
+            g['GUID'] = gateway.module.GUID
+            g['NAME'] = gateway.module.NAME
+            g['name'] = gateway.get_name()
+            g['info'] = gateway.get_info()
+            gl.append(g)
 
-    return (err, dtl)
+    return (err, gl)
 
 ###################################################################################################
 
@@ -215,10 +220,11 @@ def get_param(idx: int, key: str=None) -> tuple:
 
     with GATEWAYLOCK:
         try:
-            inst = GATEWAYS[idx]['inst']
-            ret = inst.get_param(key)
+            gateway = GATEWAYS[idx]
+            ret = gateway.get_param(key)
         except Exception as e:
-            err = e
+            err = -1
+            ret = str(e)
 
     return (err, ret)
 
@@ -231,10 +237,11 @@ def set_param(idx: int, params: dict) -> tuple:
 
     with GATEWAYLOCK:
         try:
-            inst = GATEWAYS[idx]['inst']
-            ret = inst.set_param(params)
+            gateway = GATEWAYS[idx]
+            ret = gateway.set_param(params)
         except Exception as e:
-            err = e
+            err = -1
+            ret = str(e)
 
     return (err, ret)
 
@@ -247,10 +254,11 @@ def get_html(idx: int) -> tuple:
 
     with GATEWAYLOCK:
         try:
-            inst = GATEWAYS[idx]['inst']
-            ret = inst.get_html()
+            gateway = GATEWAYS[idx]
+            ret = gateway.get_html()
         except Exception as e:
-            err = e
+            err = -1
+            ret = str(e)
 
     return (err, ret)
 

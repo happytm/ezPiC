@@ -22,9 +22,9 @@ import Tool
 @Cmd.route('plugin.device.list')
 @Cmd.route('pdl')
 def cmd_device_list(cmd: dict) -> dict:
-    """ 
+    """
     Handle command 'plugin.device.list'.
-    returns a list of dicts with information about availabe devices 
+    Returns a list of dicts with information about availabe device modules
     """
     err, ret = Device.get_plugin_list()
 
@@ -36,10 +36,8 @@ def cmd_device_list(cmd: dict) -> dict:
 @Cmd.route('dl')
 def cmd_device_task_list(cmd: dict) -> dict:
     """ Handle command 'device[] list' """
-    #logging.debug('cmdA ' + str(params))
-    #x = params.get('x', '0')
     err, ret = Device.get_list()
-    #print(ret)
+
     return Cmd.ret(ret, err)
 
 ###################################################################################################

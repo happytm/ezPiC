@@ -93,4 +93,24 @@ def cmd_system_load(cmd: dict) -> dict:
 
 ###################################################################################################
 
+@Cmd.route('commands')
+def cmd_system_commands(cmd: dict) -> dict:
+    """ Handle command 'commands' """
+
+    cl = []
+
+    for cmd in Cmd.COMMANDS:
+        cmd_str = cmd['command']
+        if cmd['has_index']:
+            cmd_str += '.<idx>'
+        args = cmd['args']
+        if args:
+            for key in args:
+                cmd_str += ' <' + key + '>'
+        cl.append(cmd_str)
+
+    return Cmd.ret(cl)
+
+###################################################################################################
+
 ###################################################################################################

@@ -92,7 +92,8 @@ def run():
                             i += 1
                         if dataf:
                             cmd_str = dataf.decode('utf-8', 'backslashreplace')
-                            ret = Cmd.excecute(cmd_str, 'telnet')
+                            raddr, rport = sock.getpeername()
+                            ret = Cmd.excecute(cmd_str, raddr+':'+str(rport))
                             ret_str = json.dumps(ret) + '\r\n'
                             data = ret_str.encode('utf-8')
                             sock.send(data)

@@ -20,14 +20,19 @@ import Tool
 ###################################################################################################
 
 @Cmd.route('plugin.gateway.list')
+@Cmd.route('pgl')
 def cmd_gateway_list(cmd: dict) -> dict:
-    """ Handle command 'gateway list' """
+    """
+    Handle command 'plugin.gateway.list'.
+    Returns a list of dicts with information about availabe gateway modules 
+    """
     err, ret = Gateway.get_plugin_list()
     return Cmd.ret(ret, err)
 
 ###################################################################################################
 
 @Cmd.route('gateway.list')
+@Cmd.route('gl')
 def cmd_gateway_task_list(cmd: dict) -> dict:
     """ Handle command 'gateway[] list' """
     err, ret = Gateway.get_list()
