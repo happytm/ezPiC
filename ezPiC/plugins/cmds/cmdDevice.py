@@ -1,5 +1,5 @@
 """
-...TODO
+Command Plugin for Device handling
 """
 try:   # CPython
     import os
@@ -90,7 +90,8 @@ def cmd_device_set(cmd: dict) -> dict:
     """ Handle command 'device[#] set <param>:<value> ...' """
     index = cmd['IDX']
     params = cmd.get('params', None)
-    #paramdict = Tool.str_to_params(cmd)
+    if params:
+        params = json.loads(params)
     err, ret = Device.set_param(index, params)
     return Cmd.ret(ret, err)
 

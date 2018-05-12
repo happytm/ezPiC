@@ -121,12 +121,12 @@ def _excecute_line(cmd_str: str, source=None) -> dict:
                 try:
                     return fHandler(cmd=cmd_params)
                 except Exception as e:
-                    return ret(None, -901, 'Fail to call handler - ' + str(e))
+                    return ret(None, -901, 'Exception in command handler - ' + str(e))
 
     except Exception as e:
-        return ret(None, -902, 'Fail to interpret command - ' + str(e))
+        return ret(None, -902, 'Exception in command parser - ' + str(e))
 
-    return ret(None, -900, 'Unknown command')
+    return ret(None, -900, 'Unknown command: ' + cmd_str)
 
 ###################################################################################################
 
@@ -161,12 +161,12 @@ def _excecute_json(cmd_str: str, source=None) -> dict:
                 try:
                     return fHandler(cmd=cmd_params)
                 except Exception as e:
-                    return ret(None, -901, 'Fail to call handler - ' + str(e))
+                    return ret(None, -901, 'Exception in command handler - ' + str(e))
 
     except Exception as e:
-        return ret(None, -902, 'Fail to interpret command - ' + str(e))
+        return ret(None, -902, 'Exception in command parser - ' + str(e))
 
-    return ret(None, -900, 'Unknown command')
+    return ret(None, -900, 'Unknown command: ' + cmd_str)
 
 ###################################################################################################
 

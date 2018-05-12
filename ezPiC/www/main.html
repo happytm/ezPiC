@@ -11,25 +11,15 @@
           <tr>
               <th scope="col">Property</th>
               <th scope="col">Value</th>
-              <th scope="col">Comment</th>
           </tr>
       </thead>
       <tbody>
+        {{ for item in info }}
           <tr>
-              <th scope="row">Name</th>
-              <td>Lorem Ipsum</td>
-              <td>XXXXXXXXX</td>
+              <th scope="row">{{item}}</th>
+              <td>{{info[item]}}</td>
           </tr>
-          <tr>
-              <th scope="row">IP</th>
-              <td>10.10.10.10</td>
-              <td></td>
-          </tr>
-          <tr>
-              <th scope="row">MAC</th>
-              <td>1234567890</td>
-              <td></td>
-          </tr>
+        {{ end }}
       </tbody>
   </table>
 

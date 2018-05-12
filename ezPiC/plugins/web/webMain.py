@@ -1,5 +1,5 @@
 """
-...TODO
+Web Plugin for Index-Page and Main-Page
 """
 from MicroWebSrv.microWebSrv import MicroWebSrv
 import Cmd
@@ -9,7 +9,7 @@ import Cmd
 @MicroWebSrv.route('/xxx')
 @MicroWebSrv.route('/')
 def web_index(httpClient, httpResponse):
-    """ TODO """
+    """ Index-Page with Description. Additional handle commands over HTTP"""
     queryParams  = httpClient.GetRequestQueryParams()
     if queryParams and 'cmd' in queryParams:
         cmd = queryParams.get('cmd')
@@ -33,9 +33,13 @@ def web_index(httpClient, httpResponse):
 
 @MicroWebSrv.route('/main')
 def web_main(httpClient, httpResponse):
-    """ TODO """
+    """ Main-Page with common dashboard """
+    
+    ret = Cmd.excecute('info', 'WEB-DIRECT')
+
     vars = {'error': None, 'message': None}
     vars['menu'] = 'main'
+    vars['info'] = ret['RESULT']
 
     return httpResponse.WriteResponsePyHTMLFile('www/main.html', headers=None, vars=vars)
 

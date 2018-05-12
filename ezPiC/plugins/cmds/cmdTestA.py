@@ -1,5 +1,5 @@
 """
-...TODO
+Command Plugin for Testing
 """
 try:   # CPython
     import os

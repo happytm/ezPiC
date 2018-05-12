@@ -1,101 +1,74 @@
 """
-...TODO
+Command Plugin for System Commands
+
 """
 try:   # CPython
     import os
+    import sys
     import re
     import json
     import random
 except:   # MicroPython
     import uos as os
+    import usys as sys
     import ure as re
     import ujson as json
     import urandom as random
 
 import logging
-import Device
 import Cmd
-
-CONFIG_FILE = 'config.json'
+import G
 
 ###################################################################################################
 
 @Cmd.route('info')
 def cmd_system_info(cmd: dict) -> dict:
-    """ Handle command 'info' """
-    return Cmd.ret()
+    """ Returns common information about the system and the environment """
+    i = {}
+    i['System'] = 'ezPiC'
+    i['Version'] = G.VERSION
+    i['Platform'] = sys.platform
+    i['Python Version'] = sys.version
+    i['Python Implementation'] = sys.implementation.name
+    #i['Implementation'] = sys.implementation
+    i['Source'] = cmd['SRC']
+
+    return Cmd.ret(i)
 
 ###################################################################################################
 
 @Cmd.route('version')
 def cmd_system_version(cmd: dict) -> dict:
-    """ Handle command 'version' """
-    return Cmd.ret('0.0.?')
+    """ Returns the version of ezPiC """
+    return Cmd.ret(G.VERSION)
 
 ###################################################################################################
 
 @Cmd.route('about')
 def cmd_system_about(cmd: dict) -> dict:
-    """ Handle command 'about' """
-    return Cmd.ret('ezPiC by JK')
+    """ Returns about information """
+    return Cmd.ret('ezPiC-Project by Jochen Krapf et al. - https://github.com/fablab-wue/ezPiC')
 
 ###################################################################################################
 
 @Cmd.route('login', 'name password')
 def cmd_system_login(cmd: dict) -> dict:
-    """ Handle command 'login' """
-    return Cmd.ret()
+    """ Login to the system and change security level for actual connection """
+    return Cmd.ret("NOT IMPLEMENTED")
 
 ###################################################################################################
 
 @Cmd.route('logout')
 def cmd_system_logout(cmd: dict) -> dict:
-    """ Handle command 'logout' """
-    return Cmd.ret()
+    """ Logout for actual connection """
+    return Cmd.ret("NOT IMPLEMENTED")
 
 ###################################################################################################
-
-@Cmd.route('save')
-def cmd_system_save(cmd: dict) -> dict:
-    """ Handle command 'save' """
-
-    err = None
-
-    with open(CONFIG_FILE, 'w') as outfile:
-        try:
-            save_dict = {}
-            Device.save(save_dict)
-            # add other stuff like Gateway
-            json.dump(save_dict, outfile, indent=2)
-        except Exception as e:
-            return Cmd.ret(None, -100, 'Error on collectin save values - ' + str(e))
-
-    return Cmd.ret()
-
-###################################################################################################
-
-@Cmd.route('load')
-def cmd_system_load(cmd: dict) -> dict:
-    """ Handle command 'load' """
-
-    try:
-        with open(CONFIG_FILE, 'r') as infile:
-            config_all = json.load(infile)
-            Device.load(config_all)
-            # Gateway(s?).load(...)
-            # ...
-    except FileNotFoundError as e:
-        pass
-    except Exception as e:
-            return Cmd.ret(None, -101, 'Error on collectin load values - ' + str(e))
-
-    return Cmd.ret()
-
 ###################################################################################################
 
 @Cmd.route('commands')
 def cmd_system_commands(cmd: dict) -> dict:
-    """ Handle command 'commands' """
+    """ Returns a list of all available commands with arguments """
 
     cl = []
 
@@ -107,10 +80,20 @@ def cmd_system_commands(cmd: dict) -> dict:
         if args:
             for key in args:
                 cmd_str += ' <' + key + '>'
+        #func = cmd['func']
+        #cmd_str += '   ' + func.__doc__
         cl.append(cmd_str)
 
     return Cmd.ret(cl)
 
 ###################################################################################################
+
+###################################################################################################
+
+@Cmd.route('system.getparam')
+@Cmd.route('system.setparam', 'param')
+def cmd_system_logout(cmd: dict) -> dict:
+    """ TODO """
+    return Cmd.ret("NOT IMPLEMENTED")
 
 ###################################################################################################

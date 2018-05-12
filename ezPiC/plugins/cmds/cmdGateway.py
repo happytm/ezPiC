@@ -1,5 +1,6 @@
 """
-...TODO
+Command Plugin for Gateway handling
+
 """
 try:   # CPython
     import os

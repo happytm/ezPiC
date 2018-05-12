@@ -1,5 +1,5 @@
 """
-...TestA...
+Device Plugin for Testing
 """
 #import logging
 import time

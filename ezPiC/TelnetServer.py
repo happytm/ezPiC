@@ -30,6 +30,7 @@ import Cmd
 # Globals:
 
 CONNECTION_LIST = []    # list of socket clients
+CONNECTION_SOURCE = {}    # list of socket prop
 RECV_BUFFER = 4096 # Advisable to keep it as an exponent of 2
 PORT = 2101
 
@@ -68,7 +69,10 @@ def run():
                 # Handle the case in which there is a new connection recieved through server_socket
                 sockfd, addr = server_socket.accept()
                 CONNECTION_LIST.append(sockfd)
-                print ("Client (%s, %s) connected" % addr)
+                source = addr[0] + ':' + str(addr[1])
+                CONNECTION_SOURCE[sockfd] = source
+                print ("Client (%s) connected" % source)
+
                 sockfd.send(b'\r\nezPiC-Service V0.0.?\r\n')
                  
             #Some incoming message from a client
@@ -92,14 +96,15 @@ def run():
                             i += 1
                         if dataf:
                             cmd_str = dataf.decode('utf-8', 'backslashreplace')
-                            raddr, rport = sock.getpeername()
-                            ret = Cmd.excecute(cmd_str, raddr+':'+str(rport))
+                            #raddr, rport = sock.getpeername()
+                            source = CONNECTION_SOURCE[sock]
+                            ret = Cmd.excecute(cmd_str, source)
                             ret_str = json.dumps(ret) + '\r\n'
                             data = ret_str.encode('utf-8')
                             sock.send(data)
                  
                 # client disconnected, so remove from socket list
-                except:
+                except Exception as e:
                     #broadcast_data(sock, "Client (%s, %s) is offline" % addr)
                     print ("Client (%s, %s) is offline" % addr)
                     sock.close()

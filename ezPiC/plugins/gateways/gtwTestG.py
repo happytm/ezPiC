@@ -1,5 +1,5 @@
 """
-...TestG...
+Gateway Plugin for Testing
 """
 #import logging
 import time

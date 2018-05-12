@@ -18,3 +18,4 @@ MWS = None
 RUN = True
 WEBSERVER = True
 IOT = True
+VERSION = '0.0.?'
