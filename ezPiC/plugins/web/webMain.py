@@ -2,25 +2,24 @@
 Web Plugin for Index-Page and Main-Page
 """
 from MicroWebSrv.microWebSrv import MicroWebSrv
-import Cmd
+import Web
 
 ###################################################################################################
 
-@MicroWebSrv.route('/xxx')
 @MicroWebSrv.route('/')
 def web_index(httpClient, httpResponse):
-    """ Index-Page with Description. Additional handle commands over HTTP"""
+    """ Index-Page with Description. Additional handle commands over HTTP-GET"""
     queryParams  = httpClient.GetRequestQueryParams()
     if queryParams and 'cmd' in queryParams:
         cmd = queryParams.get('cmd')
-        err, ret = Cmd.excecute(cmd)
-        json = {'error': err, 'result': ret}
+        err, ret = Web.command(cmd)
+        json = {'code': err, 'result': ret}
         return httpResponse.WriteResponseJSONOk(json)
 
-    vars = {'error': None, 'message': None}
+    vars = {}
     vars['menu'] = ''
 
-    return httpResponse.WriteResponsePyHTMLFile('www/index.html', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/index.html', vars=vars)
 
 ###################################################################################################
 
@@ -35,13 +34,17 @@ def web_index(httpClient, httpResponse):
 def web_main(httpClient, httpResponse):
     """ Main-Page with common dashboard """
     
-    ret = Cmd.excecute('info', 'WEB-DIRECT')
+    code, result = Web.command('info')
+    if code:
+        msg = 'Error "{0}" - {1}'.format(err, result)
+        httpResponse.FlashMessage(msg, 'danger')
+        result = {}
 
-    vars = {'error': None, 'message': None}
+    vars = {}
     vars['menu'] = 'main'
-    vars['info'] = ret['RESULT']
+    vars['info'] = result
 
-    return httpResponse.WriteResponsePyHTMLFile('www/main.html', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/main.html', vars=vars)
 
 ###################################################################################################
 

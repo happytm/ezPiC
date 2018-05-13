@@ -66,13 +66,10 @@ def run():
 
 ###################################################################################################
 
-def ret(result=None, code: int=0, error: str='') -> dict:
+def ret(code: int=0, result=None) -> dict:
     params = {}
-
-    params['RESULT'] = result
     params['CODE'] = code
-    if error:
-        params['ERROR'] = error
+    params['RESULT'] = result
 
     return params
 
@@ -80,105 +77,106 @@ def ret(result=None, code: int=0, error: str='') -> dict:
 
 def _excecute_line(cmd_str: str, source=None) -> dict:
     """
-    Excecutes a command and route to specified handler
+    Excecutes a command as str
     cmd: Command line with command and params as string
     return: Answer from excecuted command. Can be any object type or None
     """
-    try:
-        for c in COMMANDS:
-            if cmd_str.startswith(c['command']):   # command found
-                cmd_params = {}
+    for c in COMMANDS:
+        if cmd_str.startswith(c['command']):   # command found
+            cmd_params = {}
 
-                cmd_arg = cmd_str.split(' ', 1)
-                cmd = cmd_arg[0]
-                cmd_params['CMD'] = cmd
+            cmd_arg = cmd_str.split(' ', 1)
+            cmd = cmd_arg[0]
+            cmd_params['CMD'] = cmd
 
-                if c['has_index']:
-                    l = len(c['command'])
-                    index_str = cmd[l+1:]
-                    if index_str:
-                        cmd_params['IDX'] = int(index_str)
+            if c['has_index']:
+                l = len(c['command'])
+                index_str = cmd[l+1:]
+                if index_str:
+                    cmd_params['IDX'] = int(index_str)
+                else:
+                    return ret(-903, 'Command needs index')
+
+            if c['args'] and len(cmd_arg)>1:
+                arg_str = cmd_arg[1].strip()
+                #TODO check json
+                args = arg_str.split()
+                i = 0
+                for key in c['args']:
+                    if i<len(args):
+                        value = args[i]
+                        cmd_params[key] = value
                     else:
-                        return ret(None, -903, 'Command needs index')
+                        cmd_params[key] = None
+                    i += 1
 
-                if c['args'] and len(cmd_arg)>1:
-                    arg_str = cmd_arg[1].strip()
-                    #TODO check json
-                    args = arg_str.split()
-                    i = 0
-                    for key in c['args']:
-                        if i<len(args):
-                            value = args[i]
-                            cmd_params[key] = value
-                        else:
-                            cmd_params[key] = None
-                        i += 1
+            cmd_params['SRC'] = source
+                
+            fHandler = c['func']
 
-                cmd_params['SRC'] = source
-                    
-                fHandler = c['func']
+            try:
+                return fHandler(cmd=cmd_params)
+            except Exception as e:
+                return ret(-901, 'Exception in command handler - ' + str(e))
 
-                try:
-                    return fHandler(cmd=cmd_params)
-                except Exception as e:
-                    return ret(None, -901, 'Exception in command handler - ' + str(e))
-
-    except Exception as e:
-        return ret(None, -902, 'Exception in command parser - ' + str(e))
-
-    return ret(None, -900, 'Unknown command: ' + cmd_str)
+    return ret(-900, 'Unknown command: ' + cmd_str)
 
 ###################################################################################################
 
-def _excecute_json(cmd_str: str, source=None) -> dict:
+def _excecute_json(cmd_dict: dict, source=None) -> dict:
     """
-    Excecutes a command and route to specified handler
-    cmd: Command line with command and params as string
+    Excecutes a command as a dict
+    cmd: Command dict with dict-items as params
     return: Answer from excecuted command. Can be any object type or None
     """
-    cmd_params = {}
+    cmd_params = cmd_dict
 
+    command = cmd_params.get('CMD', None)
+    if not command:
+        return ret(-911, 'JSON-Command has no item "CMD"')
+    
+    for c in COMMANDS:
+        if command == c['command']:   # command found
+
+            if c['has_index']:
+                l = len(c['command'])
+                index_str = cmd[l+1:]
+                if cmd_params.get('IDX', None):
+                    return ret(-903, 'Command needs index')
+
+            if source:
+                cmd_params['SRC'] = source
+                
+            fHandler = c['func']
+
+            try:
+                return fHandler(cmd=cmd_params)
+            except Exception as e:
+                return ret(-901, 'Exception in command handler - ' + str(e))
+
+    return ret(-900, 'Unknown command: ' + cmd_str)
+
+###################################################################################################
+
+def excecute(cmd, source=None) -> dict:
+    """
+    Excecutes a command and route to specified handler
+    cmd: Command as str or JSON-str or dict
+    return: Answer from excecuted command. Can be any object type or None
+    """
     try:
-        cmd_params = json.loads(cmd_str)
-
-        command = cmd_params,get('CMD', None)
-        if not command:
-            return ret(None, -911, 'JSON-Command has no item "CMD"')
+        if cmd is str:
+            cmd = cmd.strip()
+            if cmd.startswith('{') and cmd.endswith('}'):
+                cmd_dict = json.loads(cmd)
+                return _excecute_json(cmd_dict, source)
+            else:
+                return _excecute_line(cmd, source)
+        elif cmd is dict:
+            return _excecute_json(cmd, source)
+        else
+            return ret(-909, 'Wrong type in command parser: ' type(cmd))
         
-        for c in COMMANDS:
-            if command == c['command']:   # command found
-
-                if c['has_index']:
-                    l = len(c['command'])
-                    index_str = cmd[l+1:]
-                    if cmd_params.get('IDX', None):
-                        return ret(None, -903, 'Command needs index')
-
-                cmd_params['SRC'] = source
-                    
-                fHandler = c['func']
-
-                try:
-                    return fHandler(cmd=cmd_params)
-                except Exception as e:
-                    return ret(None, -901, 'Exception in command handler - ' + str(e))
-
     except Exception as e:
-        return ret(None, -902, 'Exception in command parser - ' + str(e))
+        return ret(-902, 'Exception in command parser - ' + str(e))
 
-    return ret(None, -900, 'Unknown command: ' + cmd_str)
-
-###################################################################################################
-
-def excecute(cmd_str: str, source=None) -> dict:
-    """
-    Excecutes a command and route to specified handler
-    cmd: Command line with command and params as string
-    return: Answer from excecuted command. Can be any object type or None
-    """
-    cmd_str = cmd_str.strip()
-
-    if cmd_str.startswith('{') and cmd_str.endswith('}'):
-        return _excecute_json(cmd_str, source)
-    else:
-        return _excecute_line(cmd_str, source)

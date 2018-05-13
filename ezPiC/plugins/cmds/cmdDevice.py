@@ -28,7 +28,7 @@ def cmd_device_list(cmd: dict) -> dict:
     """
     err, ret = Device.get_plugin_list()
 
-    return Cmd.ret(ret, err)
+    return Cmd.ret(err, ret)
 
 ###################################################################################################
 
@@ -38,7 +38,7 @@ def cmd_device_task_list(cmd: dict) -> dict:
     """ Handle command 'device[] list' """
     err, ret = Device.get_list()
 
-    return Cmd.ret(ret, err)
+    return Cmd.ret(err, ret)
 
 ###################################################################################################
 
@@ -53,7 +53,7 @@ def cmd_device_info(cmd: dict) -> dict:
 def cmd_device_add(cmd: dict) -> dict:
     """ Handle command 'device[] add <duid>' """
     err, ret = Device.add(cmd.get('duid', None))
-    return Cmd.ret(ret, err)
+    return Cmd.ret(err, ret)
 
 ###################################################################################################
 
@@ -62,7 +62,7 @@ def cmd_device_add(cmd: dict) -> dict:
 def cmd_device_del_all(cmd: dict) -> dict:
     """ Handle command 'device[] del all' """
     err, ret = Device.clear()
-    return Cmd.ret(ret, err)
+    return Cmd.ret(err, ret)
 
 ###################################################################################################
 
@@ -71,7 +71,7 @@ def cmd_device_del(cmd: dict) -> dict:
     """ Handle command 'device.del.<index>' """
     index = cmd['IDX']
     err, ret = Device.delete(index)
-    return Cmd.ret(ret, err)
+    return Cmd.ret(err, ret)
 
 ###################################################################################################
 
@@ -81,7 +81,7 @@ def cmd_device_get(cmd: dict) -> dict:
     index = cmd['IDX']
     key = cmd.get('key', None)
     err, ret = Device.get_param(index, key)
-    return Cmd.ret(ret, err)
+    return Cmd.ret(err, ret)
 
 ###################################################################################################
 
@@ -93,7 +93,7 @@ def cmd_device_set(cmd: dict) -> dict:
     if params:
         params = json.loads(params)
     err, ret = Device.set_param(index, params)
-    return Cmd.ret(ret, err)
+    return Cmd.ret(err, ret)
 
 ###################################################################################################
 
@@ -101,7 +101,7 @@ def cmd_device_set(cmd: dict) -> dict:
 def cmd_device_cmd(cmd: dict) -> dict:
     """ Handle command 'device[#] cmd <command>' """
     index = cmd['IDX']
-    return Cmd.ret(None, None)
+    return Cmd.ret()
 
 ###################################################################################################
 
@@ -109,7 +109,7 @@ def cmd_device_cmd(cmd: dict) -> dict:
 def cmd_device_html(cmd: dict) -> dict:
     """ Handle command 'device[#] html' """
     err, ret = Device.get_html(index)
-    return Cmd.ret(ret, err)
+    return Cmd.ret(err, ret)
 
 ###################################################################################################
 
@@ -117,14 +117,14 @@ def cmd_device_html(cmd: dict) -> dict:
 def cmd_device_event(cmd: dict) -> dict:
     """ Handle command 'device[#] event' """
     index = cmd['IDX']
-    return Cmd.ret(None, None)
+    return Cmd.ret()
 
 ###################################################################################################
 
 @Cmd.route('device.help')
 def cmd_device_help(cmd: dict) -> dict:
     """ Handle command 'device help' """
-    return Cmd.ret(None, 'Help?!?')
+    return Cmd.ret(0, 'Help?!?')
 
 ###################################################################################################
 ###################################################################################################

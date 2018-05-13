@@ -7,6 +7,7 @@ import html
 import Tool
 import Cmd
 import json
+import Web
 
 ###################################################################################################
 
@@ -17,29 +18,26 @@ def web_cmd(httpClient, httpResponse):
     cmd = ''
     err = ''
     ret = ''
+    formParams = None
 
     if httpClient.GetRequestMethod() == 'POST':
         formParams = httpClient.ReadRequestPostedFormData()
-        if formParams and 'cmd' in formParams:
-            cmd = formParams.get('cmd')
     else: # GET
         formParams  = httpClient.GetRequestQueryParams()
-        if formParams and 'cmd' in formParams:
-            cmd = formParams.get('cmd')
 
-    #cmd = html.escape(cmd)
+    if formParams and 'cmd' in formParams:
+        cmd = formParams.get('cmd')
+        #cmd = html.escape(cmd)
 
     if cmd:
-        #print(cmd)
-        err, ret = Cmd.excecute(cmd)
+        err, ret = Web.command(cmd)
         try:
             ret = json.dumps(ret, indent=2)
         except:
             pass
         ret = str(ret)
         #ret = html.escape(ret)
-        t = 'Cmd ' + cmd + ' -> ' + str(ret)
-        logging.debug(t)
+        logging.debug('Cmd ' + cmd + ' -> ' + ret)
 
     vars = {}
     vars['menu'] = 'tools'
@@ -47,6 +45,6 @@ def web_cmd(httpClient, httpResponse):
     vars['err'] = err
     vars['ret'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/cmd.html', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/cmd.html', vars=vars)
 
 ###################################################################################################

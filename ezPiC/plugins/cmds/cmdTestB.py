@@ -24,6 +24,6 @@ def cmd_b(cmd: dict) -> dict:
     """
     logging.debug('cmdB ' + str(params))
     x = params.get('x', '0')
-    return Cmd.ret('b')
+    return Cmd.ret(0, 'b')
 
 ###################################################################################################

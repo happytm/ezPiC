@@ -4,7 +4,7 @@
 from MicroWebSrv.microWebSrv import MicroWebSrv
 
 import Tool
-import Cmd
+import Web
 
 ###################################################################################################
 
@@ -12,13 +12,12 @@ import Cmd
 def web_devices(httpClient, httpResponse):
     """ TODO """
 
-    vars = {'error': None, 'message': None}
-    vars['menu'] = 'devices'
-
-    err, ret = Cmd.excecute('device[] list')
+    err, ret = Web.command('device.list')
     if err:
         ret = []
 
+    vars = {}
+    vars['menu'] = 'devices'
     vars['device_list'] = ret
 
     return httpResponse.WriteResponsePyHTMLFile('www/devices.html', headers=None, vars=vars)
@@ -29,13 +28,12 @@ def web_devices(httpClient, httpResponse):
 def web_devices_list(httpClient, httpResponse):
     """ TODO """
 
-    vars = {'error': None, 'message': None}
-    vars['menu'] = 'devices'
-
-    err, ret = Cmd.excecute('device list')
+    err, ret = Web.command('plugin.device.list')
     if err:
         ret = []
 
+    vars = {}
+    vars['menu'] = 'devices'
     vars['device_list'] = ret
 
     return httpResponse.WriteResponsePyHTMLFile('www/devices_list.html', headers=None, vars=vars)
@@ -47,16 +45,13 @@ def web_device_add(httpClient, httpResponse, args):
     """ TODO """
     duid = args['duid']
 
-    vars = {}
-    vars['menu'] = 'devices'
-
-    cmd = 'device[] add {}'.format(duid)
-    err, idx = Cmd.excecute(cmd)
+    params = {'duid': duid}
+    err, idx = Web.command('device.add', params=params)
     if err:
         msg = 'Error "{0}" - Can not add device "{1}"'.format(err, duid)
         httpResponse.FlashMessage(msg, 'danger')
     else:
-        Cmd.excecute('save')
+        Web.command('save')
         msg = 'Device "{}" added'.format(duid)
         httpResponse.FlashMessage(msg, 'info')
 
@@ -70,21 +65,15 @@ def web_device_edit(httpClient, httpResponse, args):
     """ TODO """
     idx = int(args['idx'])
 
-    vars = {}
-
-    cmd = 'device[{}] get'.format(idx)
-    err, ret = Cmd.excecute(cmd)
+    err, ret = Web.command('device.getparam', index=idx)
     if err:
-        vars['message'] = 'Error "{0}" - Can not get params from device [{1}]'.format(err, idx)
+        msg = 'Error "{0}" - Can not get params from device [{1}]'.format(err, idx)
+        httpResponse.FlashMessage(msg, 'danger')
         return httpResponse.WriteResponseRedirect('/devices')
 
     params = {}
-    params['name'] = 'Test-Name'
+    #params['name'] = 'Test-Name'
     params.update(ret)
-
-    cmd = ''
-    err = ''
-    ret = ''
 
     if httpClient.GetRequestMethod() == 'POST':
         formParams = httpClient.ReadRequestPostedFormData()
@@ -92,19 +81,18 @@ def web_device_edit(httpClient, httpResponse, args):
             for key, value in params.items():
                 if key in formParams:
                     params[key] = formParams.get(key)
-        cmd = 'device[{}] set {}'.format(idx, Tool.params_to_str(params))
-        err, ret = Cmd.excecute(cmd)
-        err, ret = Cmd.excecute('save')
+        err, ret = Web.command('device.setparam', index=idx, params=params)
+        err, ret = Web.command('save')
     else: # GET
         pass
 
+    vars = {}
     vars['menu'] = 'devices'
-    vars['name'] = 'TEST'
+    #vars['name'] = 'TEST'
     vars['index'] = idx
     vars.update(params)
 
-    cmd = 'device[{}] html'.format(idx)
-    err, html = Cmd.excecute(cmd)
+    err, html = Web.command('device.gethtml', index=idx)
 
     return httpResponse.WriteResponsePyHTMLFile(html, headers=None, vars=vars)
 
@@ -115,16 +103,12 @@ def web_device_del(httpClient, httpResponse, args):
     """ TODO """
     idx = int(args['idx'])
 
-    vars = {}
-
-    cmd = 'device[{}] del'.format(idx)
-    err, ret = Cmd.excecute(cmd)
+    err, ret = Web.command('device.delete', index=idx)
     if err:
         msg = 'Error "{0}" - Can not delete device task [{1}]'.format(err, idx)
         httpResponse.FlashMessage(msg, 'danger')
-        return httpResponse.WriteResponseRedirect('/devices')
     else:
-        err, ret = Cmd.excecute('save')
+        err, ret = Web.command('save')
         msg = 'Device task deleted'
         httpResponse.FlashMessage(msg, 'info')
 

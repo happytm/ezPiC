@@ -4,7 +4,7 @@
 from MicroWebSrv.microWebSrv import MicroWebSrv
 
 import Tool
-import Cmd
+import Web
 
 ###################################################################################################
 
@@ -12,13 +12,12 @@ import Cmd
 def web_gateways(httpClient, httpResponse):
     """ TODO """
 
-    vars = {'error': None, 'message': None}
-    vars['menu'] = 'gateways'
-
-    err, ret = Cmd.excecute('gateway[] list')
+    err, ret = Web.command('gateway.list')
     if err:
         ret = []
 
+    vars = {}
+    vars['menu'] = 'gateways'
     vars['gateway_list'] = ret
 
     return httpResponse.WriteResponsePyHTMLFile('www/gateways.html', headers=None, vars=vars)
@@ -29,35 +28,31 @@ def web_gateways(httpClient, httpResponse):
 def web_gateways_list(httpClient, httpResponse):
     """ TODO """
 
-    vars = {'error': None, 'message': None}
-    vars['menu'] = 'gateways'
-
-    err, ret = Cmd.excecute('gateway list')
+    err, ret = Web.command('plugin.gateway.list')
     if err:
         ret = []
 
+    vars = {}
+    vars['menu'] = 'gateways'
     vars['gateway_list'] = ret
 
     return httpResponse.WriteResponsePyHTMLFile('www/gateways_list.html', headers=None, vars=vars)
 
 ###################################################################################################
 
-@MicroWebSrv.route('/gateways/add/<duid>/')
+@MicroWebSrv.route('/gateways/add/<guid>/')
 def web_gateway_add(httpClient, httpResponse, args):
     """ TODO """
-    duid = args['duid']
+    guid = args['guid']
 
-    vars = {'error': None, 'message': None}
-    vars['menu'] = 'gateways'
-
-    cmd = 'gateway[] add {}'.format(duid)
-    err, idx = Cmd.excecute(cmd)
+    params = {'guid': guid}
+    err, idx = Web.command('gateway.add', params=params)
     if err:
-        msg = 'Error "{0}" - Can not add gateway "{1}"'.format(err, duid)
+        msg = 'Error "{0}" - Can not add gateway "{1}"'.format(err, guid)
         httpResponse.FlashMessage(msg, 'danger')
     else:
-        Cmd.excecute('save')
-        msg = 'Gateway "{}" added'.format(duid)
+        Web.command('save')
+        msg = 'Gateway "{}" added'.format(guid)
         httpResponse.FlashMessage(msg, 'info')
 
     return httpResponse.WriteResponseRedirect('/gateways')
@@ -70,21 +65,15 @@ def web_gateway_edit(httpClient, httpResponse, args):
     """ TODO """
     idx = int(args['idx'])
 
-    vars = {'error': None, 'message': None}
-
-    cmd = 'gateway[{}] get'.format(idx)
-    err, ret = Cmd.excecute(cmd)
+    err, ret = Web.command('gateway.getparam', index=idx)
     if err:
-        vars['message'] = 'Error "{0}" - Can not get params from gateway [{1}]'.format(err, idx)
+        msg = 'Error "{0}" - Can not get params from gateway [{1}]'.format(err, idx)
+        httpResponse.FlashMessage(msg, 'danger')
         return httpResponse.WriteResponseRedirect('/gateways')
 
     params = {}
     params['name'] = 'Test-Name'
     params.update(ret)
-
-    cmd = ''
-    err = ''
-    ret = ''
 
     if httpClient.GetRequestMethod() == 'POST':
         formParams = httpClient.ReadRequestPostedFormData()
@@ -92,19 +81,18 @@ def web_gateway_edit(httpClient, httpResponse, args):
             for key, value in params.items():
                 if key in formParams:
                     params[key] = formParams.get(key)
-        cmd = 'gateway[{}] set {}'.format(idx, Tool.params_to_str(params))
-        err, ret = Cmd.excecute(cmd)
-        err, ret = Cmd.excecute('save')
+        err, ret = Web.command('gateway.setparam', index=idx, params=params)
+        err, ret = Web.command('save')
     else: # GET
         pass
 
+    vars = {}
     vars['menu'] = 'gateways'
-    vars['name'] = 'TEST'
+    #vars['name'] = 'TEST'
     vars['index'] = idx
     vars.update(params)
 
-    cmd = 'gateway[{}] html'.format(idx)
-    err, html = Cmd.excecute(cmd)
+    err, html = Web.command('gateway.gethtml', index=idx)
 
     return httpResponse.WriteResponsePyHTMLFile(html, headers=None, vars=vars)
 
@@ -115,16 +103,12 @@ def web_gateway_del(httpClient, httpResponse, args):
     """ TODO """
     idx = int(args['idx'])
 
-    vars = {'error': None, 'message': None}
-
-    cmd = 'gateway[{}] del'.format(idx)
-    err, ret = Cmd.excecute(cmd)
+    err, ret = Web.command('gateway.delete', index=idx)
     if err:
         msg = 'Error "{0}" - Can not delete gateway task [{1}]'.format(err, idx)
         httpResponse.FlashMessage(msg, 'danger')
-        return httpResponse.WriteResponseRedirect('/gateways')
     else:
-        err, ret = Cmd.excecute('save')
+        err, ret = Web.command('save')
         msg = 'Gateway task deleted'
         httpResponse.FlashMessage(msg, 'info')
 

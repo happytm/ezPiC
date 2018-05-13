@@ -36,6 +36,6 @@ def cmd_ping(cmd: dict) -> dict:
     """
     logging.debug('Ping')
 
-    return Cmd.ret('pong')
+    return Cmd.ret(0, 'pong')
 
 ###################################################################################################

@@ -5,7 +5,7 @@ from MicroWebSrv.microWebSrv import MicroWebSrv
 import logging, time
 import html
 import Tool
-import Cmd
+import Web
 
 ###################################################################################################
 

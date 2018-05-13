@@ -33,35 +33,35 @@ def cmd_system_info(cmd: dict) -> dict:
     #i['Implementation'] = sys.implementation
     i['Source'] = cmd['SRC']
 
-    return Cmd.ret(i)
+    return Cmd.ret(0, i)
 
 ###################################################################################################
 
 @Cmd.route('version')
 def cmd_system_version(cmd: dict) -> dict:
     """ Returns the version of ezPiC """
-    return Cmd.ret(G.VERSION)
+    return Cmd.ret(0, G.VERSION)
 
 ###################################################################################################
 
 @Cmd.route('about')
 def cmd_system_about(cmd: dict) -> dict:
     """ Returns about information """
-    return Cmd.ret('ezPiC-Project by Jochen Krapf et al. - https://github.com/fablab-wue/ezPiC')
+    return Cmd.ret(0, 'ezPiC-Project by Jochen Krapf et al. - https://github.com/fablab-wue/ezPiC')
 
 ###################################################################################################
 
 @Cmd.route('login', 'name password')
 def cmd_system_login(cmd: dict) -> dict:
     """ Login to the system and change security level for actual connection """
-    return Cmd.ret("NOT IMPLEMENTED")
+    return Cmd.ret(0, "NOT IMPLEMENTED")
 
 ###################################################################################################
 
 @Cmd.route('logout')
 def cmd_system_logout(cmd: dict) -> dict:
     """ Logout for actual connection """
-    return Cmd.ret("NOT IMPLEMENTED")
+    return Cmd.ret(0, "NOT IMPLEMENTED")
 
 ###################################################################################################
 ###################################################################################################
@@ -84,7 +84,7 @@ def cmd_system_commands(cmd: dict) -> dict:
         #cmd_str += '   ' + func.__doc__
         cl.append(cmd_str)
 
-    return Cmd.ret(cl)
+    return Cmd.ret(0, cl)
 
 ###################################################################################################
 
