@@ -1,11 +1,11 @@
 """
 Web Plugin for System-Config-Page
 """
-from MicroWebSrv.microWebSrv import MicroWebSrv
+from web.MicroWebSrv.microWebSrv import MicroWebSrv
 import logging, time
-import html
+#import html
 import Tool
-import Web
+import web.Web as Web
 
 ###################################################################################################
 
@@ -31,6 +31,6 @@ def web_config(httpClient, httpResponse):
     else: # GET
         pass
 
-    return httpResponse.WriteResponsePyHTMLFile('www/config.html', vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('web/www/config.html', vars=vars)
 
 ###################################################################################################

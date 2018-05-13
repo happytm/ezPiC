@@ -24,7 +24,7 @@ import socket, select
 import logging
 import G
 import Tool
-import Cmd
+import dev.Cmd as Cmd
 
 ###################################################################################################
 # Globals:

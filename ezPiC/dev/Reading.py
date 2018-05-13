@@ -14,6 +14,7 @@ except:
 ###################################################################################################
 # Globals:
 
+PLUGINDIR = 'dev/plugins/readings'
 READINGS = {}
 READINGS_NEW = {}
 READINGLOCK = RLock()

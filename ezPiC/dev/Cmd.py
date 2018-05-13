@@ -18,6 +18,7 @@ import Tool
 ###################################################################################################
 # Globals:
 
+PLUGINDIR = 'dev/plugins/cmds'
 COMMANDS = []
 
 ###################################################################################################
@@ -56,7 +57,7 @@ def init():
     """ Prepare module vars and load plugins """
     global COMMANDS
 
-    plugins = Tool.load_plugins('cmds', 'cmd')
+    plugins = Tool.load_plugins(PLUGINDIR, 'cmd')
     #print(plugins)
 
 ###################################################################################################
@@ -131,15 +132,16 @@ def _excecute_json(cmd_dict: dict, source=None) -> dict:
     """
     cmd_params = cmd_dict
 
-    command = cmd_params.get('CMD', None)
-    if not command:
+    cmd_str = cmd_params.get('CMD', None)
+    if not cmd_str:
         return ret(-911, 'JSON-Command has no item "CMD"')
     
     for c in COMMANDS:
-        if command == c['command']:   # command found
+        if cmd_str == c['command']:   # command found
 
             if c['has_index']:
-                if not cmd_params.get('IDX', None):
+                index = cmd_params.get('IDX', None)
+                if index is None:
                     return ret(-903, 'Command needs index')
 
             if source:

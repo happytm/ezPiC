@@ -12,6 +12,8 @@ http://www.bogotobogo.com/python/Multithread/python_multithreading_Synchronizati
 ###################################################################################################
 # Globals:
 
+PLUGINDIR = 'dev/plugins/rules'
+
 ###################################################################################################
 
 def init():

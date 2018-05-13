@@ -13,8 +13,8 @@ except:   # MicroPython
     import urandom as random
 
 import logging
-import Gateway
-import Cmd
+import dev.Gateway as Gateway
+import dev.Cmd as Cmd
 import Tool
 
 ###################################################################################################

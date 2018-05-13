@@ -22,11 +22,12 @@ except:
     from _thread import allocate_lock as RLock
 
 import Tool
-import Scheduler
+import dev.Scheduler as Scheduler
 
 ###################################################################################################
 # Globals:
 
+PLUGINDIR = 'dev/plugins/gateways'
 GATEWAYPLUGINS = {}
 GATEWAYS = []
 GATEWAYLOCK = RLock()
@@ -57,7 +58,7 @@ def init():
     """ Prepare module vars and load plugins """
     global GATEWAYPLUGINS
 
-    plugins = Tool.load_plugins('gateways', 'gtw')
+    plugins = Tool.load_plugins(PLUGINDIR, 'gtw')
     for plugin in plugins:
         try:
             GATEWAYPLUGINS[plugin.GUID] = plugin
@@ -199,7 +200,7 @@ def get_list() -> tuple:
     gl = []
     err = None
 
-    with DEVICELOCK:
+    with GATEWAYLOCK:
         for idx, gateway in enumerate(GATEWAYS):
             g = {}
             g['idx'] = idx
@@ -305,7 +306,7 @@ class PluginGatewayBase():
 
     def get_html(self) -> str:
         """ get the html template name from the module """
-        return 'www/gateways/{}.html'.format(self.module.GUID)
+        return 'web/www/gateways/{}.html'.format(self.module.GUID)
 
     def meas(self) -> (dict, float):
         return ({}, 0.0)

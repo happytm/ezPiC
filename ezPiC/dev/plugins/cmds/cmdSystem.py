@@ -16,7 +16,7 @@ except:   # MicroPython
     import urandom as random
 
 import logging
-import Cmd
+import dev.Cmd as Cmd
 import G
 
 ###################################################################################################

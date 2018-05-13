@@ -13,8 +13,8 @@ except:   # MicroPython
     import urandom as random
 
 import logging
-import Device
-import Cmd
+import dev.Device as Device
+import dev.Cmd as Cmd
 import Tool
 
 ###################################################################################################

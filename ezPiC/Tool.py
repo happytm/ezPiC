@@ -14,7 +14,6 @@ except:   # MicroPython
 
 import logging
 
-PLUGINDIR = 'plugins'
 
 ###################################################################################################
 
@@ -60,11 +59,9 @@ def load_plugins(path: str, pre :str=None) -> list:
     return: List of imported modules
     """
     try:
-        full_path = os.path.join(os.path.dirname(__file__), PLUGINDIR, path)
+        full_path = os.path.join(os.path.dirname(__file__), path)
     except:   # MicroPython has no os.path
         full_path = path
-        if PLUGINDIR:
-            full_path = PLUGINDIR + '/' + full_path
     logging.info('Loading plugins from path "{}"'.format(full_path))
 
     modules = []
@@ -76,6 +73,9 @@ def load_plugins(path: str, pre :str=None) -> list:
         for f in os.ilistdir(full_path):
             files.append(f[0])
     print(files)
+
+    module_prefix = path.replace('/', '.')
+
     for file in files:
         if file.startswith('__'):
             continue
@@ -84,9 +84,7 @@ def load_plugins(path: str, pre :str=None) -> list:
         if pre and not file.startswith(pre):
             continue
         
-        module_name = path + '.' + file[:-3]
-        if PLUGINDIR:
-            module_name = PLUGINDIR + '.' + module_name
+        module_name = module_prefix + '.' + file[:-3]
         try:
             module = __import__(module_name, globals(), locals(), ['object'], 0)
             modules.append(module)

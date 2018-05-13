@@ -6,15 +6,15 @@ import logging
 import G
 
 if G.WEBSERVER:
-    import Web
+    import web.Web as Web
 if G.IOT:
-    import Cmd
-    import Device
-    import Gateway
-    import Rule
-    import Reading
-    import Scheduler
-    import TelnetServer
+    import dev.Cmd as Cmd
+    import dev.Device as Device
+    import dev.Gateway as Gateway
+    import dev.Rule as Rule
+    import dev.Reading as Reading
+    import dev.Scheduler as Scheduler
+    import dev.TelnetServer as TelnetServer
 
 #logging.basicConfig(level=logging.DEBUG, format='%(asctime)-15s %(levelname).1s %(threadName).5s %(message)s',)
 
@@ -43,11 +43,11 @@ def main():
         Rule.run()
         Reading.run()
 
-    Cmd.excecute("xxx 123 456 789")
-    Cmd.excecute("xxx.99 123 456 789")
-    x = Cmd.excecute("ping")
+        Cmd.excecute("xxx 123 456 789")
+        Cmd.excecute("xxx.99 123 456 789")
+        x = Cmd.excecute("ping")
 
-    Cmd.excecute("load")
+        Cmd.excecute("load")
 
     if G.WEBSERVER:
         logging.debug('Starting web server')

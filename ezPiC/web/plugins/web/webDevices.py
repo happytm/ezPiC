@@ -1,10 +1,10 @@
 """
 Web Plugin for Device-Pages
 """
-from MicroWebSrv.microWebSrv import MicroWebSrv
+from web.MicroWebSrv.microWebSrv import MicroWebSrv
 
 import Tool
-import Web
+import web.Web as Web
 
 ###################################################################################################
 
@@ -21,7 +21,7 @@ def web_devices(httpClient, httpResponse):
     vars['menu'] = 'devices'
     vars['device_list'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/devices.html', vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('web/www/devices.html', vars=vars)
 
 ###################################################################################################
 
@@ -38,7 +38,7 @@ def web_devices_list(httpClient, httpResponse):
     vars['menu'] = 'devices'
     vars['device_list'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/devices_list.html', vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('web/www/devices_list.html', vars=vars)
 
 ###################################################################################################
 

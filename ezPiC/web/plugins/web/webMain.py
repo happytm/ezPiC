@@ -1,8 +1,8 @@
 """
 Web Plugin for Index-Page and Main-Page
 """
-from MicroWebSrv.microWebSrv import MicroWebSrv
-import Web
+from web.MicroWebSrv.microWebSrv import MicroWebSrv
+import web.Web as Web
 
 ###################################################################################################
 
@@ -19,7 +19,7 @@ def web_index(httpClient, httpResponse):
     vars = {}
     vars['menu'] = ''
 
-    return httpResponse.WriteResponsePyHTMLFile('www/index.html', vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('web/www/index.html', vars=vars)
 
 ###################################################################################################
 
@@ -44,7 +44,7 @@ def web_main(httpClient, httpResponse):
     vars['menu'] = 'main'
     vars['info'] = result
 
-    return httpResponse.WriteResponsePyHTMLFile('www/main.html', vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('web/www/main.html', vars=vars)
 
 ###################################################################################################
 

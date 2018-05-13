@@ -1,13 +1,12 @@
 """
 Web Plugin for Command-Test-Page
 """
-from MicroWebSrv.microWebSrv import MicroWebSrv
+from web.MicroWebSrv.microWebSrv import MicroWebSrv
 import logging, time
-import html
+#import html
 import Tool
-import Cmd
 import json
-import Web
+import web.Web as Web
 
 ###################################################################################################
 
@@ -45,6 +44,6 @@ def web_cmd(httpClient, httpResponse):
     vars['err'] = err
     vars['ret'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/cmd.html', vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('web/www/cmd.html', vars=vars)
 
 ###################################################################################################

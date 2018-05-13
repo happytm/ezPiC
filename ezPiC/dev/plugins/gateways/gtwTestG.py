@@ -4,7 +4,7 @@ Gateway Plugin for Testing
 #import logging
 import time
 
-import Gateway
+import dev.Gateway as Gateway
 import Tool
 
 ###################################################################################################

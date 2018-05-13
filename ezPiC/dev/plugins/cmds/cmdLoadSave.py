@@ -13,9 +13,9 @@ except:   # MicroPython
     import urandom as random
 
 import logging
-import Device
-import Gateway
-import Cmd
+import dev.Device as Device
+import dev.Gateway as Gateway
+import dev.Cmd as Cmd
 
 CONFIG_FILE = 'config.json'
 

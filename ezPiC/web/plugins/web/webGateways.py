@@ -1,10 +1,10 @@
 """
 Web Plugin for Gateway-Pages
 """
-from MicroWebSrv.microWebSrv import MicroWebSrv
+from web.MicroWebSrv.microWebSrv import MicroWebSrv
 
 import Tool
-import Web
+import web.Web as Web
 
 ###################################################################################################
 
@@ -21,7 +21,7 @@ def web_gateways(httpClient, httpResponse):
     vars['menu'] = 'gateways'
     vars['gateway_list'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/gateways.html', vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('web/www/gateways.html', vars=vars)
 
 ###################################################################################################
 
@@ -38,7 +38,7 @@ def web_gateways_list(httpClient, httpResponse):
     vars['menu'] = 'gateways'
     vars['gateway_list'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/gateways_list.html', vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('web/www/gateways_list.html', vars=vars)
 
 ###################################################################################################
 

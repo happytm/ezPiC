@@ -3,14 +3,23 @@
 """
 import logging
 #from MicroWebSrv.microWebTemplate import MicroWebTemplate
-from MicroWebSrv.microWebSrv import MicroWebSrv
+from .MicroWebSrv.microWebSrv import MicroWebSrv
 import json
 import Tool
 import G
 
-import Cmd
+try:
+    import dev.Cmd as Cmd
+    DIRECT_CMD = True
+except:
+    DIRECT_CMD = False
 
 MWS = None
+
+###################################################################################################
+# Globals:
+
+PLUGINDIR = 'web/plugins/web'
 
 ###################################################################################################
 
@@ -18,10 +27,10 @@ def init():
     """ Prepare module vars and load plugins """
     global MWS
 
-    www = Tool.load_plugins('web', 'web')
+    www = Tool.load_plugins(PLUGINDIR, 'web')
     #print(www)
 
-    MWS = MicroWebSrv(webPath='www/') # TCP port 80 and files in /flash/www
+    MWS = MicroWebSrv(webPath='web/www/') # TCP port 80 and files in /flash/www
     #mws = MicroWebSrv(webPath='MicroWebSrv/www/') # TCP port 80 and files in /flash/www
     G.MWS = MWS
 
@@ -46,19 +55,19 @@ def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None) -> t
     """ TODO """
     request = {}
     request['CMD'] = cmd_str
-    if index:
+    if index is not None:
         request['IDX'] = index
     request['SRC'] = 'WEB'
-    if params:
+    if params is not None:
         request['params'] = params
-    if items:
+    if items is not None:
         request.update(items)
 
-    if True:
-        answer = Cmd.excecute(request)
+    if DIRECT_CMD:
+        answer = Cmd.excecute(request) #JKJKJK TODO
     else:
         request_json = json.dumps(request)
-        answer_json = '{}'
+        answer_json = '{}' #JKJKJK TODO
         answer = json.loads(answer_json)
 
     #logging.debug('Starting web server')

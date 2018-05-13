@@ -4,7 +4,7 @@ Device Plugin for Testing
 #import logging
 import time
 
-import Device
+import dev.Device as Device
 import Tool
 
 ###################################################################################################

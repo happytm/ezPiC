@@ -3,16 +3,16 @@
 """
 import logging
 import sched, time
-import Tool
-import Cmd
-import G
-import _thread
-
 try:
     from threading import RLock
     from threading import Thread
 except:
     from _thread import allocate_lock as RLock
+import _thread
+
+import Tool
+import dev.Cmd as Cmd
+import G
 
 ###################################################################################################
 # Globals:

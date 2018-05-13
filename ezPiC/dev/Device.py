@@ -13,7 +13,6 @@ except:   # MicroPython
     import urandom as random
 
 import logging
-from collections import namedtuple
 import time
 
 try:
@@ -22,11 +21,12 @@ except:
     from _thread import allocate_lock as RLock
 
 import Tool
-import Scheduler
+import dev.Scheduler as Scheduler
 
 ###################################################################################################
 # Globals:
 
+PLUGINDIR = 'dev/plugins/devices'
 DEVICEPLUGINS = {}
 DEVICES = []
 DEVICELOCK = RLock()
@@ -57,7 +57,7 @@ def init():
     """ Prepare module vars and load plugins """
     global DEVICEPLUGINS
 
-    plugins = Tool.load_plugins('devices', 'dev')
+    plugins = Tool.load_plugins(PLUGINDIR, 'dev')
     for plugin in plugins:
         try:
             DEVICEPLUGINS[plugin.DUID] = plugin
@@ -305,7 +305,7 @@ class PluginDeviceBase():
 
     def get_html(self) -> str:
         """ get the html template name from the module """
-        return 'www/devices/{}.html'.format(self.module.DUID)
+        return 'web/www/devices/{}.html'.format(self.module.DUID)
 
     def meas(self) -> (dict, float):
         return ({}, 0.0)
