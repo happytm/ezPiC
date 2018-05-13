@@ -1,5 +1,5 @@
 """
-...TODO
+Web Plugin for Gateway-Pages
 """
 from MicroWebSrv.microWebSrv import MicroWebSrv
 
@@ -14,13 +14,14 @@ def web_gateways(httpClient, httpResponse):
 
     err, ret = Web.command('gateway.list')
     if err:
+        Web.flash_error(httpResponse, err, ret)
         ret = []
 
     vars = {}
     vars['menu'] = 'gateways'
     vars['gateway_list'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/gateways.html', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/gateways.html', vars=vars)
 
 ###################################################################################################
 
@@ -30,13 +31,14 @@ def web_gateways_list(httpClient, httpResponse):
 
     err, ret = Web.command('plugin.gateway.list')
     if err:
+        Web.flash_error(httpResponse, err, ret)
         ret = []
 
     vars = {}
     vars['menu'] = 'gateways'
     vars['gateway_list'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/gateways_list.html', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/gateways_list.html', vars=vars)
 
 ###################################################################################################
 
@@ -46,10 +48,9 @@ def web_gateway_add(httpClient, httpResponse, args):
     guid = args['guid']
 
     params = {'guid': guid}
-    err, idx = Web.command('gateway.add', params=params)
+    err, ret = Web.command('gateway.add', items=params)
     if err:
-        msg = 'Error "{0}" - Can not add gateway "{1}"'.format(err, guid)
-        httpResponse.FlashMessage(msg, 'danger')
+        Web.flash_error(httpResponse, err, ret, guid)
     else:
         Web.command('save')
         msg = 'Gateway "{}" added'.format(guid)
@@ -67,8 +68,7 @@ def web_gateway_edit(httpClient, httpResponse, args):
 
     err, ret = Web.command('gateway.getparam', index=idx)
     if err:
-        msg = 'Error "{0}" - Can not get params from gateway [{1}]'.format(err, idx)
-        httpResponse.FlashMessage(msg, 'danger')
+        Web.flash_error(httpResponse, err, ret, idx)
         return httpResponse.WriteResponseRedirect('/gateways')
 
     params = {}
@@ -82,6 +82,8 @@ def web_gateway_edit(httpClient, httpResponse, args):
                 if key in formParams:
                     params[key] = formParams.get(key)
         err, ret = Web.command('gateway.setparam', index=idx, params=params)
+        if err:
+            Web.flash_error(httpResponse, err, ret, idx)
         err, ret = Web.command('save')
     else: # GET
         pass
@@ -94,7 +96,7 @@ def web_gateway_edit(httpClient, httpResponse, args):
 
     err, html = Web.command('gateway.gethtml', index=idx)
 
-    return httpResponse.WriteResponsePyHTMLFile(html, headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile(html, vars=vars)
 
 ###################################################################################################
 
@@ -105,8 +107,7 @@ def web_gateway_del(httpClient, httpResponse, args):
 
     err, ret = Web.command('gateway.delete', index=idx)
     if err:
-        msg = 'Error "{0}" - Can not delete gateway task [{1}]'.format(err, idx)
-        httpResponse.FlashMessage(msg, 'danger')
+        Web.flash_error(httpResponse, err, ret, idx)
     else:
         err, ret = Web.command('save')
         msg = 'Gateway task deleted'

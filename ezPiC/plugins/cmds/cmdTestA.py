@@ -18,7 +18,7 @@ import Cmd
 ###################################################################################################
 
 @Cmd.route('xxx.#', 'a b c')
-def cmd_xxx(cmd: dict) -> dict:
+def cmd_xxx(cmd:dict) -> dict:
     """
     Handle command 'xxx' ...
     """
@@ -30,7 +30,7 @@ def cmd_xxx(cmd: dict) -> dict:
 ###################################################################################################
 
 @Cmd.route('ping')
-def cmd_ping(cmd: dict) -> dict:
+def cmd_ping(cmd:dict) -> dict:
     """
     Handle command 'ping' and returns string 'pong'
     """

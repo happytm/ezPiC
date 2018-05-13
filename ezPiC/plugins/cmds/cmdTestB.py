@@ -18,7 +18,7 @@ import Cmd
 ###################################################################################################
 
 @Cmd.route(r'b')
-def cmd_b(cmd: dict) -> dict:
+def cmd_b(cmd:dict) -> dict:
     """
     Handle command 'b' ...
     """

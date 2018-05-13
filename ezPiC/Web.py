@@ -42,15 +42,17 @@ def run(threaded=False):
 
 ###################################################################################################
 
-def command(cmd_str:str, index:int=None, params:dict=None, source:str='?') -> tuple:
+def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None) -> tuple:
     """ TODO """
     request = {}
     request['CMD'] = cmd_str
     if index:
         request['IDX'] = index
-    request['SRC'] = source
+    request['SRC'] = 'WEB'
     if params:
-        request.update(params)
+        request['params'] = params
+    if items:
+        request.update(items)
 
     if True:
         answer = Cmd.excecute(request)
@@ -66,3 +68,11 @@ def command(cmd_str:str, index:int=None, params:dict=None, source:str='?') -> tu
     return (code, result)
 
 ###################################################################################################
+
+def flash_error(httpResponse, err, ret, idx=None):
+    if idx:
+        msg = 'Error {0} [{2}] - {1}'.format(err, ret, idx)
+    else:
+        msg = 'Error {0} - {1}'.format(err, ret)
+
+    httpResponse.FlashMessage(msg, 'danger')

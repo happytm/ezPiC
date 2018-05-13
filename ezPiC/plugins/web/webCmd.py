@@ -1,5 +1,5 @@
 """
-...TODO
+Web Plugin for Command-Test-Page
 """
 from MicroWebSrv.microWebSrv import MicroWebSrv
 import logging, time
@@ -14,7 +14,7 @@ import Web
 @MicroWebSrv.route('/cmd')
 @MicroWebSrv.route('/cmd', 'POST')
 def web_cmd(httpClient, httpResponse):
-    """ TODO """
+    """ Shows a form to enter a command and display the result for testing the ezPiC-commands """
     cmd = ''
     err = ''
     ret = ''

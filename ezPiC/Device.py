@@ -126,8 +126,8 @@ def add(plugin_id: str, params: dict = None) -> tuple:
                 ret = len(DEVICES) - 1
                 if params:
                     device.set_param(params)
-                if inst.timer_period:
-                    device.timer_next = time.time() + inst.timer_period
+                if device.timer_period:
+                    device.timer_next = time.time() + device.timer_period
                 device.init()
             else:
                 err = 'Unknown DUID'

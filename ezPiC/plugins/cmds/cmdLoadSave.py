@@ -22,7 +22,7 @@ CONFIG_FILE = 'config.json'
 ###################################################################################################
 
 @Cmd.route('save')
-def cmd_system_save(cmd: dict) -> dict:
+def cmd_system_save(cmd:dict) -> dict:
     """ Saves all configuration and parameters of the plugins to a json-file """
 
     err = None
@@ -42,7 +42,7 @@ def cmd_system_save(cmd: dict) -> dict:
 ###################################################################################################
 
 @Cmd.route('load')
-def cmd_system_load(cmd: dict) -> dict:
+def cmd_system_load(cmd:dict) -> dict:
     """ Loads all configuration and parameters of the plugins from a json-file """
 
     try:

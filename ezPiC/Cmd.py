@@ -139,9 +139,7 @@ def _excecute_json(cmd_dict: dict, source=None) -> dict:
         if command == c['command']:   # command found
 
             if c['has_index']:
-                l = len(c['command'])
-                index_str = cmd[l+1:]
-                if cmd_params.get('IDX', None):
+                if not cmd_params.get('IDX', None):
                     return ret(-903, 'Command needs index')
 
             if source:
@@ -165,17 +163,17 @@ def excecute(cmd, source=None) -> dict:
     return: Answer from excecuted command. Can be any object type or None
     """
     try:
-        if cmd is str:
+        if type(cmd) is str:
             cmd = cmd.strip()
             if cmd.startswith('{') and cmd.endswith('}'):
                 cmd_dict = json.loads(cmd)
                 return _excecute_json(cmd_dict, source)
             else:
                 return _excecute_line(cmd, source)
-        elif cmd is dict:
+        elif type(cmd) is dict:
             return _excecute_json(cmd, source)
-        else
-            return ret(-909, 'Wrong type in command parser: ' type(cmd))
+        else:
+            return ret(-909, 'Wrong type in command parser: ' + str(type(cmd)))
         
     except Exception as e:
         return ret(-902, 'Exception in command parser - ' + str(e))

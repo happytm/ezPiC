@@ -1,5 +1,5 @@
 """
-...TODO
+Web Plugin for System-Config-Page
 """
 from MicroWebSrv.microWebSrv import MicroWebSrv
 import logging, time
@@ -31,6 +31,6 @@ def web_config(httpClient, httpResponse):
     else: # GET
         pass
 
-    return httpResponse.WriteResponsePyHTMLFile('www/config.html', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/config.html', vars=vars)
 
 ###################################################################################################

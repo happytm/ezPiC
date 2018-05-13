@@ -7,7 +7,7 @@
 </p>
 
 {{ for device in device_list }}
-    {{ py }} duid, name, info, _ = device {{ end }}
+  {{ py }} duid=device['DUID'] {{ end }}
   <div class="card">
     <div class="card-header p-2" role="tab" id="heading{{ duid }}">
       <h5 class="d-flex align-items-start m-0 ">
@@ -15,14 +15,14 @@
           <i class="fas fa-chevron-down"></i>
         </a>
         <a class="mr-auto" data-toggle="collapse" href="#collapse{{ duid }}" aria-expanded="false" aria-controls="collapse{{ duid }}">
-          [{{ duid }}] {{ name }}
+          [{{ duid }}] {{ device['NAME'] }}
         </a>
         <a href="/devices/add/{{ duid }}/" class="btn btn-success btn-sm mx-1"><i class="fas fa-plus"></i></a>
       </h5>
     </div>
     <div id="collapse{{ duid }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ duid }}">
       <div class="card-body">
-        {{ info }}
+        {{ device['INFO'] }}
       </div>
     </div>
   </div>

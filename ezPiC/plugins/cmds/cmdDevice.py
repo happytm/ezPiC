@@ -21,7 +21,7 @@ import Tool
 
 @Cmd.route('plugin.device.list')
 @Cmd.route('pdl')
-def cmd_device_list(cmd: dict) -> dict:
+def cmd_device_list(cmd:dict) -> dict:
     """
     Handle command 'plugin.device.list'.
     Returns a list of dicts with information about availabe device modules
@@ -34,7 +34,7 @@ def cmd_device_list(cmd: dict) -> dict:
 
 @Cmd.route('device.list')
 @Cmd.route('dl')
-def cmd_device_task_list(cmd: dict) -> dict:
+def cmd_device_task_list(cmd:dict) -> dict:
     """ Handle command 'device[] list' """
     err, ret = Device.get_list()
 
@@ -43,86 +43,95 @@ def cmd_device_task_list(cmd: dict) -> dict:
 ###################################################################################################
 
 @Cmd.route('plugin.device.info', 'duid')
-def cmd_device_info(cmd: dict) -> dict:
+def cmd_device_info(cmd:dict) -> dict:
     """ Handle command 'device info <duid>' """
     return Cmd.ret()
 
 ###################################################################################################
 
 @Cmd.route('device.add', 'duid')
-def cmd_device_add(cmd: dict) -> dict:
+def cmd_device_add(cmd:dict) -> dict:
     """ Handle command 'device[] add <duid>' """
     err, ret = Device.add(cmd.get('duid', None))
+
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
 @Cmd.route('device.clear')
 @Cmd.route('device.del.all')
-def cmd_device_del_all(cmd: dict) -> dict:
+def cmd_device_del_all(cmd:dict) -> dict:
     """ Handle command 'device[] del all' """
     err, ret = Device.clear()
+
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
 @Cmd.route('device.del.#')
-def cmd_device_del(cmd: dict) -> dict:
+def cmd_device_del(cmd:dict) -> dict:
     """ Handle command 'device.del.<index>' """
     index = cmd['IDX']
     err, ret = Device.delete(index)
+
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
 @Cmd.route('device.getparam.#', 'key')
-def cmd_device_get(cmd: dict) -> dict:
+def cmd_device_get(cmd:dict) -> dict:
     """ Handle command 'device[#] get <param> (no <param> for all)' """
     index = cmd['IDX']
     key = cmd.get('key', None)
     err, ret = Device.get_param(index, key)
+
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
 @Cmd.route('device.setparam.#', 'params')
-def cmd_device_set(cmd: dict) -> dict:
+def cmd_device_set(cmd:dict) -> dict:
     """ Handle command 'device[#] set <param>:<value> ...' """
     index = cmd['IDX']
     params = cmd.get('params', None)
-    if params:
+    if params and type(params) is str:
         params = json.loads(params)
     err, ret = Device.set_param(index, params)
+
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
 @Cmd.route('device.cmd.#', 'cmd')
-def cmd_device_cmd(cmd: dict) -> dict:
+def cmd_device_cmd(cmd:dict) -> dict:
     """ Handle command 'device[#] cmd <command>' """
     index = cmd['IDX']
+
     return Cmd.ret()
 
 ###################################################################################################
 
 @Cmd.route('device.gethtml.#')
-def cmd_device_html(cmd: dict) -> dict:
+def cmd_device_html(cmd:dict) -> dict:
     """ Handle command 'device[#] html' """
+    index = cmd['IDX']
     err, ret = Device.get_html(index)
+
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
 @Cmd.route('device.event.#')
-def cmd_device_event(cmd: dict) -> dict:
+def cmd_device_event(cmd:dict) -> dict:
     """ Handle command 'device[#] event' """
     index = cmd['IDX']
+
     return Cmd.ret()
 
 ###################################################################################################
 
 @Cmd.route('device.help')
-def cmd_device_help(cmd: dict) -> dict:
+def cmd_device_help(cmd:dict) -> dict:
     """ Handle command 'device help' """
     return Cmd.ret(0, 'Help?!?')
 

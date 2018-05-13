@@ -34,8 +34,8 @@ def web_index(httpClient, httpResponse):
 def web_main(httpClient, httpResponse):
     """ Main-Page with common dashboard """
     
-    code, result = Web.command('info')
-    if code:
+    err, result = Web.command('info')
+    if err:
         msg = 'Error "{0}" - {1}'.format(err, result)
         httpResponse.FlashMessage(msg, 'danger')
         result = {}

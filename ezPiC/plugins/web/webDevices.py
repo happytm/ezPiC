@@ -1,5 +1,5 @@
 """
-...TODO
+Web Plugin for Device-Pages
 """
 from MicroWebSrv.microWebSrv import MicroWebSrv
 
@@ -14,13 +14,14 @@ def web_devices(httpClient, httpResponse):
 
     err, ret = Web.command('device.list')
     if err:
+        Web.flash_error(httpResponse, err, ret)
         ret = []
 
     vars = {}
     vars['menu'] = 'devices'
     vars['device_list'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/devices.html', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/devices.html', vars=vars)
 
 ###################################################################################################
 
@@ -30,13 +31,14 @@ def web_devices_list(httpClient, httpResponse):
 
     err, ret = Web.command('plugin.device.list')
     if err:
+        Web.flash_error(httpResponse, err, ret)
         ret = []
 
     vars = {}
     vars['menu'] = 'devices'
     vars['device_list'] = ret
 
-    return httpResponse.WriteResponsePyHTMLFile('www/devices_list.html', headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile('www/devices_list.html', vars=vars)
 
 ###################################################################################################
 
@@ -46,10 +48,9 @@ def web_device_add(httpClient, httpResponse, args):
     duid = args['duid']
 
     params = {'duid': duid}
-    err, idx = Web.command('device.add', params=params)
+    err, ret = Web.command('device.add', items=params)
     if err:
-        msg = 'Error "{0}" - Can not add device "{1}"'.format(err, duid)
-        httpResponse.FlashMessage(msg, 'danger')
+        Web.flash_error(httpResponse, err, ret, duid)
     else:
         Web.command('save')
         msg = 'Device "{}" added'.format(duid)
@@ -67,8 +68,7 @@ def web_device_edit(httpClient, httpResponse, args):
 
     err, ret = Web.command('device.getparam', index=idx)
     if err:
-        msg = 'Error "{0}" - Can not get params from device [{1}]'.format(err, idx)
-        httpResponse.FlashMessage(msg, 'danger')
+        Web.flash_error(httpResponse, err, ret, idx)
         return httpResponse.WriteResponseRedirect('/devices')
 
     params = {}
@@ -82,6 +82,8 @@ def web_device_edit(httpClient, httpResponse, args):
                 if key in formParams:
                     params[key] = formParams.get(key)
         err, ret = Web.command('device.setparam', index=idx, params=params)
+        if err:
+            Web.flash_error(httpResponse, err, ret, idx)
         err, ret = Web.command('save')
     else: # GET
         pass
@@ -94,7 +96,7 @@ def web_device_edit(httpClient, httpResponse, args):
 
     err, html = Web.command('device.gethtml', index=idx)
 
-    return httpResponse.WriteResponsePyHTMLFile(html, headers=None, vars=vars)
+    return httpResponse.WriteResponsePyHTMLFile(html, vars=vars)
 
 ###################################################################################################
 
@@ -105,8 +107,7 @@ def web_device_del(httpClient, httpResponse, args):
 
     err, ret = Web.command('device.delete', index=idx)
     if err:
-        msg = 'Error "{0}" - Can not delete device task [{1}]'.format(err, idx)
-        httpResponse.FlashMessage(msg, 'danger')
+        Web.flash_error(httpResponse, err, ret, idx)
     else:
         err, ret = Web.command('save')
         msg = 'Device task deleted'

@@ -7,7 +7,7 @@
 </p>
 
 {{ for gateway in gateway_list }}
-    {{ py }} guid, name, info, _ = gateway {{ end }}
+    {{ py }} guid=gateway['GUID'] {{ end }}
   <div class="card">
     <div class="card-header p-2" role="tab" id="heading{{ guid }}">
       <h5 class="d-flex align-items-start m-0 ">
@@ -15,14 +15,14 @@
           <i class="fas fa-chevron-down"></i>
         </a>
         <a class="mr-auto" data-toggle="collapse" href="#collapse{{ guid }}" aria-expanded="false" aria-controls="collapse{{ guid }}">
-          [{{ guid }}] {{ name }}
+          [{{ guid }}] {{ gateway['NAME'] }}
         </a>
         <a href="/gateways/add/{{ guid }}/" class="btn btn-success btn-sm mx-1"><i class="fas fa-plus"></i></a>
       </h5>
     </div>
     <div id="collapse{{ guid }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ guid }}">
       <div class="card-body">
-        {{ info }}
+        {{ gateway['INFO'] }}
       </div>
     </div>
   </div>

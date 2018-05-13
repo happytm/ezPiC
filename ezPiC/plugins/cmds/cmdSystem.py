@@ -22,7 +22,7 @@ import G
 ###################################################################################################
 
 @Cmd.route('info')
-def cmd_system_info(cmd: dict) -> dict:
+def cmd_system_info(cmd:dict) -> dict:
     """ Returns common information about the system and the environment """
     i = {}
     i['System'] = 'ezPiC'
@@ -38,28 +38,28 @@ def cmd_system_info(cmd: dict) -> dict:
 ###################################################################################################
 
 @Cmd.route('version')
-def cmd_system_version(cmd: dict) -> dict:
+def cmd_system_version(cmd:dict) -> dict:
     """ Returns the version of ezPiC """
     return Cmd.ret(0, G.VERSION)
 
 ###################################################################################################
 
 @Cmd.route('about')
-def cmd_system_about(cmd: dict) -> dict:
+def cmd_system_about(cmd:dict) -> dict:
     """ Returns about information """
     return Cmd.ret(0, 'ezPiC-Project by Jochen Krapf et al. - https://github.com/fablab-wue/ezPiC')
 
 ###################################################################################################
 
 @Cmd.route('login', 'name password')
-def cmd_system_login(cmd: dict) -> dict:
+def cmd_system_login(cmd:dict) -> dict:
     """ Login to the system and change security level for actual connection """
     return Cmd.ret(0, "NOT IMPLEMENTED")
 
 ###################################################################################################
 
 @Cmd.route('logout')
-def cmd_system_logout(cmd: dict) -> dict:
+def cmd_system_logout(cmd:dict) -> dict:
     """ Logout for actual connection """
     return Cmd.ret(0, "NOT IMPLEMENTED")
 
@@ -67,7 +67,7 @@ def cmd_system_logout(cmd: dict) -> dict:
 ###################################################################################################
 
 @Cmd.route('commands')
-def cmd_system_commands(cmd: dict) -> dict:
+def cmd_system_commands(cmd:dict) -> dict:
     """ Returns a list of all available commands with arguments """
 
     cl = []
@@ -92,8 +92,8 @@ def cmd_system_commands(cmd: dict) -> dict:
 
 @Cmd.route('system.getparam')
 @Cmd.route('system.setparam', 'param')
-def cmd_system_logout(cmd: dict) -> dict:
+def cmd_system_logout(cmd:dict) -> dict:
     """ TODO """
-    return Cmd.ret("NOT IMPLEMENTED")
+    return Cmd.ret(-999, "NOT IMPLEMENTED")
 
 ###################################################################################################
