@@ -5,10 +5,8 @@ import logging
 import sched, time
 try:
     from threading import RLock
-    from threading import Thread
 except:
     from _thread import allocate_lock as RLock
-import _thread
 
 import Tool
 import dev.Cmd as Cmd
@@ -59,12 +57,6 @@ def init():
     if not SCHED:
         SCHED = sched.scheduler(time.time, time.sleep)
 
-    if not THREAD:
-        THREAD = Thread(name='Sched', target=thread_loop)
-        THREAD.setDaemon(True)
-
-    #_thread.start_new_thread(thread_loop, ())
-
 ###################################################################################################
 
 def run():
@@ -72,7 +64,9 @@ def run():
     global SCHED, THREAD
 
     logging.debug('Starting scheduler thread')
-    THREAD.start()
+    if not THREAD:
+        THREAD = Tool.start_thread(thread_loop)
+
     add_cmd(3, 'Hallo')
 
 ###################################################################################################
@@ -122,19 +116,6 @@ def thread_handler_loop():
 
 # =================================================================================================
 
-def init2():
-    """ TODO """
-    global TIMEHANDLER
-
-# =================================================================================================
-
-def run2():
-    """ TODO """
-    global TIMEHANDLER
-
-    _thread.start_new_thread(thread_handler_loop, ())
-
-    
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################

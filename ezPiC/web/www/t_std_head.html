@@ -34,6 +34,18 @@
           <a class="nav-item nav-link {{ if menu=='rules' }}active{{ end }}" href="/rules/">Rules</a>
           <a class="nav-item nav-link {{ if menu=='config' }}active{{ end }}" href="/config/">Config</a>
           <a class="nav-item nav-link {{ if menu=='test' }}active{{ end }} disabled" href="test">Test</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {{ if menu=='tools' }}active{{ end }} " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tools
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/cmd/">Command Input</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+    
         </div>
       </div>
     </nav>

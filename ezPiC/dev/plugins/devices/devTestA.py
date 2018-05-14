@@ -5,7 +5,9 @@ Device Plugin for Testing
 import time
 
 import dev.Device as Device
+import dev.Reading as Reading
 import Tool
+import random
 
 ###################################################################################################
 # Globals:
@@ -48,6 +50,7 @@ class PluginDevice(Device.PluginDeviceBase):
 
     def timer(self):
         print('A' + str(time.time()))
+        Reading.set('Lorem', random.random())
 
 ###################################################################################################
 ###################################################################################################

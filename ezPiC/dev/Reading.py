@@ -3,6 +3,7 @@ Measurements
 """
 import os
 import logging
+import time
 
 try:
     from threading import RLock
@@ -14,16 +15,15 @@ except:
 ###################################################################################################
 # Globals:
 
-PLUGINDIR = 'dev/plugins/readings'
 READINGS = {}
-READINGS_NEW = {}
 READINGLOCK = RLock()
+READINGACTTICK = 0
 
 ###################################################################################################
 
 def init():
     """ Prepare module vars and load plugins """
-    global READINGS, READINGS_NEW
+    pass
 
 ###################################################################################################
 
@@ -32,43 +32,68 @@ def run():
 
 ###################################################################################################
 
-def set(name: str, value):
-    global READINGS, READINGS_NEW
+def set(key:str, value, source:str=None) -> int:
+    global READINGS, READINGACTTICK
 
-    READINGS_NEW[name] = value
-    READINGS[name] = value
+    with READINGLOCK:
+        READINGACTTICK += 1
 
-###################################################################################################
+        r = READINGS.get(key, {})
+        r['tick'] = READINGACTTICK
+        r['value'] = value
+        r['source'] = source
+        r['time'] = time.time()
+        r['count'] = r.get('count', 0) + 1
+        READINGS[key] = r
 
-def get(name: str=None):
-    global READINGS
-
-    if name:
-        return READINGS.get(name, None)
-    else:
-        return READINGS
-
-###################################################################################################
-
-def get_new() -> dict:
-    global READINGS_NEW
-
-    return READINGS_NEW
+        return READINGACTTICK
 
 ###################################################################################################
 
-def is_new() -> bool:
-    global READINGS_NEW
+def get(key:str):
+    global READINGS, READINGACTTICK
 
-    return len(READINGS_NEW) > 0
+    with READINGLOCK:
+        r = READINGS.get(key, None)
+        if r:
+            return r['value']
+
+    return None
 
 ###################################################################################################
 
-def set_handled():
-    global READINGS, READINGS_NEW
+def get_act_tick() -> int:
+    global READINGS, READINGACTTICK
 
-    #READINGS.update(READINGS_NEW)
-    READINGS_NEW = {}
+    return READINGACTTICK
+
+###################################################################################################
+
+def is_new(tick:int) -> bool:
+    global READINGS, READINGACTTICK
+
+    return READINGACTTICK > tick
+
+###################################################################################################
+
+def get_new_list(tick:int) -> tuple:
+    global READINGS, READINGACTTICK
+
+    l = []
+
+    if tick < READINGACTTICK:
+        with READINGLOCK:
+            for key, r in READINGS.items():
+                if r['tick'] > tick:
+                    value = r['value']
+                    l.append((key, value))
+
+    return (READINGACTTICK, l)
+
+###################################################################################################
+
+def make_key(unit:str, device:str, channel:str) -> str:
+    return unit + '.' + device + '.' + channel
 
 ###################################################################################################
 ###################################################################################################

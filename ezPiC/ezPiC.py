@@ -9,6 +9,7 @@ if G.WEBSERVER:
     import web.Web as Web
 if G.IOT:
     import dev.Cmd as Cmd
+    import dev.Timer as Timer
     import dev.Device as Device
     import dev.Gateway as Gateway
     import dev.Rule as Rule
@@ -25,6 +26,7 @@ def main():
     logging.debug('Starting main init')
     if G.IOT:
         Scheduler.init()
+        Timer.init()
         Cmd.init()
         Device.init()
         Gateway.init()
@@ -37,6 +39,7 @@ def main():
     logging.debug('Starting main run')
     if G.IOT:
         Scheduler.run()
+        Timer.run()
         Cmd.run()
         Device.run()
         Gateway.run()

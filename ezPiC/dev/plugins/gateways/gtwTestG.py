@@ -5,6 +5,7 @@ Gateway Plugin for Testing
 import time
 
 import dev.Gateway as Gateway
+import dev.Reading as Reading
 import Tool
 
 ###################################################################################################
@@ -33,6 +34,7 @@ class PluginGateway(Gateway.PluginGatewayBase):
             'asd':[1,2,3,4,5],
             }
         self.timer_period = 2.7
+        self._reading_tick = 0
 
     def init(self):
         pass
@@ -45,6 +47,9 @@ class PluginGateway(Gateway.PluginGatewayBase):
 
     def timer(self):
         print('G' + str(time.time()))
+        if Reading.is_new(self._reading_tick):
+            self._reading_tick, l = Reading.get_new_list(self._reading_tick)
+            print (l)
 
 ###################################################################################################
 ###################################################################################################
