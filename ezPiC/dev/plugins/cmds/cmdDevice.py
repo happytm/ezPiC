@@ -1,5 +1,5 @@
 """
-Command Plugin for Device handling
+Command Plugin for Gadget handling
 """
 try:   # CPython
     import os
@@ -13,126 +13,126 @@ except:   # MicroPython
     import urandom as random
 
 import logging
-import dev.Device as Device
+import dev.Gadget as Gadget
 import dev.Cmd as Cmd
 import Tool
 
 ###################################################################################################
 
-@Cmd.route('plugin.device.list')
+@Cmd.route('plugin.gadget.list')
 @Cmd.route('pdl')
-def cmd_device_list(cmd:dict) -> dict:
+def cmd_gadget_list(cmd:dict) -> dict:
     """
-    Handle command 'plugin.device.list'.
-    Returns a list of dicts with information about availabe device modules
+    Handle command 'plugin.gadget.list'.
+    Returns a list of dicts with information about availabe gadget modules
     """
-    err, ret = Device.get_plugin_list()
+    err, ret = Gadget.get_plugin_list()
 
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
-@Cmd.route('device.list')
+@Cmd.route('gadget.list')
 @Cmd.route('dl')
-def cmd_device_task_list(cmd:dict) -> dict:
-    """ Handle command 'device[] list' """
-    err, ret = Device.get_list()
+def cmd_gadget_task_list(cmd:dict) -> dict:
+    """ Handle command 'gadget[] list' """
+    err, ret = Gadget.get_list()
 
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
-@Cmd.route('plugin.device.info', 'duid')
-def cmd_device_info(cmd:dict) -> dict:
-    """ Handle command 'device info <duid>' """
+@Cmd.route('plugin.gadget.info', 'duid')
+def cmd_gadget_info(cmd:dict) -> dict:
+    """ Handle command 'gadget info <duid>' """
     return Cmd.ret()
 
 ###################################################################################################
 
-@Cmd.route('device.add', 'duid')
-def cmd_device_add(cmd:dict) -> dict:
-    """ Handle command 'device[] add <duid>' """
-    err, ret = Device.add(cmd.get('duid', None))
+@Cmd.route('gadget.add', 'duid')
+def cmd_gadget_add(cmd:dict) -> dict:
+    """ Handle command 'gadget[] add <duid>' """
+    err, ret = Gadget.add(cmd.get('duid', None))
 
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
-@Cmd.route('device.clear')
-@Cmd.route('device.del.all')
-def cmd_device_del_all(cmd:dict) -> dict:
-    """ Handle command 'device[] del all' """
-    err, ret = Device.clear()
+@Cmd.route('gadget.clear')
+@Cmd.route('gadget.del.all')
+def cmd_gadget_del_all(cmd:dict) -> dict:
+    """ Handle command 'gadget[] del all' """
+    err, ret = Gadget.clear()
 
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
-@Cmd.route('device.del.#')
-def cmd_device_del(cmd:dict) -> dict:
-    """ Handle command 'device.del.<index>' """
+@Cmd.route('gadget.del.#')
+def cmd_gadget_del(cmd:dict) -> dict:
+    """ Handle command 'gadget.del.<index>' """
     index = cmd['IDX']
-    err, ret = Device.delete(index)
+    err, ret = Gadget.delete(index)
 
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
-@Cmd.route('device.getparam.#', 'key')
-def cmd_device_get(cmd:dict) -> dict:
-    """ Handle command 'device[#] get <param> (no <param> for all)' """
+@Cmd.route('gadget.getparam.#', 'key')
+def cmd_gadget_get(cmd:dict) -> dict:
+    """ Handle command 'gadget[#] get <param> (no <param> for all)' """
     index = cmd['IDX']
     key = cmd.get('key', None)
-    err, ret = Device.get_param(index, key)
+    err, ret = Gadget.get_param(index, key)
 
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
-@Cmd.route('device.setparam.#', 'params')
-def cmd_device_set(cmd:dict) -> dict:
-    """ Handle command 'device[#] set <param>:<value> ...' """
+@Cmd.route('gadget.setparam.#', 'params')
+def cmd_gadget_set(cmd:dict) -> dict:
+    """ Handle command 'gadget[#] set <param>:<value> ...' """
     index = cmd['IDX']
     params = cmd.get('params', None)
     if params and type(params) is str:
         params = json.loads(params)
-    err, ret = Device.set_param(index, params)
+    err, ret = Gadget.set_param(index, params)
 
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
-@Cmd.route('device.cmd.#', 'cmd')
-def cmd_device_cmd(cmd:dict) -> dict:
-    """ Handle command 'device[#] cmd <command>' """
+@Cmd.route('gadget.cmd.#', 'cmd')
+def cmd_gadget_cmd(cmd:dict) -> dict:
+    """ Handle command 'gadget[#] cmd <command>' """
     index = cmd['IDX']
 
     return Cmd.ret()
 
 ###################################################################################################
 
-@Cmd.route('device.gethtml.#')
-def cmd_device_html(cmd:dict) -> dict:
-    """ Handle command 'device[#] html' """
+@Cmd.route('gadget.gethtml.#')
+def cmd_gadget_html(cmd:dict) -> dict:
+    """ Handle command 'gadget[#] html' """
     index = cmd['IDX']
-    err, ret = Device.get_html(index)
+    err, ret = Gadget.get_html(index)
 
     return Cmd.ret(err, ret)
 
 ###################################################################################################
 
-@Cmd.route('device.event.#')
-def cmd_device_event(cmd:dict) -> dict:
-    """ Handle command 'device[#] event' """
+@Cmd.route('gadget.event.#')
+def cmd_gadget_event(cmd:dict) -> dict:
+    """ Handle command 'gadget[#] event' """
     index = cmd['IDX']
 
     return Cmd.ret()
 
 ###################################################################################################
 
-@Cmd.route('device.help')
-def cmd_device_help(cmd:dict) -> dict:
-    """ Handle command 'device help' """
+@Cmd.route('gadget.help')
+def cmd_gadget_help(cmd:dict) -> dict:
+    """ Handle command 'gadget help' """
     return Cmd.ret(0, 'Help?!?')
 
 ###################################################################################################

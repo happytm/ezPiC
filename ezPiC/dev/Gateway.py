@@ -58,7 +58,7 @@ def init():
     """ Prepare module vars and load plugins """
     global GATEWAYPLUGINS
 
-    plugins = Tool.load_plugins(PLUGINDIR, 'gtw')
+    plugins = Tool.load_plugins(PLUGINDIR, 'gw')
     for plugin in plugins:
         try:
             GATEWAYPLUGINS[plugin.GUID] = plugin

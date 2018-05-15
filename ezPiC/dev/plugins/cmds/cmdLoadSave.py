@@ -13,7 +13,7 @@ except:   # MicroPython
     import urandom as random
 
 import logging
-import dev.Device as Device
+import dev.Gadget as Gadget
 import dev.Gateway as Gateway
 import dev.Cmd as Cmd
 
@@ -30,7 +30,7 @@ def cmd_system_save(cmd:dict) -> dict:
     with open(CONFIG_FILE, 'w') as outfile:
         try:
             save_dict = {}
-            Device.save(save_dict)
+            Gadget.save(save_dict)
             Gateway.save(save_dict)
             # add other stuff like Gateway
             json.dump(save_dict, outfile, indent=2)
@@ -48,7 +48,7 @@ def cmd_system_load(cmd:dict) -> dict:
     try:
         with open(CONFIG_FILE, 'r') as infile:
             config_all = json.load(infile)
-            Device.load(config_all)
+            Gadget.load(config_all)
             Gateway.load(config_all)
             # ...
     except FileNotFoundError as e:

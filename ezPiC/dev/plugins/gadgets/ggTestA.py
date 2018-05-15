@@ -1,10 +1,10 @@
 """
-Device Plugin for Testing
+Gadget Plugin for Testing
 """
 #import logging
 import time
 
-import dev.Device as Device
+import dev.Gadget as Gadget
 import dev.Reading as Reading
 import Tool
 import random
@@ -18,7 +18,7 @@ INFO = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae nequ
 
 ###################################################################################################
 
-class PluginDevice(Device.PluginDeviceBase):
+class PluginGadget(Gadget.PluginGadgetBase):
     """ TODO """
 
     def __init__(self, module):
@@ -50,7 +50,7 @@ class PluginDevice(Device.PluginDeviceBase):
 
     def timer(self):
         print('A' + str(time.time()))
-        Reading.set('Lorem', random.random())
+        Reading.set('Lorem.'+self.param['name'], random.random())
 
 ###################################################################################################
 ###################################################################################################

@@ -5,7 +5,7 @@ A demo device for a room thermometer in pseudonixie style as described ...
 #import logging
 import time
 import Tool
-import Device
+import Gadget
 import neopixel
 import machine
 
@@ -13,7 +13,7 @@ import machine
 ###################################################################################################
 # Globals:
 
-DUID = 'NeoPixelDecimalTempDisplayDevice'
+DUID = 'NeoPixelDecimalTempDisplayGadget'
 NAME = 'NeoPixel Decimal Temperature Display'
 INFO = 'Display a (room) temperature measurement as a decimal coded value on a NeoPixel controlled LED strip with a temperature related colour gradient.'
 
@@ -25,7 +25,7 @@ COLOUR_0 = (40,200,255)
 COLOUR_n20 = (40,20,255)
 
 
-class PluginDevice(Device.PluginDeviceBase):
+class PluginGadget(Gadget.PluginGadgetBase):
     def __init__(self, module): # FIXME in base class, everywhere: shadowing of "module"
         super().__init__(module)
         self.param = {'name': 'NeoPixel Decimal Display', 'machine_pin': 3, 'int_digits': 2, 'fract_digits': 1,

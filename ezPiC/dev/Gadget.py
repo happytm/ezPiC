@@ -26,53 +26,53 @@ import dev.Scheduler as Scheduler
 ###################################################################################################
 # Globals:
 
-PLUGINDIR = 'dev/plugins/devices'
-DEVICEPLUGINS = {}
-DEVICES = []
-DEVICELOCK = RLock()
-DEVICETIMER = 0
+PLUGINDIR = 'dev/plugins/gadgets'
+GADGETPLUGINS = {}
+GADGETS = []
+GADGETLOCK = RLock()
+GADGETTIMER = 0
 
 ###################################################################################################
 
-def device_time_handler():
-    global DEVICES, DEVICETIMER
+def gadget_time_handler():
+    global GADGETS, GADGETTIMER
 
-    DEVICETIMER += 0.1
-    Scheduler.add_event(DEVICETIMER, device_time_handler)
+    GADGETTIMER += 0.1
+    Scheduler.add_event(GADGETTIMER, gadget_time_handler)
 
-    with DEVICELOCK:
+    with GADGETLOCK:
         t = time.time()
 
-        for idx, device in enumerate(DEVICES):
-            if device.timer_next and (t >= device.timer_next):
-                if device.timer_period:
-                    device.timer_next += device.timer_period
-                    if device.timer_next < t:
-                        device.timer_next = t + device.timer_period
-                device.timer()
+        for idx, gadget in enumerate(GADGETS):
+            if gadget.timer_next and (t >= gadget.timer_next):
+                if gadget.timer_period:
+                    gadget.timer_next += gadget.timer_period
+                    if gadget.timer_next < t:
+                        gadget.timer_next = t + gadget.timer_period
+                gadget.timer()
 
 ###################################################################################################
 
 def init():
     """ Prepare module vars and load plugins """
-    global DEVICEPLUGINS
+    global GADGETPLUGINS
 
-    plugins = Tool.load_plugins(PLUGINDIR, 'dev')
+    plugins = Tool.load_plugins(PLUGINDIR, 'gg')
     for plugin in plugins:
         try:
-            DEVICEPLUGINS[plugin.DUID] = plugin
+            GADGETPLUGINS[plugin.DUID] = plugin
         except:
             pass
 
 def load(config_all: dict):
-    if not "devices" in config_all:
+    if not "gadgets" in config_all:
         return
-    for config in config_all["devices"]:
+    for config in config_all["gadgets"]:
         duid = config["duid"]
         loaded_version = config["version"]
         params = config["params"]
         err, idx = add(duid, params)
-        running_version = DEVICES[idx].version
+        running_version = GADGETS[idx].version
 
         if not err and loaded_version != running_version:
             logging.warn("task " +  duid + " has change version form " + loaded_version + " to " + running_version)
@@ -80,33 +80,33 @@ def load(config_all: dict):
 def save(append: dict = None):
     err = None
     ret = []
-    with DEVICELOCK:
-        for device in DEVICES:
+    with GADGETLOCK:
+        for gadget in GADGETS:
             try:
                 config = {}
-                config["duid"] = device.module.DUID
-                config["version"] = device.version
-                config["params"] = device.get_param()
+                config["duid"] = gadget.module.DUID
+                config["version"] = gadget.version
+                config["params"] = gadget.get_param()
                 ret.append(config)
             except Exception as e:
                 err = -1
                 ret = str(e)
 
     if not append is None:
-        append["devices"] = ret
+        append["gadgets"] = ret
         return (err, append)
     
-    return (err, {"devices": ret})
+    return (err, {"gadgets": ret})
 
 ###################################################################################################
 
 def run():
     """ TODO """
-    global DEVICEPLUGINS, DEVICETIMER
+    global GADGETPLUGINS, GADGETTIMER
 
-    DEVICETIMER = int(time.time() + 3)
-    print(DEVICETIMER)
-    Scheduler.add_event(DEVICETIMER, device_time_handler)
+    GADGETTIMER = int(time.time() + 3)
+    print(GADGETTIMER)
+    Scheduler.add_event(GADGETTIMER, gadget_time_handler)
 
 ###################################################################################################
 ###################################################################################################
@@ -117,18 +117,18 @@ def add(plugin_id: str, params: dict = None) -> tuple:
     err = None
     ret = None
 
-    with DEVICELOCK:
+    with GADGETLOCK:
         try:
-            module = DEVICEPLUGINS.get(plugin_id, None)
+            module = GADGETPLUGINS.get(plugin_id, None)
             if module:
-                device = module.PluginDevice(module)
-                DEVICES.append(device)
-                ret = len(DEVICES) - 1
+                gadget = module.PluginGadget(module)
+                GADGETS.append(gadget)
+                ret = len(GADGETS) - 1
                 if params:
-                    device.set_param(params)
-                if device.timer_period:
-                    device.timer_next = time.time() + device.timer_period
-                device.init()
+                    gadget.set_param(params)
+                if gadget.timer_period:
+                    gadget.timer_next = time.time() + gadget.timer_period
+                gadget.init()
             else:
                 err = 'Unknown DUID'
         except Exception as e:
@@ -144,11 +144,11 @@ def delete(idx: int) -> tuple:
     err = None
     ret = None
 
-    with DEVICELOCK:
+    with GADGETLOCK:
         try:
-            device = DEVICES[idx]
-            device.exit()
-            del DEVICES[idx]
+            gadget = GADGETS[idx]
+            gadget.exit()
+            del GADGETS[idx]
         except Exception as e:
             err = -1
             ret = str(e)
@@ -159,18 +159,18 @@ def delete(idx: int) -> tuple:
 
 def clear() -> tuple:
     """ TODO """
-    global DEVICES
+    global GADGETS
     err = None
     ret = None
 
-    with DEVICELOCK:
-        for device in DEVICES:
+    with GADGETLOCK:
+        for gadget in GADGETS:
             try:
-                device.exit()
+                gadget.exit()
             except Exception as e:
                 err = -1
                 ret = str(e)
-        DEVICES = []
+        GADGETS = []
 
     return (err, ret)
 
@@ -181,8 +181,8 @@ def get_plugin_list() -> tuple:
     pl = []
     err = None
 
-    with DEVICELOCK:
-        for duid, module in DEVICEPLUGINS.items():
+    with GADGETLOCK:
+        for duid, module in GADGETPLUGINS.items():
             p = {}
             p['DUID'] = module.DUID
             p['NAME'] = module.NAME
@@ -199,14 +199,14 @@ def get_list() -> tuple:
     dl = []
     err = None
 
-    with DEVICELOCK:
-        for idx, device in enumerate(DEVICES):
+    with GADGETLOCK:
+        for idx, gadget in enumerate(GADGETS):
             d = {}
             d['idx'] = idx
-            d['DUID'] = device.module.DUID
-            d['NAME'] = device.module.NAME
-            d['name'] = device.get_name()
-            d['info'] = device.get_info()
+            d['DUID'] = gadget.module.DUID
+            d['NAME'] = gadget.module.NAME
+            d['name'] = gadget.get_name()
+            d['info'] = gadget.get_info()
             dl.append(d)
 
     return (err, dl)
@@ -218,10 +218,10 @@ def get_param(idx: int, key: str=None) -> tuple:
     err = None
     ret = None
 
-    with DEVICELOCK:
+    with GADGETLOCK:
         try:
-            device = DEVICES[idx]
-            ret = device.get_param(key)
+            gadget = GADGETS[idx]
+            ret = gadget.get_param(key)
         except Exception as e:
             err = -1
             ret = str(e)
@@ -235,10 +235,10 @@ def set_param(idx: int, params: dict) -> tuple:
     err = None
     ret = None
 
-    with DEVICELOCK:
+    with GADGETLOCK:
         try:
-            device = DEVICES[idx]
-            ret = device.set_param(params)
+            gadget = GADGETS[idx]
+            ret = gadget.set_param(params)
         except Exception as e:
             err = -1
             ret = str(e)
@@ -252,10 +252,10 @@ def get_html(idx: int) -> tuple:
     err = None
     ret = 'None'
 
-    with DEVICELOCK:
+    with GADGETLOCK:
         try:
-            device = DEVICES[idx]
-            ret = device.get_html()
+            gadget = GADGETS[idx]
+            ret = gadget.get_html()
         except Exception as e:
             err = -1
             ret = str(e)
@@ -266,7 +266,7 @@ def get_html(idx: int) -> tuple:
 ###################################################################################################
 ###################################################################################################
 
-class PluginDeviceBase():
+class PluginGadgetBase():
     """ TODO """
     version = '1.0'
 
@@ -305,7 +305,7 @@ class PluginDeviceBase():
 
     def get_html(self) -> str:
         """ get the html template name from the module """
-        return 'web/www/devices/{}.html'.format(self.module.DUID)
+        return 'web/www/gadgets/{}.html'.format(self.module.DUID)
 
     def meas(self) -> (dict, float):
         return ({}, 0.0)

@@ -4,7 +4,7 @@ Temperature Sensors supported by the "dht" micropython module
 #import logging
 import time
 import Tool
-import Device
+import Gadget
 import dht
 import machine
 
@@ -12,20 +12,20 @@ import machine
 ###################################################################################################
 # Globals:
 
-DUID = 'DHTTempHumSensorDevice'
-NAME = 'DHT / AM Temperature and Humidity Sensor Device'
+DUID = 'DHTTempHumSensorGadget'
+NAME = 'DHT / AM Temperature and Humidity Sensor Gadget'
 INFO = 'Measurement device for the common DHT11 / DHT22 / DHT12 & AM2301 / AM2302 /  AM2320 / AM2321 / AM2322 .. Temperature and Humidity Sensors.'
 
 ###################################################################################################
 
 
-class PluginDevice(Device.PluginDeviceBase):
+class PluginGadget(Gadget.PluginGadgetBase):
 
     def __init__(self, module): # FIXME in base class, everywhere: shadowing of "module"
         super().__init__(module)
-        self.param = {'name': 'DHT / AM Temperature and Humidity Sensor Device', 'machine_pin': 4, 'type': 'DHT11'} # TODO Allowed values / Lists / ...?
+        self.param = {'name': 'DHT / AM Temperature and Humidity Sensor Gadget', 'machine_pin': 4, 'type': 'DHT11'} # TODO Allowed values / Lists / ...?
         self.timer_period = 3 # must be at least 1 (DHT11 type) or 2 (DHT22 type)
-        self._sensor = None # TODO There should be a better way. (Device.setup(..) or whatever)
+        self._sensor = None # TODO There should be a better way. (Gadget.setup(..) or whatever)
 
     def timer(self):
         if self._sensor is None:

@@ -1,10 +1,10 @@
 """
-Device Plugin for Testing
+Gadget Plugin for Testing
 """
 #import logging
 import time
 import Tool
-import dev.Device as Device
+import dev.Gadget as Gadget
 import dev.Reading as Reading
 import random
 
@@ -17,7 +17,7 @@ INFO = 'Fusce dolor leo, ornare vitae dolor nec, varius aliquam tellus. Phasellu
 
 ###################################################################################################
 
-class PluginDevice(Device.PluginDeviceBase):
+class PluginGadget(Gadget.PluginGadgetBase):
     """ TODO """
     global _reading_tick
 
@@ -28,7 +28,7 @@ class PluginDevice(Device.PluginDeviceBase):
 
     def timer(self):
         print('B' + str(time.time()))
-        Reading.set('Ipsum', random.random())
+        Reading.set('Ipsum.'+self.param['name'], random.random())
 
 ###################################################################################################
 ###################################################################################################

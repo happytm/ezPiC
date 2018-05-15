@@ -10,7 +10,7 @@ if G.WEBSERVER:
 if G.IOT:
     import dev.Cmd as Cmd
     import dev.Timer as Timer
-    import dev.Device as Device
+    import dev.Gadget as Gadget
     import dev.Gateway as Gateway
     import dev.Rule as Rule
     import dev.Reading as Reading
@@ -28,7 +28,7 @@ def main():
         Scheduler.init()
         Timer.init()
         Cmd.init()
-        Device.init()
+        Gadget.init()
         Gateway.init()
         Rule.init()
         Reading.init()
@@ -41,7 +41,7 @@ def main():
         Scheduler.run()
         Timer.run()
         Cmd.run()
-        Device.run()
+        Gadget.run()
         Gateway.run()
         Rule.run()
         Reading.run()
