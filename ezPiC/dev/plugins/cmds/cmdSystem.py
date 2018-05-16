@@ -17,6 +17,8 @@ except:   # MicroPython
 
 import logging
 import dev.Cmd as Cmd
+import dev.SysConfig as SysConfig
+
 import G
 
 ###################################################################################################
@@ -88,12 +90,23 @@ def cmd_system_commands(cmd:dict) -> dict:
 
 ###################################################################################################
 
+@Cmd.route('system.getparam')
+@Cmd.route('sysconfig.getparam')
+def cmd_syscongig_getparam(cmd:dict) -> dict:
+    """ Returns the system configutation """
+    err, ret = SysConfig.get_param()
+
+    return Cmd.ret(err, ret)
+
 ###################################################################################################
 
-@Cmd.route('system.getparam')
 @Cmd.route('system.setparam', 'param')
-def cmd_system_logout(cmd:dict) -> dict:
-    """ TODO """
-    return Cmd.ret(-999, "NOT IMPLEMENTED")
+@Cmd.route('sysconfig.setparam', 'param')
+def cmd_syscongig_setparam(cmd:dict) -> dict:
+    """ Sets the system configutation """
+    params = cmd.get('params', None)
+    err, ret = SysConfig.set_param(param)
+
+    return Cmd.ret(err, ret)
 
 ###################################################################################################

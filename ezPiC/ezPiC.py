@@ -13,6 +13,7 @@ if G.IOT:
     import dev.Gadget as Gadget
     import dev.Gateway as Gateway
     import dev.Rule as Rule
+    import dev.SysConfig as SysConfig
     import dev.Reading as Reading
     import dev.Scheduler as Scheduler
     import dev.TelnetServer as TelnetServer
@@ -31,6 +32,7 @@ def main():
         Gadget.init()
         Gateway.init()
         Rule.init()
+        SysConfig.init()
         Reading.init()
         TelnetServer.init()
     if G.WEBSERVER:
@@ -44,6 +46,7 @@ def main():
         Gadget.run()
         Gateway.run()
         Rule.run()
+        SysConfig.run()
         Reading.run()
 
         Cmd.excecute("xxx 123 456 789")

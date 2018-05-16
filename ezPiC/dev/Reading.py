@@ -38,12 +38,16 @@ def set(key:str, value, source:str=None) -> int:
     with READINGLOCK:
         READINGACTTICK += 1
 
-        r = READINGS.get(key, {})
+        if key in READINGS:   #update
+            r = READINGS[key]
+            r['count'] += 1
+        else:   #new entry
+            r = {}
+            r['count'] = 1
         r['tick'] = READINGACTTICK
         r['value'] = value
         r['source'] = source
         r['time'] = time.time()
-        r['count'] = r.get('count', 0) + 1
         READINGS[key] = r
 
         return READINGACTTICK
@@ -92,8 +96,8 @@ def get_new_list(tick:int) -> tuple:
 
 ###################################################################################################
 
-def make_key(unit:str, device:str, channel:str) -> str:
-    return unit + '.' + device + '.' + channel
+def make_key(gadget:str, channel:str) -> str:
+    return gadget + '.' + channel
 
 ###################################################################################################
 ###################################################################################################

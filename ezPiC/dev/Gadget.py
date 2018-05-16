@@ -64,6 +64,18 @@ def init():
         except:
             pass
 
+###################################################################################################
+
+def run():
+    """ TODO """
+    global GADGETPLUGINS, GADGETTIMER
+
+    GADGETTIMER = int(time.time() + 3)
+    print(GADGETTIMER)
+    Scheduler.add_event(GADGETTIMER, gadget_time_handler)
+
+###################################################################################################
+
 def load(config_all: dict):
     if not "gadgets" in config_all:
         return
@@ -76,6 +88,8 @@ def load(config_all: dict):
 
         if not err and loaded_version != running_version:
             logging.warn("task " +  duid + " has change version form " + loaded_version + " to " + running_version)
+
+###################################################################################################
 
 def save(append: dict = None):
     err = None
@@ -97,16 +111,6 @@ def save(append: dict = None):
         return (err, append)
     
     return (err, {"gadgets": ret})
-
-###################################################################################################
-
-def run():
-    """ TODO """
-    global GADGETPLUGINS, GADGETTIMER
-
-    GADGETTIMER = int(time.time() + 3)
-    print(GADGETTIMER)
-    Scheduler.add_event(GADGETTIMER, gadget_time_handler)
 
 ###################################################################################################
 ###################################################################################################

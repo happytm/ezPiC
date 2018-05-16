@@ -65,6 +65,18 @@ def init():
         except:
             pass
 
+###################################################################################################
+
+def run():
+    """ TODO """
+    global GATEWAYPLUGINS, GATEWAYTIMER
+
+    GATEWAYTIMER = int(time.time() + 3)
+    print(GATEWAYTIMER)
+    Scheduler.add_event(GATEWAYTIMER, gateway_time_handler)
+
+###################################################################################################
+
 def load(config_all: dict):
     if not "gateways" in config_all:
         return
@@ -77,6 +89,8 @@ def load(config_all: dict):
 
         if not err and loaded_version != running_version:
             logging.warn("task " +  guid + " has change version form " + loaded_version + " to " + running_version)
+
+###################################################################################################
 
 def save(append: dict = None):
     err = None
@@ -98,16 +112,6 @@ def save(append: dict = None):
         return (err, append)
     
     return (err, {"gateways": ret})
-
-###################################################################################################
-
-def run():
-    """ TODO """
-    global GATEWAYPLUGINS, GATEWAYTIMER
-
-    GATEWAYTIMER = int(time.time() + 3)
-    print(GATEWAYTIMER)
-    Scheduler.add_event(GATEWAYTIMER, gateway_time_handler)
 
 ###################################################################################################
 ###################################################################################################
@@ -293,14 +297,14 @@ class PluginGatewayBase():
         """ get the description from the module """
         return self.module.INFO
 
-    def get_param(self, key: str=None):
+    def get_param(self, key:str=None):
         """ get the value for a given param key or get all key-value pairs as dict """
         if key:
             return self.param.get(key, None)
         else:
             return self.param
 
-    def set_param(self, param_new: dict):
+    def set_param(self, param_new:dict):
         """ updates the param key-value pairs with given dict """
         self.param.update(param_new)
 
