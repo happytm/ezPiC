@@ -22,7 +22,7 @@ except:
     from _thread import allocate_lock as RLock
 
 import Tool
-import dev.Scheduler as Scheduler
+import dev.Timer as Timer
 
 ###################################################################################################
 # Globals:
@@ -35,11 +35,8 @@ GATEWAYTIMER = 0
 
 ###################################################################################################
 
-def gateway_time_handler():
+def gateway_timer_handler(args):
     global GATEWAYS, GATEWAYTIMER
-
-    GATEWAYTIMER += 0.1
-    Scheduler.add_event(GATEWAYTIMER, gateway_time_handler)
 
     with GATEWAYLOCK:
         t = time.time()
@@ -61,7 +58,7 @@ def init():
     plugins = Tool.load_plugins(PLUGINDIR, 'gw')
     for plugin in plugins:
         try:
-            GATEWAYPLUGINS[plugin.GUID] = plugin
+            GATEWAYPLUGINS[plugin.GWPID] = plugin
         except:
             pass
 
@@ -71,9 +68,7 @@ def run():
     """ TODO """
     global GATEWAYPLUGINS, GATEWAYTIMER
 
-    GATEWAYTIMER = int(time.time() + 3)
-    print(GATEWAYTIMER)
-    Scheduler.add_event(GATEWAYTIMER, gateway_time_handler)
+    Timer.register_cyclic_hnadler(gateway_timer_handler)
 
 ###################################################################################################
 
@@ -81,14 +76,14 @@ def load(config_all: dict):
     if not "gateways" in config_all:
         return
     for config in config_all["gateways"]:
-        guid = config["guid"]
+        gwpid = config["GWPID"]
         loaded_version = config["version"]
         params = config["params"]
-        err, idx = add(guid, params)
+        err, idx = add(gwpid, params)
         running_version = GATEWAYS[idx].version
 
         if not err and loaded_version != running_version:
-            logging.warn("task " +  guid + " has change version form " + loaded_version + " to " + running_version)
+            logging.warn("task " +  gwpid + " has change version form " + loaded_version + " to " + running_version)
 
 ###################################################################################################
 
@@ -99,7 +94,7 @@ def save(append: dict = None):
         for gateway in GATEWAYS:
             try:
                 config = {}
-                config["guid"] = gateway.module.GUID
+                config["GWPID"] = gateway.module.GWPID
                 config["version"] = gateway.version
                 config["params"] = gateway.get_param()
                 ret.append(config)
@@ -135,7 +130,7 @@ def add(plugin_id: str, params: dict = None) -> tuple:
                     gateway.timer_next = time.time() + gateway.timer_period
                 gateway.init()
             else:
-                err = 'Unknown GUID'
+                err = 'Unknown GWPID'
         except Exception as e:
             err = -1
             ret = str(e)
@@ -187,12 +182,12 @@ def get_plugin_list() -> tuple:
     err = None
 
     with GATEWAYLOCK:
-        for guid, module in GATEWAYPLUGINS.items():
+        for gwpid, module in GATEWAYPLUGINS.items():
             p = {}
-            p['GUID'] = module.GUID
-            p['NAME'] = module.NAME
-            p['INFO'] = module.INFO
-            p['MODULE'] = module.__name__
+            p['GWPID'] = module.GWPID
+            p['PNAME'] = module.PNAME
+            p['PINFO'] = module.PINFO
+            p['PFILE'] = module.__name__
             pl.append(p)
 
     return (err, pl)
@@ -208,8 +203,8 @@ def get_list() -> tuple:
         for idx, gateway in enumerate(GATEWAYS):
             g = {}
             g['idx'] = idx
-            g['GUID'] = gateway.module.GUID
-            g['NAME'] = gateway.module.NAME
+            g['GWPID'] = gateway.module.GWPID
+            g['PNAME'] = gateway.module.PNAME
             g['name'] = gateway.get_name()
             g['info'] = gateway.get_info()
             gl.append(g)
@@ -295,7 +290,7 @@ class PluginGatewayBase():
 
     def get_info(self) -> str:
         """ get the description from the module """
-        return self.module.INFO
+        return str(self.param)
 
     def get_param(self, key:str=None):
         """ get the value for a given param key or get all key-value pairs as dict """
@@ -310,7 +305,7 @@ class PluginGatewayBase():
 
     def get_html(self) -> str:
         """ get the html template name from the module """
-        return 'web/www/gateways/{}.html'.format(self.module.GUID)
+        return 'web/www/gateways/{}.html'.format(self.module.GWPID)
 
     def meas(self) -> (dict, float):
         return ({}, 0.0)
@@ -320,9 +315,6 @@ class PluginGatewayBase():
 
     def timer(self):
         return None
-
-    def xxx(self):
-        pass
 
 ###################################################################################################
 ###################################################################################################

@@ -7,22 +7,22 @@
 </p>
 
 {{ for gateway in gateway_list }}
-    {{ py }} guid=gateway['GUID'] {{ end }}
+    {{ py }} gwpid=gateway['GWPID'] {{ end }}
   <div class="card">
-    <div class="card-header p-2" role="tab" id="heading{{ guid }}">
+    <div class="card-header p-2" role="tab" id="heading{{ gwpid }}">
       <h5 class="d-flex align-items-start m-0 ">
-        <a class="btn btn-secondary btn-sm mx-1 ml-0 mr-3" data-toggle="collapse" href="#collapse{{ guid }}" aria-expanded="false" aria-controls="collapse{{ guid }}">
+        <a class="btn btn-secondary btn-sm mx-1 ml-0 mr-3" data-toggle="collapse" href="#collapse{{ gwpid }}" aria-expanded="false" aria-controls="collapse{{ gwpid }}">
           <i class="fas fa-chevron-down"></i>
         </a>
-        <a class="mr-auto" data-toggle="collapse" href="#collapse{{ guid }}" aria-expanded="false" aria-controls="collapse{{ guid }}">
-          [{{ guid }}] {{ gateway['NAME'] }}
+        <a class="mr-auto" data-toggle="collapse" href="#collapse{{ gwpid }}" aria-expanded="false" aria-controls="collapse{{ gwpid }}">
+          [{{ gwpid }}] {{ gateway['PNAME'] }}
         </a>
-        <a href="/gateways/add/{{ guid }}/" class="btn btn-success btn-sm mx-1"><i class="fas fa-plus"></i></a>
+        <a href="/gateways/add/{{ gwpid }}/" class="btn btn-success btn-sm mx-1"><i class="fas fa-plus"></i></a>
       </h5>
     </div>
-    <div id="collapse{{ guid }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ guid }}">
+    <div id="collapse{{ gwpid }}" class="collapse" role="tabpanel" aria-labelledby="heading{{ gwpid }}">
       <div class="card-body">
-        {{ gateway['INFO'] }}
+        {{ gateway['PINFO'] }}
       </div>
     </div>
   </div>

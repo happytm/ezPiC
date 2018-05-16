@@ -11,9 +11,9 @@ import Tool
 ###################################################################################################
 # Globals:
 
-GUID = 'TestGatewayG'
-NAME = 'Readable Name G'
-INFO = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae neque nisi. Vivamus consectetur sapien eget venenatis faucibus. Quisque elementum, neque ut accumsan scelerisque, sapien augue dictum nibh, id porttitor ex felis sed neque. Aenean imperdiet venenatis arcu nec hendrerit. Suspendisse ultricies massa elementum ligula vehicula, ut tristique leo dignissim. Sed sed urna fringilla, tempor mi quis, efficitur quam. Etiam ut enim purus. Donec convallis pretium nibh vel gravida.'
+GWPID = 'TestGatewayG'
+PNAME = 'Readable Name G'
+PINFO = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae neque nisi. Vivamus consectetur sapien eget venenatis faucibus. Quisque elementum, neque ut accumsan scelerisque, sapien augue dictum nibh, id porttitor ex felis sed neque. Aenean imperdiet venenatis arcu nec hendrerit. Suspendisse ultricies massa elementum ligula vehicula, ut tristique leo dignissim. Sed sed urna fringilla, tempor mi quis, efficitur quam. Etiam ut enim purus. Donec convallis pretium nibh vel gravida.'
 
 ###################################################################################################
 
@@ -23,7 +23,11 @@ class PluginGateway(Gateway.PluginGatewayBase):
     def __init__(self, module):
         super().__init__(module)
         self.param = {
-            'name':'A',
+            # must be params
+            'name':'G',
+            'enable':False,
+            'timer':3,
+            # instance specific params
             'name_t':'T',
             'name_h':'H',
             'name_p':'P',

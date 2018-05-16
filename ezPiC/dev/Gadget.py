@@ -21,7 +21,7 @@ except:
     from _thread import allocate_lock as RLock
 
 import Tool
-import dev.Scheduler as Scheduler
+import dev.Timer as Timer
 
 ###################################################################################################
 # Globals:
@@ -34,11 +34,8 @@ GADGETTIMER = 0
 
 ###################################################################################################
 
-def gadget_time_handler():
+def gadget_timer_handler(args):
     global GADGETS, GADGETTIMER
-
-    GADGETTIMER += 0.1
-    Scheduler.add_event(GADGETTIMER, gadget_time_handler)
 
     with GADGETLOCK:
         t = time.time()
@@ -60,7 +57,7 @@ def init():
     plugins = Tool.load_plugins(PLUGINDIR, 'gg')
     for plugin in plugins:
         try:
-            GADGETPLUGINS[plugin.DUID] = plugin
+            GADGETPLUGINS[plugin.GGPID] = plugin
         except:
             pass
 
@@ -70,9 +67,7 @@ def run():
     """ TODO """
     global GADGETPLUGINS, GADGETTIMER
 
-    GADGETTIMER = int(time.time() + 3)
-    print(GADGETTIMER)
-    Scheduler.add_event(GADGETTIMER, gadget_time_handler)
+    Timer.register_cyclic_hnadler(gadget_timer_handler)
 
 ###################################################################################################
 
@@ -80,14 +75,14 @@ def load(config_all: dict):
     if not "gadgets" in config_all:
         return
     for config in config_all["gadgets"]:
-        duid = config["duid"]
+        ggpid = config["GGPID"]
         loaded_version = config["version"]
         params = config["params"]
-        err, idx = add(duid, params)
+        err, idx = add(ggpid, params)
         running_version = GADGETS[idx].version
 
         if not err and loaded_version != running_version:
-            logging.warn("task " +  duid + " has change version form " + loaded_version + " to " + running_version)
+            logging.warn("task " +  ggpid + " has change version form " + loaded_version + " to " + running_version)
 
 ###################################################################################################
 
@@ -98,7 +93,7 @@ def save(append: dict = None):
         for gadget in GADGETS:
             try:
                 config = {}
-                config["duid"] = gadget.module.DUID
+                config["GGPID"] = gadget.module.GGPID
                 config["version"] = gadget.version
                 config["params"] = gadget.get_param()
                 ret.append(config)
@@ -134,7 +129,7 @@ def add(plugin_id: str, params: dict = None) -> tuple:
                     gadget.timer_next = time.time() + gadget.timer_period
                 gadget.init()
             else:
-                err = 'Unknown DUID'
+                err = 'Unknown GGPID'
         except Exception as e:
             err = -1
             ret = str(e)
@@ -186,12 +181,12 @@ def get_plugin_list() -> tuple:
     err = None
 
     with GADGETLOCK:
-        for duid, module in GADGETPLUGINS.items():
+        for ggpid, module in GADGETPLUGINS.items():
             p = {}
-            p['DUID'] = module.DUID
-            p['NAME'] = module.NAME
-            p['INFO'] = module.INFO
-            p['MODULE'] = module.__name__
+            p['GGPID'] = module.GGPID
+            p['PNAME'] = module.PNAME
+            p['PINFO'] = module.PINFO
+            p['PFILE'] = module.__name__
             pl.append(p)
 
     return (err, pl)
@@ -207,8 +202,8 @@ def get_list() -> tuple:
         for idx, gadget in enumerate(GADGETS):
             d = {}
             d['idx'] = idx
-            d['DUID'] = gadget.module.DUID
-            d['NAME'] = gadget.module.NAME
+            d['GGPID'] = gadget.module.GGPID
+            d['PNAME'] = gadget.module.PNAME
             d['name'] = gadget.get_name()
             d['info'] = gadget.get_info()
             dl.append(d)
@@ -294,7 +289,7 @@ class PluginGadgetBase():
 
     def get_info(self) -> str:
         """ get the description from the module """
-        return self.module.INFO
+        return str(self.param)
 
     def get_param(self, key: str=None):
         """ get the value for a given param key or get all key-value pairs as dict """
@@ -309,19 +304,13 @@ class PluginGadgetBase():
 
     def get_html(self) -> str:
         """ get the html template name from the module """
-        return 'web/www/gadgets/{}.html'.format(self.module.DUID)
-
-    def meas(self) -> (dict, float):
-        return ({}, 0.0)
+        return 'web/www/gadgets/{}.html'.format(self.module.GGPID)
 
     def cmd(self, cmd: str) -> str:
         return None
 
     def timer(self):
         return None
-
-    def xxx(self):
-        pass
 
 ###################################################################################################
 ###################################################################################################

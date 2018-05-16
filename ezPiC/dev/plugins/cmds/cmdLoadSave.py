@@ -13,6 +13,7 @@ except:   # MicroPython
     import urandom as random
 
 import logging
+import dev.SysConfig as SysConfig
 import dev.Gadget as Gadget
 import dev.Gateway as Gateway
 import dev.Cmd as Cmd
@@ -30,6 +31,7 @@ def cmd_system_save(cmd:dict) -> dict:
     with open(CONFIG_FILE, 'w') as outfile:
         try:
             save_dict = {}
+            SysConfig.save(save_dict)
             Gadget.save(save_dict)
             Gateway.save(save_dict)
             # add other stuff like Gateway
@@ -48,6 +50,7 @@ def cmd_system_load(cmd:dict) -> dict:
     try:
         with open(CONFIG_FILE, 'r') as infile:
             config_all = json.load(infile)
+            SysConfig.load(config_all)
             Gadget.load(config_all)
             Gateway.load(config_all)
             # ...

@@ -16,7 +16,7 @@ Choose a gateway and click the [<i class="fas fa-pencil-alt"></i>] button to edi
                     <i class="fas fa-chevron-down"></i>
                 </a>
                 <a class="mr-auto" data-toggle="collapse" href="#collapse{{ index }}" aria-expanded="false" aria-controls="collapse{{ index }}">
-                    #{{ index }} [{{ gateway['GUID'] }}] {{ gateway['NAME'] }} - {{ gateway['name'] }}
+                    #{{ index }} [{{ gateway['GWPID'] }}] {{ gateway['PNAME'] }} - {{ gateway['name'] }}
                 </a>
                 <a href="/gateways/edit/{{ index }}/" class="btn btn-warning btn-sm mx-1"><i class="fas fa-pencil-alt"></i></a>
                 <a href="/gateways/del/{{ index }}/" class="btn btn-danger btn-sm mx-1"><i class="fas fa-trash-alt"></i></a>

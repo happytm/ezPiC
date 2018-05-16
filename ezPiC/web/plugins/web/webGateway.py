@@ -42,18 +42,18 @@ def web_gateways_list(httpClient, httpResponse):
 
 ###################################################################################################
 
-@MicroWebSrv.route('/gateways/add/<guid>/')
+@MicroWebSrv.route('/gateways/add/<gwpid>/')
 def web_gateway_add(httpClient, httpResponse, args):
     """ TODO """
-    guid = args['guid']
+    gwpid = args['gwpid']
 
-    params = {'guid': guid}
+    params = {'gwpid': gwpid}
     err, ret = Web.command('gateway.add', items=params)
     if err:
-        Web.flash_error(httpResponse, err, ret, guid)
+        Web.flash_error(httpResponse, err, ret, gwpid)
     else:
         Web.command('save')
-        msg = 'Gateway "{}" added'.format(guid)
+        msg = 'Gateway "{}" added'.format(gwpid)
         httpResponse.FlashMessage(msg, 'info')
 
     return httpResponse.WriteResponseRedirect('/gateways')
@@ -72,17 +72,16 @@ def web_gateway_edit(httpClient, httpResponse, args):
         return httpResponse.WriteResponseRedirect('/gateways')
 
     params = {}
-    params['name'] = 'Test-Name'
     params.update(ret)
 
     if httpClient.GetRequestMethod() == 'POST':
-        formParams = httpClient.ReadRequestPostedFormData()
+        formParams = httpClient.ReadRequestPostedFormData()        
         if formParams:
+            formParams['enable'] = 'enable' in formParams   # checkbox -> bool
+            formParams['timer'] = int(formParams.get('timer', 0))
             for key, value in params.items():
                 if key in formParams:
                     params[key] = formParams.get(key)
-        err, ret = Web.command('gateway.setparam', index=idx, params=params)
-        if err:
             Web.flash_error(httpResponse, err, ret, idx)
         err, ret = Web.command('save')
     else: # GET
@@ -90,7 +89,6 @@ def web_gateway_edit(httpClient, httpResponse, args):
 
     vars = {}
     vars['menu'] = 'gateways'
-    #vars['name'] = 'TEST'
     vars['index'] = idx
     vars.update(params)
 

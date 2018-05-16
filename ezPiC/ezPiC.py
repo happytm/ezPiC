@@ -15,7 +15,6 @@ if G.IOT:
     import dev.Rule as Rule
     import dev.SysConfig as SysConfig
     import dev.Reading as Reading
-    import dev.Scheduler as Scheduler
     import dev.TelnetServer as TelnetServer
 
 #logging.basicConfig(level=logging.DEBUG, format='%(asctime)-15s %(levelname).1s %(threadName).5s %(message)s',)
@@ -26,7 +25,6 @@ def main():
     """ Entry point for ezPiC """
     logging.debug('Starting main init')
     if G.IOT:
-        Scheduler.init()
         Timer.init()
         Cmd.init()
         Gadget.init()
@@ -40,7 +38,6 @@ def main():
 
     logging.debug('Starting main run')
     if G.IOT:
-        Scheduler.run()
         Timer.run()
         Cmd.run()
         Gadget.run()

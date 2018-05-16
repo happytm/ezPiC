@@ -42,17 +42,17 @@ def cmd_gadget_task_list(cmd:dict) -> dict:
 
 ###################################################################################################
 
-@Cmd.route('plugin.gadget.info', 'duid')
+@Cmd.route('plugin.gadget.info', 'ggpid')
 def cmd_gadget_info(cmd:dict) -> dict:
-    """ Handle command 'gadget info <duid>' """
+    """ Handle command 'gadget info <ggpid>' """
     return Cmd.ret()
 
 ###################################################################################################
 
-@Cmd.route('gadget.add', 'duid')
+@Cmd.route('gadget.add', 'ggpid')
 def cmd_gadget_add(cmd:dict) -> dict:
-    """ Handle command 'gadget[] add <duid>' """
-    err, ret = Gadget.add(cmd.get('duid', None))
+    """ Handle command 'gadget[] add <ggpid>' """
+    err, ret = Gadget.add(cmd.get('ggpid', None))
 
     return Cmd.ret(err, ret)
 

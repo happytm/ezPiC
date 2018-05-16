@@ -42,18 +42,18 @@ def web_gadgets_list(httpClient, httpResponse):
 
 ###################################################################################################
 
-@MicroWebSrv.route('/gadgets/add/<duid>/')
+@MicroWebSrv.route('/gadgets/add/<ggpid>/')
 def web_gadget_add(httpClient, httpResponse, args):
     """ TODO """
-    duid = args['duid']
+    ggpid = args['ggpid']
 
-    params = {'duid': duid}
+    params = {'ggpid': ggpid}
     err, ret = Web.command('gadget.add', items=params)
     if err:
-        Web.flash_error(httpResponse, err, ret, duid)
+        Web.flash_error(httpResponse, err, ret, ggpid)
     else:
         Web.command('save')
-        msg = 'Gadget "{}" added'.format(duid)
+        msg = 'Gadget "{}" added'.format(ggpid)
         httpResponse.FlashMessage(msg, 'info')
 
     return httpResponse.WriteResponseRedirect('/gadgets')
@@ -72,12 +72,13 @@ def web_gadget_edit(httpClient, httpResponse, args):
         return httpResponse.WriteResponseRedirect('/gadgets')
 
     params = {}
-    #params['name'] = 'Test-Name'
     params.update(ret)
 
     if httpClient.GetRequestMethod() == 'POST':
-        formParams = httpClient.ReadRequestPostedFormData()
+        formParams = httpClient.ReadRequestPostedFormData()        
         if formParams:
+            formParams['enable'] = 'enable' in formParams   # checkbox -> bool
+            formParams['timer'] = int(formParams.get('timer', 0))
             for key, value in params.items():
                 if key in formParams:
                     params[key] = formParams.get(key)
@@ -90,7 +91,6 @@ def web_gadget_edit(httpClient, httpResponse, args):
 
     vars = {}
     vars['menu'] = 'gadgets'
-    #vars['name'] = 'TEST'
     vars['index'] = idx
     vars.update(params)
 

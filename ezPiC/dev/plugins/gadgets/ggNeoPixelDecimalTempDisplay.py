@@ -13,9 +13,9 @@ import machine
 ###################################################################################################
 # Globals:
 
-DUID = 'NeoPixelDecimalTempDisplayGadget'
-NAME = 'NeoPixel Decimal Temperature Display'
-INFO = 'Display a (room) temperature measurement as a decimal coded value on a NeoPixel controlled LED strip with a temperature related colour gradient.'
+GGPID = 'NeoPixelDecimalTempDisplayGadget'
+PNAME = 'NeoPixel Decimal Temperature Display'
+PINFO = 'Display a (room) temperature measurement as a decimal coded value on a NeoPixel controlled LED strip with a temperature related colour gradient.'
 
 ###################################################################################################
 

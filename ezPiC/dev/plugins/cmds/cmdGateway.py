@@ -42,19 +42,19 @@ def cmd_gateway_task_list(cmd:dict) -> dict:
 
 ###################################################################################################
 
-@Cmd.route('plugin.gateway.info', 'guid')
+@Cmd.route('plugin.gateway.info', 'gwpid')
 def cmd_gateway_info(cmd:dict) -> dict:
-    """ Handle command 'gateway info <guid>' """
+    """ Handle command 'gateway info <gwpid>' """
     ids = list(cmd.keys())
 
     return Cmd.ret(0, ids)
 
 ###################################################################################################
 
-@Cmd.route('gateway.add', 'duid')
+@Cmd.route('gateway.add', 'ggpid')
 def cmd_gateway_add(cmd:dict) -> dict:
-    """ Handle command 'gateway[] add <guid>' """
-    err, ret = Gateway.add(cmd.get('guid', None))
+    """ Handle command 'gateway[] add <gwpid>' """
+    err, ret = Gateway.add(cmd.get('gwpid', None))
 
     return Cmd.ret(err, ret)
 
