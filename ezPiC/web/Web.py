@@ -1,7 +1,6 @@
 """
 ...TODO
 """
-import logging
 #from MicroWebSrv.microWebTemplate import MicroWebTemplate
 from .MicroWebSrv.microWebSrv import MicroWebSrv
 import json
@@ -45,7 +44,7 @@ def run(threaded=False):
     """ TODO """
     global MWS
 
-    logging.debug('Starting web server')
+    G.log(G.LOG_DEBUG, 'Starting web server')
 
     MWS.Start(threaded=threaded)         # Starts server in a new thread
 
@@ -70,7 +69,6 @@ def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None) -> t
         answer_json = '{}' #JKJKJK TODO
         answer = json.loads(answer_json)
 
-    #logging.debug('Starting web server')
     code = answer.get('CODE', 0)
     result = answer.get('RESULT', None)
 

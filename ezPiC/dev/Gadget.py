@@ -12,7 +12,6 @@ except:   # MicroPython
     import ujson as json
     import urandom as random
 
-import logging
 import time
 
 try:
@@ -20,6 +19,7 @@ try:
 except:
     from _thread import allocate_lock as RLock
 
+import G
 import Tool
 import dev.Timer as Timer
 
@@ -82,7 +82,7 @@ def load(config_all: dict):
         running_version = GADGETS[idx].version
 
         if not err and loaded_version != running_version:
-            logging.warn("task " +  ggpid + " has change version form " + loaded_version + " to " + running_version)
+            G.log(G.LOG_WARN, "task " +  ggpid + " has change version form " + loaded_version + " to " + running_version)
 
 ###################################################################################################
 

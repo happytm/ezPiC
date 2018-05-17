@@ -12,7 +12,7 @@ except:   # MicroPython
     import ujson as json
     import urandom as random
 
-import logging
+import G
 import dev.Cmd as Cmd
 
 ###################################################################################################
@@ -22,7 +22,6 @@ def cmd_xxx(cmd:dict) -> dict:
     """
     Handle command 'xxx' ...
     """
-    #logging.debug('cmdA ' + str(params))
     x = cmd.get('a', '0')
 
     return Cmd.ret()
@@ -34,7 +33,7 @@ def cmd_ping(cmd:dict) -> dict:
     """
     Handle command 'ping' and returns string 'pong'
     """
-    logging.debug('Ping')
+    G.log(G.LOG_DEBUG, 'Ping')
 
     return Cmd.ret(0, 'pong')
 

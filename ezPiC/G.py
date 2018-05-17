@@ -1,21 +1,43 @@
 """
-...TODO
+Global Properties and Functions
 """
-try:   # CPython
-    import os
-    import re
-    import json
-    import random
-except:   # MicroPython
-    import uos as os
-    import ure as re
-    import ujson as json
-    import urandom as random
-
-import logging
-
-MWS = None
 RUN = True
 WEBSERVER = True
-IOT = True
+IOTDEVICE = True
 VERSION = '0.0.?'
+
+LOGLEVEL = 4   # 0=NoOutput, 1=Error, 2=Warning, 3=Info, 4=Debug, 5=Ext.Debug
+
+LOG_ERROR = 1
+LOG_WARN = 2
+LOG_INFO = 3
+LOG_DEBUG = 4
+LOG_EXT_DEBUG = 5
+
+try:   # MicroPython
+    import uos as os
+    MICROPYTHON = True
+    WEBSERVER = False
+except:   # CPython
+    MICROPYTHON = False
+
+MWS = None
+
+###################################################################################################
+
+from datetime import datetime
+
+def log(level:int, msg:str, *args):
+    global LOGLEVEL
+
+    if level>LOGLEVEL:
+        return
+
+    if args:
+        msg = msg.format(*args)
+
+    localtime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    msg = '{0} [{1}] {2}'.format(localtime, level, msg)
+    print(msg)
+
+###################################################################################################

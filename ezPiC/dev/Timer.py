@@ -1,7 +1,6 @@
 """
 ...TODO
 """
-import logging
 import time
 
 import Tool
@@ -45,7 +44,7 @@ def run():
     """ TODO """
     global THREAD
 
-    logging.debug('Starting scheduler thread')
+    G.log(G.LOG_DEBUG, 'Starting scheduler thread')
     if not THREAD:
         THREAD = Tool.start_thread(thread_timer_loop)
 

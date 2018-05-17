@@ -2,11 +2,12 @@
 Web Plugin for Command-Test-Page
 """
 from web.MicroWebSrv.microWebSrv import MicroWebSrv
-import logging, time
+import time
 #import html
 import Tool
 import json
 import web.Web as Web
+import G
 
 ###################################################################################################
 
@@ -36,7 +37,7 @@ def web_cmd(httpClient, httpResponse):
             pass
         ret = str(ret)
         #ret = html.escape(ret)
-        logging.debug('Cmd ' + cmd + ' -> ' + ret)
+        G.log(G.LOG_DEBUG, 'Cmd ' + cmd + ' -> ' + ret)
 
     vars = {}
     vars['menu'] = 'tools'

@@ -15,7 +15,6 @@ except:   # MicroPython
     import ujson as json
     import urandom as random
 
-import logging
 import dev.Cmd as Cmd
 import dev.SysConfig as SysConfig
 
@@ -105,7 +104,7 @@ def cmd_syscongig_getparam(cmd:dict) -> dict:
 def cmd_syscongig_setparam(cmd:dict) -> dict:
     """ Sets the system configutation """
     params = cmd.get('params', None)
-    err, ret = SysConfig.set_param(param)
+    err, ret = SysConfig.set_param(params)
 
     return Cmd.ret(err, ret)
 

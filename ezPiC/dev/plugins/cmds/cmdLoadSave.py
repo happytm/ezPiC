@@ -12,7 +12,6 @@ except:   # MicroPython
     import ujson as json
     import urandom as random
 
-import logging
 import dev.SysConfig as SysConfig
 import dev.Gadget as Gadget
 import dev.Gateway as Gateway

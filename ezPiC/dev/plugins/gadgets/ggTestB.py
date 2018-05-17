@@ -1,9 +1,7 @@
 """
 Gadget Plugin for Testing
 """
-#import logging
 import time
-import Tool
 import dev.Gadget as Gadget
 import dev.Reading as Reading
 import random

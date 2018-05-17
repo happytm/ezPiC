@@ -2,12 +2,11 @@
 ...TODO
 """
 import os
-import logging
 import G
 
 if G.WEBSERVER:
     import web.Web as Web
-if G.IOT:
+if G.IOTDEVICE:
     import dev.Cmd as Cmd
     import dev.Timer as Timer
     import dev.Gadget as Gadget
@@ -17,14 +16,17 @@ if G.IOT:
     import dev.Reading as Reading
     import dev.TelnetServer as TelnetServer
 
-#logging.basicConfig(level=logging.DEBUG, format='%(asctime)-15s %(levelname).1s %(threadName).5s %(message)s',)
-
 ###################################################################################################
 
 def main():
+    G.log(1, 'Lorem ipsum')
+    G.log(1, 'Lorem {} ipsum', 'test')
+    G.log(1, 'Lorem {} ipsum {}', 'test', 123)
+
+
     """ Entry point for ezPiC """
-    logging.debug('Starting main init')
-    if G.IOT:
+    G.log(G.LOG_INFO, 'Starting main init')
+    if G.IOTDEVICE:
         Timer.init()
         Cmd.init()
         Gadget.init()
@@ -36,8 +38,8 @@ def main():
     if G.WEBSERVER:
         Web.init()
 
-    logging.debug('Starting main run')
-    if G.IOT:
+    G.log(G.LOG_INFO, 'Starting main run')
+    if G.IOTDEVICE:
         Timer.run()
         Cmd.run()
         Gadget.run()
@@ -53,19 +55,20 @@ def main():
         Cmd.excecute("load")
 
     if G.WEBSERVER:
-        logging.debug('Starting web server')
-        Web.run(threaded=G.IOT)   # this call never comes back .. normally
+        G.log(G.LOG_INFO, 'Starting web server')
+        Web.run(threaded=G.IOTDEVICE)   # this call never comes back .. normally
 
-    if G.IOT:
-        logging.debug('Starting telnet server')
+    if G.IOTDEVICE:
+        G.log(G.LOG_INFO, 'Starting telnet server')
         TelnetServer.run()   # this call never comes back .. normally
 
-    logging.error('PANIC! Server terminated')
+    G.log(G.LOG_ERROR, 'PANIC! Server terminated')
     G.RUN = False
 
 ###################################################################################################
 
 if __name__ == '__main__':
     main()   # this call never comes back!
+    G.RUN = False
 
 ###################################################################################################

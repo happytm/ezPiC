@@ -12,8 +12,7 @@ except:   # MicroPython
     import ujson as json
     import urandom as random
 
-import logging
-
+import G
 
 ###################################################################################################
 
@@ -43,9 +42,9 @@ import logging
 #                     module = importlib.import_module(plugin, package=package)
 #                     #module.ID
 #                     modules.append(module)
-#                     logging.info('Import plugin "{}{}"'.format(package, plugin))
+#                     G.log(G.LOG_INFO, 'Import plugin "{}{}"'.format(package, plugin))
 #                 except Exception as e:
-#                     logging.error('Fail to import plugin "{}{}"\n{}'.format(package, plugin, e))
+#                     G.log(G.LOG_ERROR, 'Fail to import plugin "{}{}"\n{}'.format(package, plugin, e))
 
 #     return modules
 
@@ -62,7 +61,7 @@ def load_plugins(path: str, pre :str=None) -> list:
         full_path = os.path.join(os.path.dirname(__file__), path)
     except:   # MicroPython has no os.path
         full_path = path
-    logging.info('Loading plugins from path "{}"'.format(full_path))
+    G.log(G.LOG_INFO, 'Loading plugins from path "{}"'.format(full_path))
 
     modules = []
 
@@ -88,9 +87,9 @@ def load_plugins(path: str, pre :str=None) -> list:
         try:
             module = __import__(module_name, globals(), locals(), ['object'], 0)
             modules.append(module)
-            logging.info('Import plugin "{}"'.format(module_name))
+            G.log(G.LOG_INFO, 'Import plugin "{}"'.format(module_name))
         except Exception as e:
-            logging.error('Fail to import plugin "{}"\n{}'.format(module_name, e))
+            G.log(G.LOG_ERROR, 'Fail to import plugin "{}"\n{}'.format(module_name, e))
 
     return modules
 
@@ -147,7 +146,7 @@ def str_to_params(paramstr:str) -> dict:
 ###################################################################################################
 ###################################################################################################
 
-def start_thread(func, args=()):
+def start_thread(func, *args):
 
     try:
         from threading import Thread
@@ -162,3 +161,5 @@ def start_thread(func, args=()):
 
         t = start_new_thread(func, args)
         return t
+
+###################################################################################################

@@ -12,10 +12,10 @@ except:   # MicroPython
     import ujson as json
     import urandom as random
 
-import logging
 import dev.Gadget as Gadget
 import dev.Cmd as Cmd
 import Tool
+import G
 
 ###################################################################################################
 

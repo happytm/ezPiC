@@ -2,7 +2,6 @@
 Measurements
 """
 import os
-import logging
 import time
 
 try:

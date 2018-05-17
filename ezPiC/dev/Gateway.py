@@ -12,7 +12,6 @@ except:   # MicroPython
     import ujson as json
     import urandom as random
 
-import logging
 from collections import namedtuple
 import time
 
@@ -22,6 +21,7 @@ except:
     from _thread import allocate_lock as RLock
 
 import Tool
+import G
 import dev.Timer as Timer
 
 ###################################################################################################
@@ -83,7 +83,7 @@ def load(config_all: dict):
         running_version = GATEWAYS[idx].version
 
         if not err and loaded_version != running_version:
-            logging.warn("task " +  gwpid + " has change version form " + loaded_version + " to " + running_version)
+            G.log(G.LOG_WARN, "task " +  gwpid + " has change version form " + loaded_version + " to " + running_version)
 
 ###################################################################################################
 

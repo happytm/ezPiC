@@ -1,13 +1,12 @@
 """
 Temperature Sensors supported by the "dht" micropython module
+MicroPython ONLY!
 """
-#import logging
 import time
 import Tool
-import Gadget
+import dev.Gadget as Gadget
 import dht
 import machine
-
 
 ###################################################################################################
 # Globals:

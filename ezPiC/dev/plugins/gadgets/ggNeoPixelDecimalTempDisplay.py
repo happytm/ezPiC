@@ -1,14 +1,13 @@
 """
 A demo device for a room thermometer in pseudonixie style as described ...
+MicroPython ONLY!
 """
 # TODO Make one and publish design files for it..
-#import logging
 import time
 import Tool
-import Gadget
+import dev.Gadget as Gadget
 import neopixel
 import machine
-
 
 ###################################################################################################
 # Globals:

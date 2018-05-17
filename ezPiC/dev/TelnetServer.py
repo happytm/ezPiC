@@ -21,7 +21,6 @@ except:   # MicroPython
     import urandom as random
 
 import socket, select
-import logging
 import G
 import Tool
 import dev.Cmd as Cmd

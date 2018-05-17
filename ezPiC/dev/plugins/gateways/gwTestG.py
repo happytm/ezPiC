@@ -1,12 +1,11 @@
 """
 Gateway Plugin for Testing
 """
-#import logging
 import time
 
 import dev.Gateway as Gateway
 import dev.Reading as Reading
-import Tool
+import G
 
 ###################################################################################################
 # Globals:
@@ -53,7 +52,7 @@ class PluginGateway(Gateway.PluginGatewayBase):
         print('G' + str(time.time()))
         if Reading.is_new(self._reading_tick):
             self._reading_tick, l = Reading.get_new_list(self._reading_tick)
-            print (l)
+            G.log(G.LOG_INFO, 'Timer in G: {}', l)
 
 ###################################################################################################
 ###################################################################################################

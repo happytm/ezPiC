@@ -12,8 +12,8 @@ except:   # MicroPython
     import ujson as json
     import urandom as random
 
-import logging
 import Tool
+import G
 
 ###################################################################################################
 # Globals:
@@ -45,7 +45,7 @@ def route(command: str, arg_keys: str=None, security_level: int=0):
         item['func'] = func
 
         COMMANDS.append(item)
-        logging.debug(' - Added command "%s" with function "%s()"', command, func.__name__)
+        G.log(G.LOG_DEBUG, ' - Added command "%s" with function "%s()"', command, func.__name__)
         return func
     return route_decorator
 

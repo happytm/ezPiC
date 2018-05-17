@@ -2,7 +2,7 @@
 Web Plugin for System-Config-Page
 """
 from web.MicroWebSrv.microWebSrv import MicroWebSrv
-import logging, time
+import time
 #import html
 import Tool
 import web.Web as Web

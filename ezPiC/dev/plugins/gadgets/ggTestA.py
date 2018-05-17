@@ -1,12 +1,10 @@
 """
 Gadget Plugin for Testing
 """
-#import logging
 import time
 
 import dev.Gadget as Gadget
 import dev.Reading as Reading
-import Tool
 import random
 
 ###################################################################################################
