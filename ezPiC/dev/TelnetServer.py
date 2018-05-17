@@ -31,7 +31,7 @@ import dev.Cmd as Cmd
 CONNECTION_LIST = []    # list of socket clients
 CONNECTION_SOURCE = {}    # list of socket prop
 RECV_BUFFER = 4096 # Advisable to keep it as an exponent of 2
-PORT = 2101
+PORT = 23101
 
 ###################################################################################################
 
