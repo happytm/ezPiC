@@ -74,5 +74,4 @@ def _httpHandlerTestGet(httpClient, httpResponse) :
 								  contentCharset = "UTF-8",
 								  content 		 = content )
 
-
 ###################################################################################################

@@ -16,40 +16,6 @@ import G
 
 ###################################################################################################
 
-# def load_pluginsOld(package: str, startswith: str='') -> list:
-#     """
-#     Imports all python modules from given path/package
-#     package: Relative path name
-#     startswith: (optional) Filter python files/modules with start string
-#     return: List of imported modules
-#     """
-#     global PLUGINDIR
-
-#     pysearchre = re.compile('.py$', re.IGNORECASE)
-#     pluginfiles = filter(pysearchre.search, os.listdir(os.path.join(os.path.dirname(__file__), PLUGINDIR, package)))
-#     form_module = lambda fp: '.' + os.path.splitext(fp)[0]
-#     plugins = map(form_module, pluginfiles)
-
-#     package = PLUGINDIR + '.' + package
-
-#     importlib.import_module(package) # import parent module / namespace
-
-#     modules = []
-#     for plugin in plugins:
-#         if not plugin.startswith('__'):
-#             if not startswith or plugin.startswith('.' + startswith):
-#                 try:
-#                     module = importlib.import_module(plugin, package=package)
-#                     #module.ID
-#                     modules.append(module)
-#                     G.log(G.LOG_INFO, 'Import plugin "{}{}"'.format(package, plugin))
-#                 except Exception as e:
-#                     G.log(G.LOG_ERROR, 'Fail to import plugin "{}{}"\n{}'.format(package, plugin, e))
-
-#     return modules
-
-# =================================================================================================
-
 def load_plugins(path: str, pre :str=None) -> list:
     """
     Imports all python modules from given path inside the plugin folder
@@ -106,7 +72,7 @@ def get_random_string(length=12, allowed_chars='abcdefghijklmnopqrstuvwxyzABCDEF
     """
     return ''.join(random.choice(allowed_chars) for i in range(length))
 
-###################################################################################################
+# =================================================================================================
 
 def get_secret_key():
     """
@@ -118,7 +84,7 @@ def get_secret_key():
     #return get_random_string(50, chars)
     return get_random_string(24)
 
-###################################################################################################
+# =================================================================================================
 
 def make_random_password(length=12, symbols='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@$^_+&'):
     """ TODO """
@@ -129,21 +95,18 @@ def make_random_password(length=12, symbols='abcdefghijklmnopqrstuvwxyzABCDEFGHI
 
 ###################################################################################################
 
-###################################################################################################
-
 def params_to_str(params:dict) -> str:
     """ converts the param dict to a string """
 
     return json.dumps(params)
 
-###################################################################################################
+# =================================================================================================
 
 def str_to_params(paramstr:str) -> dict:
     """ converts the string to a param dict """
 
     return json.loads(paramstr)
 
-###################################################################################################
 ###################################################################################################
 
 def start_thread(func, *args):

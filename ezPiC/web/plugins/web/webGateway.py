@@ -82,6 +82,8 @@ def web_gateway_edit(httpClient, httpResponse, args):
             for key, value in params.items():
                 if key in formParams:
                     params[key] = formParams.get(key)
+        err, ret = Web.command('gateway.setparam', index=idx, params=params)
+        if err:
             Web.flash_error(httpResponse, err, ret, idx)
         err, ret = Web.command('save')
     else: # GET

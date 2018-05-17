@@ -5,7 +5,7 @@
 #sys.path.append('../')
 #from ezPiC import app
 
-print(globals)
+#print(globals)
 #print(G)
 
 ###################################################################################################
