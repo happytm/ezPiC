@@ -59,9 +59,14 @@ def run():
             if sock == server_socket:
                 # Handle the case in which there is a new connection recieved through server_socket
                 sockfd, addr = server_socket.accept()
+                print (str(addr))
+                print (addr)
+
                 CONNECTION_LIST.append(sockfd)
                 source = addr[0] + ':' + str(addr[1])
-                CONNECTION_SOURCE[sockfd] = source
+                print (source)
+                print(sockfd.fileno())
+                CONNECTION_SOURCE[sockfd.fileno()] = source
                 print ("Client (%s) connected" % source)
 
                 sockfd.send(b'\r\nezPiC-Service V0.0.?\r\n')
@@ -86,16 +91,21 @@ def run():
                                 dataf.append(data[i])
                             i += 1
                         if dataf:
-                            cmd_str = dataf.decode('utf-8', 'backslashreplace')
-                            #raddr, rport = sock.getpeername()
-                            source = CONNECTION_SOURCE[sock]
+                            dataf = bytes(dataf)   # bytearray -> bytes
+                            cmd_str = dataf.decode('utf-8', 'backslashreplace')   # bytes -> str
+                            print (cmd_str)
+                            print(sock.fileno())
+                            source = CONNECTION_SOURCE[sock.fileno()]   # hash for sock
                             ret = Cmd.excecute(cmd_str, source)
-                            ret_str = json.dumps(ret) + '\r\n'
-                            data = ret_str.encode('utf-8')
+                            ret_str = json.dumps(ret) + '\r\n'   # object -> json-str
+                            print (ret_str)
+                            data = ret_str.encode('utf-8')   # str -> bytes
+                            print (data)
                             sock.send(data)
                  
                 # client disconnected, so remove from socket list
                 except Exception as e:
+                    print (str(e))
                     #broadcast_data(sock, "Client (%s, %s) is offline" % addr)
                     print ("Client (%s, %s) is offline" % addr)
                     sock.close()
