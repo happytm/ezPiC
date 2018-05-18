@@ -14,18 +14,18 @@ LOG_INFO = 3
 LOG_DEBUG = 4
 LOG_EXT_DEBUG = 5
 
-try:   # MicroPython
+try:   # try MicroPython
     import uos as os
     MICROPYTHON = True
     WEBSERVER = False
+    from time import time
 except:   # CPython
     MICROPYTHON = False
+    from datetime import datetime
 
 MWS = None
 
 ###################################################################################################
-
-from datetime import datetime
 
 def log(level:int, msg:str, *args):
     global LOGLEVEL
@@ -36,7 +36,11 @@ def log(level:int, msg:str, *args):
     if args:
         msg = msg.format(*args)
 
-    localtime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    if MICROPYTHON:
+        localtime = time()
+    else:
+        pass
+        #localtime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     msg = '{0} [{1}] {2}'.format(localtime, level, msg)
     print(msg)
 

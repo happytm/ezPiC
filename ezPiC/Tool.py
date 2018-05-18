@@ -3,14 +3,12 @@ Common tools
 """
 try:   # CPython
     import os
-    import re
     import json
-    import random
 except:   # MicroPython
     import uos as os
-    import ure as re
     import ujson as json
-    import urandom as random
+
+import gc
 
 import G
 
@@ -23,6 +21,8 @@ def load_plugins(path: str, pre :str=None) -> list:
     pre: (optional) Filter python files/modules with start string
     return: List of imported modules
     """
+    gc.collect()
+
     try:
         full_path = os.path.join(os.path.dirname(__file__), path)
     except:   # MicroPython has no os.path
@@ -41,6 +41,8 @@ def load_plugins(path: str, pre :str=None) -> list:
 
     module_prefix = path.replace('/', '.')
 
+    gc.collect()
+
     for file in files:
         if file.startswith('__'):
             continue
@@ -51,12 +53,20 @@ def load_plugins(path: str, pre :str=None) -> list:
         
         module_name = module_prefix + '.' + file[:-3]
         try:
+            gc.collect()
+            G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
             module = __import__(module_name, globals(), locals(), ['object'], 0)
+            gc.collect()
             modules.append(module)
+            gc.collect()
+            G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
             G.log(G.LOG_INFO, 'Import plugin "{}"'.format(module_name))
         except Exception as e:
+            gc.collect()
+            G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
             G.log(G.LOG_ERROR, 'Fail to import plugin "{}"\n{}'.format(module_name, e))
 
+    gc.collect()
     return modules
 
 ###################################################################################################
@@ -110,6 +120,7 @@ def str_to_params(paramstr:str) -> dict:
 ###################################################################################################
 
 def start_thread(func, *args):
+    gc.collect()
 
     try:
         from threading import Thread
@@ -120,9 +131,10 @@ def start_thread(func, *args):
         return t
 
     except:
-        from _thread import start_new_thread
+        pass
+        #from _thread import start_new_thread
 
-        t = start_new_thread(func, args)
-        return t
+        #t = start_new_thread(func, ())
+        #return t
 
 ###################################################################################################

@@ -1,19 +1,9 @@
 """
 Command Plugin for Testing
 """
-try:   # CPython
-    import os
-    import re
-    import json
-    import random
-except:   # MicroPython
-    import uos as os
-    import ure as re
-    import ujson as json
-    import urandom as random
 
-import G
 import dev.Cmd as Cmd
+import G
 
 ###################################################################################################
 

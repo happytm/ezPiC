@@ -3,21 +3,12 @@ Command Plugin for System Commands
 
 """
 try:   # CPython
-    import os
     import sys
-    import re
-    import json
-    import random
 except:   # MicroPython
-    import uos as os
     import usys as sys
-    import ure as re
-    import ujson as json
-    import urandom as random
 
-import dev.Cmd as Cmd
 import dev.SysConfig as SysConfig
-
+import dev.Cmd as Cmd
 import G
 
 ###################################################################################################

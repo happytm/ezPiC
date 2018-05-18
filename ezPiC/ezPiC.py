@@ -25,7 +25,7 @@ def main():
 
 
     """ Entry point for ezPiC """
-    G.log(G.LOG_INFO, 'Starting main init')
+    G.log(G.LOG_INFO, '# Starting main init #')
     if G.IOTDEVICE:
         Timer.init()
         Cmd.init()
@@ -38,7 +38,7 @@ def main():
     if G.WEBSERVER:
         Web.init()
 
-    G.log(G.LOG_INFO, 'Starting main run')
+    G.log(G.LOG_INFO, '# Starting main run #')
     if G.IOTDEVICE:
         Timer.run()
         Cmd.run()

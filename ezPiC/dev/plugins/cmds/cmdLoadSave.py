@@ -2,20 +2,15 @@
 Command Plugin for Load and Save Parameters
 """
 try:   # CPython
-    import os
-    import re
     import json
-    import random
 except:   # MicroPython
-    import uos as os
-    import ure as re
     import ujson as json
-    import urandom as random
 
 import dev.SysConfig as SysConfig
 import dev.Gadget as Gadget
 import dev.Gateway as Gateway
 import dev.Cmd as Cmd
+import G
 
 CONFIG_FILE = 'config.json'
 

@@ -2,19 +2,12 @@
 Command Plugin for Gadget handling
 """
 try:   # CPython
-    import os
-    import re
     import json
-    import random
 except:   # MicroPython
-    import uos as os
-    import ure as re
     import ujson as json
-    import urandom as random
 
 import dev.Gadget as Gadget
 import dev.Cmd as Cmd
-import Tool
 import G
 
 ###################################################################################################
