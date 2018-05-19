@@ -95,6 +95,21 @@ def get_news(tick:int) -> dict:
 
 ###################################################################################################
 
+def get_news_full(tick:int) -> dict:
+    global READINGS, READINGACTTICK
+
+    news = {}
+
+    if tick < READINGACTTICK:
+        with READINGLOCK:
+            for key, r in READINGS.items():
+                if r['tick'] > tick:
+                    news[key] = r
+
+    return (READINGACTTICK, news)
+
+###################################################################################################
+
 def make_key(gadget:str, channel:str) -> str:
     return gadget + '.' + channel
 
