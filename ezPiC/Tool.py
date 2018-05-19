@@ -54,16 +54,16 @@ def load_plugins(path: str, pre :str=None) -> list:
         module_name = module_prefix + '.' + file[:-3]
         try:
             gc.collect()
-            G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
+            #G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
             module = __import__(module_name, globals(), locals(), ['object'], 0)
             gc.collect()
             modules.append(module)
             gc.collect()
-            G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
+            #G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
             G.log(G.LOG_INFO, 'Import plugin "{}"'.format(module_name))
         except Exception as e:
             gc.collect()
-            G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
+            #G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
             G.log(G.LOG_ERROR, 'Fail to import plugin "{}"\n{}'.format(module_name, e))
 
     gc.collect()

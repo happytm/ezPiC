@@ -19,7 +19,7 @@ COMMANDS = []
 #Decorator
 
 def route(command: str, arg_keys: str=None, security_level: int=0):
-    #""" Adds a command handler function to the command list """
+    """ Adds a command handler function to the command list """
     def route_decorator(func):
         global COMMANDS
 
@@ -46,7 +46,7 @@ def route(command: str, arg_keys: str=None, security_level: int=0):
 ###################################################################################################
 
 def init():
-    #""" Prepare module vars and load plugins """
+    """ Prepare module vars and load plugins """
     global COMMANDS
 
     plugins = Tool.load_plugins(PLUGINDIR, 'cmd')
@@ -68,11 +68,11 @@ def ret(code: int=0, result=None) -> dict:
 ###################################################################################################
 
 def _excecute_line(cmd_str: str, source=None) -> dict:
-    #"""
-    #Excecutes a command as str
-    #cmd: Command line with command and params as string
-    #return: Answer from excecuted command. Can be any object type or None
-    #"""
+    """
+    Excecutes a command as str
+    cmd: Command line with command and params as string
+    return: Answer from excecuted command. Can be any object type or None
+    """
     for c in COMMANDS:
         if cmd_str.startswith(c['command']):   # command found
             cmd_params = {}
@@ -116,12 +116,12 @@ def _excecute_line(cmd_str: str, source=None) -> dict:
 # =================================================================================================
 
 def _excecute_json(cmd_dict: dict, source=None) -> dict:
-    #"""
-    #Excecutes a command as a dict
-    #cmd: Command dict with dict-items as params
-    #return: Answer from excecuted command. Can be any object type or None
-    #"""
-    #cmd_params = cmd_dict
+    """
+    Excecutes a command as a dict
+    cmd: Command dict with dict-items as params
+    return: Answer from excecuted command. Can be any object type or None
+    """
+    cmd_params = cmd_dict
 
     cmd_str = cmd_params.get('CMD', None)
     if not cmd_str:
@@ -150,11 +150,11 @@ def _excecute_json(cmd_dict: dict, source=None) -> dict:
 # =================================================================================================
 
 def excecute(cmd, source=None) -> dict:
-    #"""
-    #Excecutes a command and route to specified handler
-    #cmd: Command as str or JSON-str or dict
-    #return: Answer from excecuted command. Can be any object type or None
-    #"""
+    """
+    Excecutes a command and route to specified handler
+    cmd: Command as str or JSON-str or dict
+    return: Answer from excecuted command. Can be any object type or None
+    """
     try:
         if type(cmd) is str:
             cmd = cmd.strip()

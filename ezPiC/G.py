@@ -39,8 +39,7 @@ def log(level:int, msg:str, *args):
     if MICROPYTHON:
         localtime = time()
     else:
-        pass
-        #localtime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        localtime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     msg = '{0} [{1}] {2}'.format(localtime, level, msg)
     print(msg)
 
