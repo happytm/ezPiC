@@ -358,7 +358,12 @@ class MicroWebSrv :
                                     else :
                                         contentType = self._microWebSrv.GetMimeTypeFromFilename(filepath)
                                         if contentType :
-                                            response.WriteResponseFile(filepath, contentType)
+                                            if 'if-modified-since' in self._headers:
+                                                response.WriteResponseNotModified()
+                                            else:
+                                                header = {'Last-Modified':'Fri, 1 Jan 2018 23:42:00 GMT', \
+                                                          'Cache-Control':'max-age=315360000'}
+                                                response.WriteResponseFile(filepath, contentType, header)
                                         else :
                                             response.WriteResponseForbidden()
                                 else :
@@ -418,11 +423,11 @@ class MicroWebSrv :
             while True :
                 elements = self._socketfile.readline().decode().strip().split(':', 1)
                 if len(elements) == 2 :
-                    self._headers[elements[0].strip()] = elements[1].strip()
+                    self._headers[elements[0].strip().lower()] = elements[1].strip()
                 elif len(elements) == 1 and len(elements[0]) == 0 :
-                    if self._method == 'POST' :
-                        self._contentType   = self._headers.get("Content-Type", None)
-                        self._contentLength = int(self._headers.get("Content-Length", 0))
+                    if self._method == 'POST' or self._method == 'PUT' :
+                        self._contentType   = self._headers.get("content-type", None)
+                        self._contentLength = int(self._headers.get("content-length", 0))
                     return True
                 else :
                     return False
@@ -430,8 +435,8 @@ class MicroWebSrv :
         # ------------------------------------------------------------------------
 
         def _getConnUpgrade(self) :
-            if 'upgrade' in self._headers.get('Connection', '').lower() :
-                return self._headers.get('Upgrade', '').lower()
+            if 'upgrade' in self._headers.get('connection', '').lower() :
+                return self._headers.get('upgrade', '').lower()
             return None
 
         # ------------------------------------------------------------------------
@@ -711,6 +716,11 @@ class MicroWebSrv :
                                        "application/json",
                                        "UTF-8",
                                        dumps(obj if obj else { }) )
+
+        # ------------------------------------------------------------------------
+
+        def WriteResponseNotModified(self) :
+            return self.WriteResponseError(304)
 
         # ------------------------------------------------------------------------
 

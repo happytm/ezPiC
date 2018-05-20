@@ -45,9 +45,6 @@ class PluginGateway(Gateway.PluginGatewayBase):
     def exit(self):
         pass
 
-    def cmd(self, cmd:str) -> str:
-        pass
-
     def timer(self):
         print('G' + str(time.time()))
 

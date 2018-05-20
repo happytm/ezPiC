@@ -39,9 +39,6 @@ class PluginGateway(Gateway.PluginGatewayBase):
     def exit(self):
         pass
 
-    def cmd(self, cmd:str) -> str:
-        pass
-
     def timer(self):
         print('G' + str(time.time()))
 
@@ -50,13 +47,18 @@ class PluginGateway(Gateway.PluginGatewayBase):
         try:
             if Reading.is_new(self._reading_tick):
                 self._reading_tick, _news = Reading.get_news_full(self._reading_tick)
-                for key, data in _news.items():
-                    str_log = str(data['time'])
-                    str_log += separator
-                    str_log += key
-                    str_log += separator
-                    str_log += str(data['value'])
-                G.log(G.LOG_DEBUG, 'Logger: {}', str_log)
+                with open(self.param['file_name'], 'a') as f:
+                    for key, data in _news.items():
+                        t = data['time']
+                        str_log = G.time_to_str(t)
+                        str_log += separator
+                        str_log += key
+                        str_log += separator
+                        str_log += str(data['value'])
+                        G.log(G.LOG_DEBUG, 'Logger: {}', str_log)
+
+                        str_log += '\n'
+                        b = f.write(str_log)
             pass
         except:
             pass
