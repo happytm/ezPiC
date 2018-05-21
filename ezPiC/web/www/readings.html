@@ -30,7 +30,7 @@
         {{ py }} r = reading_list[key] {{ end }}
         <tr>
             <th scope="row">{{key}}</th>
-            <td>{{json.dumps(r['value'])}}</td>
+            <td><pre>{{json.dumps(r['value'])}}</pre></td>
             <td>{{type(r['value'])}}</td>
             <td>{{r['tick']}}</td>
             <td>{{ G.time_to_str(r['time']) }}</td>
@@ -43,7 +43,7 @@
 <br />
 <hr>
 
-<form action="/readings" method="GET">
+<form action="/readings" method="POST">
     Add/Set a Reading
     <div class="input-group">
         <div class="input-group-prepend">

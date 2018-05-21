@@ -30,7 +30,7 @@ def web_cmd(httpClient, httpResponse):
         #cmd = html.escape(cmd)
 
     if cmd:
-        err, ret = Web.command(cmd)
+        err, ret = Web.command(cmd, useCLI=True)
         try:
             ret = json.dumps(ret, indent=2)
         except:

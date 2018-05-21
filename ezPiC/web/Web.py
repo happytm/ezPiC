@@ -50,17 +50,20 @@ def run(threaded=False):
 
 ###################################################################################################
 
-def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None) -> tuple:
+def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None, useCLI:bool=False) -> tuple:
     """ TODO """
-    request = {}
-    request['CMD'] = cmd_str
-    if index is not None:
-        request['IDX'] = index
-    request['SRC'] = 'WEB'
-    if params is not None:
-        request['params'] = params
-    if items is not None:
-        request.update(items)
+    if useCLI:
+        request = cmd_str
+    else:
+        request = {}
+        request['CMD'] = cmd_str
+        if index is not None:
+            request['IDX'] = index
+        request['SRC'] = 'WEB'
+        if params is not None:
+            request['params'] = params
+        if items is not None:
+            request.update(items)
 
     if DIRECT_CMD:
         answer = Cmd.excecute(request) #JKJKJK TODO
