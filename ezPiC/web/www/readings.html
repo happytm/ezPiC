@@ -1,0 +1,32 @@
+{{ include t_std_head.html }}
+{{ py}} import G {{ end }}
+
+  <h2>Readings</h2>
+
+  <br />
+
+  <table class="table table-hover table-sm">
+      <thead class="thead-dark">
+          <tr>
+              <th scope="col">Key</th>
+              <th scope="col">Value</th>
+              <th scope="col">Tick</th>
+              <th scope="col">Time</th>
+              <th scope="col">Source</th>
+          </tr>
+      </thead>
+      <tbody>
+        {{ for key in reading_list }}
+          {{ py }} r = reading_list[key] {{ end }}
+          <tr>
+              <th scope="row">{{key}}</th>
+              <td>{{r['value']}}</td>
+              <td>{{r['tick']}}</td>
+              <td>{{ G.time_to_str(r['time']) }}</td>
+              <td>{{r['source']}}</td>
+          </tr>
+        {{ end }}
+      </tbody>
+  </table>
+
+{{ include t_std_foot.html }}

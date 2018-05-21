@@ -50,7 +50,7 @@ def time_to_str(t):
         time_str = str(t)
     else:
         #time_str = datetime(t).strftime('%Y-%m-%d %H:%M:%S')
-        time_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        time_str = datetime.fromtimestamp(t).strftime('%Y-%m-%d %H:%M:%S')
         #datetime.fromtimestamp()
     
     return time_str

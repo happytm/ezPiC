@@ -36,8 +36,7 @@ def web_main(httpClient, httpResponse):
     
     err, result = Web.command('info')
     if err:
-        msg = 'Error "{0}" - {1}'.format(err, result)
-        httpResponse.FlashMessage(msg, 'danger')
+        Web.flash_error(httpResponse, err, ret)
         result = {}
 
     vars = {}
