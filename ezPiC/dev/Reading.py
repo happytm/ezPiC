@@ -79,7 +79,7 @@ def is_new(tick:int) -> bool:
 
 # =================================================================================================
 
-def get_news(tick:int) -> dict:
+def get_news(tick:int) -> tuple:
     global READINGS, READINGACTTICK
 
     news = {}
@@ -95,7 +95,7 @@ def get_news(tick:int) -> dict:
 
 ###################################################################################################
 
-def get_news_full(tick:int) -> dict:
+def get_news_full(tick:int) -> tuple:
     global READINGS, READINGACTTICK
 
     news = {}

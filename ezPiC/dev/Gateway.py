@@ -33,13 +33,15 @@ def gateway_timer_handler(news, args):
 
         for idx, gateway in enumerate(GATEWAYS):
             if gateway.timer_next and (t >= gateway.timer_next):
-                if gateway.timer_period:
-                    gateway.timer_next += gateway.timer_period
-                    if gateway.timer_next < t:
-                        gateway.timer_next = t + gateway.timer_period
-                gateway.timer()
+                if gateway.get_param('enable'):
+                    if gateway.timer_period:
+                        gateway.timer_next += gateway.timer_period
+                        if gateway.timer_next < t:
+                            gateway.timer_next = t + gateway.timer_period
+                    gateway.timer()
             if news:
-                gateway.readings(news)
+                if gateway.get_param('enable'):
+                    gateway.readings(news)
 
 ###################################################################################################
 
@@ -196,6 +198,7 @@ def get_list() -> tuple:
             g['GWPID'] = gateway.module.GWPID
             g['PNAME'] = gateway.module.PNAME
             g['name'] = gateway.get_name()
+            g['enable'] = gateway.get_param('enable')
             g['info'] = gateway.get_info()
             gl.append(g)
 

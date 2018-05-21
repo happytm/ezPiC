@@ -15,6 +15,12 @@ Choose a gateway and click the [<i class="fas fa-pencil-alt"></i>] button to edi
                 <a class="btn btn-secondary btn-sm mx-1 ml-0 mr-3" data-toggle="collapse" href="#collapse{{ index }}" aria-expanded="false" aria-controls="collapse{{ index }}">
                     <i class="fas fa-chevron-down"></i>
                 </a>
+                {{ if gateway['enable'] == True }}
+                <i class="fas fa-check-circle text-success"></i>
+                {{ else }}
+                <i class="fas fa-times-circle text-danger"></i>
+                {{ end }}
+                &nbsp;
                 <a class="mr-auto" data-toggle="collapse" href="#collapse{{ index }}" aria-expanded="false" aria-controls="collapse{{ index }}">
                     #{{ index }} [{{ gateway['GWPID'] }}] {{ gateway['PNAME'] }} - {{ gateway['name'] }}
                 </a>

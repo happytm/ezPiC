@@ -32,13 +32,15 @@ def gadget_timer_handler(news, args):
 
         for idx, gadget in enumerate(GADGETS):
             if gadget.timer_next and (t >= gadget.timer_next):
-                if gadget.timer_period:
-                    gadget.timer_next += gadget.timer_period
-                    if gadget.timer_next < t:
-                        gadget.timer_next = t + gadget.timer_period
-                gadget.timer()
+                if gadget.get_param('enable'):
+                    if gadget.timer_period:
+                        gadget.timer_next += gadget.timer_period
+                        if gadget.timer_next < t:
+                            gadget.timer_next = t + gadget.timer_period
+                    gadget.timer()
             if news:
-                gadget.readings(news)
+                if gadget.get_param('enable'):
+                    gadget.readings(news)
 
 ###################################################################################################
 
@@ -195,6 +197,7 @@ def get_list() -> tuple:
             d['GGPID'] = gadget.module.GGPID
             d['PNAME'] = gadget.module.PNAME
             d['name'] = gadget.get_name()
+            d['enable'] = gadget.get_param('enable')
             d['info'] = gadget.get_info()
             dl.append(d)
 

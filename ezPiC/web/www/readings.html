@@ -1,32 +1,68 @@
-{{ include t_std_head.html }}
-{{ py}} import G {{ end }}
+{{ include t_std_head.html }} 
+{{ py}} import G, json {{ end }}
 
-  <h2>Readings</h2>
+<h2>Readings</h2>
 
-  <br />
+<div class="float-right">
+    <a class="btn btn-primary" href="/readings/" role="button">
+        <i class="fas fa-book"></i> All</a>
+    <a class="btn btn-primary" href="/readings/{{ last_tick }}/" role="button">
+        <i class="fas fa-bookmark"></i> News</a>
+</div>
+<p>
+    All actual readings (values, measurements) with Tick &gt; {{ act_tick }}. Last Tick = {{ last_tick }}
+</p>
 
-  <table class="table table-hover table-sm">
-      <thead class="thead-dark">
-          <tr>
-              <th scope="col">Key</th>
-              <th scope="col">Value</th>
-              <th scope="col">Tick</th>
-              <th scope="col">Time</th>
-              <th scope="col">Source</th>
-          </tr>
-      </thead>
-      <tbody>
-        {{ for key in reading_list }}
-          {{ py }} r = reading_list[key] {{ end }}
-          <tr>
-              <th scope="row">{{key}}</th>
-              <td>{{r['value']}}</td>
-              <td>{{r['tick']}}</td>
-              <td>{{ G.time_to_str(r['time']) }}</td>
-              <td>{{r['source']}}</td>
-          </tr>
+<br />
+<table class="table table-hover table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Key</th>
+            <th scope="col">Value</th>
+            <th scope="col">Type</th>
+            <th scope="col">Tick</th>
+            <th scope="col">Time</th>
+            <th scope="col">Source</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ for key in reading_list }} 
+        {{ py }} r = reading_list[key] {{ end }}
+        <tr>
+            <th scope="row">{{key}}</th>
+            <td>{{json.dumps(r['value'])}}</td>
+            <td>{{type(r['value'])}}</td>
+            <td>{{r['tick']}}</td>
+            <td>{{ G.time_to_str(r['time']) }}</td>
+            <td>{{r['source']}}</td>
+        </tr>
         {{ end }}
-      </tbody>
-  </table>
+    </tbody>
+</table>
+
+<br />
+<hr>
+
+<form action="/readings" method="GET">
+    Add/Set a Reading
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Key:</span>
+        </div>
+        <input type="text" class="form-control" placeholder="type a key" aria-describedby="basic-addon1" id="key" name="key" value="{{ add_key }}">
+
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon2">Value:</span>
+        </div>
+        <input type="text" class="form-control" placeholder="type a value" aria-describedby="basic-addon2" id="value" name="value"
+            value="{{ add_value }}">
+
+        <div class="input-group-append">
+            <button class="btn btn-success" type="submit"><i class="fas fa-plus"></i> Add/Set</button>
+        </div>
+    </div>
+    <!-- /input-group -->
+
+</form>
 
 {{ include t_std_foot.html }}
