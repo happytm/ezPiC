@@ -9,7 +9,7 @@ import web.Web as Web
 @MicroWebSrv.route('/')
 def web_index(httpClient, httpResponse):
     """ Index-Page with Description. Additional handle commands over HTTP-GET"""
-    queryParams  = httpClient.GetRequestQueryParams()
+    queryParams = httpClient.GetRequestQueryParams()
     if queryParams and 'cmd' in queryParams:
         cmd = queryParams.get('cmd')
         err, ret = Web.command(cmd)
@@ -36,7 +36,7 @@ def web_main(httpClient, httpResponse):
     
     err, result = Web.command('info')
     if err:
-        Web.flash_error(httpResponse, err, ret)
+        Web.flash_error(httpResponse, err, result)
         result = {}
 
     vars = {}

@@ -30,13 +30,7 @@ def init():
     #print(www)
 
     MWS = MicroWebSrv(webPath='web/www') # TCP port 80 and files in /flash/www
-    #mws = MicroWebSrv(webPath='MicroWebSrv/www/') # TCP port 80 and files in /flash/www
     G.MWS = MWS
-
-
-    #scheduler = APScheduler()
-    #scheduler.init_app(app)
-    #scheduler.start()
 
 # =================================================================================================
 
@@ -66,7 +60,7 @@ def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None, useC
             request.update(items)
 
     if DIRECT_CMD:
-        answer = Cmd.excecute(request) #JKJKJK TODO
+        answer = Cmd.excecute(request)
     else:
         request_json = json.dumps(request)
         answer_json = '{}' #JKJKJK TODO
