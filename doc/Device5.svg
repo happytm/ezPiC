@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Creator: CorelDRAW Home & Student X6 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="70.1mm" height="45.2mm" version="1.0" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 1773 1143"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <g id="Ebene_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect fill="#F4F4F4" stroke="black" stroke-width="5.05772" x="3" y="3" width="1138" height="1138" rx="38" ry="76"/>
+  <g id="_570918408">
+   <ellipse fill="#CCCCCC" cx="1414" cy="840" rx="154" ry="102"/>
+   <ellipse fill="#CCCCCC" cx="1494" cy="722" rx="131" ry="87"/>
+   <ellipse fill="#CCCCCC" cx="1594" cy="840" rx="179" ry="102"/>
+   <ellipse fill="#CCCCCC" cx="1626" cy="740" rx="71" ry="58"/>
+  </g>
+  <g>
+   <path fill="red" fill-rule="nonzero" d="M1241 843l-606 0 0 -38 606 0 0 38zm97 -19l-98 49 0 -98 98 49z"/>
+  </g>
+  <g>
+   <rect fill="#CCCCCC" x="768" y="261" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="768" y="310" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="768" y="359" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="768" y="408" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="768" y="457" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="768" y="507" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="768" y="556" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="768" y="605" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="989" y="310" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="989" y="359" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="989" y="408" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="989" y="457" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="989" y="507" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="989" y="556" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="989" y="605" width="24.5861" height="24.5861"/>
+   <rect fill="#CCCCCC" x="989" y="261" width="24.5861" height="24.5861"/>
+   <path fill="#CCCCCC" d="M793 224l74 0c0,14 11,25 25,25 14,0 25,-11 25,-25l74 0 0 443 -197 0 0 -443z"/>
+  </g>
+  <g>
+   <path fill="black" fill-rule="nonzero" d="M790 464l-156 0 0 -38 156 0 0 38zm97 -19l-98 49 0 -98 98 49z"/>
+  </g>
+  <g>
+   <path fill="#003399" fill-rule="nonzero" d="M32 654l-29 0 0 -38 29 0 0 38zm97 -19l-98 49 0 -98 98 49z"/>
+  </g>
+  <text x="1395" y="787"  fill="red" font-weight="normal" font-size="89.2106px" font-family="Arial">HTTP,</text>
+  <text x="1392" y="886"  fill="red" font-weight="normal" font-size="89.2106px" font-family="Arial">MQTT</text>
+  <rect fill="#FFFF99" stroke="black" stroke-width="5.05772" x="129" y="255" width="506" height="759"/>
+  <text x="318" y="483"  fill="black" font-weight="normal" font-size="89.2106px" font-family="Arial">IoT</text>
+  <text x="300" y="583"  fill="black" font-weight="normal" font-size="89.2106px" font-family="Arial">Part</text>
+  <text x="242" y="174"  fill="black" font-weight="normal" font-size="89.2106px" font-family="Arial">Device</text>
+ </g>
+</svg>

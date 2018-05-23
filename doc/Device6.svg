@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Creator: CorelDRAW Home & Student X6 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="45.2mm" height="45.2mm" version="1.0" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 737 737"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <g id="Ebene_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect fill="#F4F4F4" stroke="black" stroke-width="3.26118" x="2" y="2" width="734" height="734" rx="24" ry="49"/>
+  <g id="_570920232">
+   <rect fill="#CCCCCC" x="495" y="168" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="495" y="200" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="495" y="231" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="495" y="263" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="495" y="295" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="495" y="327" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="495" y="358" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="495" y="390" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="638" y="200" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="638" y="231" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="638" y="263" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="638" y="295" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="638" y="327" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="638" y="358" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="638" y="390" width="15.853" height="15.853"/>
+   <rect fill="#CCCCCC" x="638" y="168" width="15.853" height="15.853"/>
+   <path fill="#CCCCCC" d="M511 144l48 0c0,9 7,16 16,16 9,0 16,-7 16,-16l48 0 0 285 -127 0 0 -285z"/>
+  </g>
+  <g>
+   <path fill="black" fill-rule="nonzero" d="M510 299l-100 0 0 -24 100 0 0 24zm63 -12l-63 32 0 -63 63 32z"/>
+  </g>
+  <g>
+   <path fill="#003399" fill-rule="nonzero" d="M20 422l-19 0 0 -24 19 0 0 24zm63 -12l-63 32 0 -63 63 32z"/>
+  </g>
+  <text x="156" y="112"  fill="black" font-weight="normal" font-size="57.5224px" font-family="Arial">Device</text>
+  <g>
+   <ellipse fill="gray" cx="572" cy="472" rx="89" ry="27"/>
+   <path fill="gray" d="M662 525c0,15 -40,27 -89,27 -49,0 -89,-12 -89,-27l0 -35c18,11 51,18 89,18 38,0 71,-7 89,-18l0 35z"/>
+   <path fill="gray" d="M662 579c0,15 -40,27 -89,27 -49,0 -89,-12 -89,-27l0 -35c18,11 51,18 89,18 38,0 71,-7 89,-18l0 35z"/>
+   <path fill="gray" d="M662 632c0,15 -40,27 -89,27 -49,0 -89,-12 -89,-27l0 -35c18,11 51,18 89,18 38,0 71,-7 89,-18l0 35z"/>
+  </g>
+  <g>
+   <path fill="red" fill-rule="nonzero" d="M510 544l-100 0 0 -24 100 0 0 24zm63 -12l-63 32 0 -63 63 32z"/>
+  </g>
+  <rect fill="#FFFF99" stroke="black" stroke-width="3.26118" x="83" y="165" width="326" height="489"/>
+  <text x="205" y="312"  fill="black" font-weight="normal" font-size="57.5224px" font-family="Arial">IoT</text>
+  <text x="194" y="376"  fill="black" font-weight="normal" font-size="57.5224px" font-family="Arial">Part</text>
+ </g>
+</svg>
