@@ -11,11 +11,14 @@ import web.Web as Web
 @MicroWebSrv.route('/readings/<tick>')
 @MicroWebSrv.route('/readings')
 @MicroWebSrv.route('/readings', 'POST')
-def web_reading_list(httpClient, httpResponse, args={}):
+def web_reading_list(httpClient, httpResponse, args=None):
     """ TODO """
     key = ''
     value = ''
-    act_tick = int(args.get('tick', 0))
+    if args:
+        act_tick = int(args.get('tick', 0))
+    else:
+        act_tick = 0
 
     if httpClient.GetRequestMethod() == 'POST':
         formParams = httpClient.ReadRequestPostedFormData()
