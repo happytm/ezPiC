@@ -4,7 +4,7 @@
 
 ## MQTT Data Flow by Examples
 
-![Logo](https://github.com/fablab-wue/ezPiC/blob/master/doc/MQTT.svg)
+![Logo](MQTT.svg)
 
 Based on this image the following examples can show typical data flows
 

@@ -13,7 +13,7 @@ JSON commands have the folloging elements:
 | xxx | (optional) Additional argument for the command |
 
 Example:
-```
+```JSON
 {
   'CMD': 'gadget.setparam',
   'SRC': '127.0.0.1:55555',
@@ -26,6 +26,5 @@ The return is always in JSON format
 
 # Commands by Functions
 
-[Gadget](Gadget)
-[Gadget](commands/Gadget)
-[Gateway](Gateway)
+* [Gadget](Gadget)
+* [Gateway](Gateway)
