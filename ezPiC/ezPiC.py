@@ -9,6 +9,7 @@ if G.WEBSERVER:
 if G.IOTDEVICE:
     import dev.Cmd as Cmd
     import dev.Timer as Timer
+    import dev.Machine as Machine
     import dev.Gadget as Gadget
     import dev.Gateway as Gateway
     import dev.Rule as Rule
@@ -29,6 +30,7 @@ def main():
     if G.IOTDEVICE:
         Timer.init()
         Cmd.init()
+        Machine.init()
         Gadget.init()
         Gateway.init()
         Rule.init()
@@ -42,6 +44,7 @@ def main():
     if G.IOTDEVICE:
         Timer.run()
         Cmd.run()
+        Machine.run()
         Gadget.run()
         Gateway.run()
         Rule.run()
