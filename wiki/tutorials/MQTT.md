@@ -16,4 +16,4 @@ If Client X publishes any data with Topic 1 and nobody is listening (nobody has 
 
 (Exception: see Topics with Retain Flag)
 
-TODO...
+TODO

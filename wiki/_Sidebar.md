@@ -1,12 +1,12 @@
 [Home](Home)
 
-### Philisophy
-* [Features,-Techniques-and-why](Features,-Techniques-and-why)
+### Philosophy
+* [Features, Techniques and why](Features,-Techniques-and-why)
 
 ### Overview
-* [Overview-Modules](Overview-Modules)
-* [Overview-Plugin-System](Overview-Plugin-System)
-* [Overview-Framework](Overview-Framework)
+* [Overview Modules](Overview-Modules)
+* [Overview Plugin-System](Overview-Plugin-System)
+* [Overview Framework](Overview-Framework)
 
 ### Technical Details
 * [Commands](Commands)

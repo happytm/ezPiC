@@ -31,7 +31,7 @@ Plugin system:
 * If nessecary intall with reduced plugin count
 
 * Gadget-plugins:
-  * Interface to hardware sensors and actors
+  * Interface to hardware sensors and actuators
   * Deliver readings/measurements (e.g. temperature, switch on/off, ...) to active gateway-plugins, rules, web interface, ...
   * Each gadget has its own partial web page form for configuration
   * A gadget plugin can be instanciated multiple times (e.g. many temperature sensors of same type)
