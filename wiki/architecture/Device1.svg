@@ -1,62 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<!-- Creator: CorelDRAW Home & Student X6 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="165.1mm" height="45.2mm" version="1.0" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW Home & Student X8 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="165.1mm" height="45.2mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
 viewBox="0 0 31259 8558"
  xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str1 {stroke:black;stroke-width:37.867}
+    .str0 {stroke:black;stroke-width:37.867}
+    .fil3 {fill:black}
+    .fil6 {fill:#003399}
+    .fil1 {fill:#333333}
+    .fil9 {fill:#33CC33}
+    .fil5 {fill:#CCCCCC}
+    .fil0 {fill:#F4F4F4}
+    .fil10 {fill:#FFFF99}
+    .fil2 {fill:white}
+    .fil8 {fill:black;fill-rule:nonzero}
+    .fil4 {fill:#003399;fill-rule:nonzero}
+    .fil7 {fill:red;fill-rule:nonzero}
+    .fnt0 {font-weight:normal;font-size:667.917px;font-family:'Arial'}
+    .fnt1 {font-weight:bold;font-size:1603.04px;font-family:'Courier New'}
+   ]]>
+  </style>
+ </defs>
  <g id="Ebene_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <rect fill="#F4F4F4" stroke="black" stroke-width="37.867" x="18006" y="19" width="8520" height="8520" rx="284" ry="568"/>
-  <rect fill="#F4F4F4" stroke="black" stroke-width="37.867" x="19" y="19" width="5680" height="8520" rx="284" ry="852"/>
-  <rect fill="#333333" stroke="black" stroke-width="37.867" x="966" y="1912" width="3787" height="5680"/>
-  <text x="1598" y="3619"  fill="white" font-weight="normal" font-size="667.917px" font-family="Arial">Terminal</text>
-  <text x="1333" y="1301"  fill="black" font-weight="normal" font-size="667.917px" font-family="Arial">Admin PC</text>
+  <rect class="fil0 str0" x="18006" y="19" width="8520" height="8520" rx="284" ry="568"/>
+  <rect class="fil0 str0" x="19" y="19" width="5680" height="8520" rx="284" ry="852"/>
+  <rect class="fil1 str1" x="966" y="1912" width="3787" height="5680"/>
+  <text x="1598" y="3619"  class="fil2 fnt0">Terminal</text>
+  <text x="1309" y="1301"  class="fil3 fnt0">Admin </text>
+  <text x="3400" y="1301"  class="fil3 fnt0">PC</text>
   <g>
-   <path fill="#003399" fill-rule="nonzero" d="M18225 4894l-13473 0 0 -284 13473 0 0 284zm726 -142l-736 368 0 -736 736 368z"/>
+   <path class="fil4" d="M18225 4894l-13473 0 0 -284 13473 0 0 284zm726 -142l-736 368 0 -736 736 368z"/>
   </g>
   <g>
-   <ellipse fill="#CCCCCC" cx="10479" cy="5002" rx="1150" ry="767"/>
-   <ellipse fill="#CCCCCC" cx="11074" cy="4120" rx="978" ry="651"/>
-   <ellipse fill="#CCCCCC" cx="11821" cy="5002" rx="1342" ry="767"/>
-   <ellipse fill="#CCCCCC" cx="12063" cy="4259" rx="530" ry="435"/>
+   <ellipse class="fil5" cx="10479" cy="5002" rx="1150" ry="767"/>
+   <ellipse class="fil5" cx="11074" cy="4120" rx="978" ry="651"/>
+   <ellipse class="fil5" cx="11821" cy="5002" rx="1342" ry="767"/>
+   <ellipse class="fil5" cx="12063" cy="4259" rx="530" ry="435"/>
   </g>
-  <text x="10450" y="4614"  fill="#003399" font-weight="normal" font-size="667.917px" font-family="Arial">Telnet</text>
-  <text x="9707" y="5361"  fill="#003399" font-weight="normal" font-size="667.917px" font-family="Arial">Port 23101</text>
+  <text x="10450" y="4614"  class="fil6 fnt0">Telnet</text>
+  <text x="9707" y="5361"  class="fil6 fnt0">Port 23101</text>
   <g>
-   <ellipse fill="#CCCCCC" cx="28576" cy="6286" rx="1150" ry="767"/>
-   <ellipse fill="#CCCCCC" cx="29171" cy="5403" rx="978" ry="651"/>
-   <ellipse fill="#CCCCCC" cx="29917" cy="6286" rx="1342" ry="767"/>
-   <ellipse fill="#CCCCCC" cx="30160" cy="5543" rx="530" ry="435"/>
-  </g>
-  <g>
-   <path fill="red" fill-rule="nonzero" d="M27279 6314l-4540 0 0 -284 4540 0 0 284zm726 -142l-736 368 0 -736 736 368z"/>
+   <ellipse class="fil5" cx="28576" cy="6286" rx="1150" ry="767"/>
+   <ellipse class="fil5" cx="29171" cy="5403" rx="978" ry="651"/>
+   <ellipse class="fil5" cx="29917" cy="6286" rx="1342" ry="767"/>
+   <ellipse class="fil5" cx="30160" cy="5543" rx="530" ry="435"/>
   </g>
   <g>
-   <rect fill="#CCCCCC" x="23738" y="2188" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="23738" y="2557" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="23738" y="2925" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="23738" y="3293" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="23738" y="3661" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="23738" y="4029" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="23738" y="4397" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="23738" y="4765" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="25395" y="2557" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="25395" y="2925" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="25395" y="3293" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="25395" y="3661" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="25395" y="4029" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="25395" y="4397" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="25395" y="4765" width="184" height="184"/>
-   <rect fill="#CCCCCC" x="25395" y="2188" width="184" height="184"/>
-   <path fill="#CCCCCC" d="M23922 1912l552 0c0,102 82,184 184,184 102,0 184,-82 184,-184l552 0 0 3313 -1473 0 0 -3313z"/>
+   <path class="fil7" d="M27279 6314l-4540 0 0 -284 4540 0 0 284zm726 -142l-736 368 0 -736 736 368z"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M23905 3474l-1166 0 0 -284 1166 0 0 284zm726 -142l-736 368 0 -736 736 368z"/>
+   <rect class="fil5" x="23738" y="2188" width="184" height="184"/>
+   <rect class="fil5" x="23738" y="2557" width="184" height="184"/>
+   <rect class="fil5" x="23738" y="2925" width="184" height="184"/>
+   <rect class="fil5" x="23738" y="3293" width="184" height="184"/>
+   <rect class="fil5" x="23738" y="3661" width="184" height="184"/>
+   <rect class="fil5" x="23738" y="4029" width="184" height="184"/>
+   <rect class="fil5" x="23738" y="4397" width="184" height="184"/>
+   <rect class="fil5" x="23738" y="4765" width="184" height="184"/>
+   <rect class="fil5" x="25395" y="2557" width="184" height="184"/>
+   <rect class="fil5" x="25395" y="2925" width="184" height="184"/>
+   <rect class="fil5" x="25395" y="3293" width="184" height="184"/>
+   <rect class="fil5" x="25395" y="3661" width="184" height="184"/>
+   <rect class="fil5" x="25395" y="4029" width="184" height="184"/>
+   <rect class="fil5" x="25395" y="4397" width="184" height="184"/>
+   <rect class="fil5" x="25395" y="4765" width="184" height="184"/>
+   <rect class="fil5" x="25395" y="2188" width="184" height="184"/>
+   <path class="fil5" d="M23922 1912l553 0c0,102 82,184 184,184 101,0 184,-82 184,-184l552 0 0 3314 -1473 0 0 -3314z"/>
   </g>
-  <text x="1847" y="6136"  fill="#33CC33" font-weight="bold" font-size="1603.04px" font-family="Courier New">&gt;_</text>
-  <rect fill="#FFFF99" stroke="black" stroke-width="37.867" x="18952" y="1912" width="3787" height="5680"/>
-  <text x="20364" y="3619"  fill="black" font-weight="normal" font-size="667.917px" font-family="Arial">IoT</text>
-  <text x="20234" y="4365"  fill="black" font-weight="normal" font-size="667.917px" font-family="Arial">Part</text>
-  <text x="19802" y="1301"  fill="black" font-weight="normal" font-size="667.917px" font-family="Arial">Device</text>
+  <g>
+   <path class="fil8" d="M23905 3474l-1166 0 0 -284 1166 0 0 284zm726 -142l-736 368 0 -736 736 368z"/>
+  </g>
+  <text x="1847" y="6136"  class="fil9 fnt1">&gt;_</text>
+  <rect class="fil10 str1" x="18952" y="1912" width="3787" height="5680"/>
+  <text x="20364" y="3619"  class="fil3 fnt0">IoT</text>
+  <text x="20234" y="4365"  class="fil3 fnt0">Part</text>
+  <text x="19802" y="1301"  class="fil3 fnt0">Device</text>
  </g>
 </svg>

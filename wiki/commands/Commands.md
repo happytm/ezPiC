@@ -13,6 +13,7 @@ JSON commands have the folloging elements:
 | xxx | (optional) Additional argument for the command |
 
 Example:
+
 ```JSON
 {
   'CMD': 'gadget.setparam',
@@ -21,6 +22,7 @@ Example:
   'params': { 'Lorem':1, 'Ipsum':2 }
 }
 ```
+
 The return is always in JSON format
 
 

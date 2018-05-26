@@ -1,407 +1,534 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<!-- Creator: CorelDRAW Home & Student X6 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="278.418mm" height="175.1mm" version="1.0" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
-viewBox="0 0 28359 17835"
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW Home & Student X8 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="253.245mm" height="172.569mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 26393 17985"
  xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str1 {stroke:black;stroke-width:78.1641}
+    .str0 {stroke:black;stroke-width:20.8437}
+    .str2 {stroke:black;stroke-width:20.8437}
+    .fil3 {fill:none}
+    .fil8 {fill:black}
+    .fil17 {fill:#003399}
+    .fil24 {fill:#663333}
+    .fil14 {fill:gray}
+    .fil23 {fill:#999999}
+    .fil10 {fill:#AFDBAF}
+    .fil12 {fill:#B3B3B3}
+    .fil0 {fill:#CCCCCC}
+    .fil1 {fill:#CCFFCC}
+    .fil7 {fill:#E6E6E6}
+    .fil13 {fill:#FF3399}
+    .fil18 {fill:#FF3399}
+    .fil2 {fill:#FF6600}
+    .fil19 {fill:#FFCC99}
+    .fil9 {fill:#FFFF99}
+    .fil25 {fill:white}
+    .fil5 {fill:black;fill-rule:nonzero}
+    .fil6 {fill:black;fill-rule:nonzero}
+    .fil15 {fill:#003399;fill-rule:nonzero}
+    .fil20 {fill:#666666;fill-rule:nonzero}
+    .fil21 {fill:#999999;fill-rule:nonzero}
+    .fil4 {fill:#AFDBAF;fill-rule:nonzero}
+    .fil11 {fill:#B3B3B3;fill-rule:nonzero}
+    .fil22 {fill:#DDDDDD;fill-rule:nonzero}
+    .fil16 {fill:red;fill-rule:nonzero}
+    .fnt5 {font-weight:normal;font-size:122.54px;font-family:'Arial'}
+    .fnt3 {font-weight:normal;font-size:147.063px;font-family:'Arial'}
+    .fnt1 {font-weight:normal;font-size:274.721px;font-family:'Arial'}
+    .fnt0 {font-weight:normal;font-size:367.652px;font-family:'Arial'}
+    .fnt4 {font-weight:bold;font-size:514.726px;font-family:'Arial'}
+    .fnt6 {font-weight:normal;font-size:555.528px;font-family:'Arial'}
+    .fnt2 {font-weight:normal;font-size:1111.07px;font-family:'Arial'}
+   ]]>
+  </style>
+ </defs>
  <g id="Ebene_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="16620" y1="11204" x2="17893" y2= "11204" />
+  <g id="_715187112">
+   <ellipse class="fil0" cx="24916" cy="8006" rx="633" ry="422"/>
+   <ellipse class="fil0" cx="25243" cy="7520" rx="539" ry="358"/>
+   <ellipse class="fil0" cx="25654" cy="8006" rx="739" ry="422"/>
+   <ellipse class="fil0" cx="25788" cy="7597" rx="292" ry="240"/>
+  </g>
+  <g id="_715187280">
+   <rect class="fil0" x="25339" y="4187" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="4390" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="4593" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="4795" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="4998" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="5200" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="5403" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="5606" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="4390" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="4593" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="4795" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="4998" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="5200" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="5403" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="5606" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="4187" width="101" height="101"/>
+   <path class="fil0" d="M25441 4035l304 0c0,56 45,102 101,102 56,0 101,-46 101,-102l304 0 0 1824 -810 0 0 -1824z"/>
+  </g>
+  <g id="_715191408">
+   <rect class="fil0" x="25339" y="1061" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="1263" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="1466" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="1669" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="1871" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="2074" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="2277" width="101" height="101"/>
+   <rect class="fil0" x="25339" y="2479" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="1263" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="1466" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="1669" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="1871" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="2074" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="2277" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="2479" width="101" height="101"/>
+   <rect class="fil0" x="26251" y="1061" width="101" height="101"/>
+   <path class="fil0" d="M25441 909l304 0c0,56 45,101 101,101 56,0 101,-45 101,-101l304 0 0 1824 -810 0 0 -1824z"/>
+  </g>
+  <rect class="fil1 str0" x="16987" y="7553" width="4429" height="1042"/>
+  <rect class="fil2 str0" x="19736" y="7683" width="756" height="782" rx="124" ry="128"/>
+  <line class="fil3 str1" x1="15424" y1="11200" x2="16727" y2= "11200" />
+  <g>
+   <path class="fil4" d="M8611 6831l0 -1363 78 0 0 1363 -78 0zm39 200l-101 -202 202 0 -101 202z"/>
+  </g>
+  <g>
+   <path class="fil4" d="M8611 9958l0 -1363 78 0 0 1363 -78 0zm39 200l-101 -203 202 0 -101 203z"/>
+  </g>
+  <g>
+   <path class="fil4" d="M8611 13605l0 -1884 78 0 0 1884 -78 0zm39 200l-101 -202 202 0 -101 202z"/>
+  </g>
+  <g>
+   <path class="fil4" d="M14942 3384l0 521 -78 0 0 -521 39 -39 39 39zm-78 0l0 -39 39 0 -39 39zm2644 39l-2605 0 0 -78 2605 0 40 39 -40 39zm0 -78l40 0 0 39 -40 -39zm-39 360l0 -321 79 0 0 321 -79 0zm39 200l-101 -203 203 0 -102 203z"/>
+  </g>
+  <g>
+   <path class="fil4" d="M14942 6510l0 522 -78 0 0 -522 39 -39 39 39zm-78 0l0 -39 39 0 -39 39zm2644 40l-2605 0 0 -79 2605 0 40 39 -40 40zm0 -79l40 0 0 39 -40 -39zm-39 360l0 -321 79 0 0 321 -79 0zm39 200l-101 -202 203 0 -102 202z"/>
+  </g>
+  <g>
+   <path class="fil4" d="M14942 9637l0 521 -78 0 0 -521 39 -39 39 39zm-78 0l0 -39 39 0 -39 39zm2644 39l-2605 0 0 -78 2605 0 40 39 -40 39zm0 -78l40 0 0 39 -40 -39zm-39 360l0 -321 79 0 0 321 -79 0zm39 200l-101 -203 203 0 -102 203z"/>
+  </g>
+  <g>
+   <path class="fil4" d="M6083 3384l0 521 -78 0 0 -521 39 -39 39 39zm-78 0l0 -39 39 0 -39 39zm2645 39l-2606 0 0 -78 2606 0 39 39 -39 39zm0 -78l39 0 0 39 -39 -39zm-39 360l0 -321 78 0 0 321 -78 0zm39 200l-101 -203 202 0 -101 203z"/>
+  </g>
+  <line class="fil3 str1" x1="15424" y1="4947" x2="16727" y2= "4947" />
+  <rect class="fil1 str0" x="16987" y="10679" width="4429" height="1042"/>
+  <g>
+   <path class="fil5" d="M17730 12042l0 -581 78 0 0 581 -78 0zm39 200l-101 -202 202 0 -101 202z"/>
+  </g>
+  <g>
+   <path class="fil5" d="M17990 12303l0 -582 79 0 0 582 -79 0zm40 200l-102 -203 203 0 -101 203z"/>
+  </g>
+  <rect class="fil2 str0" x="18954" y="10809" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil2 str0" x="19736" y="10809" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil1 str0" x="16727" y="10419" width="4429" height="1042"/>
   <g>
-   <path fill="#AFDBAF" fill-rule="nonzero" d="M9961 6934l0 -1332 76 0 0 1332 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M17469 11782l0 -582 78 0 0 582 -78 0zm39 200l-101 -203 203 0 -102 203z"/>
   </g>
+  <rect class="fil1 str0" x="16466" y="10158" width="4429" height="1042"/>
+  <rect class="fil2 str0" x="18433" y="10288" width="756" height="782" rx="124" ry="128"/>
+  <text x="19192" y="10027"  class="fil2 fnt0">Instances</text>
+  <rect class="fil1 str0" x="16987" y="4426" width="4429" height="1042"/>
   <g>
-   <path fill="#AFDBAF" fill-rule="nonzero" d="M9961 9990l0 -1332 76 0 0 1332 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil6" d="M22519 4986l-1884 0 0 -78 1884 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
   <g>
-   <path fill="#AFDBAF" fill-rule="nonzero" d="M9961 13555l0 -1841 76 0 0 1841 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M17730 5789l0 -581 78 0 0 581 -78 0zm39 200l-101 -203 202 0 -101 203z"/>
   </g>
   <g>
-   <path fill="#AFDBAF" fill-rule="nonzero" d="M16149 3565l0 509 -76 0 0 -509 38 -38 38 38zm-76 0l0 -38 38 0 -38 38zm2585 38l-2546 0 0 -76 2546 0 38 38 -38 38zm0 -76l38 0 0 38 -38 -38zm-38 352l0 -314 76 0 0 314 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M17990 6050l0 -582 79 0 0 582 -79 0zm40 200l-102 -203 203 0 -101 203z"/>
   </g>
+  <rect class="fil2 str0" x="18954" y="4556" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil1 str0" x="16727" y="4166" width="4429" height="1042"/>
   <g>
-   <path fill="#AFDBAF" fill-rule="nonzero" d="M16149 6621l0 509 -76 0 0 -509 38 -38 38 38zm-76 0l0 -38 38 0 -38 38zm2585 38l-2546 0 0 -76 2546 0 38 38 -38 38zm0 -76l38 0 0 38 -38 -38zm-38 352l0 -314 76 0 0 314 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M17469 5529l0 -582 78 0 0 582 -78 0zm39 199l-101 -202 203 0 -102 202z"/>
   </g>
+  <rect class="fil2 str0" x="18694" y="4296" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil2 str0" x="19476" y="4296" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil2 str0" x="20257" y="4296" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil1 str0" x="16466" y="3905" width="4429" height="1042"/>
+  <rect class="fil2 str0" x="18433" y="4035" width="756" height="782" rx="124" ry="128"/>
+  <line class="fil3 str1" x1="6565" y1="7813" x2="7608" y2= "7813" />
+  <line class="fil3 str1" x1="6565" y1="8074" x2="7868" y2= "8074" />
   <g>
-   <path fill="#AFDBAF" fill-rule="nonzero" d="M16149 9677l0 509 -76 0 0 -509 38 -38 38 38zm-76 0l0 -38 38 0 -38 38zm2585 38l-2546 0 0 -76 2546 0 38 38 -38 38zm0 -76l38 0 0 38 -38 -38zm-38 352l0 -314 76 0 0 314 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M7407 7592l-842 0 0 -78 842 0 0 78zm200 -39l-202 101 0 -203 202 102z"/>
   </g>
+  <line class="fil3 str1" x1="6565" y1="10940" x2="7608" y2= "10940" />
+  <line class="fil3 str1" x1="6565" y1="11200" x2="7868" y2= "11200" />
   <g>
-   <path fill="#AFDBAF" fill-rule="nonzero" d="M7491 3565l0 509 -76 0 0 -509 38 -38 38 38zm-76 0l0 -38 38 0 -38 38zm2585 38l-2546 0 0 -76 2546 0 38 38 -38 38zm0 -76l38 0 0 38 -38 -38zm-38 352l0 -314 76 0 0 314 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M7407 10718l-842 0 0 -78 842 0 0 78zm200 -39l-202 101 0 -202 202 101z"/>
   </g>
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="16620" y1="5093" x2="17893" y2= "5093" />
-  <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="18148" y="10695" width="4329" height="1019"/>
+  <line class="fil3 str1" x1="6565" y1="14587" x2="7608" y2= "14587" />
+  <line class="fil3 str1" x1="6565" y1="14848" x2="7868" y2= "14848" />
   <g>
-   <path fill="black" fill-rule="nonzero" d="M18874 12027l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M7407 14366l-842 0 0 -78 842 0 0 78zm200 -39l-202 101 0 -202 202 101z"/>
   </g>
+  <line class="fil3 str1" x1="15424" y1="10940" x2="16466" y2= "10940" />
   <g>
-   <path fill="black" fill-rule="nonzero" d="M19128 12282l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M16266 10718l-842 0 0 -78 842 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="20071" y="10822" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="20835" y="10822" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="17893" y="10440" width="4329" height="1019"/>
+  <line class="fil3 str1" x1="15424" y1="4687" x2="16466" y2= "4687" />
   <g>
-   <path fill="black" fill-rule="nonzero" d="M18619 11773l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M16266 4465l-842 0 0 -78 842 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
-  <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="17639" y="10186" width="4329" height="1019"/>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="19561" y="10313" width="738" height="764" rx="121" ry="125"/>
-  <text x="19921" y="10058"  fill="#FF6600" font-weight="normal" font-size="359.325px" font-family="Arial">Instances</text>
-  <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="18148" y="4584" width="4329" height="1019"/>
+  <line class="fil3 str1" x1="15424" y1="7813" x2="16466" y2= "7813" />
+  <line class="fil3 str1" x1="15424" y1="8074" x2="16727" y2= "8074" />
   <g>
-   <path fill="black" fill-rule="nonzero" d="M23554 5131l-1841 0 0 -76 1841 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M16266 7592l-842 0 0 -78 842 0 0 78zm200 -39l-203 101 0 -203 203 102z"/>
   </g>
+  <line class="fil3 str1" x1="6565" y1="4687" x2="7608" y2= "4687" />
+  <line class="fil3 str1" x1="6565" y1="4947" x2="7868" y2= "4947" />
+  <rect class="fil7 str2" x="833" y="7813" width="2605" height="1563"/>
+  <rect class="fil7 str2" x="8650" y="1039" width="2605" height="1563"/>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M18874 5916l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <rect class="fil1 str0" x="8129" y="4426" width="2084" height="1042"/>
+   <rect class="fil1 str0" x="7868" y="4166" width="2084" height="1042"/>
+   <rect class="fil1 str0" x="7608" y="3905" width="2084" height="1042"/>
   </g>
+  <text x="7700" y="4584"  class="fil8 fnt0">cmdGadget</text>
+  <rect class="fil9 str0" x="13340" y="3905" width="2084" height="1563"/>
+  <text x="13779" y="4584"  class="fil8 fnt0">Gadget</text>
+  <text x="16917" y="4584"  class="fil8 fnt0">gg</text>
+  <text x="17333" y="4584"  class="fil8 fnt0">XXX</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M19128 6170l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M13139 4726l-3186 0 0 -78 3186 0 0 78zm200 -39l-202 101 0 -203 202 102z"/>
   </g>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="20071" y="4711" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="20835" y="4711" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="17893" y="4329" width="4329" height="1019"/>
+  <rect class="fil9 str0" x="4481" y="3905" width="2084" height="11985"/>
+  <text x="5136" y="4584"  class="fil8 fnt0">Cmd</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M18619 5661l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <rect class="fil1 str0" x="8129" y="7553" width="2084" height="1042"/>
+   <rect class="fil1 str0" x="7868" y="7292" width="2084" height="1042"/>
+   <rect class="fil1 str0" x="7608" y="7032" width="2084" height="1042"/>
   </g>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="19816" y="4456" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="20580" y="4456" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="21344" y="4456" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="17639" y="4074" width="4329" height="1019"/>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="19561" y="4202" width="738" height="764" rx="121" ry="125"/>
-  <text x="19921" y="3946"  fill="#FF6600" font-weight="normal" font-size="359.325px" font-family="Arial">Instances</text>
+  <text x="7578" y="7711"  class="fil8 fnt0">cmdGateway</text>
+  <rect class="fil9 str0" x="13340" y="7032" width="2084" height="1563"/>
+  <text x="13657" y="7711"  class="fil8 fnt0">Gateway</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M23045 4622l-2733 0 0 -76 2733 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <rect class="fil1 str0" x="8129" y="10679" width="2084" height="1042"/>
+   <rect class="fil1 str0" x="7868" y="10419" width="2084" height="1042"/>
+   <rect class="fil1 str0" x="7608" y="10158" width="2084" height="1042"/>
   </g>
-  <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="18148" y="7639" width="4329" height="1019"/>
+  <text x="7925" y="10837"  class="fil8 fnt0">cmdRule</text>
+  <rect class="fil9 str0" x="13340" y="10158" width="2084" height="1563"/>
+  <text x="14004" y="10837"  class="fil8 fnt0">Rule</text>
+  <text x="17020" y="10837"  class="fil8 fnt0">rl</text>
+  <text x="17230" y="10837"  class="fil8 fnt0">XXX</text>
   <g>
-   <ellipse fill="#CCCCCC" cx="26915" cy="7955" rx="619" ry="412"/>
-   <ellipse fill="#CCCCCC" cx="27235" cy="7480" rx="526" ry="350"/>
-   <ellipse fill="#CCCCCC" cx="27637" cy="7955" rx="722" ry="412"/>
-   <ellipse fill="#CCCCCC" cx="27768" cy="7555" rx="285" ry="234"/>
+   <rect class="fil1 str0" x="8129" y="14327" width="2084" height="1042"/>
+   <rect class="fil1 str0" x="7868" y="14066" width="2084" height="1042"/>
+   <rect class="fil1 str0" x="7608" y="13806" width="2084" height="1042"/>
   </g>
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="7962" y1="7894" x2="8981" y2= "7894" />
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="7962" y1="8149" x2="9235" y2= "8149" />
+  <text x="7916" y="14485"  class="fil8 fnt0">cmd</text>
+  <text x="8617" y="14485"  class="fil8 fnt0">XXX</text>
+  <rect class="fil9 str2" x="1094" y="8074" width="2084" height="1042"/>
+  <text x="1105" y="8753"  class="fil8 fnt0">TelnetServer</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M8785 7678l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M4281 8634l-842 0 0 -78 842 0 0 78zm200 -39l-203 101 0 -203 203 102z"/>
   </g>
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="7962" y1="10950" x2="8981" y2= "10950" />
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="7962" y1="11204" x2="9235" y2= "11204" />
+  <rect class="fil9 str2" x="8910" y="1300" width="2084" height="1042"/>
+  <text x="9490" y="1979"  class="fil8 fnt0">Timer</text>
+  <text x="14777" y="4176"  class="fil10 fnt1">{ }</text>
+  <text x="14777" y="7321"  class="fil10 fnt1">{ }</text>
+  <text x="14777" y="10466"  class="fil10 fnt1">{ }</text>
+  <text x="5914" y="4176"  class="fil10 fnt1">{ }</text>
+  <rect class="fil9 str0" x="52" y="2081" width="2084" height="1042"/>
+  <text x="604" y="2760"  class="fil8 fnt0">ezPiC</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M8785 10733l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M16948 12503l0 -1303 78 0 0 1303 -39 39 -39 -39zm78 0l0 39 -39 0 39 -39zm-10260 -39l10221 0 0 78 -10221 0 0 -78zm-200 39l202 -101 0 202 -202 -101z"/>
   </g>
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="7962" y1="14515" x2="8981" y2= "14515" />
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="7962" y1="14769" x2="9235" y2= "14769" />
+  <rect class="fil7 str2" x="833" y="9898" width="2605" height="1563"/>
+  <rect class="fil9 str2" x="1094" y="10158" width="2084" height="1042"/>
+  <text x="1830" y="10837"  class="fil8 fnt0">???</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M8785 14298l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M4281 10718l-842 0 0 -78 842 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="16620" y1="10950" x2="17639" y2= "10950" />
   <g>
-   <path fill="black" fill-rule="nonzero" d="M17443 10733l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil6" d="M22519 8113l-1884 0 0 -78 1884 0 0 78zm200 -39l-203 101 0 -203 203 102z"/>
   </g>
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="16620" y1="4838" x2="17639" y2= "4838" />
   <g>
-   <path fill="black" fill-rule="nonzero" d="M17443 4622l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil11" d="M2978 2641l-842 0 0 -78 842 0 0 78zm200 -39l-203 102 0 -203 203 101z"/>
   </g>
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="16620" y1="7894" x2="17639" y2= "7894" />
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="16620" y1="8149" x2="17893" y2= "8149" />
+  <text x="3420" y="2760"  class="fil12 fnt0">init</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M17443 7678l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M7407 4465l-842 0 0 -78 842 0 0 78zm200 -39l-202 101 0 -202 202 101z"/>
   </g>
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="7962" y1="4838" x2="8981" y2= "4838" />
-  <line fill="none" stroke="black" stroke-width="76.3936" x1="7962" y1="5093" x2="9235" y2= "5093" />
-  <rect fill="#E6E6E6" stroke="black" stroke-width="20.3716" x="2360" y="7894" width="2546" height="1528"/>
-  <rect fill="#E6E6E6" stroke="black" stroke-width="20.3716" x="14328" y="764" width="2546" height="1528"/>
+  <path class="fil13 str0" d="M15372 7292l52 0 0 1042 -52 0c-115,0 -208,-94 -208,-208l0 -625c0,-115 93,-209 208,-209z"/>
+  <path class="fil13 str0" d="M15372 4166l52 0 0 1042 -52 0c-115,0 -208,-94 -208,-209l0 -625c0,-115 93,-208 208,-208z"/>
+  <path class="fil13 str0" d="M15372 10419l52 0 0 1042 -52 0c-115,0 -208,-94 -208,-209l0 -625c0,-115 93,-208 208,-208z"/>
+  <path class="fil13 str0" d="M9900 2081l105 0c114,0 208,94 208,209l0 52 -521 0 0 -52c0,-115 94,-209 208,-209z"/>
+  <text x="6341" y="3216"  class="fil10 fnt0">load Plugins</text>
+  <text x="15199" y="3216"  class="fil10 fnt0">load Plugins</text>
+  <rect class="fil9 str0" x="16727" y="13545" width="2084" height="1563"/>
+  <text x="17085" y="14224"  class="fil8 fnt0">Reading</text>
+  <text x="19849" y="14615"  class="fil8 fnt2">{ }</text>
   <g>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="9490" y="4584" width="2037" height="1019"/>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="9235" y="4329" width="2037" height="1019"/>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="8981" y="4074" width="2037" height="1019"/>
+   <path class="fil5" d="M19653 14366l-842 0 0 -78 842 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
-  <text x="9071" y="4738"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">cmdGadget</text>
-  <rect fill="#FFFF99" stroke="black" stroke-width="20.3716" x="14583" y="4074" width="2037" height="1528"/>
-  <text x="15013" y="4738"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">Gadget</text>
-  <text x="18098" y="4738"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">ggXXX</text>
+  <path class="fil13 str0" d="M18759 14066l52 0 0 521 -52 0c-115,0 -208,-93 -208,-208l0 -104c0,-115 93,-209 208,-209z"/>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M14387 4876l-3115 0 0 -76 3115 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M17730 8916l0 -582 78 0 0 582 -78 0zm39 200l-101 -203 202 0 -101 203z"/>
   </g>
-  <rect fill="#FFFF99" stroke="black" stroke-width="20.3716" x="5925" y="4074" width="2037" height="11714"/>
-  <text x="6565" y="4738"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">Cmd</text>
   <g>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="9490" y="7639" width="2037" height="1019"/>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="9235" y="7385" width="2037" height="1019"/>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="8981" y="7130" width="2037" height="1019"/>
+   <path class="fil5" d="M17990 9176l0 -581 79 0 0 581 -79 0zm40 200l-102 -202 203 0 -101 202z"/>
   </g>
-  <text x="8951" y="7794"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">cmdGateway</text>
-  <rect fill="#FFFF99" stroke="black" stroke-width="20.3716" x="14583" y="7130" width="2037" height="1528"/>
-  <text x="14893" y="7794"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">Gateway</text>
   <g>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="9490" y="10695" width="2037" height="1019"/>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="9235" y="10440" width="2037" height="1019"/>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="8981" y="10186" width="2037" height="1019"/>
+   <path class="fil5" d="M17469 13345l0 -581 78 0 0 581 -78 0zm39 200l-101 -203 203 0 -102 203z"/>
   </g>
-  <text x="9291" y="10849"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">cmdRule</text>
-  <rect fill="#FFFF99" stroke="black" stroke-width="20.3716" x="14583" y="10186" width="2037" height="1528"/>
-  <text x="15233" y="10849"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">Rule</text>
-  <text x="18199" y="10849"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">rlXXX</text>
   <g>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="9490" y="14260" width="2037" height="1019"/>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="9235" y="14005" width="2037" height="1019"/>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="8981" y="13751" width="2037" height="1019"/>
+   <path class="fil5" d="M17730 13345l0 -581 78 0 0 581 -78 0zm39 200l-101 -203 202 0 -101 203z"/>
   </g>
-  <text x="9301" y="14415"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">cmdXXX</text>
-  <rect fill="#FFFF99" stroke="black" stroke-width="20.3716" x="2615" y="8149" width="2037" height="1019"/>
-  <text x="2625" y="8812"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">TelnetServer</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M5729 8696l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M17990 13345l0 -581 79 0 0 581 -79 0zm40 200l-102 -203 203 0 -101 203z"/>
   </g>
-  <rect fill="#FFFF99" stroke="black" stroke-width="20.3716" x="14583" y="1019" width="2037" height="1019"/>
-  <text x="15150" y="1682"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">Timer</text>
-  <text x="15988" y="4339"  fill="#AFDBAF" font-weight="normal" font-size="268.498px" font-family="Arial">{ }</text>
-  <text x="15988" y="7413"  fill="#AFDBAF" font-weight="normal" font-size="268.498px" font-family="Arial">{ }</text>
-  <text x="15988" y="10487"  fill="#AFDBAF" font-weight="normal" font-size="268.498px" font-family="Arial">{ }</text>
-  <text x="7326" y="4339"  fill="#AFDBAF" font-weight="normal" font-size="268.498px" font-family="Arial">{ }</text>
-  <rect fill="#FFFF99" stroke="black" stroke-width="20.3716" x="2615" y="1528" width="2037" height="1019"/>
-  <text x="3154" y="2192"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">ezPiC</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M18110 12478l0 -1273 76 0 0 1273 -38 38 -38 -38zm76 0l0 38 -38 0 38 -38zm-10028 -38l9990 0 0 76 -9990 0 0 -76zm-195 38l198 -99 0 198 -198 -99z"/>
+   <path class="fil5" d="M9914 2733l-1 -391 79 0 0 391 -67 27 -11 -27zm11 27l-11 -11 0 -16 11 27zm249 249l-249 -249 55 -55 249 249 -55 55zm169 114l-215 -72 144 -143 71 215z"/>
   </g>
-  <rect fill="#E6E6E6" stroke="black" stroke-width="20.3716" x="2360" y="9931" width="2546" height="1528"/>
-  <rect fill="#FFFF99" stroke="black" stroke-width="20.3716" x="2615" y="10186" width="2037" height="1019"/>
-  <text x="3334" y="10849"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">???</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M5729 10733l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M14354 3412l-260 -261 55 -55 261 260 11 28 -67 28zm56 -56l11 12 0 16 -11 -28zm-67 349l0 -321 78 0 0 321 -78 0zm39 200l-101 -203 202 0 -101 203z"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M23554 8187l-1841 0 0 -76 1841 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M4281 6289l-4229 0 0 -78 4229 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
+  <polyline class="fil3 str1" points="10213,4947 10734,4947 10995,4687 10734,4426 9692,4426 "/>
   <g>
-   <path fill="#B3B3B3" fill-rule="nonzero" d="M5475 2075l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M13139 7852l-3186 0 0 -78 3186 0 0 78zm200 -39l-202 101 0 -202 202 101z"/>
   </g>
-  <text x="5907" y="2192"  fill="#B3B3B3" font-weight="normal" font-size="359.325px" font-family="Arial">init</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M8785 4622l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M13139 10979l-3186 0 0 -78 3186 0 0 78zm200 -39l-202 101 0 -203 202 102z"/>
   </g>
-  <path fill="#FF3399" stroke="black" stroke-width="20.3716" d="M16569 7385l51 0 0 1019 -51 0c-112,0 -204,-92 -204,-204l0 -611c0,-112 92,-204 204,-204z"/>
-  <path fill="#FF3399" stroke="black" stroke-width="20.3716" d="M16569 4329l51 0 0 1019 -51 0c-112,0 -204,-92 -204,-204l0 -611c0,-112 92,-204 204,-204z"/>
-  <path fill="#FF3399" stroke="black" stroke-width="20.3716" d="M16569 10440l51 0 0 1019 -51 0c-112,0 -204,-92 -204,-204l0 -611c0,-112 92,-204 204,-204z"/>
-  <path fill="#FF3399" stroke="black" stroke-width="20.3716" d="M15551 1783l102 0c112,0 204,92 204,204l0 51 -509 0 0 -51c0,-112 92,-204 204,-204z"/>
-  <text x="7743" y="3401"  fill="#AFDBAF" font-weight="normal" font-size="359.325px" font-family="Arial">load Plugins</text>
-  <text x="16401" y="3401"  fill="#AFDBAF" font-weight="normal" font-size="359.325px" font-family="Arial">load Plugins</text>
-  <rect fill="#FFFF99" stroke="black" stroke-width="20.3716" x="17893" y="13496" width="2037" height="1528"/>
-  <text x="18243" y="14160"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">Reading</text>
-  <text x="20945" y="14541"  fill="black" font-weight="normal" font-size="1085.9px" font-family="Arial">{ }</text>
+  <polyline class="fil3 str1" points="10213,8074 10734,8074 10995,7813 10734,7553 9692,7553 "/>
+  <polyline class="fil3 str1" points="10213,11200 10734,11200 10995,10940 10734,10679 9692,10679 "/>
+  <text x="13326" y="5437"  class="fil14 fnt3">./dev/Gadget.py</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M20753 14298l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil15" d="M693 8673l-641 0 0 -156 641 0 0 156zm400 -78l-405 202 0 -405 405 203z"/>
   </g>
-  <path fill="#FF3399" stroke="black" stroke-width="20.3716" d="M19880 14005l51 0 0 509 -51 0c-112,0 -204,-92 -204,-204l0 -102c0,-112 92,-204 204,-204z"/>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M18874 8972l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil16" d="M693 10757l-641 0 0 -156 641 0 0 156zm400 -78l-405 203 0 -405 405 202z"/>
   </g>
+  <text x="145" y="7295"  class="fil17 fnt0">Telnet</text>
+  <text x="145" y="7705"  class="fil17 fnt0">Port 23101</text>
+  <text x="1750" y="513"  class="fil12 fnt4">ezPiC IoT-Device-Part</text>
+  <text x="13326" y="8564"  class="fil14 fnt3">./dev/Gateway.py</text>
+  <text x="16453" y="4916"  class="fil14 fnt3">./dev/plugins/gadgets/ggXXX.py</text>
+  <text x="13326" y="11690"  class="fil14 fnt3">./dev/Rule.py</text>
+  <text x="4468" y="15859"  class="fil14 fnt3">./dev/Cmd.py</text>
+  <text x="7594" y="14817"  class="fil14 fnt3">./dev/plugins/cmd/cmdXXX.py</text>
+  <text x="16453" y="11169"  class="fil14 fnt3">./dev/plugins/rules/rlXXX.py</text>
+  <text x="1081" y="9085"  class="fil14 fnt3">./dev/TelnerServer.py</text>
+  <text x="16713" y="15078"  class="fil14 fnt3">./dev/Reading.py</text>
+  <text x="8897" y="2311"  class="fil14 fnt3">./dev/Timer.py</text>
+  <text x="38" y="3092"  class="fil14 fnt3">./ezPiC.py</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M19128 9226l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil11" d="M4281 4205l-842 0 0 -79 842 0 0 79zm200 -39l-203 101 0 -203 203 102z"/>
   </g>
+  <text x="2773" y="4276"  class="fil12 fnt0">init</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M18619 13300l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil11" d="M13139 4205l-841 0 0 -79 841 0 0 79zm200 -39l-202 101 0 -203 202 102z"/>
   </g>
+  <text x="11631" y="4276"  class="fil12 fnt0">init</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M18874 13300l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil11" d="M13139 7331l-841 0 0 -78 841 0 0 78zm200 -39l-202 101 0 -202 202 101z"/>
   </g>
+  <text x="11631" y="7403"  class="fil12 fnt0">init</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M19128 13300l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil11" d="M13139 10458l-841 0 0 -78 841 0 0 78zm200 -39l-202 101 0 -203 202 102z"/>
   </g>
+  <text x="11631" y="10529"  class="fil12 fnt0">init</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M15563 2605l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil11" d="M16527 13845l-842 0 0 -78 842 0 0 78zm199 -39l-202 101 0 -203 202 102z"/>
   </g>
+  <text x="15018" y="13917"  class="fil12 fnt0">init</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M15563 3879l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil11" d="M8710 1599l-842 0 0 -78 842 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
+  <text x="7202" y="1671"  class="fil12 fnt0">init</text>
+  <rect class="fil9 str0" x="16727" y="16411" width="2084" height="1563"/>
+  <text x="19849" y="17481"  class="fil8 fnt2">{ }</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M15563 6934l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M19653 17232l-842 0 0 -78 842 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
+  <path class="fil18 str0" d="M18759 16932l52 0 0 521 -52 0c-115,0 -208,-93 -208,-208l0 -104c0,-115 93,-209 208,-209z"/>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M15563 9990l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil5" d="M17469 16211l0 -581 78 0 0 581 -78 0zm39 200l-101 -203 203 0 -102 203z"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M5729 6659l-4388 0 0 -76 4388 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M17730 16211l0 -581 78 0 0 581 -78 0zm39 200l-101 -203 202 0 -101 203z"/>
   </g>
-  <polyline fill="none" stroke="black" stroke-width="76.3936" points="11527,5093 12037,5093 12291,4838 12037,4584 11018,4584 "/>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M14387 7932l-3115 0 0 -76 3115 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M17990 16211l0 -581 79 0 0 581 -79 0zm40 200l-102 -203 203 0 -101 203z"/>
   </g>
+  <text x="16713" y="17944"  class="fil14 fnt3">./dev/SysConfig.py</text>
+  <rect class="fil2 str0" x="18954" y="7683" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil1 str0" x="16727" y="7292" width="4429" height="1042"/>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M14387 10988l-3115 0 0 -76 3115 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M17469 8655l0 -581 78 0 0 581 -78 0zm39 200l-101 -203 203 0 -102 203z"/>
   </g>
-  <polyline fill="none" stroke="black" stroke-width="76.3936" points="11527,8149 12037,8149 12291,7894 12037,7639 11018,7639 "/>
-  <polyline fill="none" stroke="black" stroke-width="76.3936" points="11527,11204 12037,11204 12291,10950 12037,10695 11018,10695 "/>
-  <text x="14570" y="5572"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/Gadget.py</text>
+  <rect class="fil2 str0" x="18694" y="7422" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil2 str0" x="19476" y="7422" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil2 str0" x="20257" y="7422" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil1 str0" x="16466" y="7032" width="4429" height="1042"/>
+  <rect class="fil2 str0" x="18433" y="7162" width="756" height="782" rx="124" ry="128"/>
+  <text x="19192" y="6901"  class="fil2 fnt0">Instances</text>
   <g>
-   <path fill="#003399" fill-rule="nonzero" d="M2223 8734l-627 0 0 -153 627 0 0 153zm391 -76l-396 198 0 -396 396 198z"/>
+   <path class="fil6" d="M21998 7592l-2809 0 0 -78 2809 0 0 78zm200 -39l-203 101 0 -203 203 102z"/>
   </g>
+  <text x="16887" y="7711"  class="fil8 fnt0">gw</text>
+  <text x="17363" y="7711"  class="fil8 fnt0">XXX</text>
+  <text x="16453" y="8043"  class="fil14 fnt3">./dev/plugins/gateways/gwXXX.py</text>
   <g>
-   <path fill="red" fill-rule="nonzero" d="M2223 10772l-627 0 0 -153 627 0 0 153zm391 -76l-396 198 0 -396 396 198z"/>
+   <path class="fil6" d="M22259 7852l-1246 0 0 -78 1246 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
-  <text x="372" y="8713"  fill="#003399" font-weight="normal" font-size="359.325px" font-family="Arial">Telnet</text>
-  <text x="-28" y="9115"  fill="#003399" font-weight="normal" font-size="359.325px" font-family="Arial">Port 23101</text>
-  <text x="73" y="505"  fill="black" font-weight="bold" font-size="503.067px" font-family="Arial">ezPiC IoT-Device-Part</text>
-  <text x="14570" y="8628"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/Gateway.py</text>
-  <text x="17626" y="5063"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/plugins/gadgets/ggXXX.py</text>
-  <text x="14570" y="11684"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/Rule.py</text>
-  <text x="5912" y="15758"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/Cmd.py</text>
-  <text x="8968" y="14739"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/plugins/cmd/cmdXXX.py</text>
-  <text x="17626" y="11174"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/plugins/rules/rlXXX.py</text>
-  <text x="2602" y="9137"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/TelnerServer.py</text>
-  <text x="17880" y="14994"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/Reading.py</text>
-  <text x="14570" y="2007"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/Timer.py</text>
-  <text x="2602" y="2516"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./ezPiC.py</text>
   <g>
-   <path fill="#B3B3B3" fill-rule="nonzero" d="M5729 4367l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <rect class="fil19 str0" x="22719" y="7553" width="2084" height="1042"/>
+   <rect class="fil19 str0" x="22459" y="7292" width="2084" height="1042"/>
+   <rect class="fil19 str0" x="22198" y="7032" width="2084" height="1042"/>
   </g>
-  <text x="4255" y="4437"  fill="#B3B3B3" font-weight="normal" font-size="359.325px" font-family="Arial">init</text>
+  <text x="22568" y="7711"  class="fil8 fnt0">MQTT</text>
+  <text x="23614" y="7711"  class="fil8 fnt0">...</text>
   <g>
-   <path fill="#B3B3B3" fill-rule="nonzero" d="M14387 4367l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil16" d="M24924 7631l-641 0 0 -157 641 0 0 157zm400 -78l-405 202 0 -405 405 203z"/>
   </g>
-  <text x="12913" y="4437"  fill="#B3B3B3" font-weight="normal" font-size="359.325px" font-family="Arial">init</text>
   <g>
-   <path fill="#B3B3B3" fill-rule="nonzero" d="M14387 7423l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil16" d="M25185 7891l-642 0 0 -156 642 0 0 156zm400 -78l-405 203 0 -405 405 202z"/>
   </g>
-  <text x="12913" y="7493"  fill="#B3B3B3" font-weight="normal" font-size="359.325px" font-family="Arial">init</text>
   <g>
-   <path fill="#B3B3B3" fill-rule="nonzero" d="M14387 10479l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil16" d="M25445 8152l-641 0 0 -156 641 0 0 156zm400 -78l-405 202 0 -405 405 203z"/>
   </g>
-  <text x="12913" y="10549"  fill="#B3B3B3" font-weight="normal" font-size="359.325px" font-family="Arial">init</text>
   <g>
-   <path fill="#B3B3B3" fill-rule="nonzero" d="M17698 13789l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil6" d="M21998 4726l-985 0 0 -78 985 0 0 78zm200 -39l-203 101 0 -203 203 102z"/>
   </g>
-  <text x="16224" y="13859"  fill="#B3B3B3" font-weight="normal" font-size="359.325px" font-family="Arial">init</text>
   <g>
-   <path fill="#B3B3B3" fill-rule="nonzero" d="M14387 1311l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <rect class="fil19 str0" x="22719" y="4687" width="2084" height="1042"/>
+   <rect class="fil19 str0" x="22459" y="4426" width="2084" height="1042"/>
+   <rect class="fil19 str0" x="22198" y="4166" width="2084" height="1042"/>
   </g>
-  <text x="12913" y="1382"  fill="#B3B3B3" font-weight="normal" font-size="359.325px" font-family="Arial">init</text>
-  <rect fill="#FFFF99" stroke="black" stroke-width="20.3716" x="17893" y="16297" width="2037" height="1528"/>
-  <text x="20945" y="17342"  fill="black" font-weight="normal" font-size="1085.9px" font-family="Arial">{ }</text>
+  <text x="22609" y="4845"  class="fil8 fnt0">GPIO</text>
+  <text x="23573" y="4845"  class="fil8 fnt0">...</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M20753 17099l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil6" d="M24924 4765l-641 0 0 -157 641 0 0 157zm400 -78l-405 202 0 -405 405 203z"/>
   </g>
-  <path fill="#FF3399" stroke="black" stroke-width="20.3716" d="M19880 16807l51 0 0 509 -51 0c-112,0 -204,-92 -204,-204l0 -102c0,-112 92,-204 204,-204z"/>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M18619 16102l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil6" d="M25185 5025l-642 0 0 -156 642 0 0 156zm400 -78l-405 203 0 -405 405 202z"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M18874 16102l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil6" d="M25445 5286l-641 0 0 -156 641 0 0 156zm400 -78l-405 202 0 -405 405 203z"/>
   </g>
+  <text x="16932" y="17090"  class="fil8 fnt0">SysConfig</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M19128 16102l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil11" d="M16578 16711l-842 0 0 -78 842 0 0 78zm200 -39l-203 101 0 -203 203 102z"/>
   </g>
-  <text x="17880" y="17795"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/SysConfig.py</text>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="20071" y="7767" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="17893" y="7385" width="4329" height="1019"/>
+  <text x="15069" y="16783"  class="fil12 fnt0">init</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M18619 8717l0 -568 76 0 0 568 -76 0zm38 195l-99 -198 198 0 -99 198z"/>
+   <path class="fil8" d="M146 0l764 0c80,0 146,66 146,146l0 764c0,80 -66,146 -146,146l-764 0c-80,0 -146,-66 -146,-146l0 -764c0,-80 66,-146 146,-146z"/>
+   <path class="fil20" d="M550 843c100,0 186,-37 247,-109l-107 -118c-31,34 -72,59 -119,59 -100,0 -170,-77 -170,-215 0,-133 70,-212 161,-212 49,0 86,18 119,47l107 -119c-52,-50 -131,-95 -226,-95 -199,0 -360,140 -360,386 0,251 165,376 348,376l0 0z"/>
+   <path class="fil21" d="M141 890l147 0 0 -177 62 0c117,0 223,-59 223,-195 0,-141 -103,-185 -223,-185l-209 0 0 557zm147 -293l0 -148 55 0c55,0 86,19 86,69 0,50 -28,79 -86,79l-55 0zm487 293l148 0 0 -429 -311 0 0 115 163 0 0 314zm69 -487c55,0 94,-34 94,-86 0,-51 -39,-87 -94,-87 -55,0 -94,36 -94,87 0,52 39,86 94,86z"/>
+   <path class="fil22" d="M401 961c39,0 89,-12 126,-36l-35 -64c-28,12 -50,18 -75,18 -46,0 -74,-15 -84,-50l203 0c1,-8 4,-26 4,-45 0,-85 -50,-153 -150,-153 -84,0 -165,62 -165,165 0,105 77,165 177,165l-1 0zm-7 -248c29,0 46,16 50,45l-110 0c9,-30 29,-45 60,-45zm165 241l299 0 0 -85 -150 0 146 -172 0 -58 -277 0 0 84 127 0 -145 173 0 58z"/>
   </g>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="19816" y="7512" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="20580" y="7512" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="21344" y="7512" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#CCFFCC" stroke="black" stroke-width="20.3716" x="17639" y="7130" width="4329" height="1019"/>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="19561" y="7257" width="738" height="764" rx="121" ry="125"/>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="20325" y="7257" width="738" height="764" rx="121" ry="125"/>
-  <text x="19921" y="7002"  fill="#FF6600" font-weight="normal" font-size="359.325px" font-family="Arial">Instances</text>
+  <path class="fil13 str0" d="M23189 13971l52 0 0 522 -52 0c-115,0 -209,-94 -209,-209l0 -104c0,-115 94,-209 209,-209z"/>
+  <text x="23734" y="14323"  class="fil8 fnt0">Mutex</text>
+  <rect class="fil2 str0" x="22859" y="15014" width="504" height="521" rx="83" ry="85"/>
+  <text x="23727" y="15365"  class="fil8 fnt0">Instance of XXX</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M23045 7678l-1981 0 0 -76 1981 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <rect class="fil7 str2" x="22676" y="16056" width="868" height="521"/>
+   <rect class="fil9 str2" x="22763" y="16143" width="695" height="347"/>
+   <text x="23008" y="16369"  class="fil8 fnt5">???</text>
   </g>
-  <text x="18069" y="7794"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">gwXXX</text>
-  <text x="17626" y="8118"  fill="gray" font-weight="normal" font-size="143.732px" font-family="Arial">./dev/plugins/gateways/gwXXX.py</text>
+  <text x="23753" y="16407"  class="fil8 fnt0">Tread</text>
+  <text x="22848" y="17502"  class="fil8 fnt6">{ }</text>
+  <text x="23762" y="17453"  class="fil8 fnt0">Storage</text>
+  <text x="22169" y="4035"  class="fil19 fnt0">external Libs</text>
+  <text x="22198" y="6901"  class="fil19 fnt0">external Libs</text>
+  <text x="1314" y="6082"  class="fil23 fnt0">direct Call</text>
+  <text x="18123" y="4176"  class="fil2 fnt1">{ }</text>
+  <text x="18123" y="7321"  class="fil2 fnt1">{ }</text>
+  <text x="18123" y="10466"  class="fil2 fnt1">{ }</text>
+  <text x="15199" y="6343"  class="fil10 fnt0">load Plugins</text>
+  <text x="15199" y="9469"  class="fil10 fnt0">load Plugins</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M23300 7932l-1218 0 0 -76 1218 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M16527 14366l-6835 0 0 -78 6835 0 0 78zm199 -39l-202 101 0 -202 202 101z"/>
   </g>
   <g>
-   <rect fill="#FFCC99" stroke="black" stroke-width="20.3716" x="23750" y="7639" width="2037" height="1019"/>
-   <rect fill="#FFCC99" stroke="black" stroke-width="20.3716" x="23496" y="7385" width="2037" height="1019"/>
-   <rect fill="#FFCC99" stroke="black" stroke-width="20.3716" x="23241" y="7130" width="2037" height="1019"/>
+   <path class="fil5" d="M16726 17193l-202 101 0 -202 202 101zm-2344 -39l2145 0 0 78 -2145 0 -39 -39 39 -39zm0 78l-39 0 0 -39 39 39zm39 -2645l0 2606 -78 0 0 -2606 39 -39 39 39zm-39 -39l39 0 0 39 -39 -39zm-4429 0l4429 0 0 78 -4429 0 0 -78z"/>
   </g>
-  <text x="23621" y="7794"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">MQTT...</text>
   <g>
-   <path fill="red" fill-rule="nonzero" d="M25905 7716l-627 0 0 -153 627 0 0 153zm391 -76l-396 198 0 -396 396 198z"/>
+   <path class="fil5" d="M12298 15890l-102 -203 203 0 -101 203zm39 -1042l0 842 -79 0 0 -842 40 -39 39 39zm-39 -39l39 0 0 39 -39 -39zm-2085 0l2085 0 0 78 -2085 0 0 -78z"/>
   </g>
+  <text x="11834" y="16308"  class="fil8 fnt2">...</text>
   <g>
-   <path fill="red" fill-rule="nonzero" d="M26160 7970l-627 0 0 -153 627 0 0 153zm391 -76l-396 198 0 -396 396 198z"/>
+   <path class="fil4" d="M14942 518l0 521 -78 0 0 -521 39 -39 39 39zm-78 0l0 -39 39 0 -39 39zm2644 39l-2605 0 0 -78 2605 0 40 39 -40 39zm0 -78l40 0 0 39 -40 -39zm-39 360l0 -321 79 0 0 321 -79 0zm39 200l-101 -203 203 0 -102 203z"/>
   </g>
+  <line class="fil3 str1" x1="15424" y1="2081" x2="16727" y2= "2081" />
+  <rect class="fil1 str0" x="16987" y="1560" width="4429" height="1042"/>
   <g>
-   <path fill="red" fill-rule="nonzero" d="M26415 8225l-627 0 0 -153 627 0 0 153zm391 -76l-396 198 0 -396 396 198z"/>
+   <path class="fil6" d="M22519 2120l-1884 0 0 -78 1884 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
+  <rect class="fil2 str0" x="19345" y="1690" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil1 str0" x="16727" y="1300" width="4429" height="1042"/>
+  <rect class="fil2 str0" x="19085" y="1430" width="756" height="782" rx="124" ry="128"/>
+  <rect class="fil1 str0" x="16466" y="1039" width="4429" height="1042"/>
+  <rect class="fil2 str0" x="18824" y="1169" width="756" height="782" rx="124" ry="128"/>
+  <text x="18495" y="908"  class="fil2 fnt0">One Instance</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M23300 4876l-1218 0 0 -76 1218 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil6" d="M21998 1599l-2418 0 0 -78 2418 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
+  <line class="fil3 str1" x1="15424" y1="1821" x2="16466" y2= "1821" />
   <g>
-   <rect fill="#FFCC99" stroke="black" stroke-width="20.3716" x="23750" y="4584" width="2037" height="1019"/>
-   <rect fill="#FFCC99" stroke="black" stroke-width="20.3716" x="23496" y="4329" width="2037" height="1019"/>
-   <rect fill="#FFCC99" stroke="black" stroke-width="20.3716" x="23241" y="4074" width="2037" height="1019"/>
+   <path class="fil5" d="M16266 1599l-842 0 0 -78 842 0 0 78zm200 -39l-203 101 0 -202 203 101z"/>
   </g>
-  <text x="23661" y="4738"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">GPIO...</text>
+  <rect class="fil9 str0" x="13340" y="1039" width="2084" height="1563"/>
+  <text x="13688" y="1718"  class="fil8 fnt0">Machine</text>
+  <text x="16866" y="1718"  class="fil8 fnt0">ma</text>
+  <text x="17384" y="1718"  class="fil8 fnt0">XXX</text>
+  <text x="14777" y="1310"  class="fil10 fnt1">{ }</text>
+  <path class="fil13 str0" d="M15372 1300l52 0 0 1042 -52 0c-115,0 -208,-94 -208,-209l0 -625c0,-115 93,-208 208,-208z"/>
+  <text x="15199" y="350"  class="fil10 fnt0">load Plugins</text>
+  <text x="13326" y="2571"  class="fil14 fnt3">./dev/Machine.py</text>
+  <text x="16453" y="2050"  class="fil14 fnt3">./dev/plugins/machines/maXXX.py</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M25905 4660l-627 0 0 -153 627 0 0 153zm391 -76l-396 198 0 -396 396 198z"/>
+   <path class="fil11" d="M13139 1339l-841 0 0 -79 841 0 0 79zm200 -39l-202 101 0 -203 202 102z"/>
   </g>
+  <text x="11631" y="1410"  class="fil12 fnt0">init</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M26160 4915l-627 0 0 -153 627 0 0 153zm391 -76l-396 198 0 -396 396 198z"/>
+   <path class="fil6" d="M22259 1860l-1363 0 0 -79 1363 0 0 79zm200 -39l-203 101 0 -203 203 102z"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M26415 5169l-627 0 0 -153 627 0 0 153zm391 -76l-396 198 0 -396 396 198z"/>
+   <rect class="fil24 str0" x="22719" y="1560" width="2084" height="1042"/>
+   <rect class="fil24 str0" x="22459" y="1300" width="2084" height="1042"/>
+   <rect class="fil24 str0" x="22198" y="1039" width="2084" height="1042"/>
   </g>
+  <text x="22795" y="1718"  class="fil25 fnt0">I</text>
+  <text x="22904" y="1718"  class="fil25 fnt0">2</text>
+  <text x="23115" y="1718"  class="fil25 fnt0">C</text>
+  <text x="23387" y="1718"  class="fil25 fnt0">...</text>
   <g>
-   <rect fill="#CCCCCC" x="26820" y="4096" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="26820" y="4294" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="26820" y="4492" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="26820" y="4690" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="26820" y="4888" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="26820" y="5086" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="26820" y="5284" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="26820" y="5482" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="27711" y="4294" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="27711" y="4492" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="27711" y="4690" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="27711" y="4888" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="27711" y="5086" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="27711" y="5284" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="27711" y="5482" width="99.0288" height="99.0288"/>
-   <rect fill="#CCCCCC" x="27711" y="4096" width="99.0288" height="99.0288"/>
-   <path fill="#CCCCCC" d="M26919 3947l297 0c0,55 44,99 99,99 55,0 99,-44 99,-99l297 0 0 1783 -792 0 0 -1783z"/>
+   <path class="fil6" d="M24924 1638l-641 0 0 -156 641 0 0 156zm400 -78l-405 203 0 -406 405 203z"/>
   </g>
-  <text x="18094" y="16961"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">SysConfig</text>
   <g>
-   <path fill="#B3B3B3" fill-rule="nonzero" d="M17748 16590l-823 0 0 -76 823 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil6" d="M25185 1899l-642 0 0 -157 642 0 0 157zm400 -78l-405 202 0 -405 405 203z"/>
   </g>
-  <text x="16274" y="16660"  fill="#B3B3B3" font-weight="normal" font-size="359.325px" font-family="Arial">init</text>
   <g>
-   <path fill="black" d="M26949 0l746 0c79,0 143,64 143,143l0 746c0,79 -64,143 -143,143l-746 0c-79,0 -143,-64 -143,-143l0 -746c0,-79 64,-143 143,-143z"/>
-   <path fill="#666666" fill-rule="nonzero" d="M27344 823c97,0 181,-35 241,-106l-104 -115c-31,33 -71,57 -117,57 -97,0 -166,-75 -166,-210 0,-130 68,-208 157,-208 49,0 84,18 117,46l104 -117c-51,-49 -128,-93 -221,-93 -194,0 -351,137 -351,378 0,245 161,367 340,367l0 0z"/>
-   <path fill="#999999" fill-rule="nonzero" d="M26944 870l144 0 0 -173 60 0c114,0 218,-58 218,-191 0,-137 -101,-181 -218,-181l-204 0 0 545zm144 -287l0 -144 54 0c54,0 84,18 84,67 0,49 -27,77 -84,77l-54 0zm476 287l144 0 0 -419 -303 0 0 112 159 0 0 307zm67 -476c54,0 92,-34 92,-84 0,-50 -39,-85 -92,-85 -54,0 -92,35 -92,85 0,50 39,84 92,84z"/>
-   <path fill="#DDDDDD" fill-rule="nonzero" d="M27198 940c38,0 86,-12 123,-36l-34 -63c-27,12 -49,18 -74,18 -45,0 -72,-15 -81,-49l198 0c1,-7 4,-26 4,-44 0,-83 -49,-149 -147,-149 -83,0 -161,60 -161,161 0,102 75,161 172,161l0 0zm-7 -243c29,0 45,15 49,44l-108 0c9,-30 28,-44 58,-44zm161 235l292 0 0 -83 -147 0 143 -169 0 -57 -271 0 0 83 124 0 -142 169 0 57z"/>
+   <path class="fil6" d="M25445 2159l-641 0 0 -156 641 0 0 156zm400 -78l-405 203 0 -405 405 202z"/>
   </g>
-  <path fill="#FF3399" stroke="black" stroke-width="20.3716" d="M24209 13913l51 0 0 509 -51 0c-112,0 -204,-92 -204,-204l0 -102c0,-112 92,-204 204,-204z"/>
-  <text x="24742" y="14256"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">Mutex</text>
-  <rect fill="#FF6600" stroke="black" stroke-width="20.3716" x="23886" y="14931" width="492" height="509" rx="81" ry="83"/>
-  <text x="24735" y="15275"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">Instance of active XXX</text>
+  <text x="22292" y="908"  class="fil24 fnt0">buildin Libs</text>
+  <text x="18123" y="1310"  class="fil2 fnt1">{ }</text>
   <g>
-   <rect fill="#E6E6E6" stroke="black" stroke-width="20.3716" x="23708" y="15950" width="849" height="509"/>
-   <rect fill="#FFFF99" stroke="black" stroke-width="20.3716" x="23793" y="16035" width="679" height="340"/>
-   <text x="24033" y="16256"  fill="black" font-weight="normal" font-size="119.765px" font-family="Arial">???</text>
+   <path class="fil5" d="M14354 6538l-260 -260 55 -56 261 261 11 27 -67 28zm56 -55l11 11 0 16 -11 -27zm-67 348l0 -321 78 0 0 321 -78 0zm39 200l-101 -202 202 0 -101 202z"/>
   </g>
-  <text x="24761" y="16293"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">Tread</text>
-  <text x="23876" y="17364"  fill="black" font-weight="normal" font-size="542.945px" font-family="Arial">{ }</text>
-  <text x="24769" y="17316"  fill="black" font-weight="normal" font-size="359.325px" font-family="Arial">Storage</text>
-  <text x="23212" y="3946"  fill="#FFCC99" font-weight="normal" font-size="359.325px" font-family="Arial">external Libs</text>
-  <text x="23241" y="7002"  fill="#FFCC99" font-weight="normal" font-size="359.325px" font-family="Arial">external Libs</text>
-  <text x="2830" y="6457"  fill="#999999" font-weight="normal" font-size="359.325px" font-family="Arial">direct Call</text>
-  <text x="19258" y="4339"  fill="#FF6600" font-weight="normal" font-size="268.498px" font-family="Arial">{ }</text>
-  <text x="19258" y="7413"  fill="#FF6600" font-weight="normal" font-size="268.498px" font-family="Arial">{ }</text>
-  <text x="19258" y="10487"  fill="#FF6600" font-weight="normal" font-size="268.498px" font-family="Arial">{ }</text>
-  <text x="16401" y="6457"  fill="#AFDBAF" font-weight="normal" font-size="359.325px" font-family="Arial">load Plugins</text>
-  <text x="16401" y="9513"  fill="#AFDBAF" font-weight="normal" font-size="359.325px" font-family="Arial">load Plugins</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M17698 14298l-6680 0 0 -76 6680 0 0 76zm195 -38l-198 99 0 -198 198 99z"/>
+   <path class="fil5" d="M14354 9665l-260 -261 55 -55 261 260 11 28 -67 28zm56 -56l11 12 0 16 -11 -28zm-67 349l0 -321 78 0 0 321 -78 0zm39 200l-101 -203 202 0 -101 203z"/>
   </g>
+  <rect class="fil2 str0" x="19202" y="4035" width="756" height="782" rx="124" ry="128"/>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M17893 17061l-198 99 0 -198 198 99zm-2292 -38l2096 0 0 76 -2096 0 -38 -38 38 -38zm0 76l-38 0 0 -38 38 38zm38 -2585l0 2546 -76 0 0 -2546 38 -38 38 38zm-38 -38l38 0 0 38 -38 -38zm-4329 0l4329 0 0 76 -4329 0 0 -76z"/>
+   <path class="fil5" d="M19632 2342l0 1693 -78 0 0 -1693 66 -28 12 28zm-12 -28l12 11 0 17 -12 -28zm-249 -249l249 249 -55 55 -249 -249 55 -55zm-169 -114l215 72 -143 143 -72 -215z"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M13564 15788l-99 -198 198 0 -99 198zm38 -1018l0 823 -76 0 0 -823 38 -38 38 38zm-38 -38l38 0 0 38 -38 -38zm-2037 0l2037 0 0 76 -2037 0 0 -76z"/>
+   <path class="fil5" d="M18850 2342l0 1693 -78 0 0 -1693 12 -28 66 28zm-78 0l0 -17 12 -11 -12 28zm316 -222l-249 249 -55 -55 249 -249 55 55zm114 -169l-72 215 -143 -143 215 -72z"/>
   </g>
-  <text x="13112" y="16197"  fill="black" font-weight="normal" font-size="1085.9px" font-family="Arial">...</text>
+  <text x="19192" y="3774"  class="fil2 fnt0">Instances</text>
  </g>
 </svg>

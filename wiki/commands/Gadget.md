@@ -22,7 +22,7 @@ List of dicts:
 | PINFO | str | Info about the plugin |
 | PFILE | str | Path and file name of the plugin module |
 
-***
+---
 
 ## Command "gadget.list"
 Gets a list of all gadget instances. Each element of the list contains a dict

@@ -1,179 +1,225 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<!-- Creator: CorelDRAW Home & Student X6 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="202.86mm" height="160.1mm" version="1.0" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
-viewBox="0 0 18499 14600"
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW Home & Student X8 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="205.097mm" height="155.1mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 18514 14001"
  xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str5 {stroke:black;stroke-width:67.7037}
+    .str4 {stroke:gray;stroke-width:67.7037}
+    .str0 {stroke:black;stroke-width:18.0543}
+    .str3 {stroke:black;stroke-width:18.0543}
+    .str1 {stroke:black;stroke-width:18.0543;stroke-linejoin:bevel}
+    .str6 {stroke:black;stroke-width:135.407;stroke-linecap:round;stroke-linejoin:round}
+    .str7 {stroke:gray;stroke-width:67.7037;stroke-dasharray:67.703675 203.111026}
+    .str2 {stroke:#FF6633;stroke-width:90.2716;stroke-linejoin:round;stroke-dasharray:90.271567 90.271567}
+    .fil4 {fill:none}
+    .fil2 {fill:black}
+    .fil25 {fill:black}
+    .fil19 {fill:#003399}
+    .fil20 {fill:gray}
+    .fil12 {fill:#AFDBAF}
+    .fil14 {fill:#B3B3B3}
+    .fil5 {fill:#CCCCCC}
+    .fil8 {fill:#CCFFCC}
+    .fil1 {fill:#E6E6E6}
+    .fil0 {fill:#F4F4F4}
+    .fil18 {fill:#FF6600}
+    .fil21 {fill:#FF6633}
+    .fil9 {fill:#FFCC99}
+    .fil7 {fill:#FFFF99}
+    .fil17 {fill:white}
+    .fil6 {fill:black;fill-rule:nonzero}
+    .fil16 {fill:black;fill-rule:nonzero}
+    .fil15 {fill:#003399;fill-rule:nonzero}
+    .fil22 {fill:#666666;fill-rule:nonzero}
+    .fil23 {fill:#999999;fill-rule:nonzero}
+    .fil10 {fill:#AFDBAF;fill-rule:nonzero}
+    .fil3 {fill:#AFDBAF;fill-rule:nonzero}
+    .fil13 {fill:#B3B3B3;fill-rule:nonzero}
+    .fil24 {fill:#DDDDDD;fill-rule:nonzero}
+    .fil11 {fill:#FF6600;fill-rule:nonzero}
+    .fnt3 {font-weight:normal;font-size:127.382px;font-family:'Arial'}
+    .fnt1 {font-weight:normal;font-size:237.956px;font-family:'Arial'}
+    .fnt0 {font-weight:normal;font-size:318.451px;font-family:'Arial'}
+    .fnt2 {font-weight:bold;font-size:445.842px;font-family:'Arial'}
+   ]]>
+  </style>
+ </defs>
  <g id="Ebene_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <g id="_568806424">
-   <polygon fill="#F4F4F4" stroke="black" stroke-width="18.2385" points="5720,12767 6860,12767 7088,12995 7088,14591 5720,14591 "/>
-   <polygon fill="#E6E6E6" stroke="black" stroke-width="18.2385" stroke-linejoin="bevel" points="6860,12995 6860,12767 7088,12995 "/>
+  <g id="_712745616">
+   <polygon class="fil0 str0" points="5877,12187 7005,12187 7231,12412 7231,13992 5877,13992 "/>
+   <polygon class="fil1 str1" points="7005,12412 7005,12187 7231,12412 "/>
   </g>
-  <text x="6056" y="13793"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">PNG</text>
+  <text x="6198" y="13202"  class="fil2 fnt0">PNG</text>
   <g>
-   <path fill="#AFDBAF" fill-rule="nonzero" d="M3475 3192l0 456 -68 0 0 -456 34 -34 34 34zm-68 0l0 -34 34 0 -34 34zm2314 34l-2280 0 0 -68 2280 0 34 34 -34 34zm0 -68l34 0 0 34 -34 -34zm-34 315l0 -281 68 0 0 281 -68 0zm34 175l-89 -177 177 0 -89 177z"/>
+   <path class="fil3" d="M3654 2708l0 452 -68 0 0 -452 34 -34 34 34zm-68 0l0 -34 34 0 -34 34zm2291 34l-2257 0 0 -68 2257 0 34 34 -34 34zm0 -68l34 0 0 34 -34 -34zm-34 312l0 -278 68 0 0 278 -68 0zm34 173l-88 -175 175 0 -87 175z"/>
   </g>
-  <line fill="none" stroke="#FF6633" stroke-width="91.1924" stroke-linejoin="round" stroke-dasharray="91.192371 91.192371" x1="14155" y1="456" x2="14155" y2= "5472" />
+  <line class="fil4 str2" x1="14227" y1="0" x2="14227" y2= "4965" />
   <g>
-   <polygon fill="#F4F4F4" stroke="black" stroke-width="18.2385" points="4580,12767 5720,12767 5948,12995 5948,14591 4580,14591 "/>
-   <polygon fill="#E6E6E6" stroke="black" stroke-width="18.2385" stroke-linejoin="bevel" points="5720,12995 5720,12767 5948,12995 "/>
+   <polygon class="fil0 str0" points="4748,12187 5877,12187 6102,12412 6102,13992 4748,13992 "/>
+   <polygon class="fil1 str1" points="5877,12412 5877,12187 6102,12412 "/>
   </g>
-  <text x="5077" y="13793"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">JS</text>
+  <text x="5235" y="13202"  class="fil2 fnt0">JS</text>
   <g>
-   <ellipse fill="#CCCCCC" cx="13790" cy="2854" rx="554" ry="369"/>
-   <ellipse fill="#CCCCCC" cx="14076" cy="2429" rx="471" ry="314"/>
-   <ellipse fill="#CCCCCC" cx="14436" cy="2854" rx="646" ry="369"/>
-   <ellipse fill="#CCCCCC" cx="14553" cy="2496" rx="255" ry="210"/>
-  </g>
-  <g>
-   <path fill="black" fill-rule="nonzero" d="M10052 4138l-684 0 0 -68 684 0 34 34 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -1368l0 1368 -68 0 0 -1368 34 -34 34 34zm-68 0l0 -34 34 0 -34 34zm543 34l-509 0 0 -68 509 0 0 68zm175 -34l-177 89 0 -177 177 89z"/>
+   <ellipse class="fil5" cx="13865" cy="2374" rx="548" ry="366"/>
+   <ellipse class="fil5" cx="14148" cy="1953" rx="466" ry="310"/>
+   <ellipse class="fil5" cx="14504" cy="2374" rx="640" ry="366"/>
+   <ellipse class="fil5" cx="14620" cy="2020" rx="253" ry="208"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M15576 4594l-6208 0 0 -68 6208 0 0 68zm175 -34l-177 89 0 -177 177 89z"/>
+   <path class="fil6" d="M10165 3645l-677 0 0 -68 677 0 33 34 -33 34zm33 -34l0 34 -33 0 33 -34zm0 -1354l0 1354 -67 0 0 -1354 34 -34 33 34zm-67 0l0 -34 34 0 -34 34zm537 34l-503 0 0 -68 503 0 0 68zm173 -34l-175 87 0 -175 175 88z"/>
   </g>
   <g>
-   <polygon fill="#F4F4F4" stroke="black" stroke-width="18.2385" points="3440,12767 4580,12767 4808,12995 4808,14591 3440,14591 "/>
-   <polygon fill="#E6E6E6" stroke="black" stroke-width="18.2385" stroke-linejoin="bevel" points="4580,12995 4580,12767 4808,12995 "/>
-  </g>
-  <text x="3794" y="13793"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">CSS</text>
-  <g>
-   <path fill="black" fill-rule="nonzero" d="M3897 4332l177 -89 0 177 -177 -89zm912 34l-737 0 0 -68 737 0 0 68z"/>
+   <path class="fil6" d="M15633 4096l-6145 0 0 -68 6145 0 0 68zm173 -34l-175 88 0 -176 175 88z"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M3897 4560l177 -89 0 177 -177 -89zm1140 34l-965 0 0 -68 965 0 0 68z"/>
+   <polygon class="fil0 str0" points="3620,12187 4748,12187 4974,12412 4974,13992 3620,13992 "/>
+   <polygon class="fil1 str1" points="4748,12412 4748,12187 4974,12412 "/>
+  </g>
+  <text x="3959" y="13202"  class="fil2 fnt0">CSS</text>
+  <g>
+   <path class="fil6" d="M4072 3837l175 -88 0 175 -175 -87zm902 33l-729 0 0 -67 729 0 0 67z"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M3897 4104l177 -89 0 177 -177 -89zm736 34l-561 0 0 -68 561 0 0 68zm175 -34l-177 89 0 -177 177 89z"/>
-  </g>
-  <rect fill="#E6E6E6" stroke="black" stroke-width="18.2385" x="1844" y="7979" width="2280" height="4104"/>
-  <rect fill="#FFFF99" stroke="black" stroke-width="18.2385" x="2072" y="3648" width="1824" height="3192"/>
-  <text x="2657" y="4242"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">Web</text>
-  <g>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="18.2385" x="5264" y="4104" width="1824" height="912"/>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="18.2385" x="5036" y="3876" width="1824" height="912"/>
-   <rect fill="#CCFFCC" stroke="black" stroke-width="18.2385" x="4808" y="3648" width="1824" height="912"/>
-  </g>
-  <text x="5104" y="4242"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">webXXX</text>
-  <rect fill="#FFCC99" stroke="black" stroke-width="18.2385" x="2072" y="8207" width="1824" height="2280"/>
-  <text x="2112" y="8801"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">MicroWebS.</text>
-  <g>
-   <path fill="#AFDBAF" fill-rule="nonzero" d="M3897 8891l177 -89 0 177 -177 -89zm1824 34l-1649 0 0 -68 1649 0 34 34 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4104l0 4104 -68 0 0 -4104 68 0z"/>
-  </g>
-  <line fill="none" stroke="gray" stroke-width="68.3943" x1="2984" y1="11855" x2="2984" y2= "12767" />
-  <g>
-   <path fill="#FF6600" fill-rule="nonzero" d="M2072 9347l-355 177 0 -355 355 177zm-911 -68l561 0 0 137 -561 0 0 -137z"/>
-  </g>
-  <text x="3327" y="3885"  fill="#AFDBAF" font-weight="normal" font-size="240.383px" font-family="Arial">{ }</text>
-  <g>
-   <path fill="black" fill-rule="nonzero" d="M2984 8207l-89 -177 177 0 -89 177zm34 -1192l0 1017 -68 0 0 -1017 68 0zm-34 -175l89 177 -177 0 89 -177z"/>
+   <path class="fil6" d="M4072 4062l175 -88 0 176 -175 -88zm1128 34l-955 0 0 -68 955 0 0 68z"/>
   </g>
   <g>
-   <polygon fill="#F4F4F4" stroke="black" stroke-width="18.2385" points="2300,12767 3440,12767 3668,12995 3668,14591 2300,14591 "/>
-   <polygon fill="#E6E6E6" stroke="black" stroke-width="18.2385" stroke-linejoin="bevel" points="3440,12995 3440,12767 3668,12995 "/>
+   <path class="fil6" d="M4072 3611l175 -88 0 176 -175 -88zm729 34l-556 0 0 -68 556 0 0 68zm173 -34l-176 88 0 -176 176 88z"/>
   </g>
-  <text x="2547" y="13793"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">HTML</text>
-  <rect fill="#FFFF99" stroke="black" stroke-width="18.2385" x="705" y="1368" width="1824" height="912"/>
-  <text x="1188" y="1962"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">ezPiC</text>
+  <rect class="fil1 str3" x="2040" y="7447" width="2257" height="4062"/>
+  <rect class="fil7 str0" x="2266" y="3160" width="1805" height="3160"/>
+  <text x="2844" y="3748"  class="fil2 fnt0">Web</text>
   <g>
-   <path fill="#B3B3B3" fill-rule="nonzero" d="M3265 1858l-737 0 0 -68 737 0 0 68zm175 -34l-177 89 0 -177 177 89z"/>
+   <rect class="fil8 str0" x="5425" y="3611" width="1805" height="903"/>
+   <rect class="fil8 str0" x="5200" y="3385" width="1805" height="903"/>
+   <rect class="fil8 str0" x="4974" y="3160" width="1805" height="903"/>
   </g>
-  <text x="3652" y="1962"  fill="#B3B3B3" font-weight="normal" font-size="321.699px" font-family="Arial">init</text>
-  <rect fill="#FFFF99" stroke="black" stroke-width="18.2385" x="15751" y="4104" width="1824" height="912"/>
-  <text x="16324" y="4698"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">Cmd</text>
-  <rect fill="#FFFF99" stroke="black" stroke-width="18.2385" x="10736" y="2280" width="1824" height="912"/>
-  <text x="10808" y="2874"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">TelnetClient</text>
-  <line fill="none" stroke="black" stroke-width="68.3943" x1="6860" y1="4332" x2="8456" y2= "4332" />
+  <text x="5250" y="3748"  class="fil2 fnt0">web</text>
+  <text x="5839" y="3748"  class="fil2 fnt0">XXX</text>
+  <rect class="fil9 str3" x="2266" y="7673" width="1805" height="2257"/>
+  <text x="2305" y="8261"  class="fil2 fnt0">MicroWebS.</text>
   <g>
-   <path fill="#003399" fill-rule="nonzero" d="M13121 2804l-561 0 0 -137 561 0 0 137zm350 -68l-355 177 0 -355 355 177z"/>
+   <path class="fil10" d="M4072 8350l175 -88 0 176 -175 -88zm1805 34l-1632 0 0 -68 1632 0 34 34 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4062l0 4062 -68 0 0 -4062 68 0z"/>
   </g>
+  <line class="fil4 str4" x1="3169" y1="11284" x2="3169" y2= "12187" />
   <g>
-   <path fill="black" fill-rule="nonzero" d="M17644 4525l0 68 -68 0 0 -68 68 0zm137 0l0 68 -68 0 0 -68 68 0zm137 0l0 68 -68 0 0 -68 68 0zm137 0l0 68 -68 0 0 -68 68 0zm137 0l0 68 -68 0 0 -68 68 0zm121 68l-53 0 0 -68 53 0 0 68zm175 -34l-177 89 0 -177 177 89z"/>
+   <path class="fil11" d="M2265 8801l-351 176 0 -351 351 175zm-902 -67l556 0 0 135 -556 0 0 -135z"/>
   </g>
-  <rect fill="#FFFF99" stroke="black" stroke-width="18.2385" x="15751" y="2280" width="1824" height="912"/>
-  <text x="16324" y="2874"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">Cmd</text>
+  <text x="3507" y="3394"  class="fil12 fnt1">{ }</text>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M17644 2702l0 68 -68 0 0 -68 68 0zm137 0l0 68 -68 0 0 -68 68 0zm137 0l0 68 -68 0 0 -68 68 0zm137 0l0 68 -68 0 0 -68 68 0zm137 0l0 68 -68 0 0 -68 68 0zm121 68l-53 0 0 -68 53 0 0 68zm175 -34l-177 89 0 -177 177 89z"/>
-  </g>
-  <g>
-   <path fill="#003399" fill-rule="nonzero" d="M15401 2804l-561 0 0 -137 561 0 0 137zm350 -68l-355 177 0 -355 355 177z"/>
+   <path class="fil6" d="M3169 7673l-88 -176 175 0 -87 176zm33 -1181l0 1008 -67 0 0 -1008 67 0zm-33 -173l87 176 -175 0 88 -176z"/>
   </g>
   <g>
-   <path fill="#AFDBAF" fill-rule="nonzero" d="M3897 8663l177 -89 0 177 -177 -89zm1596 34l-1421 0 0 -68 1421 0 34 34 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4104l0 4104 -68 0 0 -4104 68 0z"/>
+   <polygon class="fil0 str0" points="2491,12187 3620,12187 3846,12412 3846,13992 2491,13992 "/>
+   <polygon class="fil1 str1" points="3620,12412 3620,12187 3846,12412 "/>
+  </g>
+  <text x="2719" y="13202"  class="fil2 fnt0">HTML</text>
+  <rect class="fil7 str0" x="9" y="1580" width="1805" height="903"/>
+  <text x="487" y="2168"  class="fil2 fnt0">ezPiC</text>
+  <g>
+   <path class="fil13" d="M2544 2065l-730 0 0 -68 730 0 0 68zm173 -34l-176 88 0 -176 176 88z"/>
+  </g>
+  <text x="2927" y="2168"  class="fil14 fnt0">init</text>
+  <rect class="fil7 str0" x="15807" y="3611" width="1805" height="903"/>
+  <text x="16374" y="4199"  class="fil2 fnt0">Cmd</text>
+  <rect class="fil7 str0" x="10842" y="1805" width="1805" height="903"/>
+  <text x="10913" y="2394"  class="fil2 fnt0">TelnetClient</text>
+  <line class="fil4 str5" x1="7005" y1="3837" x2="8585" y2= "3837" />
+  <g>
+   <path class="fil15" d="M13203 2324l-556 0 0 -135 556 0 0 135zm346 -67l-351 175 0 -351 351 176z"/>
   </g>
   <g>
-   <path fill="#AFDBAF" fill-rule="nonzero" d="M3897 9119l177 -89 0 177 -177 -89zm2052 34l-1877 0 0 -68 1877 0 34 34 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4104l0 4104 -68 0 0 -4104 68 0z"/>
+   <path class="fil6" d="M17680 4028l0 68 -68 0 0 -68 68 0zm135 0l0 68 -68 0 0 -68 68 0zm135 0l0 68 -67 0 0 -68 67 0zm136 0l0 68 -68 0 0 -68 68 0zm135 0l0 68 -67 0 0 -68 67 0zm120 68l-52 0 0 -68 52 0 0 68zm173 -34l-175 88 0 -176 175 88z"/>
   </g>
-  <text x="3700" y="3045"  fill="#AFDBAF" font-weight="normal" font-size="321.699px" font-family="Arial">load Plugins</text>
-  <g transform="matrix(2.64845E-014 -1 1 2.64845E-014 -3347.69 17096.2)">
-   <text x="9133" y="8663"  fill="#AFDBAF" font-weight="normal" font-size="321.699px" font-family="Arial">register Route</text>
+  <rect class="fil7 str0" x="15807" y="1805" width="1805" height="903"/>
+  <text x="16374" y="2394"  class="fil2 fnt0">Cmd</text>
+  <g>
+   <path class="fil6" d="M17680 2223l0 68 -68 0 0 -68 68 0zm135 0l0 68 -68 0 0 -68 68 0zm135 0l0 68 -67 0 0 -68 67 0zm136 0l0 68 -68 0 0 -68 68 0zm135 0l0 68 -67 0 0 -68 67 0zm120 68l-52 0 0 -68 52 0 0 68zm173 -34l-175 88 0 -176 175 88z"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M6632 9837l-2736 0 0 -68 2736 0 34 34 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4840l0 4840 -68 0 0 -4840 68 0zm-34 -175l89 177 -177 0 89 -177z"/>
+   <path class="fil15" d="M15460 2324l-556 0 0 -135 556 0 0 135zm346 -67l-351 175 0 -351 351 176z"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M6404 9609l-2508 0 0 -68 2508 0 34 34 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4840l0 4840 -68 0 0 -4840 68 0zm-34 -175l89 177 -177 0 89 -177z"/>
+   <path class="fil10" d="M4072 8124l175 -87 0 175 -175 -88zm1579 34l-1406 0 0 -67 1406 0 34 33 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4062l0 4062 -68 0 0 -4062 68 0z"/>
   </g>
   <g>
-   <path fill="black" fill-rule="nonzero" d="M6860 10065l-2964 0 0 -68 2964 0 34 34 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4840l0 4840 -68 0 0 -4840 68 0zm-34 -175l89 177 -177 0 89 -177z"/>
+   <path class="fil10" d="M4072 8576l175 -88 0 176 -175 -88zm2030 34l-1857 0 0 -68 1857 0 34 34 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4062l0 4062 -67 0 0 -4062 67 0z"/>
+  </g>
+  <text x="3877" y="2563"  class="fil12 fnt0">load Plugins</text>
+  <g transform="matrix(2.64845E-14 -1 1 2.64845E-14 -2648.25 16686.5)">
+   <text x="9255" y="8124"  class="fil12 fnt0">register Route</text>
   </g>
   <g>
-   <line fill="none" stroke="black" stroke-width="136.789" stroke-linecap="round" stroke-linejoin="round" x1="8456" y1="4332" x2="9368" y2= "4332" />
-   <circle fill="white" stroke="black" stroke-width="18.2385" cx="8456" cy="4332" r="91"/>
-   <circle fill="white" stroke="black" stroke-width="18.2385" cx="9368" cy="4104" r="91"/>
-   <circle fill="white" stroke="black" stroke-width="18.2385" cx="9368" cy="4560" r="91"/>
-  </g>
-  <text x="74" y="9283"  fill="#FF6600" font-weight="normal" font-size="321.699px" font-family="Arial">HTTP</text>
-  <text x="-25" y="9642"  fill="#FF6600" font-weight="normal" font-size="321.699px" font-family="Arial">Port 80</text>
-  <text x="13743" y="2669"  fill="#003399" font-weight="normal" font-size="321.699px" font-family="Arial">Telnet</text>
-  <text x="13386" y="3029"  fill="#003399" font-weight="normal" font-size="321.699px" font-family="Arial">Port 23101</text>
-  <text x="132" y="452"  fill="black" font-weight="bold" font-size="450.39px" font-family="Arial">ezPiC Web-Server-Part</text>
-  <text x="4797" y="4533"  fill="gray" font-weight="normal" font-size="128.682px" font-family="Arial">./web/plugins/web/webXXX.py</text>
-  <text x="2061" y="6812"  fill="gray" font-weight="normal" font-size="128.682px" font-family="Arial">./web/Web.py</text>
-  <text x="2061" y="10460"  fill="gray" font-weight="normal" font-size="128.682px" font-family="Arial">./web/MicroWebSrv/microWeb*</text>
-  <text x="10724" y="3165"  fill="gray" font-weight="normal" font-size="128.682px" font-family="Arial">./web/TelnetClient.py</text>
-  <text x="2296" y="14564"  fill="gray" font-weight="normal" font-size="128.682px" font-family="Arial">./web/www/...</text>
-  <text x="693" y="2253"  fill="gray" font-weight="normal" font-size="128.682px" font-family="Arial">./ezPiC.py</text>
-  <text x="14395" y="914"  fill="#FF6633" font-weight="normal" font-size="321.699px" font-family="Arial">IoT-Device</text>
-  <text x="14868" y="1274"  fill="#FF6633" font-weight="normal" font-size="321.699px" font-family="Arial">Part</text>
-  <text x="12256" y="914"  fill="#FF6633" font-weight="normal" font-size="321.699px" font-family="Arial">Web-Server</text>
-  <text x="12817" y="1274"  fill="#FF6633" font-weight="normal" font-size="321.699px" font-family="Arial">Part</text>
-  <g>
-   <path fill="#B3B3B3" fill-rule="nonzero" d="M1897 3910l-737 0 0 -68 737 0 0 68zm175 -34l-177 89 0 -177 177 89z"/>
-  </g>
-  <text x="578" y="3973"  fill="#B3B3B3" font-weight="normal" font-size="321.699px" font-family="Arial">init</text>
-  <polyline fill="none" stroke="black" stroke-width="68.3943" points="7088,4560 7544,4560 7772,4332 7544,4104 6632,4104 "/>
-  <g>
-   <path fill="#B3B3B3" fill-rule="nonzero" d="M10561 2542l-737 0 0 -68 737 0 0 68zm175 -34l-177 89 0 -177 177 89z"/>
-  </g>
-  <text x="9241" y="2605"  fill="#B3B3B3" font-weight="normal" font-size="321.699px" font-family="Arial">init</text>
-  <g>
-   <path fill="black" d="M17703 0l668 0c70,0 128,58 128,128l0 668c0,70 -58,128 -128,128l-668 0c-70,0 -128,-58 -128,-128l0 -668c0,-70 58,-128 128,-128z"/>
-   <path fill="#666666" fill-rule="nonzero" d="M18057 737c87,0 162,-32 216,-95l-93 -103c-28,30 -63,51 -105,51 -87,0 -148,-67 -148,-188 0,-117 61,-186 140,-186 43,0 75,16 105,42l93 -105c-46,-44 -115,-83 -198,-83 -174,0 -315,123 -315,338 0,220 144,328 305,328l0 0z"/>
-   <path fill="#999999" fill-rule="nonzero" d="M17698 779l129 0 0 -155 54 0c102,0 195,-52 195,-171 0,-123 -90,-162 -195,-162l-183 0 0 488zm129 -257l0 -129 48 0c48,0 75,17 75,60 0,43 -24,69 -75,69l-48 0zm426 257l129 0 0 -375 -272 0 0 101 143 0 0 275zm60 -426c48,0 83,-30 83,-75 0,-45 -35,-77 -83,-77 -48,0 -83,32 -83,77 0,45 35,75 83,75z"/>
-   <path fill="#DDDDDD" fill-rule="nonzero" d="M17926 841c34,0 77,-11 110,-32l-31 -56c-24,11 -44,17 -66,17 -40,0 -64,-13 -73,-44l177 0c1,-7 4,-23 4,-40 0,-74 -44,-133 -131,-133 -74,0 -144,54 -144,144 0,92 67,144 154,144l0 0zm-7 -217c26,0 40,14 44,40l-96 0c8,-27 25,-40 52,-40zm144 211l261 0 0 -74 -131 0 128 -151 0 -51 -243 0 0 74 111 0 -127 151 0 51z"/>
-  </g>
-  <g transform="matrix(2.64845E-014 -1 1 2.64845E-014 -1407.73 17137.7)">
-   <text x="8864" y="8663"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">call Page-Handler</text>
-  </g>
-  <text x="10268" y="4948"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">execute Command</text>
-  <rect fill="#FFCC99" stroke="black" stroke-width="18.2385" x="2098" y="10943" width="1824" height="912"/>
-  <text x="2164" y="11537"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">MicroWebT.</text>
-  <text x="2087" y="11828"  fill="gray" font-weight="normal" font-size="128.682px" font-family="Arial">./web/MicroWebSrv/microWeb*</text>
-  <g>
-   <path fill="black" fill-rule="nonzero" d="M2984 10943l-89 -177 177 0 -89 177zm34 -280l0 106 -68 0 0 -106 68 0zm-34 -175l89 177 -177 0 89 -177z"/>
+   <path class="fil16" d="M6779 9287l-2708 0 0 -68 2708 0 34 34 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4792l0 4792 -67 0 0 -4792 67 0zm-34 -173l88 176 -175 0 87 -176z"/>
   </g>
   <g>
-   <polygon fill="#F4F4F4" stroke="black" stroke-width="18.2385" points="8684,12767 9824,12767 10052,12995 10052,14591 8684,14591 "/>
-   <polygon fill="#E6E6E6" stroke="black" stroke-width="18.2385" stroke-linejoin="bevel" points="9824,12995 9824,12767 10052,12995 "/>
+   <path class="fil16" d="M6554 9061l-2483 0 0 -68 2483 0 34 34 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4791l0 4791 -68 0 0 -4791 68 0zm-34 -174l87 176 -175 0 88 -176z"/>
   </g>
-  <text x="8761" y="13793"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">pyHTML</text>
-  <text x="8680" y="14276"  fill="gray" font-weight="normal" font-size="128.682px" font-family="Arial">./web/www/gadgets/...</text>
-  <text x="8680" y="14420"  fill="gray" font-weight="normal" font-size="128.682px" font-family="Arial">./web/www/gateways/...</text>
-  <text x="8680" y="14564"  fill="gray" font-weight="normal" font-size="128.682px" font-family="Arial">./web/www/rules/...</text>
-  <text x="8328" y="11807"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">Gadget-Pages</text>
-  <text x="8221" y="12166"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">Gateway-Pages</text>
-  <text x="8525" y="12526"  fill="black" font-weight="normal" font-size="321.699px" font-family="Arial">Rule-Pages</text>
-  <line fill="none" stroke="gray" stroke-width="68.3943" stroke-dasharray="68.394278 205.182834" x1="7088" y1="13679" x2="8684" y2= "13679" />
+  <g>
+   <path class="fil16" d="M7005 9512l-2934 0 0 -67 2934 0 34 33 -34 34zm34 -34l0 34 -34 0 34 -34zm0 -4791l0 4791 -68 0 0 -4791 68 0zm-34 -173l88 175 -176 0 88 -175z"/>
+  </g>
+  <g>
+   <line class="fil4 str6" x1="8585" y1="3837" x2="9488" y2= "3837" />
+   <circle class="fil17 str0" cx="8585" cy="3837" r="90"/>
+   <circle class="fil17 str0" cx="9488" cy="3611" r="90"/>
+   <circle class="fil17 str0" cx="9488" cy="4062" r="90"/>
+  </g>
+  <text x="271" y="8738"  class="fil18 fnt0">HTTP</text>
+  <text x="190" y="9093"  class="fil18 fnt0">Port 80</text>
+  <text x="13819" y="2191"  class="fil19 fnt0">Telnet</text>
+  <text x="13465" y="2547"  class="fil19 fnt0">Port 23101</text>
+  <text x="1473" y="448"  class="fil14 fnt2">ezPiC Web-Server-Part</text>
+  <text x="4962" y="4035"  class="fil20 fnt3">./web/plugins/web/webXXX.py</text>
+  <text x="2254" y="6292"  class="fil20 fnt3">./web/Web.py</text>
+  <text x="2254" y="9903"  class="fil20 fnt3">./web/MicroWebSrv/microWeb*</text>
+  <text x="10830" y="2681"  class="fil20 fnt3">./web/TelnetClient.py</text>
+  <text x="2487" y="13965"  class="fil20 fnt3">./web/www/...</text>
+  <text x="-3" y="2456"  class="fil20 fnt3">./ezPiC.py</text>
+  <text x="14464" y="454"  class="fil21 fnt0">IoT-Device</text>
+  <text x="14933" y="809"  class="fil21 fnt0">Part</text>
+  <text x="12347" y="454"  class="fil21 fnt0">Web-Server</text>
+  <text x="12901" y="809"  class="fil21 fnt0">Part</text>
+  <g>
+   <path class="fil13" d="M2092 3419l-729 0 0 -68 729 0 0 68zm174 -34l-176 88 0 -176 176 88z"/>
+  </g>
+  <text x="786" y="3481"  class="fil14 fnt0">init</text>
+  <polyline class="fil4 str5" points="7231,4062 7682,4062 7908,3837 7682,3611 6779,3611 "/>
+  <g>
+   <path class="fil13" d="M10668 2065l-729 0 0 -68 729 0 0 68zm173 -34l-175 88 0 -176 175 88z"/>
+  </g>
+  <text x="9362" y="2127"  class="fil14 fnt0">init</text>
+  <g>
+   <path class="fil2" d="M136 0l661 0c70,0 127,57 127,127l0 661c0,70 -57,127 -127,127l-661 0c-70,0 -127,-57 -127,-127l0 -661c0,-70 57,-127 127,-127z"/>
+   <path class="fil22" d="M486 730c86,0 160,-32 213,-94l-92 -102c-27,29 -63,51 -104,51 -86,0 -147,-67 -147,-186 0,-116 61,-184 139,-184 43,0 75,15 104,41l92 -104c-45,-43 -113,-82 -196,-82 -172,0 -311,121 -311,335 0,217 143,325 302,325l0 0z"/>
+   <path class="fil23" d="M131 771l128 0 0 -153 53 0c101,0 193,-51 193,-169 0,-122 -89,-161 -193,-161l-181 0 0 483zm128 -254l0 -128 47 0c48,0 74,17 74,60 0,43 -23,68 -74,68l-47 0zm422 254l127 0 0 -371 -269 0 0 99 142 0 0 272zm59 -422c47,0 82,-30 82,-74 0,-45 -35,-76 -82,-76 -48,0 -82,31 -82,76 0,44 34,74 82,74z"/>
+   <path class="fil24" d="M357 833c34,0 76,-11 109,-32l-31 -56c-24,11 -43,17 -65,17 -40,0 -64,-13 -72,-44l175 0c1,-7 4,-23 4,-39 0,-73 -44,-132 -130,-132 -73,0 -143,53 -143,143 0,90 67,143 153,143l0 0zm-7 -215c26,0 40,13 44,39l-96 0c8,-27 25,-39 52,-39zm143 208l259 0 0 -73 -130 0 127 -149 0 -51 -241 0 0 73 111 0 -126 150 0 50z"/>
+  </g>
+  <g transform="matrix(2.64845E-14 -1 1 2.64845E-14 -727.878 16727.6)">
+   <text x="8989" y="8124"  class="fil25 fnt0">call Page-Handler</text>
+  </g>
+  <text x="10379" y="4447"  class="fil25 fnt0">execute Command</text>
+  <rect class="fil9 str3" x="2291" y="10381" width="1805" height="903"/>
+  <text x="2357" y="10969"  class="fil2 fnt0">MicroWebT.</text>
+  <text x="2280" y="11257"  class="fil20 fnt3">./web/MicroWebSrv/microWeb*</text>
+  <g>
+   <path class="fil6" d="M3169 10381l-88 -176 175 0 -87 176zm33 -278l0 105 -67 0 0 -105 67 0zm-33 -173l87 176 -175 0 88 -176z"/>
+  </g>
+  <g>
+   <polygon class="fil0 str0" points="8811,12187 9939,12187 10165,12412 10165,13992 8811,13992 "/>
+   <polygon class="fil1 str1" points="9939,12412 9939,12187 10165,12412 "/>
+  </g>
+  <text x="8864" y="13202"  class="fil2 fnt0">py</text>
+  <text x="9206" y="13202"  class="fil2 fnt0">HTML</text>
+  <text x="8806" y="13681"  class="fil20 fnt3">./web/www/gadgets/...</text>
+  <text x="8806" y="13823"  class="fil20 fnt3">./web/www/gateways/...</text>
+  <text x="8806" y="13965"  class="fil20 fnt3">./web/www/rules/...</text>
+  <text x="8458" y="11236"  class="fil25 fnt0">Gadget-Pages</text>
+  <text x="8352" y="11592"  class="fil25 fnt0">Gateway-Pages</text>
+  <text x="8653" y="11948"  class="fil25 fnt0">Rule-Pages</text>
+  <line class="fil4 str7" x1="7231" y1="13089" x2="8811" y2= "13089" />
  </g>
 </svg>
