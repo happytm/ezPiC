@@ -1,5 +1,5 @@
 # e·z·Pi·c
-ezPiC `\[ˌiːzi ˈpiːzi\]` is an all-in-one web configurable IoT device in Hybrid-Python for 
+ezPiC `[ˌiːzi ˈpiːzi]` is an all-in-one web configurable IoT device in Hybrid-Python for 
 * RaspberryPi, 
 * \*Pi, 
 * ESP32 and 
