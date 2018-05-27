@@ -6,7 +6,7 @@ from web.MicroWebSrv.microWebSrv import MicroWebSrv
 import Tool
 import web.Web as Web
 
-###################################################################################################
+#####
 
 @MicroWebSrv.route('/readings/<tick>')
 @MicroWebSrv.route('/readings')
@@ -51,4 +51,4 @@ def web_reading_list(httpClient, httpResponse, args=None):
 
     return httpResponse.WriteResponsePyHTMLFile('web/www/readings.html', vars=vars)
 
-###################################################################################################
+#####

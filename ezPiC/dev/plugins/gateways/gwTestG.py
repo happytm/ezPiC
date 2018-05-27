@@ -7,14 +7,14 @@ import dev.Gateway as Gateway
 import dev.Reading as Reading
 import G
 
-###################################################################################################
+#####
 # Globals:
 
 GWPID = 'TestGatewayG'
 PNAME = 'Readable Name G'
 PINFO = 'Lorem ipsum dolor sit amet.'
 
-###################################################################################################
+#####
 
 class PluginGateway(Gateway.PluginGatewayBase):
     """ TODO """
@@ -39,16 +39,29 @@ class PluginGateway(Gateway.PluginGatewayBase):
         self.timer_period = 2.7
         #self._reading_tick = 0
 
+# ---
+
     def init(self):
-        pass
+        t = float(self.param['timer'])
+        if t>0:
+            self.timer_period = t
+        else:
+            self.timer_period = None
+        super().init()
+
+# ---
 
     def exit(self):
-        pass
+        super().exit()
+
+# ---
 
     def timer(self):
         print('G' + str(time.time()))
 
+# ---
+
     def readings(self, news:dict):
         G.log(G.LOG_INFO, 'Readings in gwTestG: {}', news)
 
-###################################################################################################
+#####

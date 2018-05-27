@@ -13,7 +13,7 @@ import G
 import Tool
 import dev.Timer as Timer
 
-###################################################################################################
+#####
 # Globals:
 
 PLUGINDIR = 'dev/plugins/machines'
@@ -22,7 +22,7 @@ MACHINES = []
 MACHINELOCK = RLock()
 MACHINETIMER = 0
 
-###################################################################################################
+#####
 
 def init():
     """ Prepare module vars and load plugins """
@@ -48,14 +48,14 @@ def init():
             err = -1
             ret = str(e)
 
-# =================================================================================================
+# ===
 
 def run():
     """ TODO """
     global MACHINEPLUGINS, MACHINETIMER
 
 
-###################################################################################################
+#####
 
 def load(config_all: dict):
     if not "machines" in config_all:
@@ -66,7 +66,7 @@ def load(config_all: dict):
         params = config["params"]
         set_param(params)
 
-# =================================================================================================
+# ===
 
 def save(append: dict = None):
     err = None
@@ -89,9 +89,9 @@ def save(append: dict = None):
     
     return (err, {"machines": ret})
 
-###################################################################################################
+#####
 
-# =================================================================================================
+# ===
 
 def get_plugin_list() -> tuple:
     """ TODO """
@@ -109,7 +109,7 @@ def get_plugin_list() -> tuple:
 
     return (err, pl)
 
-# =================================================================================================
+# ===
 
 def get_list() -> tuple:
     """ TODO """
@@ -127,7 +127,7 @@ def get_list() -> tuple:
 
     return (err, dl)
 
-# =================================================================================================
+# ===
 
 def get_param(key: str=None) -> tuple:
     """ TODO """
@@ -145,7 +145,7 @@ def get_param(key: str=None) -> tuple:
 
     return (err, ret)
 
-# =================================================================================================
+# ===
 
 def set_param(params: dict) -> tuple:
     """ TODO """
@@ -162,7 +162,7 @@ def set_param(params: dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 class PluginMachineBase():
     """ TODO """
@@ -205,4 +205,4 @@ class PluginMachineBase():
                 self.param[key] = param_new.get(key, None)
             self.init()
 
-###################################################################################################
+#####

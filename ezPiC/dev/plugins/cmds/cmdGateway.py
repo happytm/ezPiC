@@ -10,7 +10,7 @@ import dev.Gateway as Gateway
 import dev.Cmd as Cmd
 import G
 
-###################################################################################################
+#####
 
 @Cmd.route('plugin.gateway.list')
 @Cmd.route('pgl')
@@ -23,7 +23,7 @@ def cmd_gateway_list(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('gateway.list')
 @Cmd.route('gl')
@@ -33,7 +33,7 @@ def cmd_gateway_task_list(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('plugin.gateway.info', 'gwpid')
 def cmd_gateway_info(cmd:dict) -> tuple:
@@ -42,7 +42,7 @@ def cmd_gateway_info(cmd:dict) -> tuple:
 
     return Cmd.ret(0, ids)
 
-###################################################################################################
+#####
 
 @Cmd.route('gateway.add', 'ggpid')
 def cmd_gateway_add(cmd:dict) -> tuple:
@@ -51,7 +51,7 @@ def cmd_gateway_add(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('gateway.clear')
 @Cmd.route('gateway.del.all')
@@ -61,7 +61,7 @@ def cmd_gateway_del_all(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('gateway.del.#')
 def cmd_gateway_del(cmd:dict) -> tuple:
@@ -71,7 +71,7 @@ def cmd_gateway_del(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('gateway.getparam.#', 'key')
 def cmd_gateway_get(cmd:dict) -> tuple:
@@ -82,7 +82,7 @@ def cmd_gateway_get(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('gateway.setparam.#', 'params')
 def cmd_gateway_set(cmd:dict) -> tuple:
@@ -95,7 +95,7 @@ def cmd_gateway_set(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('gateway.cmd.#')
 def cmd_gateway_cmd(cmd:dict) -> tuple:
@@ -104,7 +104,7 @@ def cmd_gateway_cmd(cmd:dict) -> tuple:
 
     return (0, None)
 
-###################################################################################################
+#####
 
 @Cmd.route('gateway.gethtml.#')
 def cmd_gateway_html(cmd:dict) -> tuple:
@@ -114,7 +114,7 @@ def cmd_gateway_html(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('gateway.event.#')
 def cmd_gateway_event(cmd:dict) -> tuple:
@@ -123,18 +123,18 @@ def cmd_gateway_event(cmd:dict) -> tuple:
 
     return (0, None)
 
-###################################################################################################
+#####
 
 @Cmd.route('gateway.help')
 def cmd_gateway_help(cmd:dict) -> tuple:
     """ Handle command 'gateway help' """
     return (0, 'Help?!?')
 
-###################################################################################################
+#####
 
 @Cmd.route('gateway')
 def cmd_gateway__(cmd:dict) -> tuple:
     """ Handle command 'gateway help' """
     return (0, 'Häh? Type "gateway help" for help on gateway commands')
 
-###################################################################################################
+#####

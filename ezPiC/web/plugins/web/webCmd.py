@@ -9,7 +9,7 @@ import json
 import web.Web as Web
 import G
 
-###################################################################################################
+#####
 
 @MicroWebSrv.route('/cmd')
 @MicroWebSrv.route('/cmd', 'POST')
@@ -47,4 +47,4 @@ def web_cmd(httpClient, httpResponse):
 
     return httpResponse.WriteResponsePyHTMLFile('web/www/cmd.html', vars=vars)
 
-###################################################################################################
+#####

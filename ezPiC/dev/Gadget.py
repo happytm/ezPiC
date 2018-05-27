@@ -13,7 +13,7 @@ import G
 import Tool
 import dev.Timer as Timer
 
-###################################################################################################
+#####
 # Globals:
 
 PLUGINDIR = 'dev/plugins/gadgets'
@@ -22,7 +22,7 @@ GADGETS = []
 GADGETLOCK = RLock()
 GADGETTIMER = 0
 
-###################################################################################################
+#####
 
 def gadget_timer_handler(news, args):
     global GADGETS, GADGETTIMER
@@ -31,18 +31,30 @@ def gadget_timer_handler(news, args):
         t = time.time()
 
         for idx, gadget in enumerate(GADGETS):
+            if gadget.prepare_next and (t >= gadget.prepare_next):
+                gadget.prepare_next = None
+                if gadget.get_param('enable'):
+                    gadget.timer(True)
+
             if gadget.timer_next and (t >= gadget.timer_next):
                 if gadget.get_param('enable'):
-                    if gadget.timer_period:
+                    if gadget.timer_period:   # cyclic timer
                         gadget.timer_next += gadget.timer_period
-                        if gadget.timer_next < t:
+                        if gadget.timer_next < t:   # missed some events
                             gadget.timer_next = t + gadget.timer_period
-                    gadget.timer()
+                        if gadget.prepare_time:
+                            gadget.prepare_next = gadget.timer_next - gadget.prepare_time
+                    else:   # singel event
+                        gadget.timer_next = None
+                    gadget.timer(False)
+                else:   # disabled
+                    gadget.timer_next = None
+
             if news:
                 if gadget.get_param('enable'):
                     gadget.readings(news)
 
-###################################################################################################
+#####
 
 def init():
     """ Prepare module vars and load plugins """
@@ -55,7 +67,7 @@ def init():
         except:
             pass
 
-# =================================================================================================
+# ===
 
 def run():
     """ TODO """
@@ -63,7 +75,7 @@ def run():
 
     Timer.register_cyclic_hnadler(gadget_timer_handler)
 
-###################################################################################################
+#####
 
 def load(config_all: dict):
     if not "gadgets" in config_all:
@@ -78,7 +90,7 @@ def load(config_all: dict):
         if not err and loaded_version != running_version:
             G.log(G.LOG_WARN, "task " +  ggpid + " has change version form " + loaded_version + " to " + running_version)
 
-# =================================================================================================
+# ===
 
 def save(append: dict = None):
     err = None
@@ -101,7 +113,7 @@ def save(append: dict = None):
     
     return (err, {"gadgets": ret})
 
-###################################################################################################
+#####
 
 def add(plugin_id: str, params: dict = None) -> tuple:
     """ TODO """
@@ -128,7 +140,7 @@ def add(plugin_id: str, params: dict = None) -> tuple:
 
     return (err, ret)
 
-# =================================================================================================
+# ===
 
 def delete(idx: int) -> tuple:
     """ TODO """
@@ -146,7 +158,7 @@ def delete(idx: int) -> tuple:
 
     return (err, ret)
 
-# =================================================================================================
+# ===
 
 def clear() -> tuple:
     """ TODO """
@@ -165,7 +177,7 @@ def clear() -> tuple:
 
     return (err, ret)
 
-# =================================================================================================
+# ===
 
 def get_plugin_list() -> tuple:
     """ TODO """
@@ -183,7 +195,7 @@ def get_plugin_list() -> tuple:
 
     return (err, pl)
 
-# =================================================================================================
+# ===
 
 def get_list() -> tuple:
     """ TODO """
@@ -203,7 +215,7 @@ def get_list() -> tuple:
 
     return (err, dl)
 
-# =================================================================================================
+# ===
 
 def get_param(idx: int, key: str=None) -> tuple:
     """ TODO """
@@ -220,7 +232,7 @@ def get_param(idx: int, key: str=None) -> tuple:
 
     return (err, ret)
 
-# =================================================================================================
+# ===
 
 def set_param(idx: int, params: dict) -> tuple:
     """ TODO """
@@ -237,7 +249,7 @@ def set_param(idx: int, params: dict) -> tuple:
 
     return (err, ret)
 
-# =================================================================================================
+# ===
 
 def get_html(idx: int) -> tuple:
     """ TODO """
@@ -254,7 +266,7 @@ def get_html(idx: int) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 class PluginGadgetBase():
     """ TODO """
@@ -265,10 +277,15 @@ class PluginGadgetBase():
         self.param = {}
         self.timer_next = None
         self.timer_period = None
+        self.prepare_next = None
+        self.prepare_time = None
 
     def init(self):
         """ init a new instance after adding to task list or reinit an existing instance after loading/changing params """
-        pass
+        if not self.timer_next and self.timer_period and self.get_param('enable'):
+            self.timer_next = time.time() + self.timer_period
+            if self.prepare_time:
+                self.prepare_next = self.timer_next - self.prepare_time
 
     def exit(self):
         """ exit an existing instance after removing from task list """
@@ -291,16 +308,24 @@ class PluginGadgetBase():
 
     def set_param(self, param_new: dict):
         """ updates the param key-value pairs with given dict """
-        self.param.update(param_new)
+        #self.param.update(param_new)
+        changed = False
+        for key in self.param:
+            if self.param[key] != param_new.get(key, None):
+                changed = True
+                break
+
+        if changed:
+            self.exit()
+            for key in self.param:
+                self.param[key] = param_new.get(key, None)
+            self.init()
 
     def get_html(self) -> str:
         """ get the html template name from the module """
         return 'web/www/gadgets/{}.html'.format(self.module.GGPID)
 
-    def cmd(self, cmd: str) -> str:
+    def timer(self, prepare:bool):
         return None
 
-    def timer(self):
-        return None
-
-###################################################################################################
+#####

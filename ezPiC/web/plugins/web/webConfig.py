@@ -7,7 +7,7 @@ import time
 import Tool
 import web.Web as Web
 
-###################################################################################################
+#####
 
 @MicroWebSrv.route('/config')
 @MicroWebSrv.route('/config', 'POST')
@@ -33,4 +33,4 @@ def web_config(httpClient, httpResponse):
 
     return httpResponse.WriteResponsePyHTMLFile('web/www/config.html', vars=vars)
 
-###################################################################################################
+#####

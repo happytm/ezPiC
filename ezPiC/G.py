@@ -25,7 +25,7 @@ except:   # CPython
 
 MWS = None
 
-###################################################################################################
+#####
 
 def log(level:int, msg:str, *args):
     global LOGLEVEL
@@ -43,7 +43,7 @@ def log(level:int, msg:str, *args):
     msg = '{0} [{1}] {2}'.format(localtime, level, msg)
     print(msg)
 
-###################################################################################################
+#####
 
 def time_to_str(t):
     if MICROPYTHON:

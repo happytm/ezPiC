@@ -6,7 +6,7 @@ import telnetlib
 import Tool
 import G
 
-###################################################################################################
+#####
 # Globals:
 
 #PLUGINDIR = 'web/plugins/web'
@@ -15,7 +15,7 @@ TEL = None
 HOST = 'localhost'
 PORT = 23101
 
-###################################################################################################
+#####
 
 def excecute(request:str) -> str:
     global TEL, TIMEOUT, HOST, PORT

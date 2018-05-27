@@ -11,7 +11,7 @@ import dev.Cmd as Cmd
 import G
 import dev.M as M
 
-###################################################################################################
+#####
 
 @Cmd.route('plugin.machine.list')
 @Cmd.route('pml')
@@ -24,7 +24,7 @@ def cmd_machine_list(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('machine.list')
 @Cmd.route('ml')
@@ -34,7 +34,7 @@ def cmd_machine_task_list(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('machine.getparam', 'key')
 def cmd_machine_get(cmd:dict) -> tuple:
@@ -44,7 +44,7 @@ def cmd_machine_get(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('machine.setparam', 'params')
 def cmd_machine_set(cmd:dict) -> tuple:
@@ -56,11 +56,11 @@ def cmd_machine_set(cmd:dict) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 @Cmd.route('machine.help')
 def cmd_machine_help(cmd:dict) -> tuple:
     """ Handle command 'machine help' """
     return (0, 'Help?!?')
 
-###################################################################################################
+#####

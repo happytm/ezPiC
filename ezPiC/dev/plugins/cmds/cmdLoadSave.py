@@ -14,7 +14,7 @@ import G
 
 CONFIG_FILE = 'config.json'
 
-###################################################################################################
+#####
 
 @Cmd.route('save')
 def cmd_system_save(cmd:dict) -> tuple:
@@ -35,7 +35,7 @@ def cmd_system_save(cmd:dict) -> tuple:
 
     return (0, None)
 
-###################################################################################################
+#####
 
 @Cmd.route('load')
 def cmd_system_load(cmd:dict) -> tuple:
@@ -55,4 +55,4 @@ def cmd_system_load(cmd:dict) -> tuple:
 
     return (0, None)
 
-###################################################################################################
+#####

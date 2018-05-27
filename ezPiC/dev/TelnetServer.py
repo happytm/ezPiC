@@ -19,7 +19,7 @@ import G
 import Tool
 import dev.Cmd as Cmd
 
-###################################################################################################
+#####
 # Globals:
 
 CONNECTION_LIST = []    # list of socket clients
@@ -27,13 +27,13 @@ CONNECTION_SOURCE = {}    # list of socket prop
 RECV_BUFFER = 4096 # Advisable to keep it as an exponent of 2
 PORT = 23101
 
-###################################################################################################
+#####
 
 def init():
     """ Prepare module vars and load plugins """
     pass
 
-# =================================================================================================
+# ===
 
 def run():
     global CONNECTION_LIST, RECV_BUFFER, PORT
@@ -115,4 +115,4 @@ def run():
     server_socket.close()
     print ("Telnet server closed")
  
-###################################################################################################
+#####

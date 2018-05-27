@@ -14,7 +14,7 @@ import Tool
 import G
 import dev.Timer as Timer
 
-###################################################################################################
+#####
 # Globals:
 
 PLUGINDIR = 'dev/plugins/gateways'
@@ -23,7 +23,7 @@ GATEWAYS = []
 GATEWAYLOCK = RLock()
 GATEWAYTIMER = 0
 
-###################################################################################################
+#####
 
 def gateway_timer_handler(news, args):
     global GATEWAYS, GATEWAYTIMER
@@ -34,16 +34,21 @@ def gateway_timer_handler(news, args):
         for idx, gateway in enumerate(GATEWAYS):
             if gateway.timer_next and (t >= gateway.timer_next):
                 if gateway.get_param('enable'):
-                    if gateway.timer_period:
+                    if gateway.timer_period:   # cyclic timer
                         gateway.timer_next += gateway.timer_period
-                        if gateway.timer_next < t:
+                        if gateway.timer_next < t:   # missed some events
                             gateway.timer_next = t + gateway.timer_period
-                    gateway.timer()
+                    else:   # singel event
+                        gateway.timer_next = None
+                    gateway.timer(False)
+                else:   # disabled
+                    gateway.timer_next = None
+
             if news:
                 if gateway.get_param('enable'):
                     gateway.readings(news)
 
-###################################################################################################
+#####
 
 def init():
     """ Prepare module vars and load plugins """
@@ -56,7 +61,7 @@ def init():
         except:
             pass
 
-# =================================================================================================
+# ===
 
 def run():
     """ TODO """
@@ -64,7 +69,7 @@ def run():
 
     Timer.register_cyclic_hnadler(gateway_timer_handler)
 
-###################################################################################################
+#####
 
 def load(config_all: dict):
     if not "gateways" in config_all:
@@ -79,7 +84,7 @@ def load(config_all: dict):
         if not err and loaded_version != running_version:
             G.log(G.LOG_WARN, "task " +  gwpid + " has change version form " + loaded_version + " to " + running_version)
 
-# =================================================================================================
+# ===
 
 def save(append: dict = None):
     err = None
@@ -102,7 +107,7 @@ def save(append: dict = None):
     
     return (err, {"gateways": ret})
 
-###################################################################################################
+#####
 
 def add(plugin_id: str, params: dict = None) -> tuple:
     """ TODO """
@@ -129,7 +134,7 @@ def add(plugin_id: str, params: dict = None) -> tuple:
 
     return (err, ret)
 
-# =================================================================================================
+# ===
 
 def delete(idx: int) -> tuple:
     """ TODO """
@@ -147,7 +152,7 @@ def delete(idx: int) -> tuple:
 
     return (err, ret)
 
-# =================================================================================================
+# ===
 
 def clear() -> tuple:
     """ TODO """
@@ -166,7 +171,7 @@ def clear() -> tuple:
 
     return (err, ret)
 
-# =================================================================================================
+# ===
 
 def get_plugin_list() -> tuple:
     """ TODO """
@@ -184,7 +189,7 @@ def get_plugin_list() -> tuple:
 
     return (err, pl)
 
-# =================================================================================================
+# ===
 
 def get_list() -> tuple:
     """ TODO """
@@ -204,7 +209,7 @@ def get_list() -> tuple:
 
     return (err, gl)
 
-# =================================================================================================
+# ===
 
 def get_param(idx: int, key: str=None) -> tuple:
     """ TODO """
@@ -221,7 +226,7 @@ def get_param(idx: int, key: str=None) -> tuple:
 
     return (err, ret)
 
-# =================================================================================================
+# ===
 
 def set_param(idx: int, params: dict) -> tuple:
     """ TODO """
@@ -238,7 +243,7 @@ def set_param(idx: int, params: dict) -> tuple:
 
     return (err, ret)
 
-# =================================================================================================
+# ===
 
 def get_html(idx: int) -> tuple:
     """ TODO """
@@ -255,7 +260,7 @@ def get_html(idx: int) -> tuple:
 
     return (err, ret)
 
-###################################################################################################
+#####
 
 class PluginGatewayBase():
     """ TODO """
@@ -269,7 +274,8 @@ class PluginGatewayBase():
 
     def init(self):
         """ init a new instance after adding to task list or reinit an existing instance after loading/changing params """
-        pass
+        if not self.timer_next and self.timer_period and self.get_param('enable'):
+            self.timer_next = time.time() + self.timer_period
 
     def exit(self):
         """ exit an existing instance after removing from task list """
@@ -292,7 +298,18 @@ class PluginGatewayBase():
 
     def set_param(self, param_new:dict):
         """ updates the param key-value pairs with given dict """
-        self.param.update(param_new)
+        #self.param.update(param_new)
+        changed = False
+        for key in self.param:
+            if self.param[key] != param_new.get(key, None):
+                changed = True
+                break
+
+        if changed:
+            self.exit()
+            for key in self.param:
+                self.param[key] = param_new.get(key, None)
+            self.init()
 
     def get_html(self) -> str:
         """ get the html template name from the module """
@@ -307,4 +324,4 @@ class PluginGatewayBase():
     def readings(self, news:dict):
         pass
 
-###################################################################################################
+#####

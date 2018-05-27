@@ -11,25 +11,25 @@ except:
 
 #random = random.SystemRandom()
 
-###################################################################################################
+#####
 # Globals:
 
 READINGS = {}
 READINGLOCK = RLock()
 READINGACTTICK = 0
 
-###################################################################################################
+#####
 
 def init():
     """ Prepare module vars and load plugins """
     pass
 
-# =================================================================================================
+# ===
 
 def run():
     pass
 
-###################################################################################################
+#####
 
 def set(key:str, value, source:str=None) -> int:
     global READINGS, READINGACTTICK
@@ -51,7 +51,7 @@ def set(key:str, value, source:str=None) -> int:
 
         return READINGACTTICK
 
-# =================================================================================================
+# ===
 
 def get(key:str):
     global READINGS, READINGACTTICK
@@ -63,21 +63,21 @@ def get(key:str):
 
     return None
 
-# =================================================================================================
+# ===
 
 def get_act_tick() -> int:
     global READINGS, READINGACTTICK
 
     return READINGACTTICK
 
-# =================================================================================================
+# ===
 
 def is_new(tick:int) -> bool:
     global READINGS, READINGACTTICK
 
     return READINGACTTICK > tick
 
-# =================================================================================================
+# ===
 
 def get_news(tick:int) -> tuple:
     global READINGS, READINGACTTICK
@@ -93,7 +93,7 @@ def get_news(tick:int) -> tuple:
 
     return (READINGACTTICK, news)
 
-###################################################################################################
+#####
 
 def get_news_full(tick:int) -> tuple:
     global READINGS, READINGACTTICK
@@ -108,9 +108,9 @@ def get_news_full(tick:int) -> tuple:
 
     return (READINGACTTICK, news)
 
-###################################################################################################
+#####
 
 def make_key(gadget:str, channel:str) -> str:
     return gadget + '.' + channel
 
-###################################################################################################
+#####

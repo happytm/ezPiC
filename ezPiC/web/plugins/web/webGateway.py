@@ -6,7 +6,7 @@ from web.MicroWebSrv.microWebSrv import MicroWebSrv
 import Tool
 import web.Web as Web
 
-###################################################################################################
+#####
 
 @MicroWebSrv.route('/gateways')
 def web_gateways(httpClient, httpResponse):
@@ -23,7 +23,7 @@ def web_gateways(httpClient, httpResponse):
 
     return httpResponse.WriteResponsePyHTMLFile('web/www/gateways.html', vars=vars)
 
-###################################################################################################
+#####
 
 @MicroWebSrv.route('/gateways/list/')
 def web_gateways_list(httpClient, httpResponse):
@@ -40,7 +40,7 @@ def web_gateways_list(httpClient, httpResponse):
 
     return httpResponse.WriteResponsePyHTMLFile('web/www/gateways_list.html', vars=vars)
 
-###################################################################################################
+#####
 
 @MicroWebSrv.route('/gateways/add/<gwpid>/')
 def web_gateway_add(httpClient, httpResponse, args):
@@ -58,7 +58,7 @@ def web_gateway_add(httpClient, httpResponse, args):
 
     return httpResponse.WriteResponseRedirect('/gateways')
 
-###################################################################################################
+#####
 
 @MicroWebSrv.route('/gateways/edit/<idx>/')
 @MicroWebSrv.route('/gateways/edit/<idx>/', 'POST')
@@ -98,7 +98,7 @@ def web_gateway_edit(httpClient, httpResponse, args):
 
     return httpResponse.WriteResponsePyHTMLFile(html, vars=vars)
 
-###################################################################################################
+#####
 
 @MicroWebSrv.route('/gateways/del/<idx>/')
 def web_gateway_del(httpClient, httpResponse, args):
@@ -115,4 +115,4 @@ def web_gateway_del(httpClient, httpResponse, args):
 
     return httpResponse.WriteResponseRedirect('/gateways')
 
-###################################################################################################
+#####

@@ -8,25 +8,31 @@ import dev.Gadget as Gadget
 import dht
 import machine
 
-###################################################################################################
+#####
 # Globals:
 
 GGPID = 'DHTTempHumSensorGadget'
 PNAME = 'DHT / AM Temperature and Humidity Sensor Gadget'
 PINFO = 'Measurement device for the common DHT11 / DHT22 / DHT12 & AM2301 / AM2302 /  AM2320 / AM2321 / AM2322 .. Temperature and Humidity Sensors.'
 
-###################################################################################################
+#####
 
 
 class PluginGadget(Gadget.PluginGadgetBase):
 
     def __init__(self, module): # FIXME in base class, everywhere: shadowing of "module"
         super().__init__(module)
-        self.param = {'name': 'DHT / AM Temperature and Humidity Sensor Gadget', 'machine_pin': 4, 'type': 'DHT11'} # TODO Allowed values / Lists / ...?
+        self.param = {
+            'name': 'DHT / AM Temperature and Humidity Sensor Gadget', 
+            'machine_pin': 4, 
+            'type': 'DHT11'
+            } # TODO Allowed values / Lists / ...?
         self.timer_period = 3 # must be at least 1 (DHT11 type) or 2 (DHT22 type)
         self._sensor = None # TODO There should be a better way. (Gadget.setup(..) or whatever)
 
-    def timer(self):
+# ---
+
+    def timer(self, prepare:bool):
         if self._sensor is None:
             if self.param['type'] == "DHT11":
                 # TODO try: Error reporting?
@@ -39,5 +45,4 @@ class PluginGadget(Gadget.PluginGadgetBase):
         hum = self._sensor.humidity()
         # TODO Where to go from here?
 
-
-###################################################################################################
+#####
