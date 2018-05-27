@@ -3,10 +3,10 @@ Web Plugin for Gadget-Pages
 """
 from web.MicroWebSrv.microWebSrv import MicroWebSrv
 
-import Tool
+import com.Tool as Tool
 import web.Web as Web
 
-#####
+#######
 
 @MicroWebSrv.route('/gadgets')
 def web_gadgets(httpClient, httpResponse):
@@ -23,7 +23,7 @@ def web_gadgets(httpClient, httpResponse):
 
     return httpResponse.WriteResponsePyHTMLFile('web/www/gadgets.html', vars=vars)
 
-#####
+#######
 
 @MicroWebSrv.route('/gadgets/list/')
 def web_gadgets_list(httpClient, httpResponse):
@@ -40,7 +40,7 @@ def web_gadgets_list(httpClient, httpResponse):
 
     return httpResponse.WriteResponsePyHTMLFile('web/www/gadgets_list.html', vars=vars)
 
-#####
+#######
 
 @MicroWebSrv.route('/gadgets/add/<ggpid>/')
 def web_gadget_add(httpClient, httpResponse, args):
@@ -58,7 +58,7 @@ def web_gadget_add(httpClient, httpResponse, args):
 
     return httpResponse.WriteResponseRedirect('/gadgets')
 
-#####
+#######
 
 @MicroWebSrv.route('/gadgets/edit/<idx>/')
 @MicroWebSrv.route('/gadgets/edit/<idx>/', 'POST')
@@ -98,7 +98,7 @@ def web_gadget_edit(httpClient, httpResponse, args):
 
     return httpResponse.WriteResponsePyHTMLFile(html, vars=vars)
 
-#####
+#######
 
 @MicroWebSrv.route('/gadgets/del/<idx>/')
 def web_gadget_del(httpClient, httpResponse, args):
@@ -115,4 +115,4 @@ def web_gadget_del(httpClient, httpResponse, args):
 
     return httpResponse.WriteResponseRedirect('/gadgets')
 
-#####
+#######

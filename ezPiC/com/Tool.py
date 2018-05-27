@@ -10,9 +10,9 @@ except:   # MicroPython
 
 import gc
 
-import G
+import com.G as G
 
-#####
+#######
 
 def load_plugins(path: str, pre :str=None) -> list:
     """
@@ -69,7 +69,7 @@ def load_plugins(path: str, pre :str=None) -> list:
     gc.collect()
     return modules
 
-#####
+#######
 
 def get_random_string(length=12, allowed_chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'):
     """
@@ -82,7 +82,7 @@ def get_random_string(length=12, allowed_chars='abcdefghijklmnopqrstuvwxyzABCDEF
     """
     return ''.join(random.choice(allowed_chars) for i in range(length))
 
-# ===
+# =====
 
 def get_secret_key():
     """
@@ -94,7 +94,7 @@ def get_secret_key():
     #return get_random_string(50, chars)
     return get_random_string(24)
 
-# ===
+# =====
 
 def make_random_password(length=12, symbols='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@$^_+&'):
     """ TODO """
@@ -103,21 +103,21 @@ def make_random_password(length=12, symbols='abcdefghijklmnopqrstuvwxyzABCDEFGHI
         password.append(symbols[i])
     return ''.join(password)
 
-#####
+#######
 
 def params_to_str(params:dict) -> str:
     """ converts the param dict to a string """
 
     return json.dumps(params)
 
-# ===
+# =====
 
 def str_to_params(paramstr:str) -> dict:
     """ converts the string to a param dict """
 
     return json.loads(paramstr)
 
-#####
+#######
 
 def start_thread(func, *args):
     gc.collect()
@@ -137,4 +137,4 @@ def start_thread(func, *args):
         #t = start_new_thread(func, ())
         #return t
 
-#####
+#######

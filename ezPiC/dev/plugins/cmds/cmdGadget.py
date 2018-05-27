@@ -8,9 +8,9 @@ except:   # MicroPython
 
 import dev.Gadget as Gadget
 import dev.Cmd as Cmd
-import G
+import com.G as G
 
-#####
+#######
 
 @Cmd.route('plugin.gadget.list')
 @Cmd.route('pdl')
@@ -23,7 +23,7 @@ def cmd_gadget_list(cmd:dict) -> tuple:
 
     return (err, ret)
 
-#####
+#######
 
 @Cmd.route('gadget.list')
 @Cmd.route('dl')
@@ -33,7 +33,7 @@ def cmd_gadget_task_list(cmd:dict) -> tuple:
 
     return (err, ret)
 
-#####
+#######
 
 @Cmd.route('plugin.gadget.info', 'ggpid')
 def cmd_gadget_info(cmd:dict) -> tuple:
@@ -41,7 +41,7 @@ def cmd_gadget_info(cmd:dict) -> tuple:
 
     return (0, None)
 
-#####
+#######
 
 @Cmd.route('gadget.add', 'ggpid')
 def cmd_gadget_add(cmd:dict) -> tuple:
@@ -50,7 +50,7 @@ def cmd_gadget_add(cmd:dict) -> tuple:
 
     return (err, ret)
 
-#####
+#######
 
 @Cmd.route('gadget.clear')
 @Cmd.route('gadget.del.all')
@@ -60,7 +60,7 @@ def cmd_gadget_del_all(cmd:dict) -> tuple:
 
     return (err, ret)
 
-#####
+#######
 
 @Cmd.route('gadget.del.#')
 def cmd_gadget_del(cmd:dict) -> tuple:
@@ -70,7 +70,7 @@ def cmd_gadget_del(cmd:dict) -> tuple:
 
     return (err, ret)
 
-#####
+#######
 
 @Cmd.route('gadget.getparam.#', 'key')
 def cmd_gadget_get(cmd:dict) -> tuple:
@@ -81,7 +81,7 @@ def cmd_gadget_get(cmd:dict) -> tuple:
 
     return (err, ret)
 
-#####
+#######
 
 @Cmd.route('gadget.setparam.#', 'params')
 def cmd_gadget_set(cmd:dict) -> tuple:
@@ -94,7 +94,7 @@ def cmd_gadget_set(cmd:dict) -> tuple:
 
     return (err, ret)
 
-#####
+#######
 
 @Cmd.route('gadget.cmd.#', 'cmd')
 def cmd_gadget_cmd(cmd:dict) -> tuple:
@@ -103,7 +103,7 @@ def cmd_gadget_cmd(cmd:dict) -> tuple:
 
     return (0, None)
 
-#####
+#######
 
 @Cmd.route('gadget.gethtml.#')
 def cmd_gadget_html(cmd:dict) -> tuple:
@@ -113,7 +113,7 @@ def cmd_gadget_html(cmd:dict) -> tuple:
 
     return (err, ret)
 
-#####
+#######
 
 @Cmd.route('gadget.event.#')
 def cmd_gadget_event(cmd:dict) -> tuple:
@@ -122,7 +122,7 @@ def cmd_gadget_event(cmd:dict) -> tuple:
 
     return (0, None)
 
-#####
+#######
 
 @Cmd.route('gadget.help')
 def cmd_gadget_help(cmd:dict) -> tuple:
@@ -130,4 +130,4 @@ def cmd_gadget_help(cmd:dict) -> tuple:
     
     return (0, 'Help?!?')
 
-#####
+#######

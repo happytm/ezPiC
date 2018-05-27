@@ -4,12 +4,12 @@ Web Plugin for Command-Test-Page
 from web.MicroWebSrv.microWebSrv import MicroWebSrv
 import time
 #import html
-import Tool
+import com.Tool as Tool
 import json
 import web.Web as Web
-import G
+import com.G as G
 
-#####
+#######
 
 @MicroWebSrv.route('/cmd')
 @MicroWebSrv.route('/cmd', 'POST')
@@ -47,4 +47,4 @@ def web_cmd(httpClient, httpResponse):
 
     return httpResponse.WriteResponsePyHTMLFile('web/www/cmd.html', vars=vars)
 
-#####
+#######

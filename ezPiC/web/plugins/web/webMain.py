@@ -4,7 +4,7 @@ Web Plugin for Index-Page and Main-Page
 from web.MicroWebSrv.microWebSrv import MicroWebSrv
 import web.Web as Web
 
-#####
+#######
 
 @MicroWebSrv.route('/')
 def web_index(httpClient, httpResponse):
@@ -21,14 +21,14 @@ def web_index(httpClient, httpResponse):
 
     return httpResponse.WriteResponsePyHTMLFile('web/www/index.html', vars=vars)
 
-#####
+#######
 
 #@APP.errorhandler(404)
 #def web_error(error):
 #    """ TODO """
 #    return render_template('error.html', error=error), 404
 
-#####
+#######
 
 @MicroWebSrv.route('/main')
 def web_main(httpClient, httpResponse):
@@ -45,7 +45,7 @@ def web_main(httpClient, httpResponse):
 
     return httpResponse.WriteResponsePyHTMLFile('web/www/main.html', vars=vars)
 
-#####
+#######
 
 @MicroWebSrv.route('/test')
 def _httpHandlerTestGet(httpClient, httpResponse) :
@@ -73,4 +73,4 @@ def _httpHandlerTestGet(httpClient, httpResponse) :
 								  contentCharset = "UTF-8",
 								  content 		 = content )
 
-#####
+#######

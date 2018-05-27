@@ -3,19 +3,19 @@ Temperature Sensors supported by the "dht" micropython module
 MicroPython ONLY!
 """
 import time
-import Tool
+import com.Tool as Tool
 import dev.Gadget as Gadget
 import dht
 import machine
 
-#####
+#######
 # Globals:
 
 GGPID = 'DHTTempHumSensorGadget'
 PNAME = 'DHT / AM Temperature and Humidity Sensor Gadget'
 PINFO = 'Measurement device for the common DHT11 / DHT22 / DHT12 & AM2301 / AM2302 /  AM2320 / AM2321 / AM2322 .. Temperature and Humidity Sensors.'
 
-#####
+#######
 
 
 class PluginGadget(Gadget.PluginGadgetBase):
@@ -30,7 +30,7 @@ class PluginGadget(Gadget.PluginGadgetBase):
         self.timer_period = 3 # must be at least 1 (DHT11 type) or 2 (DHT22 type)
         self._sensor = None # TODO There should be a better way. (Gadget.setup(..) or whatever)
 
-# ---
+# -----
 
     def timer(self, prepare:bool):
         if self._sensor is None:
@@ -45,4 +45,4 @@ class PluginGadget(Gadget.PluginGadgetBase):
         hum = self._sensor.humidity()
         # TODO Where to go from here?
 
-#####
+#######

@@ -6,16 +6,16 @@ from datetime import datetime
 
 import dev.Gateway as Gateway
 import dev.Reading as Reading
-import G
+import com.G as G
 
-#####
+#######
 # Globals:
 
 GWPID = 'FileLogger'
 PNAME = 'Data Logger to File'
 PINFO = 'Lorem ipsum dolor sit amet.'
 
-#####
+#######
 
 class PluginGateway(Gateway.PluginGatewayBase):
     """ TODO """
@@ -34,7 +34,7 @@ class PluginGateway(Gateway.PluginGatewayBase):
         self.timer_period = 0
         self._reading_tick = 0
 
-# ---
+# -----
 
     def init(self):
         t = float(self.param['timer'])
@@ -44,17 +44,17 @@ class PluginGateway(Gateway.PluginGatewayBase):
             self.timer_period = None
         super().init()
 
-# ---
+# -----
 
     def exit(self):
         super().exit()
 
-# ---
+# -----
 
     def timer(self):
         print('G' + str(time.time()))
 
-# ---
+# -----
 
     def readings(self, news:dict):
         separator = ', '
@@ -77,4 +77,4 @@ class PluginGateway(Gateway.PluginGatewayBase):
         except:
             pass
 
-#####
+#######

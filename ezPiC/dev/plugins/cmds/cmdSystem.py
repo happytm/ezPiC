@@ -9,9 +9,9 @@ except:   # MicroPython
 
 import dev.SysConfig as SysConfig
 import dev.Cmd as Cmd
-import G
+import com.G as G
 
-#####
+#######
 
 @Cmd.route('info')
 def cmd_system_info(cmd:dict) -> tuple:
@@ -30,35 +30,35 @@ def cmd_system_info(cmd:dict) -> tuple:
 
     return (0, i)
 
-#####
+#######
 
 @Cmd.route('version')
 def cmd_system_version(cmd:dict) -> tuple:
     """ Returns the version of ezPiC """
     return (0, G.VERSION)
 
-#####
+#######
 
 @Cmd.route('about')
 def cmd_system_about(cmd:dict) -> tuple:
     """ Returns about information """
     return (0, 'ezPiC-Project by Jochen Krapf et al. - https://github.com/fablab-wue/ezPiC')
 
-#####
+#######
 
 @Cmd.route('login', 'name password')
 def cmd_system_login(cmd:dict) -> tuple:
     """ Login to the system and change security level for actual connection """
     return (0, "NOT IMPLEMENTED")
 
-#####
+#######
 
 @Cmd.route('logout')
 def cmd_system_logout(cmd:dict) -> tuple:
     """ Logout for actual connection """
     return (0, "NOT IMPLEMENTED")
 
-#####
+#######
 
 @Cmd.route('commands')
 def cmd_system_commands(cmd:dict) -> tuple:
@@ -80,7 +80,7 @@ def cmd_system_commands(cmd:dict) -> tuple:
 
     return (0, cl)
 
-#####
+#######
 
 @Cmd.route('system.getparam')
 @Cmd.route('sysconfig.getparam')
@@ -90,7 +90,7 @@ def cmd_syscongig_getparam(cmd:dict) -> tuple:
 
     return (err, ret)
 
-#####
+#######
 
 @Cmd.route('system.setparam', 'param')
 @Cmd.route('sysconfig.setparam', 'param')
@@ -101,4 +101,4 @@ def cmd_syscongig_setparam(cmd:dict) -> tuple:
 
     return (err, ret)
 
-#####
+#######

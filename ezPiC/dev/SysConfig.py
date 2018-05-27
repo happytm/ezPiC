@@ -11,12 +11,12 @@ except:
 
 #random = random.SystemRandom()
 
-#####
+#######
 # Globals:
 
 PARAMS = {}
 
-#####
+#######
 
 def set_default():
     global PARAMS
@@ -24,18 +24,18 @@ def set_default():
     PARAMS['name'] = 'ezPiC-Device'
     PARAMS['version'] = 1
 
-#####
+#######
 
 def init():
     """ Prepare module vars and load plugins """
     set_default()
 
-# ===
+# =====
 
 def run():
     pass
 
-#####
+#######
 
 def load(config_all: dict):
     global PARAMS
@@ -48,7 +48,7 @@ def load(config_all: dict):
     else:
         set_default()
 
-# ===
+# =====
 
 def save(append: dict = None):
     global PARAMS
@@ -62,21 +62,21 @@ def save(append: dict = None):
     
     return (err, {"sysconfig": ret})
 
-#####
+#######
 
 def set(key:str, value):
     global PARAMS
 
     PARAMS[key] = value
 
-# ===
+# =====
 
 def get(key:str):
     global PARAMS
 
     return PARAMS.get(key, None)
 
-# ===
+# =====
 
 def get_param(key:str=None) -> tuple:
     global PARAMS
@@ -86,7 +86,7 @@ def get_param(key:str=None) -> tuple:
     else:
         return (0, PARAMS)
 
-# ===
+# =====
 
 def set_param(params:dict) -> tuple:
     global PARAMS
@@ -96,4 +96,4 @@ def set_param(params:dict) -> tuple:
 
     return (0, None)
 
-#####
+#######

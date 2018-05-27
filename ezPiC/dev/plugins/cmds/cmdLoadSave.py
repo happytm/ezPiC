@@ -10,11 +10,11 @@ import dev.SysConfig as SysConfig
 import dev.Gadget as Gadget
 import dev.Gateway as Gateway
 import dev.Cmd as Cmd
-import G
+import com.G as G
 
 CONFIG_FILE = 'config.json'
 
-#####
+#######
 
 @Cmd.route('save')
 def cmd_system_save(cmd:dict) -> tuple:
@@ -35,7 +35,7 @@ def cmd_system_save(cmd:dict) -> tuple:
 
     return (0, None)
 
-#####
+#######
 
 @Cmd.route('load')
 def cmd_system_load(cmd:dict) -> tuple:
@@ -55,4 +55,4 @@ def cmd_system_load(cmd:dict) -> tuple:
 
     return (0, None)
 
-#####
+#######

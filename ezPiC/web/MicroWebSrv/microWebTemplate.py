@@ -7,9 +7,9 @@ import re
 
 class MicroWebTemplate :
 
-    # ============================================================================
-    # ===( Constants )============================================================
-    # ============================================================================
+    # ==============================================================================
+    # =====( Constants )============================================================
+    # ==============================================================================
 
 	TOKEN_OPEN				= '{{'
 	TOKEN_CLOSE				= '}}'
@@ -27,9 +27,9 @@ class MicroWebTemplate :
 	MESSAGE_TEXT            = ''
 	MESSAGE_STYLE           = ''
 	
-    # ============================================================================
-    # ===( Constructor )==========================================================
-    # ============================================================================
+    # ==============================================================================
+    # =====( Constructor )==========================================================
+    # ==============================================================================
 
 	def __init__(self, code, escapeStrFunc=None, filepath='') :
 		self._code   		= code
@@ -52,9 +52,9 @@ class MicroWebTemplate :
 			MicroWebTemplate.INSTRUCTION_INCLUDE: self._processInstructionINCLUDE,
 		}
 
-    # ============================================================================
-    # ===( Functions )============================================================
-    # ============================================================================
+    # ==============================================================================
+    # =====( Functions )============================================================
+    # ==============================================================================
 
 	def Validate(self, pyGlobalVars=None, pyLocalVars=None) :
 		try :
@@ -63,7 +63,7 @@ class MicroWebTemplate :
 		except Exception as ex :
 			return str(ex)
 
-	# ----------------------------------------------------------------------------
+	# ------------------------------------------------------------------------------
 
 	def Execute(self, pyGlobalVars=None, pyLocalVars=None) :
 		try :
@@ -72,9 +72,9 @@ class MicroWebTemplate :
 		except Exception as ex :
 			raise Exception(str(ex))
 
-    # ============================================================================
-    # ===( Utils  )===============================================================
-    # ============================================================================
+    # ==============================================================================
+    # =====( Utils  )===============================================================
+    # ==============================================================================
 	
 	def _parseCode(self, pyGlobalVars, pyLocalVars, execute) :
 		if pyGlobalVars:
@@ -91,7 +91,7 @@ class MicroWebTemplate :
 		MicroWebTemplate.MESSAGE_TEXT  = ''
 		MicroWebTemplate.MESSAGE_STYLE = ''
 
-    # ----------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------
 
 	def _parseBloc(self, execute) :
 		while self._pos <= self._endPos :
@@ -124,7 +124,7 @@ class MicroWebTemplate :
 			self._pos += 1
 		return None
 
-	# ----------------------------------------------------------------------------
+	# ------------------------------------------------------------------------------
 
 	def _processToken(self, tokenContent, execute) :
 		tokenContent = tokenContent.strip()
@@ -150,7 +150,7 @@ class MicroWebTemplate :
 				raise Exception('%s (line %s)' % (str(ex), self._line))
 		return newTokenToProcess
 
-	# ----------------------------------------------------------------------------
+	# ------------------------------------------------------------------------------
 
 	def _processInstructionPYTHON(self, instructionBody, execute) :
 		if instructionBody is not None :
@@ -211,7 +211,7 @@ class MicroWebTemplate :
 				raise Exception('%s (line %s)' % (str(ex), self._line))
 		return None
 
-	# ----------------------------------------------------------------------------
+	# ------------------------------------------------------------------------------
 
 	def _processInstructionIF(self, instructionBody, execute) :
 		if instructionBody is not None :
@@ -253,7 +253,7 @@ class MicroWebTemplate :
 		raise Exception( '"%s" alone is an incomplete syntax (line %s)'
 						 % (MicroWebTemplate.INSTRUCTION_IF, self._line) )
 
-	# ----------------------------------------------------------------------------
+	# ------------------------------------------------------------------------------
 
 	def _processInstructionELIF(self, instructionBody, execute) :
 		if instructionBody is None :
@@ -262,7 +262,7 @@ class MicroWebTemplate :
 		self._elifInstructionBody = instructionBody
 		return MicroWebTemplate.INSTRUCTION_ELIF
 
-	# ----------------------------------------------------------------------------
+	# ------------------------------------------------------------------------------
 
 	def _processInstructionELSE(self, instructionBody, execute) :
 		if instructionBody is not None :
@@ -270,7 +270,7 @@ class MicroWebTemplate :
 							 % (MicroWebTemplate.INSTRUCTION_ELSE, self._line) )
 		return MicroWebTemplate.INSTRUCTION_ELSE
 
-	# ----------------------------------------------------------------------------
+	# ------------------------------------------------------------------------------
 
 	def _processInstructionFOR(self, instructionBody, execute) :
 		if instructionBody is not None :
@@ -308,7 +308,7 @@ class MicroWebTemplate :
 		raise Exception( '"%s" alone is an incomplete syntax (line %s)'
 						 % (MicroWebTemplate.INSTRUCTION_FOR, self._line) )
 
-	# ----------------------------------------------------------------------------
+	# ------------------------------------------------------------------------------
 
 	def _processInstructionEND(self, instructionBody, execute) :
 		if instructionBody is not None :
@@ -316,7 +316,7 @@ class MicroWebTemplate :
 							 % (MicroWebTemplate.INSTRUCTION_END, self._line) )
 		return MicroWebTemplate.INSTRUCTION_END
 
-	# ----------------------------------------------------------------------------
+	# ------------------------------------------------------------------------------
 
 	def _processInstructionINCLUDE(self, instructionBody, execute) :
 		if not instructionBody :
@@ -331,6 +331,6 @@ class MicroWebTemplate :
 			self._code = self._code[:self._pos] + includeCode + self._code[self._pos:]
 			self._endPos += len(includeCode)
 
-    # ============================================================================
-    # ============================================================================
-    # ============================================================================
+    # ==============================================================================
+    # ==============================================================================
+    # ==============================================================================

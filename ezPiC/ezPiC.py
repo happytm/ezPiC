@@ -2,7 +2,7 @@
 ...TODO
 """
 import os
-import G
+import com.G as G
 
 if G.WEBSERVER:
     import web.Web as Web
@@ -17,7 +17,7 @@ if G.IOTDEVICE:
     import dev.Reading as Reading
     import dev.TelnetServer as TelnetServer
 
-#####
+#######
 
 def main():
     G.log(1, 'Lorem ipsum')
@@ -69,17 +69,17 @@ def main():
     G.log(G.LOG_ERROR, 'PANIC! Server terminated')
     G.RUN = False
 
-#####
+#######
 
 def __exit__():
     G.RUN = False
     print('<<<<<<<<EXIT>>>>>>>>>')
 
-#####
+#######
 
 #if __name__ == '__main__':
 main()   # this call never comes back!
 G.RUN = False
 
-#####
+#######
 

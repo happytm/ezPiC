@@ -6,14 +6,14 @@ import dev.Gadget as Gadget
 import dev.Reading as Reading
 import random
 
-#####
+#######
 # Globals:
 
 GGPID = 'TestB'
 PNAME = 'Readable Name B'
 PINFO = 'Fusce dolor leo, ornare vitae dolor nec, varius aliquam tellus.'
 
-#####
+#######
 
 class PluginGadget(Gadget.PluginGadgetBase):
     """ TODO """
@@ -32,7 +32,7 @@ class PluginGadget(Gadget.PluginGadgetBase):
             }
         self.timer_period = 8.7654321
 
-# ---
+# -----
 
     def init(self):
         t = float(self.param['timer'])
@@ -42,15 +42,15 @@ class PluginGadget(Gadget.PluginGadgetBase):
             self.timer_period = None
         super().init()
 
-# ---
+# -----
 
     def exit(self):
         super().exit()
 
-# ---
+# -----
 
     def timer(self, prepare:bool):
         print('B' + str(time.time()))
         Reading.set('Ipsum.'+self.param['name'], random.random())
 
-#####
+#######

@@ -15,11 +15,11 @@ except:   # MicroPython
     import ujson as json
 
 import socket, select
-import G
-import Tool
+import com.G as G
+import com.Tool as Tool
 import dev.Cmd as Cmd
 
-#####
+#######
 # Globals:
 
 CONNECTION_LIST = []    # list of socket clients
@@ -27,13 +27,13 @@ CONNECTION_SOURCE = {}    # list of socket prop
 RECV_BUFFER = 4096 # Advisable to keep it as an exponent of 2
 PORT = 23101
 
-#####
+#######
 
 def init():
     """ Prepare module vars and load plugins """
     pass
 
-# ===
+# =====
 
 def run():
     global CONNECTION_LIST, RECV_BUFFER, PORT
@@ -85,8 +85,10 @@ def run():
                         while i<len(data):
                             if data[i] == 255:
                                 i += 2   #skip next 2 bytes from telnet command
-                            elif data[i] == 10 or data[i] == 13:
-                                dataf.append(32)
+                            #elif data[i] == 10 or data[i] == 13:
+                            #    dataf.append(32)
+                            elif data[i] < 32:
+                                pass   # eat control characters
                             else:
                                 dataf.append(data[i])
                             i += 1
@@ -115,4 +117,4 @@ def run():
     server_socket.close()
     print ("Telnet server closed")
  
-#####
+#######

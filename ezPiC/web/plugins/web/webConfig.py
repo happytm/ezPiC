@@ -4,10 +4,10 @@ Web Plugin for System-Config-Page
 from web.MicroWebSrv.microWebSrv import MicroWebSrv
 import time
 #import html
-import Tool
+import com.Tool as Tool
 import web.Web as Web
 
-#####
+#######
 
 @MicroWebSrv.route('/config')
 @MicroWebSrv.route('/config', 'POST')
@@ -33,4 +33,4 @@ def web_config(httpClient, httpResponse):
 
     return httpResponse.WriteResponsePyHTMLFile('web/www/config.html', vars=vars)
 
-#####
+#######

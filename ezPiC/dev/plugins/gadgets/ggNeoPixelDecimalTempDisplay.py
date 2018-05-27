@@ -4,19 +4,19 @@ MicroPython ONLY!
 """
 # TODO Make one and publish design files for it..
 import time
-import Tool
+import com.Tool as Tool
 import dev.Gadget as Gadget
 import neopixel
 import machine
 
-#####
+#######
 # Globals:
 
 GGPID = 'NeoPixelDecimalTempDisplayGadget'
 PNAME = 'NeoPixel Decimal Temperature Display'
 PINFO = 'Display a (room) temperature measurement as a decimal coded value on a NeoPixel controlled LED strip with a temperature related colour gradient.'
 
-#####
+#######
 
 COLOUR_40 = (255,40,40)
 COLOUR_1 = (255,200,40)
@@ -39,7 +39,7 @@ class PluginGadget(Gadget.PluginGadgetBase):
         self._num_leds = (self.param['int_digits' + self.param['fract_digits']]) * 10
         self._np = neopixel.NeoPixel(machine.Pin(self.param['machine_pin']), self._num_leds)
 
-# ---
+# -----
 
     def output_value(self, value):
         colour = (0, 0, 0)
@@ -67,7 +67,7 @@ class PluginGadget(Gadget.PluginGadgetBase):
                     self._np[(c_index * 10) + n] = (0,0,0)
         self._np.write()
 
-# ---
+# -----
 
     def output_error(self, error_number):
         for c_index in range(self._num_leds / 10):
@@ -78,7 +78,7 @@ class PluginGadget(Gadget.PluginGadgetBase):
                     self._np[(c_index * 10) + n] = (0,0,0)
         self._np.write()
 
-# ---
+# -----
 
     def timer(self, prepare:bool):
         # TODO Ja doof, gibt noch gar keine Werteverwaltung.
@@ -88,4 +88,4 @@ class PluginGadget(Gadget.PluginGadgetBase):
         else:
             self.output_value(display_temp)
 
-#####
+#######

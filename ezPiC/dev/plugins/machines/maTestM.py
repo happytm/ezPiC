@@ -7,14 +7,14 @@ import dev.Machine as Machine
 import random
 import dev.M as M
 
-#####
+#######
 # Globals:
 
 MAPID = 'TestM'
 PNAME = 'Readable Name M'
 PINFO = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 
-#####
+#######
 
 class PluginMachine(Machine.PluginMachineBase):
     """ TODO """
@@ -34,7 +34,7 @@ class PluginMachine(Machine.PluginMachineBase):
         self._pin_sda = None
         self._i2c = None
 
-# ---
+# -----
 
     def init(self):
         super().init()
@@ -47,7 +47,7 @@ class PluginMachine(Machine.PluginMachineBase):
             pass
         M.I2C = self._i2c
 
-# ---
+# -----
 
     def exit(self):
         super().exit()
@@ -59,4 +59,4 @@ class PluginMachine(Machine.PluginMachineBase):
                 pass
         M.I2C = self._i2c
 
-#####
+#######

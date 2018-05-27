@@ -4,8 +4,8 @@
 #from MicroWebSrv.microWebTemplate import MicroWebTemplate
 from .MicroWebSrv.microWebSrv import MicroWebSrv
 import json
-import Tool
-import G
+import com.Tool as Tool
+import com.G as G
 
 try:
     import dev.Cmd as Cmd
@@ -18,12 +18,12 @@ except:
 
 MWS = None
 
-#####
+#######
 # Globals:
 
 PLUGINDIR = 'web/plugins/web'
 
-#####
+#######
 
 def init():
     """ Prepare module vars and load plugins """
@@ -35,7 +35,7 @@ def init():
     MWS = MicroWebSrv(webPath='web/www') # TCP port 80 and files in /flash/www
     G.MWS = MWS
 
-# ===
+# =====
 
 def run(threaded=False):
     """ TODO """
@@ -45,7 +45,7 @@ def run(threaded=False):
 
     MWS.Start(threaded=threaded)         # Starts server in a new thread
 
-#####
+#######
 
 def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None, useCLI:bool=False) -> tuple:
     """ TODO """
@@ -74,7 +74,7 @@ def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None, useC
 
     return tuple(answer)
 
-#####
+#######
 
 def flash_error(httpResponse, err, ret, idx=None):
     if idx:
@@ -83,3 +83,5 @@ def flash_error(httpResponse, err, ret, idx=None):
         msg = 'Error {0} - {1}'.format(err, ret)
 
     httpResponse.FlashMessage(msg, 'danger')
+
+#######

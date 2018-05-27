@@ -1,7 +1,7 @@
 
 from microWebSrv import MicroWebSrv
 
-# ----------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 @MicroWebSrv.route('/test')
 def _httpHandlerTestGet(httpClient, httpResponse) :
@@ -87,7 +87,7 @@ def _httpHandlerEditWithArgs(httpClient, httpResponse, args={}) :
 								  contentCharset = "UTF-8",
 								  content 		 = content )
 
-# ----------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 def _acceptWebSocketCallback(webSocket, httpClient) :
 	print("WS ACCEPT")
@@ -105,7 +105,7 @@ def _recvBinaryCallback(webSocket, data) :
 def _closedCallback(webSocket) :
 	print("WS CLOSED")
 
-# ----------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 #routeHandlers = [
 #	( "/test",	"GET",	_httpHandlerTestGet ),
@@ -118,4 +118,4 @@ srv.WebSocketThreaded		= False
 srv.AcceptWebSocketCallback = _acceptWebSocketCallback
 srv.Start(threaded=False)
 
-# ----------------------------------------------------------------------------
+# ------------------------------------------------------------------------------

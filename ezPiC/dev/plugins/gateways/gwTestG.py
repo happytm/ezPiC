@@ -5,16 +5,16 @@ import time
 
 import dev.Gateway as Gateway
 import dev.Reading as Reading
-import G
+import com.G as G
 
-#####
+#######
 # Globals:
 
 GWPID = 'TestGatewayG'
 PNAME = 'Readable Name G'
 PINFO = 'Lorem ipsum dolor sit amet.'
 
-#####
+#######
 
 class PluginGateway(Gateway.PluginGatewayBase):
     """ TODO """
@@ -39,7 +39,7 @@ class PluginGateway(Gateway.PluginGatewayBase):
         self.timer_period = 2.7
         #self._reading_tick = 0
 
-# ---
+# -----
 
     def init(self):
         t = float(self.param['timer'])
@@ -49,19 +49,19 @@ class PluginGateway(Gateway.PluginGatewayBase):
             self.timer_period = None
         super().init()
 
-# ---
+# -----
 
     def exit(self):
         super().exit()
 
-# ---
+# -----
 
     def timer(self):
         print('G' + str(time.time()))
 
-# ---
+# -----
 
     def readings(self, news:dict):
         G.log(G.LOG_INFO, 'Readings in gwTestG: {}', news)
 
-#####
+#######

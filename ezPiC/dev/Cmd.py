@@ -6,16 +6,16 @@ try:   # CPython
 except:   # MicroPython
     import ujson as json
 
-import Tool
-import G
+import com.Tool as Tool
+import com.G as G
 
-#####
+#######
 # Globals:
 
 PLUGINDIR = 'dev/plugins/cmds'
 COMMANDS = []
 
-#####
+#######
 #Decorator
 
 def route(command: str, arg_keys: str=None, security_level: int=0):
@@ -44,7 +44,7 @@ def route(command: str, arg_keys: str=None, security_level: int=0):
 
     return route_decorator
 
-#####
+#######
 
 def init():
     """ Prepare module vars and load plugins """
@@ -53,12 +53,12 @@ def init():
     plugins = Tool.load_plugins(PLUGINDIR, 'cmd')
     #print(plugins)
 
-# ===
+# =====
 
 def run():
     pass
 
-#####
+#######
 
 def _excecute_line(cmd_str: str, source=None) -> tuple:
     """
@@ -106,7 +106,7 @@ def _excecute_line(cmd_str: str, source=None) -> tuple:
 
     return (-900, 'Unknown command: ' + cmd_str)
 
-# ===
+# =====
 
 def _excecute_json(cmd_dict: dict, source=None) -> tuple:
     """
@@ -140,7 +140,7 @@ def _excecute_json(cmd_dict: dict, source=None) -> tuple:
 
     return (-900, 'Unknown command: ' + cmd_str)
 
-# ===
+# =====
 
 def excecute(cmd, source=None) -> tuple:
     """
@@ -165,3 +165,5 @@ def excecute(cmd, source=None) -> tuple:
         return (-902, 'Exception in command parser - ' + str(e))
 
     return (-999, 'Error')
+
+#######

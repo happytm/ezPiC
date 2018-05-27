@@ -9,11 +9,11 @@ try:
 except:
     from _thread import allocate_lock as RLock
 
-import G
-import Tool
+import com.G as G
+import com.Tool as Tool
 import dev.Timer as Timer
 
-#####
+#######
 # Globals:
 
 PLUGINDIR = 'dev/plugins/gadgets'
@@ -22,7 +22,7 @@ GADGETS = []
 GADGETLOCK = RLock()
 GADGETTIMER = 0
 
-#####
+#######
 
 def gadget_timer_handler(news, args):
     global GADGETS, GADGETTIMER
@@ -54,7 +54,7 @@ def gadget_timer_handler(news, args):
                 if gadget.get_param('enable'):
                     gadget.readings(news)
 
-#####
+#######
 
 def init():
     """ Prepare module vars and load plugins """
@@ -67,7 +67,7 @@ def init():
         except:
             pass
 
-# ===
+# =====
 
 def run():
     """ TODO """
@@ -75,7 +75,7 @@ def run():
 
     Timer.register_cyclic_hnadler(gadget_timer_handler)
 
-#####
+#######
 
 def load(config_all: dict):
     if not "gadgets" in config_all:
@@ -90,7 +90,7 @@ def load(config_all: dict):
         if not err and loaded_version != running_version:
             G.log(G.LOG_WARN, "task " +  ggpid + " has change version form " + loaded_version + " to " + running_version)
 
-# ===
+# =====
 
 def save(append: dict = None):
     err = None
@@ -113,7 +113,7 @@ def save(append: dict = None):
     
     return (err, {"gadgets": ret})
 
-#####
+#######
 
 def add(plugin_id: str, params: dict = None) -> tuple:
     """ TODO """
@@ -140,7 +140,7 @@ def add(plugin_id: str, params: dict = None) -> tuple:
 
     return (err, ret)
 
-# ===
+# =====
 
 def delete(idx: int) -> tuple:
     """ TODO """
@@ -158,7 +158,7 @@ def delete(idx: int) -> tuple:
 
     return (err, ret)
 
-# ===
+# =====
 
 def clear() -> tuple:
     """ TODO """
@@ -177,7 +177,7 @@ def clear() -> tuple:
 
     return (err, ret)
 
-# ===
+# =====
 
 def get_plugin_list() -> tuple:
     """ TODO """
@@ -195,7 +195,7 @@ def get_plugin_list() -> tuple:
 
     return (err, pl)
 
-# ===
+# =====
 
 def get_list() -> tuple:
     """ TODO """
@@ -215,7 +215,7 @@ def get_list() -> tuple:
 
     return (err, dl)
 
-# ===
+# =====
 
 def get_param(idx: int, key: str=None) -> tuple:
     """ TODO """
@@ -232,7 +232,7 @@ def get_param(idx: int, key: str=None) -> tuple:
 
     return (err, ret)
 
-# ===
+# =====
 
 def set_param(idx: int, params: dict) -> tuple:
     """ TODO """
@@ -249,7 +249,7 @@ def set_param(idx: int, params: dict) -> tuple:
 
     return (err, ret)
 
-# ===
+# =====
 
 def get_html(idx: int) -> tuple:
     """ TODO """
@@ -266,7 +266,7 @@ def get_html(idx: int) -> tuple:
 
     return (err, ret)
 
-#####
+#######
 
 class PluginGadgetBase():
     """ TODO """
@@ -328,4 +328,4 @@ class PluginGadgetBase():
     def timer(self, prepare:bool):
         return None
 
-#####
+#######
