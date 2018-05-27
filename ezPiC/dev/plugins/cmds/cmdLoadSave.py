@@ -17,7 +17,7 @@ CONFIG_FILE = 'config.json'
 ###################################################################################################
 
 @Cmd.route('save')
-def cmd_system_save(cmd:dict) -> dict:
+def cmd_system_save(cmd:dict) -> tuple:
     """ Saves all configuration and parameters of the plugins to a json-file """
 
     err = None
@@ -31,14 +31,14 @@ def cmd_system_save(cmd:dict) -> dict:
             # add other stuff like Gateway
             json.dump(save_dict, outfile, indent=2)
         except Exception as e:
-            return Cmd.ret(-100, 'Error on collectin save values - ' + str(e))
+            return (-100, 'Error on collectin save values - ' + str(e))
 
-    return Cmd.ret()
+    return (0, None)
 
 ###################################################################################################
 
 @Cmd.route('load')
-def cmd_system_load(cmd:dict) -> dict:
+def cmd_system_load(cmd:dict) -> tuple:
     """ Loads all configuration and parameters of the plugins from a json-file """
 
     try:
@@ -51,8 +51,8 @@ def cmd_system_load(cmd:dict) -> dict:
     except FileNotFoundError as e:
         pass
     except Exception as e:
-            return Cmd.ret(-101, 'Error on collectin load values - ' + str(e))
+            return (-101, 'Error on collectin load values - ' + str(e))
 
-    return Cmd.ret()
+    return (0, None)
 
 ###################################################################################################

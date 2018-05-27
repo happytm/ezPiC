@@ -11,7 +11,10 @@ try:
     import dev.Cmd as Cmd
     DIRECT_CMD = True
 except:
+    import TelnerClient
     DIRECT_CMD = False
+    IOT_PART_ADDR = None
+
 
 MWS = None
 
@@ -63,13 +66,13 @@ def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None, useC
         answer = Cmd.excecute(request)
     else:
         request_json = json.dumps(request)
-        answer_json = '{}' #JKJKJK TODO
+        answer_json = TelnerClient.excecute(request_json)
         answer = json.loads(answer_json)
 
-    code = answer.get('CODE', 0)
-    result = answer.get('RESULT', None)
+    #code = answer[0]
+    #result = answer[1]
 
-    return (code, result)
+    return tuple(answer)
 
 ###################################################################################################
 

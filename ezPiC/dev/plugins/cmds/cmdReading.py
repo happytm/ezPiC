@@ -14,19 +14,19 @@ import G
 
 @Cmd.route('reading.full.list.#')
 @Cmd.route('vfl.#')
-def cmd_reading_full_list(cmd:dict) -> dict:
+def cmd_reading_full_list(cmd:dict) -> tuple:
     """ Handle command 'reading[] list' """
     index = cmd['IDX']
     last_tick, readings = Reading.get_news_full(index)
     ret = {'tick':last_tick, 'readings':readings}
 
-    return Cmd.ret(0, ret)
+    return (0, ret)
 
 ###################################################################################################
 
 @Cmd.route('reading.set', 'key value source')
 @Cmd.route('vs', 'key value source')
-def cmd_reading_set(cmd:dict) -> dict:
+def cmd_reading_set(cmd:dict) -> tuple:
     """ Handle command 'reading[] list' """
     key = cmd.get('key', None)
     value = cmd.get('value', None)
@@ -47,7 +47,7 @@ def cmd_reading_set(cmd:dict) -> dict:
 
     last_tick = Reading.set(key, value, source)
     
-    return Cmd.ret(0, last_tick)
+    return (0, last_tick)
 
 ###################################################################################################
 
