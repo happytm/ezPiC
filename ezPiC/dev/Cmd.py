@@ -54,36 +54,42 @@ def _split_ex(src_str:str) -> list:
     while line:
         c = line[0]
         if c == '"':
-            parts = line[1:].split('"')
+            parts = line[1:].split('"')   # find end of string
             ret.append(parts[0])
-            if len(parts) <= 1:
+            if len(parts) <= 1:   # if end of line reached all done
                 return ret
             line = parts[1].strip()
             continue
 
-        if c == '{' or c == '[':
+        if c == '{' or c == '[':   # is possible JSON string?
+            # First: check if hole line is a JSON string
             try:
-                json_obj = json.loads(line)
-                ret.append(line)
+                _ = json.loads(line)
+                ret.append(line)   # survived! A valid JSON string!
                 return ret
             except:
-                pass
+                pass   # no JSON string
+            # Hack: Second: try every line length to find a valid JSON string - feel free to fing a better solution!
             i = 2
             while i < len(line):
                 try:
-                    json_obj = json.loads(line[:i])
-                    ret.append(line[:i])
-                    line = line[i:].strip()
-                    continue
+                    _ = json.loads(line[:i])
+                    ret.append(line[:i])   # survived! A valid JSON string!
+                    line = line[i:].strip()   # continue with rest line
+                    i = -1
+                    break
                 except:
-                    pass
+                    pass   # no JSON string - so far...
                 i += 1
+            if i < 0:   # Hack to continue over 2 while
+                continue
 
+        # no specials - split on spaces
         parts = line.split(' ', 1)
         ret.append(parts[0])
         if len(parts) <= 1:
             return ret
-        line = parts[1]
+        line = parts[1]   # continue with rest line
         continue
 
     return ret
