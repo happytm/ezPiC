@@ -3,8 +3,8 @@ import socket
 import ure
 import time
 
-ap_ssid = "ESP"
-ap_password = "micropythonIsAwesome"
+ap_ssid = "ezPiC"
+ap_password = "pythonIsAwesome"
 ap_authmode = 3  # WPA2
 
 NETWORK_PROFILES = 'wifi.dat'
@@ -99,27 +99,30 @@ def do_connect(ssid, password):
     return connected
 
 
-def send_response(client, payload, status_code=200, redirect=None):
+def send_header(client, status_code=200, content_length=None, redirect=None):
     client.sendall("HTTP/1.0 {} OK\r\n".format(status_code))
-
     if redirect:
         client.sendall("Location: {}\r\n".format(redirect))
     else:
         client.sendall("Content-Type: text/html\r\n")
-        client.sendall("Content-Length: {}\r\n".format(len(payload)))
-
+        if content_length is not None:
+            client.sendall("Content-Length: {}\r\n".format(content_length))
     client.sendall("\r\n")
 
-    if len(payload) > 0 and not redirect:
+
+def send_response(client, payload, status_code=200):
+    content_length = len(payload)
+    send_header(client, status_code, content_length)
+    if content_length > 0:
         client.sendall(payload)
+    client.close()
 
 
 def handle_root(client):
     wlan_sta.active(True)
     ssids = sorted(ssid.decode('utf-8') for ssid, *_ in wlan_sta.scan())
-
-    response = []
-    response.append("""\
+    send_header(client)
+    client.sendall("""\
         <html>
             <h1 style="color: #5e9ca0; text-align: center;">
                 <span style="color: #ff0000;">
@@ -130,17 +133,16 @@ def handle_root(client):
                 <table style="margin-left: auto; margin-right: auto;">
                     <tbody>
     """)
-
-    for ssid in ssids:
-        response.append("""\
+    while len(ssids):
+        ssid = ssids.pop(0)
+        client.sendall("""\
                         <tr>
                             <td colspan="2">
                                 <input type="radio" name="ssid" value="{0}" />{0}
                             </td>
                         </tr>
         """.format(ssid))
-
-    response.append("""\
+    client.sendall("""\
                         <tr>
                             <td>Password:</td>
                             <td><input name="password" type="password" /></td>
@@ -151,9 +153,32 @@ def handle_root(client):
                     <input type="submit" value="Submit" />
                 </p>
             </form>
+            <p>&nbsp;</p>
+            <hr />
+            <h5>
+                <span style="color: #ff0000;">
+                    Your ssid and password information will be saved into the
+                    "%(filename)s" file in your ESP module for future usage.
+                    Be careful about security!
+                </span>
+            </h5>
+            <hr />
+            <h2 style="color: #2e6c80;">
+                Some useful infos:
+            </h2>
+            <ul>
+                <li>
+                    Original code from <a href="https://github.com/cpopp/MicroPythonSamples"
+                        target="_blank" rel="noopener">cpopp/MicroPythonSamples</a>.
+                </li>
+                <li>
+                    This code available at <a href="https://github.com/tayfunulu/WiFiManager"
+                        target="_blank" rel="noopener">tayfunulu/WiFiManager</a>.
+                </li>
+            </ul>
         </html>
-    """)
-    send_response(client, "\n".join(response))
+    """ % dict(filename=NETWORK_PROFILES))
+    client.close()
 
 
 def handle_configure(client, request):
@@ -200,7 +225,7 @@ def handle_configure(client, request):
         profiles[ssid] = password
         write_profiles(profiles)
 
-        time.sleep(3)  # Wait for client
+        time.sleep(5)
 
         return True
     else:
