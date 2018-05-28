@@ -26,6 +26,7 @@ class PluginGateway(Gateway.PluginGatewayBase):
             'name':'G',
             'enable':False,
             'timer':3,
+            'filter':'',
             # instance specific params
             'name_t':'T',
             'name_h':'H',

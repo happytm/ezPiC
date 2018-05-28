@@ -24,9 +24,9 @@ def load_plugins(path: str, pre :str=None) -> list:
     gc.collect()
 
     try:
-        full_path = os.path.join(os.path.dirname(__file__), path)
+        full_path = os.path.join(os.path.dirname(__file__), '../', path)
     except:   # MicroPython has no os.path
-        full_path = path
+        full_path = '../' + path
     G.log(G.LOG_INFO, 'Loading plugins from path "{}"'.format(full_path))
 
     modules = []

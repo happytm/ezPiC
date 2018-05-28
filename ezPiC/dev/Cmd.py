@@ -46,6 +46,50 @@ def route(command: str, arg_keys: str=None, security_level: int=0):
 
 #######
 
+def _split_ex(src_str:str) -> list:
+    #return src_str.split(' ')
+    ret = []
+    line = src_str.strip()
+
+    while line:
+        c = line[0]
+        if c == '"':
+            parts = line[1:].split('"')
+            ret.append(parts[0])
+            if len(parts) <= 1:
+                return ret
+            line = parts[1].strip()
+            continue
+
+        if c == '{' or c == '[':
+            try:
+                json_obj = json.loads(line)
+                ret.append(line)
+                return ret
+            except:
+                pass
+            i = 2
+            while i < len(line):
+                try:
+                    json_obj = json.loads(line[:i])
+                    ret.append(line[:i])
+                    line = line[i:].strip()
+                    continue
+                except:
+                    pass
+                i += 1
+
+        parts = line.split(' ', 1)
+        ret.append(parts[0])
+        if len(parts) <= 1:
+            return ret
+        line = parts[1]
+        continue
+
+    return ret
+
+#######
+
 def init():
     """ Prepare module vars and load plugins """
     global COMMANDS
@@ -85,7 +129,7 @@ def _excecute_line(cmd_str: str, source=None) -> tuple:
             if c['args'] and len(cmd_arg)>1:
                 arg_str = cmd_arg[1].strip()
                 #TODO check json
-                args = arg_str.split()
+                args = _split_ex(arg_str)
                 i = 0
                 for key in c['args']:
                     if i<len(args):
@@ -167,3 +211,28 @@ def excecute(cmd, source=None) -> tuple:
     return (-999, 'Error')
 
 #######
+"""
+import re
+regex = re.compile(r'''
+'.*?' | # single quoted substring
+".*?" | # double quoted substring
+\S+ # all the rest
+''', re.VERBOSE)
+
+print regex.findall('''
+This is 'single "quoted" string'
+followed by a "double 'quoted' string"
+''')
+
+
+
+[r for r in [(i%2 and ['"'+z+'"'] or [z.strip()])[0] for i,z in enumerate(x.split('"'))] if r] or [''] 
+['sspam', '" ssthe life of brianss "', '42'] x = ' "" "" '
+[r for r in [(i%2 and ['"'+z+'"'] or [z.strip()])[0] for i,z in enumerate(x.split('"'))] if r] or [''] 
+['""', '""'] x='""'
+[r for r in [(i%2 and ['"'+z+'"'] or [z.strip()])[0] for i,z in enumerate(x.split('"'))] if r] or [''] 
+['""'] x=''
+[r for r in [(i%2 and ['"'+z+'"'] or [z.strip()])[0] for i,z in enumerate(x.split('"'))] if r] or [''] 
+['']
+[(i%2 and ['"'+z+'"'] or [z.strip()])[0] for i,z in enumerate(x.split('"'))]
+"""

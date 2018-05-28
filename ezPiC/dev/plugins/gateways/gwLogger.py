@@ -27,12 +27,14 @@ class PluginGateway(Gateway.PluginGatewayBase):
             'name':'Logger',
             'enable':False,
             'timer':0,
+            'filter':'',
             # instance specific params
             'file_name':'Logger.log',
             'separator':',',
             }
         self.timer_period = 0
         self._reading_tick = 0
+        self._reading_filter = Reading.Filter()
 
 # -----
 
@@ -43,6 +45,8 @@ class PluginGateway(Gateway.PluginGatewayBase):
         else:
             self.timer_period = None
         super().init()
+
+        self._reading_filter.init(self.param['filter'])
 
 # -----
 
@@ -57,12 +61,15 @@ class PluginGateway(Gateway.PluginGatewayBase):
 # -----
 
     def readings(self, news:dict):
-        separator = ', '
+        separator = self.param['separator']
         try:
             if Reading.is_new(self._reading_tick):
                 self._reading_tick, _news = Reading.get_news_full(self._reading_tick)
                 with open(self.param['file_name'], 'a') as f:
                     for key, data in _news.items():
+                        if not self._reading_filter.fits(key):
+                            continue
+
                         t = data['time']
                         str_log = G.time_to_str(t)
                         str_log += separator

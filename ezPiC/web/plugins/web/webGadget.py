@@ -86,6 +86,7 @@ def web_gadget_edit(httpClient, httpResponse, args):
         if err:
             Web.flash_error(httpResponse, err, ret, idx)
         err, ret = Web.command('save')
+        httpResponse.FlashMessage('Settings saved', 'info')
     else: # GET
         pass
 

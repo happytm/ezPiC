@@ -3,8 +3,8 @@ import socket
 import ure
 import time
 
-ap_ssid = "ESP"
-ap_password = "micropythonIsAwesome"
+ap_ssid = "WifiManager"
+ap_password = "tayfunulu"
 ap_authmode = 3  # WPA2
 
 NETWORK_PROFILES = 'wifi.dat'
@@ -48,7 +48,7 @@ def get_connection():
                 else:
                     print("skipping unknown encrypted network")
             else:  # open
-                pass  # connected = do_connect(ssid, None)  # Do not connect to open networks automaicly
+                connected = do_connect(ssid, None)
             if connected:
                 break
 
@@ -99,27 +99,27 @@ def do_connect(ssid, password):
     return connected
 
 
-def send_response(client, payload, status_code=200, redirect=None):
+def send_header(client, status_code=200, content_length=None ):
     client.sendall("HTTP/1.0 {} OK\r\n".format(status_code))
-
-    if redirect:
-        client.sendall("Location: {}\r\n".format(redirect))
-    else:
-        client.sendall("Content-Type: text/html\r\n")
-        client.sendall("Content-Length: {}\r\n".format(len(payload)))
-
+    client.sendall("Content-Type: text/html\r\n")
+    if content_length is not None:
+      client.sendall("Content-Length: {}\r\n".format(content_length))
     client.sendall("\r\n")
 
-    if len(payload) > 0 and not redirect:
+
+def send_response(client, payload, status_code=200):
+    content_length = len(payload)
+    send_header(client, status_code, content_length)
+    if content_length > 0:
         client.sendall(payload)
+    client.close()
 
 
 def handle_root(client):
     wlan_sta.active(True)
     ssids = sorted(ssid.decode('utf-8') for ssid, *_ in wlan_sta.scan())
-
-    response = []
-    response.append("""\
+    send_header(client)
+    client.sendall("""\
         <html>
             <h1 style="color: #5e9ca0; text-align: center;">
                 <span style="color: #ff0000;">
@@ -130,17 +130,16 @@ def handle_root(client):
                 <table style="margin-left: auto; margin-right: auto;">
                     <tbody>
     """)
-
-    for ssid in ssids:
-        response.append("""\
+    while len(ssids):
+        ssid = ssids.pop(0)
+        client.sendall("""\
                         <tr>
                             <td colspan="2">
                                 <input type="radio" name="ssid" value="{0}" />{0}
                             </td>
                         </tr>
         """.format(ssid))
-
-    response.append("""\
+    client.sendall("""\
                         <tr>
                             <td>Password:</td>
                             <td><input name="password" type="password" /></td>
@@ -151,14 +150,36 @@ def handle_root(client):
                     <input type="submit" value="Submit" />
                 </p>
             </form>
+            <p>&nbsp;</p>
+            <hr />
+            <h5>
+                <span style="color: #ff0000;">
+                    Your ssid and password information will be saved into the
+                    "%(filename)s" file in your ESP module for future usage.
+                    Be careful about security!
+                </span>
+            </h5>
+            <hr />
+            <h2 style="color: #2e6c80;">
+                Some useful infos:
+            </h2>
+            <ul>
+                <li>
+                    Original code from <a href="https://github.com/cpopp/MicroPythonSamples"
+                        target="_blank" rel="noopener">cpopp/MicroPythonSamples</a>.
+                </li>
+                <li>
+                    This code available at <a href="https://github.com/tayfunulu/WiFiManager"
+                        target="_blank" rel="noopener">tayfunulu/WiFiManager</a>.
+                </li>
+            </ul>
         </html>
-    """)
-    send_response(client, "\n".join(response))
+    """ % dict(filename=NETWORK_PROFILES))
+    client.close()
 
 
 def handle_configure(client, request):
     match = ure.search("ssid=([^&]*)&password=(.*)", request)
-
     if match is None:
         send_response(client, "Parameters not found", status_code=400)
         return False
@@ -166,14 +187,12 @@ def handle_configure(client, request):
     try:
         ssid = match.group(1).decode("utf-8").replace("%3F", "?").replace("%21", "!")
         password = match.group(2).decode("utf-8").replace("%3F", "?").replace("%21", "!")
-    except Exception:
+    except:
         ssid = match.group(1).replace("%3F", "?").replace("%21", "!")
         password = match.group(2).replace("%3F", "?").replace("%21", "!")
-
     if len(ssid) == 0:
         send_response(client, "SSID must be provided", status_code=400)
         return False
-
     if do_connect(ssid, password):
         response = """\
             <html>
@@ -184,14 +203,10 @@ def handle_configure(client, request):
                             ESP successfully connected to WiFi network %(ssid)s.
                         </span>
                     </h1>
-                    <p style="text-align: center;">
-                        <a href="http://%(ip)/">To new Interface</a><br>
-                        (You must be connected to the set network to follow this Link)
-                    </p>
                     <br><br>
                 </center>
             </html>
-        """ % dict(ssid=ssid, ip=wlan_sta.ifconfig()[0])
+        """ % dict(ssid=ssid)
         send_response(client, response)
         try:
             profiles = read_profiles()
@@ -199,9 +214,6 @@ def handle_configure(client, request):
             profiles = {}
         profiles[ssid] = password
         write_profiles(profiles)
-
-        time.sleep(3)  # Wait for client
-
         return True
     else:
         response = """\
@@ -224,12 +236,11 @@ def handle_configure(client, request):
 
 
 def handle_not_found(client, url):
-    send_response(client, "", status_code=307, redirect='/')
+    send_response(client, "Path not found: {}".format(url), status_code=404)
 
 
 def stop():
     global server_socket
-
     if server_socket:
         server_socket.close()
         server_socket = None
@@ -237,57 +248,46 @@ def stop():
 
 def start(port=80):
     global server_socket
-
     addr = socket.getaddrinfo('0.0.0.0', port)[0][-1]
-
     stop()
-
     wlan_sta.active(True)
     wlan_ap.active(True)
-
     wlan_ap.config(essid=ap_ssid, password=ap_password, authmode=ap_authmode)
-
     server_socket = socket.socket()
     server_socket.bind(addr)
     server_socket.listen(1)
-
     print('Connect to WiFi ssid ' + ap_ssid + ', default password: ' + ap_password)
     print('and access the ESP via your favorite web browser at 192.168.4.1.')
     print('Listening on:', addr)
-
     while True:
         if wlan_sta.isconnected():
             return True
-
         client, addr = server_socket.accept()
         print('client connected from', addr)
         try:
             client.settimeout(5.0)
-
             request = b""
             try:
                 while "\r\n\r\n" not in request:
                     request += client.recv(512)
             except OSError:
                 pass
-
             print("Request is: {}".format(request))
             if "HTTP" not in request:
-                continue  # skip invalid requests
-
+                # skip invalid requests
+                continue
             # version 1.9 compatibility
             try:
                 url = ure.search("(?:GET|POST) /(.*?)(?:\\?.*?)? HTTP", request).group(1).decode("utf-8").rstrip("/")
-            except Exception:
+            except:
                 url = ure.search("(?:GET|POST) /(.*?)(?:\\?.*?)? HTTP", request).group(1).rstrip("/")
             print("URL is {}".format(url))
-
             if url == "":
                 handle_root(client)
             elif url == "configure":
                 handle_configure(client, request)
             else:
                 handle_not_found(client, url)
-
         finally:
             client.close()
+            
