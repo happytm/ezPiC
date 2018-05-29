@@ -27,6 +27,16 @@ CONNECTION_SOURCE = {}    # list of socket prop
 RECV_BUFFER = 4096 # Advisable to keep it as an exponent of 2
 PORT = 23101
 
+LOGO = b'''\r\n\
+                       _|_|_|    _|     _|_|_|\r\n\
+    _|_|    _|_|_|_|   _|    _|       _|\r\n\
+  _|    _|        _|   _|    _|  _|   _|\r\n\
+  _|_|_|_|      _|     _|_|_|    _|   _|\r\n\
+  _|          _|       _|        _|   _|\r\n\
+    _|_|_|  _|_|_|_|   _|        _|     _|_|_|\r\n\
+ \r\n\
+ ezPiC IoT-Device - github.com/fablab-wue/ezPiC\r\n\r\n'''
+
 #######
 
 def init():
@@ -69,15 +79,7 @@ def run():
                 CONNECTION_SOURCE[sockfd.fileno()] = source
                 print ("Client (%s) connected" % source)
 
-                sockfd.send(b'''\r\n\
-                       _|_|_|    _|     _|_|_|\r\n\
-    _|_|    _|_|_|_|   _|    _|       _|\r\n\
-  _|    _|        _|   _|    _|  _|   _|\r\n\
-  _|_|_|_|      _|     _|_|_|    _|   _|\r\n\
-  _|          _|       _|        _|   _|\r\n\
-    _|_|_|  _|_|_|_|   _|        _|     _|_|_|\r\n\
- \r\n\
- ezPiC IoT-Device - github.com/fablab-wue/ezPiC\r\n\r\n''')
+                sockfd.send(LOGO)
 
             #Some incoming message from a client
             else:
@@ -107,7 +109,11 @@ def run():
                             print(sock.fileno())
                             source = CONNECTION_SOURCE[sock.fileno()]   # hash for sock
                             ret = Cmd.excecute(cmd_str, source)
-                            ret_str = json.dumps(ret) + '\r\n'   # object -> json-str
+                            if G.MICROPYTHON:
+                                ret_str = json.dumps(ret) + '\r\n\r\n'   # object -> json-str
+                            else:
+                                ret_str = json.dumps(ret, indent=2) + '\n\n'   # object -> json-str
+                                ret_str = ret_str.replace('\n', '\r\n')
                             print (ret_str)
                             data = ret_str.encode('utf-8')   # str -> bytes
                             print (data)
