@@ -1,5 +1,5 @@
 """
-...TODO
+Interface to Hardware Ports
 """
 
 I2C = None

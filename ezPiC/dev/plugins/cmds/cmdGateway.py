@@ -1,5 +1,5 @@
 """
-Command Plugin for Gateway handling
+Command Plugin for handling Gateways
 """
 try:   # CPython
     import json

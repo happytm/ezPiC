@@ -69,8 +69,16 @@ def run():
                 CONNECTION_SOURCE[sockfd.fileno()] = source
                 print ("Client (%s) connected" % source)
 
-                sockfd.send(b'\r\nezPiC-Service V0.0.?\r\n')
-                 
+                sockfd.send(b'''\r\n\
+                       _|_|_|    _|     _|_|_|\r\n\
+    _|_|    _|_|_|_|   _|    _|       _|\r\n\
+  _|    _|        _|   _|    _|  _|   _|\r\n\
+  _|_|_|_|      _|     _|_|_|    _|   _|\r\n\
+  _|          _|       _|        _|   _|\r\n\
+    _|_|_|  _|_|_|_|   _|        _|     _|_|_|\r\n\
+ \r\n\
+ ezPiC IoT-Device - github.com/fablab-wue/ezPiC\r\n\r\n''')
+
             #Some incoming message from a client
             else:
                 # Data recieved from client, process it
@@ -81,20 +89,20 @@ def run():
                     # echo back the client message
                     if data:
                         i = 0
-                        dataf = bytearray()
+                        data_filtered = bytearray()
                         while i<len(data):
                             if data[i] == 255:
                                 i += 2   #skip next 2 bytes from telnet command
                             #elif data[i] == 10 or data[i] == 13:
-                            #    dataf.append(32)
+                            #    data_filtered.append(32)
                             elif data[i] < 32:
                                 pass   # eat control characters
                             else:
-                                dataf.append(data[i])
+                                data_filtered.append(data[i])
                             i += 1
-                        if dataf:
-                            dataf = bytes(dataf)   # bytearray -> bytes
-                            cmd_str = dataf.decode('utf-8', 'backslashreplace')   # bytes -> str
+                        if data_filtered:
+                            data_filtered = bytes(data_filtered)   # bytearray -> bytes
+                            cmd_str = data_filtered.decode('utf-8', 'backslashreplace')   # bytes -> str
                             print (cmd_str)
                             print(sock.fileno())
                             source = CONNECTION_SOURCE[sock.fileno()]   # hash for sock

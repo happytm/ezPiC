@@ -13,6 +13,17 @@ import com.G as G
 
 #######
 
+@Cmd.route('ping')
+def cmd_ping(cmd:dict) -> tuple:
+    """
+    Handle command 'ping' and returns string 'pong'
+    """
+    G.log(G.LOG_DEBUG, 'Ping')
+
+    return (0, 'pong')
+
+#######
+
 @Cmd.route('info')
 def cmd_system_info(cmd:dict) -> tuple:
     """ Returns common information about the system and the environment """
@@ -102,3 +113,4 @@ def cmd_syscongig_setparam(cmd:dict) -> tuple:
     return (err, ret)
 
 #######
+

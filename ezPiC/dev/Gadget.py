@@ -73,7 +73,7 @@ def run():
     """ TODO """
     global GADGETPLUGINS, GADGETTIMER
 
-    Timer.register_cyclic_hnadler(gadget_timer_handler)
+    Timer.register_cyclic_handler(gadget_timer_handler)
 
 #######
 

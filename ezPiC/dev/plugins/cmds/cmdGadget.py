@@ -1,5 +1,5 @@
 """
-Command Plugin for Gadget handling
+Command Plugin for handling Gadgets
 """
 try:   # CPython
     import json

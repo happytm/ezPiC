@@ -67,7 +67,7 @@ def run():
     """ TODO """
     global GATEWAYPLUGINS, GATEWAYTIMER
 
-    Timer.register_cyclic_hnadler(gateway_timer_handler)
+    Timer.register_cyclic_handler(gateway_timer_handler)
 
 #######
 

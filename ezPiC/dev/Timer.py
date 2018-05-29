@@ -55,7 +55,7 @@ def run():
 
 #######
 
-def register_cyclic_hnadler(func, args=()):
+def register_cyclic_handler(func, args=()):
     """ Adds a function to the list of handlers """
 
     CYCLICTIMEHANDLER.append((func, args))

@@ -1,5 +1,5 @@
 """
-Command Plugin for Machine handling
+Command Plugin for handling Machine
 """
 try:   # CPython
     import json

@@ -1,5 +1,5 @@
 """
-Command Plugin for Reading handling
+Command Plugin for handling Readings
 """
 try:   # CPython
     import json
@@ -18,6 +18,18 @@ def cmd_reading_full_list(cmd:dict) -> tuple:
     """ Handle command 'reading[] list' """
     index = cmd['IDX']
     last_tick, readings = Reading.get_news_full(index)
+    ret = {'tick':last_tick, 'readings':readings}
+
+    return (0, ret)
+
+#######
+
+@Cmd.route('reading.list.#')
+@Cmd.route('vl.#')
+def cmd_reading_list(cmd:dict) -> tuple:
+    """ Handle command 'reading[] list' """
+    index = cmd['IDX']
+    last_tick, readings = Reading.get_news(index)
     ret = {'tick':last_tick, 'readings':readings}
 
     return (0, ret)

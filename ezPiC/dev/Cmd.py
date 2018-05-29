@@ -154,7 +154,7 @@ def _excecute_line(cmd_str: str, source=None) -> tuple:
             except Exception as e:
                 return (-901, 'Exception in command handler - ' + str(e))
 
-    return (-900, 'Unknown command: ' + cmd_str)
+    return (-900, 'Unknown command: "' + cmd_str + '"')
 
 # =====
 
@@ -217,28 +217,3 @@ def excecute(cmd, source=None) -> tuple:
     return (-999, 'Error')
 
 #######
-"""
-import re
-regex = re.compile(r'''
-'.*?' | # single quoted substring
-".*?" | # double quoted substring
-\S+ # all the rest
-''', re.VERBOSE)
-
-print regex.findall('''
-This is 'single "quoted" string'
-followed by a "double 'quoted' string"
-''')
-
-
-
-[r for r in [(i%2 and ['"'+z+'"'] or [z.strip()])[0] for i,z in enumerate(x.split('"'))] if r] or [''] 
-['sspam', '" ssthe life of brianss "', '42'] x = ' "" "" '
-[r for r in [(i%2 and ['"'+z+'"'] or [z.strip()])[0] for i,z in enumerate(x.split('"'))] if r] or [''] 
-['""', '""'] x='""'
-[r for r in [(i%2 and ['"'+z+'"'] or [z.strip()])[0] for i,z in enumerate(x.split('"'))] if r] or [''] 
-['""'] x=''
-[r for r in [(i%2 and ['"'+z+'"'] or [z.strip()])[0] for i,z in enumerate(x.split('"'))] if r] or [''] 
-['']
-[(i%2 and ['"'+z+'"'] or [z.strip()])[0] for i,z in enumerate(x.split('"'))]
-"""
