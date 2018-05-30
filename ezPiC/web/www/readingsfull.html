@@ -7,9 +7,9 @@ import json
 <h2>Readings (Full)</h2>
 
 <div class="float-right">
-    <a class="btn btn-primary" href="/readings/" role="button">
+    <a class="btn btn-primary" href="/readingsfull/" role="button">
         <i class="fas fa-book"></i> All</a>
-    <a class="btn btn-primary" href="/readings/{{ last_tick }}/" role="button">
+    <a class="btn btn-primary" href="/readingsfull/{{ last_tick }}/" role="button">
         <i class="fas fa-bookmark"></i> News</a>
 </div>
 <p>
@@ -35,13 +35,13 @@ import json
         {{ py }} r = reading_list[key] {{ end }}
         <tr>
             <th scope="row">{{key}}</th>
-            <td><pre>{{json.dumps(r['value'])}}</pre></td>
-            <td>{{r['unit']}}</td>
-            <td>{{type(r['value'])}}</td>
-            <td>{{r['format']}}</td>
-            <td>{{r['tick']}}</td>
-            <td>{{ G.time_to_str(r['time']) }}</td>
-            <td>{{r['source']}}</td>
+            <td><pre>{{ json.dumps(r['value'] )}}</pre></td>
+            <td>{{ noneStr(r['unit']) }}</td>
+            <td>{{ typeStr(r['value']) }}</td>
+            <td>{{ noneStr(r['format']) }}</td>
+            <td>{{ r['tick'] }}</td>
+            <td>{{ timeStr(r['time']) }}</td>
+            <td>{{ noneStr(r['source']) }}</td>
         </tr>
         {{ end }}
     </tbody>
@@ -50,7 +50,7 @@ import json
 <br />
 <hr>
 
-<form action="/readings" method="POST">
+<form action="/readingsfull" method="POST">
     Add/Set a Reading
     <div class="input-group">
         <div class="input-group-prepend">

@@ -1,13 +1,5 @@
-# Socket server in python using select function
-# https://www.binarytides.com/python-socket-server-code-example/
-# http://www.tcpipguide.com/free/t_TelnetProtocolCommands-3.htm
-# https://github.com/cpopp/MicroTelnetServer/blob/master/utelnet/utelnetserver.py
-# https://www.hackster.io/rob-braggaar/pycom-simple-telnet-fbbabc
-
-#  
-
 """
-...TODO
+Socket server for Configuration the IoT-Device
 """
 try:   # CPython
     import json

@@ -3,7 +3,36 @@ The MIT License (MIT)
 Copyright © 2018 Jean-Christophe Bos & HC² (www.hc2.fr)
 """
 
+TOOL_FUCTIONS = {}
+try :
+    from . import microWebTool
+
+    for name in dir(microWebTool):
+        obj = getattr(microWebTool, name)
+        #obj = microWebTool.__dict__.get(name)
+        if callable(obj):
+            TOOL_FUCTIONS[name] = obj
+except :
+    pass
+
+
+
+
+#TOOL_FUCTIONS = {}
+def x():
+    try :
+        import json
+        microWebTool = json
+
+        for name in dir(microWebTool):
+            obj = getattr(microWebTool, name)
+            if callable(obj):
+                TOOL_FUCTIONS[name] = obj
+    except :
+        pass
+
 import re
+
 
 class MicroWebTemplate :
 
@@ -77,8 +106,12 @@ class MicroWebTemplate :
     # ==============================================================================
 	
 	def _parseCode(self, pyGlobalVars, pyLocalVars, execute) :
+		global TOOL_FUCTIONS
+
 		if pyGlobalVars:
 			self._pyGlobalVars.update(pyGlobalVars) 
+		if TOOL_FUCTIONS:
+			self._pyGlobalVars.update(TOOL_FUCTIONS) 
 		if pyLocalVars:
 			self._pyLocalVars.update(pyLocalVars)
 		self._pyLocalVars['MESSAGE_TEXT'] = MicroWebTemplate.MESSAGE_TEXT
