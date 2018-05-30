@@ -47,6 +47,7 @@ class PluginGadget(Gadget.PluginGadgetBase):
         else:
             self.timer_period = None
         super().init()
+        Reading.set_meta('Lorem.'+self.param['name'], '°C', '{:.3f}')
 
 # -----
 

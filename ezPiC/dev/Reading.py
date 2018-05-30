@@ -43,6 +43,9 @@ def set(key:str, value, source:str=None) -> int:
         else:   #new entry
             r = {}
             r['count'] = 1
+            r['unit'] = None
+            r['format'] = None
+
         r['tick'] = READINGACTTICK
         r['value'] = value
         r['source'] = source
@@ -53,27 +56,92 @@ def set(key:str, value, source:str=None) -> int:
 
 # =====
 
-def get(key:str):
+def set_meta(key:str, unitstr:str=None, formatstr:str=None) -> int:
     global READINGS, READINGACTTICK
 
     with READINGLOCK:
-        r = READINGS.get(key, None)
-        if r:
-            return r['value']
+        if key in READINGS:   #update
+            r = READINGS[key]
+        else:   #new entry
+            r = {}
+            r['count'] = 0
+            r['tick'] = 0
+            r['value'] = None
+            r['source'] = None
+            r['time'] = time.time()
+            r['unit'] = None
+            r['format'] = None
 
-    return None
+        if unitstr:
+            r['unit'] = unitstr
+        if formatstr:
+            r['format'] = formatstr
+        READINGS[key] = r
+
+        return READINGACTTICK
+
+# =====
+
+def _get(key:str):
+    global READINGS
+
+    r = READINGS.get(key, None)
+    if not r:
+        return None
+    
+    return r['value']
+
+# =====
+
+def get(key:str):
+    global READINGACTTICK
+
+    with READINGLOCK:
+        return _get(key)
+
+# =====
+
+def _get_str(key:str) -> str:
+    global READINGS
+
+    r = READINGS.get(key, None)
+    if not r:
+        return ''
+    
+    value = r['value']
+
+    if r['format']:
+        try:
+            value = r['format'].format(value)
+        except:
+            value = str(value)
+    else:
+        value = str(value)
+
+    if r['unit']:
+        value += ' [' + str(r['unit']) + ']'
+        
+    return value
+
+# =====
+
+def get_str(key:str) -> str:
+    global READINGACTTICK
+
+    with READINGLOCK:
+        return _get_str(key)
 
 # =====
 
 def get_act_tick() -> int:
-    global READINGS, READINGACTTICK
+    global READINGACTTICK
 
     return READINGACTTICK
 
 # =====
 
 def is_new(tick:int) -> bool:
-    global READINGS, READINGACTTICK
+    global READINGACTTICK
 
     return READINGACTTICK > tick
 
@@ -88,8 +156,7 @@ def get_news(tick:int) -> tuple:
         with READINGLOCK:
             for key, r in READINGS.items():
                 if r['tick'] > tick:
-                    value = r['value']
-                    news[key] = value
+                    news[key] = _get_str(key)
 
     return (READINGACTTICK, news)
 
@@ -130,7 +197,6 @@ class Filter():
             self.mode = mode
 
     version = '1.0'
-
 
     def __init__(self):
         self.tags = []
