@@ -1,6 +1,8 @@
 """
 Web Plugin for Index-Page and Main-Page
 """
+from com.modules import *
+
 from web.MicroWebSrv.microWebSrv import MicroWebSrv
 import web.Web as Web
 

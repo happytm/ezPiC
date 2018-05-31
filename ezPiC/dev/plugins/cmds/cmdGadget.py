@@ -1,14 +1,11 @@
 """
 Command Plugin for handling Gadgets
 """
-try:   # CPython
-    import json
-except:   # MicroPython
-    import ujson as json
+from com.modules import *
 
+import com.G as G
 import dev.Gadget as Gadget
 import dev.Cmd as Cmd
-import com.G as G
 
 #######
 

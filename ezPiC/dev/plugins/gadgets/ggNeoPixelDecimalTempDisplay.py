@@ -3,11 +3,13 @@ A demo device for a room thermometer in pseudonixie style as described ...
 MicroPython ONLY!
 """
 # TODO Make one and publish design files for it..
-import time
+from com.modules import *
+
+import machine
+import neopixel
+
 import com.Tool as Tool
 import dev.Gadget as Gadget
-import neopixel
-import machine
 
 #######
 # Globals:

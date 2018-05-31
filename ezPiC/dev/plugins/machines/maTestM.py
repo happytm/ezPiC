@@ -1,11 +1,12 @@
 """
 Machine Plugin for Testing
 """
-import time
+from com.modules import *
 
-import dev.Machine as Machine
 import random
+
 import dev.M as M
+import dev.Machine as Machine
 
 #######
 # Globals:

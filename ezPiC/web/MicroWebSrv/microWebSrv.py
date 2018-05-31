@@ -208,7 +208,7 @@ class MicroWebSrv :
         self.MaxWebSocketRecvLen        = 1024
         self.WebSocketThreaded          = True
         self.AcceptWebSocketCallback    = None
-        self.LetCacheStaticContentLevel = 2
+        self.LetCacheStaticContentLevel = 1 #JKJKJK
 
         self._routeHandlers = []
         routeHandlers += self._docoratedRouteHandlers

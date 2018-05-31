@@ -1,13 +1,13 @@
 """
 Web Plugin for Command-Test-Page
 """
+from com.modules import *
+
 from web.MicroWebSrv.microWebSrv import MicroWebSrv
-import time
-#import html
-import com.Tool as Tool
-import json
-import web.Web as Web
+
 import com.G as G
+import com.Tool as Tool
+import web.Web as Web
 
 #######
 

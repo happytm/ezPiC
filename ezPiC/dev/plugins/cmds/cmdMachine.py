@@ -1,15 +1,12 @@
 """
 Command Plugin for handling Machine
 """
-try:   # CPython
-    import json
-except:   # MicroPython
-    import ujson as json
+from com.modules import *
 
-import dev.Machine as Machine
-import dev.Cmd as Cmd
 import com.G as G
 import dev.M as M
+import dev.Machine as Machine
+import dev.Cmd as Cmd
 
 #######
 

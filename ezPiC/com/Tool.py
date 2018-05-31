@@ -1,12 +1,7 @@
 """
 Common tools
 """
-try:   # CPython
-    import os
-    import json
-except:   # MicroPython
-    import uos as os
-    import ujson as json
+from com.modules import *
 
 import gc
 

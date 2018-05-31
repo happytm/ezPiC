@@ -1,15 +1,7 @@
 """
 SysConfig
 """
-import os
-import time
-
-try:
-    from threading import RLock
-except:
-    from _thread import allocate_lock as RLock
-
-#random = random.SystemRandom()
+from com.modules import *
 
 #######
 # Globals:

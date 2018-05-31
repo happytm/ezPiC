@@ -1,10 +1,12 @@
 """
 Gadget Plugin for Testing
 """
-import time
+from com.modules import *
+
+import random
+
 import dev.Gadget as Gadget
 import dev.Reading as Reading
-import random
 
 #######
 # Globals:
@@ -41,6 +43,7 @@ class PluginGadget(Gadget.PluginGadgetBase):
         else:
             self.timer_period = None
         super().init()
+        Reading.set_meta('Lorem.'+self.param['name'], 'Volt', '{:.1f}')
 
 # -----
 
@@ -50,7 +53,8 @@ class PluginGadget(Gadget.PluginGadgetBase):
 # -----
 
     def timer(self, prepare:bool):
-        print('B' + str(time.time()))
-        Reading.set('Ipsum.'+self.param['name'], random.random())
+        #print('B' + str(time.time()))
+        key = Reading.make_key(self.param['name'], 'Voltage')
+        Reading.set(key, random.random()*23.0)
 
 #######

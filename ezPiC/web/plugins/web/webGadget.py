@@ -1,6 +1,8 @@
 """
 Web Plugin for Gadget-Pages
 """
+from com.modules import *
+
 from web.MicroWebSrv.microWebSrv import MicroWebSrv
 
 import com.Tool as Tool

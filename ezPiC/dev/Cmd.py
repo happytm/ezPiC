@@ -1,13 +1,10 @@
 """
 ...TODO
 """
-try:   # CPython
-    import json
-except:   # MicroPython
-    import ujson as json
+from com.modules import *
 
-import com.Tool as Tool
 import com.G as G
+import com.Tool as Tool
 
 #######
 # Globals:

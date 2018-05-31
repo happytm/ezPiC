@@ -1,14 +1,11 @@
 """
 Command Plugin for handling Gateways
 """
-try:   # CPython
-    import json
-except:   # MicroPython
-    import ujson as json
+from com.modules import *
 
+import com.G as G
 import dev.Gateway as Gateway
 import dev.Cmd as Cmd
-import com.G as G
 
 #######
 

@@ -1,7 +1,8 @@
 """
 ...TODO
 """
-import os
+from com.modules import *
+
 import com.G as G
 
 if G.WEBSERVER:

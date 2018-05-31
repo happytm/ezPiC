@@ -1,16 +1,13 @@
 """
 Command Plugin for Load and Save Parameters
 """
-try:   # CPython
-    import json
-except:   # MicroPython
-    import ujson as json
+from com.modules import *
 
+import com.G as G
 import dev.SysConfig as SysConfig
 import dev.Gadget as Gadget
 import dev.Gateway as Gateway
 import dev.Cmd as Cmd
-import com.G as G
 
 CONFIG_FILE = 'config.json'
 

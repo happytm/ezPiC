@@ -1,12 +1,14 @@
 """
 ...TODO
 """
-#from MicroWebSrv.microWebTemplate import MicroWebTemplate
-from .MicroWebSrv.microWebSrv import MicroWebSrv
-import json
-import com.Tool as Tool
-import com.G as G
+from com.modules import *
 
+from .MicroWebSrv.microWebSrv import MicroWebSrv
+
+import com.G as G
+import com.Tool as Tool
+
+# check if a direct call of commands are possible else use Telnet
 try:
     import dev.Cmd as Cmd
     DIRECT_CMD = True

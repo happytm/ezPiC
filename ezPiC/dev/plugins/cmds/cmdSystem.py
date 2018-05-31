@@ -2,14 +2,11 @@
 Command Plugin for System Commands
 
 """
-try:   # CPython
-    import sys
-except:   # MicroPython
-    import usys as sys
+from com.modules import *
 
+import com.G as G
 import dev.SysConfig as SysConfig
 import dev.Cmd as Cmd
-import com.G as G
 
 #######
 

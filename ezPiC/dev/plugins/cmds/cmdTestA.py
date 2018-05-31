@@ -1,9 +1,10 @@
 """
 Command Plugin for Testing
 """
+from com.modules import *
 
-import dev.Cmd as Cmd
 import com.G as G
+import dev.Cmd as Cmd
 
 #######
 

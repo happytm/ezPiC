@@ -1,14 +1,11 @@
 """
 Command Plugin for handling Readings
 """
-try:   # CPython
-    import json
-except:   # MicroPython
-    import ujson as json
+from com.modules import *
 
+import com.G as G
 import dev.Reading as Reading
 import dev.Cmd as Cmd
-import com.G as G
 
 #######
 

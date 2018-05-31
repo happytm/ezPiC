@@ -2,11 +2,16 @@
 Temperature Sensors supported by the "dht" micropython module
 MicroPython ONLY!
 """
-import time
+from com.modules import *
+
+if not MICROPYTHON:
+    raise 'module not designed for CPython'
+
+import machine
+import dht
+
 import com.Tool as Tool
 import dev.Gadget as Gadget
-import dht
-import machine
 
 #######
 # Globals:

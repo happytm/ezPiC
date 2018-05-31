@@ -1,11 +1,12 @@
 """
 Gadget Plugin for Testing
 """
-import time
+from com.modules import *
+
+import random
 
 import dev.Gadget as Gadget
 import dev.Reading as Reading
-import random
 
 #######
 # Globals:
@@ -57,7 +58,8 @@ class PluginGadget(Gadget.PluginGadgetBase):
 # -----
 
     def timer(self, prepare:bool):
-        print('A' + str(time.time()))
-        Reading.set('Lorem.'+self.param['name'], random.random())
+        #print('A' + str(time.time()))
+        key = Reading.make_key(self.param['name'], self.param['name_t'])
+        Reading.set(key, random.random())
 
 #######

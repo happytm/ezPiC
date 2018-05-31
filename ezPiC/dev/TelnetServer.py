@@ -1,12 +1,10 @@
 """
 Socket server for Configuration the IoT-Device
 """
-try:   # CPython
-    import json
-except:   # MicroPython
-    import ujson as json
+from com.modules import *
 
 import socket, select
+
 import com.G as G
 import com.Tool as Tool
 import dev.Cmd as Cmd
