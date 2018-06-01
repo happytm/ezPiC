@@ -43,7 +43,8 @@ class PluginGadget(Gadget.PluginGadgetBase):
         else:
             self.timer_period = None
         super().init()
-        Reading.set_meta('Lorem.'+self.param['name'], 'Volt', '{:.1f}')
+        key = Reading.make_key(self.param['name'], 'Voltage')
+        Reading.set_meta(key, 'Volt', '{:.1f}')
 
 # -----
 

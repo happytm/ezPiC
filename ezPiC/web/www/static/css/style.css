@@ -9,16 +9,71 @@
                   border: 1px solid #aacbe2; }
 .error          { background: #f0d6d6; padding: 0.5em; }
 
-.card-header {
-    background-color: #FFEEAA !important;
+.Xgadgets, .card {
+    background-color: #FCFCFC !important;
+    border: 1px solid #8a8a8a !important;
+    border-radius: 4px;
 }
-.bg-dark {
-    background-color: #221700 !important;
+.gadgets .card-header {
+    background-color: #F2FFE5;
 }
-.navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
-    color: #FFEEAA !important;
+.gateways .card-header {
+    background-color: #E5EEFF;
+}
+.rules .card-header {
+    background-color: #FFEFE5;
 }
 
+.badge-secondary {
+    color: #FFEEAA !important;
+    background-color: #1F1300 !important;
+}
+.Xbadge-secondary {
+    color: #FFFAE5 !important;
+    background-color: #885511 !important;
+}
+
+
+.bg-dark {
+    background-color: #1F1300 !important;
+}
+.navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
+    color: #885511 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #FFEEAA;
+}
+
+.navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
+    color: #fff;
+    margin-bottom: -10px !important;
+}
+
+.nav-tabs {
+    border-bottom: 2px solid #FFEEAA;
+}
+
+.navbar-expand-md .navbar-nav .nav-link {
+    padding-right: 1.0rem !important;
+    padding-left: 1.0rem !important;
+}
+
+
+.Xnav-tabs .nav-item {
+    margin-bottom: -1px;
+}
+
+.table .thead-dark th {
+    color: #FFFAE5 !important;
+    background-color: #1F1300 !important;
+    border-color: #FFEEAA !important;
+    border: 2px solid #FFEEAA !important;
+}
+
+
+
+
 .ezTest {
-    background-color: #221700 !important;
+    background-color: #1F1300 !important;
 }

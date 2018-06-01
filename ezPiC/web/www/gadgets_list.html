@@ -8,8 +8,8 @@
 
 {{ for gadget in gadget_list }}
   {{ py }} ggpid=gadget['GGPID'] {{ end }}
-  <div class="card">
-    <div class="card-header p-2" role="tab" id="heading{{ ggpid }}">
+  <div class="gadgets card">
+    <div class="gadgets card-header p-2" role="tab" id="heading{{ ggpid }}">
       <h5 class="d-flex align-items-start m-0 ">
         <a class="btn btn-secondary btn-sm mx-1 ml-0 mr-3" data-toggle="collapse" href="#collapse{{ ggpid }}" aria-expanded="false" aria-controls="collapse{{ ggpid }}">
           <i class="fas fa-chevron-down"></i>

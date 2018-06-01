@@ -8,8 +8,8 @@
 
 {{ for gateway in gateway_list }}
     {{ py }} gwpid=gateway['GWPID'] {{ end }}
-  <div class="card">
-    <div class="card-header p-2" role="tab" id="heading{{ gwpid }}">
+  <div class="gateways card">
+    <div class="gateways card-header p-2" role="tab" id="heading{{ gwpid }}">
       <h5 class="d-flex align-items-start m-0 ">
         <a class="btn btn-secondary btn-sm mx-1 ml-0 mr-3" data-toggle="collapse" href="#collapse{{ gwpid }}" aria-expanded="false" aria-controls="collapse{{ gwpid }}">
           <i class="fas fa-chevron-down"></i>
