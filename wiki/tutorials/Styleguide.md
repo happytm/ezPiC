@@ -1,4 +1,4 @@
-# Styleguide
+# Styleguide e&middot;z&middot;Pi&middot;C
 
 ## Name
 
