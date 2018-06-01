@@ -7,6 +7,8 @@ import com.G as G
 import dev.SysConfig as SysConfig
 import dev.Gadget as Gadget
 import dev.Gateway as Gateway
+import dev.Rule as Rule
+import dev.Machine as Machine
 import dev.Cmd as Cmd
 
 CONFIG_FILE = 'config.json'
@@ -23,8 +25,10 @@ def cmd_system_save(cmd:dict) -> tuple:
         try:
             save_dict = {}
             SysConfig.save(save_dict)
+            Machine.save(save_dict)
             Gadget.save(save_dict)
             Gateway.save(save_dict)
+            Rule.save(save_dict)
             # add other stuff like Gateway
             json.dump(save_dict, outfile, indent=2)
         except Exception as e:
@@ -42,8 +46,10 @@ def cmd_system_load(cmd:dict) -> tuple:
         with open(CONFIG_FILE, 'r') as infile:
             config_all = json.load(infile)
             SysConfig.load(config_all)
+            Machine.load(config_all)
             Gadget.load(config_all)
             Gateway.load(config_all)
+            Rule.load(config_all)
             # ...
     except FileNotFoundError as e:
         pass

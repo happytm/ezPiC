@@ -33,7 +33,7 @@ def gateway_timer_handler(news, args):
                             gateway.timer_next = t + gateway.timer_period
                     else:   # singel event
                         gateway.timer_next = None
-                    gateway.timer(False)
+                    gateway.timer()
                 else:   # disabled
                     gateway.timer_next = None
 

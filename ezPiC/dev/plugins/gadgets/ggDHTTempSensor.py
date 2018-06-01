@@ -5,7 +5,7 @@ MicroPython ONLY!
 from com.modules import *
 
 if not MICROPYTHON:
-    raise 'module not designed for CPython'
+    raise Exception('module not designed for CPython')
 
 import machine
 import dht

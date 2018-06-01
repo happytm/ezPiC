@@ -5,6 +5,9 @@ MicroPython ONLY!
 # TODO Make one and publish design files for it..
 from com.modules import *
 
+if not MICROPYTHON:
+    raise Exception('module not designed for CPython')
+
 import machine
 import neopixel
 

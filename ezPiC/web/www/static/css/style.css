@@ -15,13 +15,13 @@
     border-radius: 4px;
 }
 .gadgets .card-header {
-    background-color: #F2FFE5;
+    background-color: #F5FFEB;
 }
 .gateways .card-header {
-    background-color: #E5EEFF;
+    background-color: #EBF2FF;
 }
 .rules .card-header {
-    background-color: #FFEFE5;
+    background-color: #FFF3EB;
 }
 
 .badge-secondary {

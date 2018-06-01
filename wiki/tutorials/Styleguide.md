@@ -1,4 +1,4 @@
-# Styleguide e&middot;z&middot;Pi&middot;C
+# e&middot;z&middot;Pi&middot;C Styleguide
 
 ## Name
 
@@ -10,12 +10,37 @@ Spelling: [&#716;i&#720;zi &#712;pi&#720;zi] like "Easy Peasy"
 
 ## Colors
 
-`#FFEEAA`
-`#CC9933`
-`#664411`
-`#221700`
+### Colors for Web-Page
+
+|Color|Typical Usage|
+|-|-|
+|`#FFFDE5`|Card BkGnd
+|`#FFEEAA`|Text on dark BkGnd
+|`#F5980C`|
+|`#885511`|
+|`#1F1300`|Nav BkGnd, Table Head BkGnd, Form Separator BkGnd 
 
 ![Logo](Colors.svg)
+
+### Colors for Items
+
+#### Main 
+
+|Color|Item|
+|-|-|
+|`#F5FFEB`|Gadgets
+|`#EBF2FF`|Gateways
+|`#FFF3EB`|Rules
+
+#### Pastel
+
+|Color|Item|
+|-|-|
+|`#FAFFF5`|Gadgets
+|`#F5F8FF`|Gateways
+|`#FFF9F5`|Rules
+
+![Logo](ColorsItems.svg)
 
 ## Logo
 
