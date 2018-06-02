@@ -118,20 +118,19 @@ def str_to_params(paramstr:str) -> dict:
 def start_thread(func, *args):
     gc.collect()
 
-    try:
+    #if G.MICROPYTHON:
+    if True:
+        from _thread import start_new_thread
+
+        t = start_new_thread(func, ())
+        return t
+    else:
         from threading import Thread
 
         t = Thread(name=func.__name__, target=func, args=args)
         t.setDaemon(True)
         t.start()
         return t
-
-    except:
-        pass
-        #from _thread import start_new_thread
-
-        #t = start_new_thread(func, ())
-        #return t
 
 #######
 
