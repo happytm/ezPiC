@@ -4,6 +4,7 @@ Gateway Plugin for Testing
 from com.modules import *
 
 import com.G as G
+import com.Tool as Tool
 import dev.Gateway as Gateway
 import dev.Reading as Reading
 
@@ -70,7 +71,7 @@ class PluginGateway(Gateway.PluginGatewayBase):
                             continue
 
                         t = data['time']
-                        str_log = G.time_to_str(t)
+                        str_log = Tool.time_str(t)
                         str_log += separator
                         str_log += key
                         str_log += separator

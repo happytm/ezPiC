@@ -1,6 +1,8 @@
 """
 Global Properties and Functions
 """
+import time
+
 RUN = True
 WEBSERVER = True
 IOTDEVICE = True
@@ -18,14 +20,19 @@ try:   # try MicroPython
     import uos as os
     MICROPYTHON = True
     WEBSERVER = False
-    from time import time
 except:   # CPython
     MICROPYTHON = False
-    from datetime import datetime
 
 MWS = None
 
-#######
+######## 
+
+def time_to_str(t:time) -> str:
+    y, m, d, hh, mm, ss, weekday, jday, dst = time.localtime(t)
+    t_str = "%04d-%02d-%02d %02d:%02d:%02d" % (y, m, d, hh, mm, ss)
+    return t_str
+
+########
 
 def log(level:int, msg:str, *args):
     global LOGLEVEL
@@ -36,22 +43,8 @@ def log(level:int, msg:str, *args):
     if args:
         msg = msg.format(*args)
 
-    if MICROPYTHON:
-        localtime = time()
-    else:
-        localtime = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    msg = '{0} [{1}] {2}'.format(localtime, level, msg)
+    now_str = time_to_str(time.time())
+    msg = '{0} [{1}] {2}'.format(now_str, level, msg)
     print(msg)
 
 #######
-
-def time_to_str(t):
-    if MICROPYTHON:
-        time_str = str(t)
-    else:
-        #time_str = datetime(t).strftime('%Y-%m-%d %H:%M:%S')
-        time_str = datetime.fromtimestamp(t).strftime('%Y-%m-%d %H:%M:%S')
-        #datetime.fromtimestamp()
-    
-    return time_str
-    
