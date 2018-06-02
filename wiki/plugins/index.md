@@ -4,7 +4,7 @@ _UNDER CONSTRUCTION_
 
 ## Gadgets
 
-* [HX711](plugins/gadgets/HX711) Weight Cell ADC
+* [HX711](gadgets/HX711) Weight Cell ADC
 
 ## Gateways
 

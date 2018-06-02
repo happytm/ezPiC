@@ -2,12 +2,12 @@
 
 ## Technique
 
-* [MQTT](tutorials/MQTT)
+* [MQTT](MQTT)
 
 ## Development
 
-* [HyperPython](tutorials/HyperPython)
-* [GUI Styleguide](tutorials/Styleguide)
+* [HyperPython](HyperPython)
+* [GUI Styleguide](Styleguide)
 
 _UNDER CONSTRUCTION_
-* [I2C](tutorials/I2C)
+* [I2C](I2C)
