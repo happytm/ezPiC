@@ -1,6 +1,6 @@
 # What is MQTT
 
-... see Wikipedia
+... see [Wikipedia](https://en.wikipedia.org/wiki/MQTT)
 
 # MQTT Data Flow by Examples
 
@@ -71,7 +71,7 @@ A Client can publish data with any Topic with flag QoS set. This garantees that 
 A Client can subscripe with flag QoS set. This garantees that the data arrives the clinet.
 
 |QoS|Meaning|
-|-|-|
+|:---:|:---|
 |0|no garantee (default)|
 |1|garantee that data arrives|
 |2|garantee that data arrives only once|
@@ -90,7 +90,7 @@ __Ages abo:__ A Client publish any data with a Topic and Remain flag set. The br
 __Now:__ An other Client ist started and subscripes a Topic. The Client is notified instantly about the stored data of the Topic
 
 |Remain|Meaning|
-|-|-|
+|:---:|:---|
 |0|fire and forget|
 |1|saved on broker|
 

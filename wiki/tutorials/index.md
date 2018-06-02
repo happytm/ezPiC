@@ -1,4 +1,4 @@
- # Tutorials - Index
+# Tutorials - Index
 
 ## Technique
 
@@ -6,7 +6,7 @@
 
 ## Development
 
-* [HypridPython](HypridPython)
+* [HybridPython](HybridPython)
 * [GUI Styleguide](Styleguide)
 
 _UNDER CONSTRUCTION_

@@ -9,27 +9,11 @@ try :
 
     for name in dir(microWebTool):
         obj = getattr(microWebTool, name)
-        #obj = microWebTool.__dict__.get(name)
         if callable(obj):
             TOOL_FUCTIONS[name] = obj
 except :
     pass
 
-
-
-
-#TOOL_FUCTIONS = {}
-def x():
-    try :
-        import json
-        microWebTool = json
-
-        for name in dir(microWebTool):
-            obj = getattr(microWebTool, name)
-            if callable(obj):
-                TOOL_FUCTIONS[name] = obj
-    except :
-        pass
 
 import re
 

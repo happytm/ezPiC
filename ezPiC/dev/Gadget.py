@@ -322,4 +322,7 @@ class PluginGadgetBase():
     def timer(self, prepare:bool):
         return None
 
+    def readings(self, news:dict):
+        pass
+
 #######

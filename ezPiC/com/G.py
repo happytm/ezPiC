@@ -28,7 +28,7 @@ MWS = None
 ######## 
 
 def time_to_str(t:time) -> str:
-    y, m, d, hh, mm, ss, weekday, jday, dst = time.localtime(t)
+    y, m, d, hh, mm, ss, _, _, _ = time.localtime(t)
     t_str = "%04d-%02d-%02d %02d:%02d:%02d" % (y, m, d, hh, mm, ss)
     return t_str
 

@@ -81,9 +81,13 @@ def __exit__():
 
 #######
 
-#if __name__ == '__main__':
-main()   # this call never comes back!
-G.RUN = False
+if G.MICROPYTHON:
+    main()   # this call never comes back!
+    G.RUN = False
+else:    
+    if __name__ == '__main__':
+        main()   # this call never comes back!
+        G.RUN = False
 
 #######
 

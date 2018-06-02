@@ -20,6 +20,8 @@ Spelling: [&#716;i&#720;zi &#712;pi&#720;zi] like "Easy Peasy"
 |`#885511`|
 |`#1F1300`|Nav BkGnd, Table Head BkGnd, Form Separator BkGnd 
 
+Example: 
+
 ![Logo](Colors.svg)
 
 ### Colors for Items
@@ -40,7 +42,9 @@ Spelling: [&#716;i&#720;zi &#712;pi&#720;zi] like "Easy Peasy"
 |`#F5F8FF`|Gateways
 |`#FFF9F5`|Rules
 
-![Logo](ColorsItems.svg)
+Example: 
+
+![ColI](ColorsItems.svg)
 
 ## Logo
 

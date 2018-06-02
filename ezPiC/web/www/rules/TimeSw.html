@@ -47,18 +47,14 @@
         </div>
     </div>
 
-    'trigger_re':True, ---{{trigger_re}}---
+    'trigger_re':
 
     <div class="form-group row align-items-center">
         <label for="trigger_re" class="col-sm-2">Example select</label>
         <div class="col-sm-2">
-            <select class="form-control" name="trigger_re" id="trigger_re" value="{{trigger_re}}" selected="{{trigger_re}}">
-                <option value="0">NULL</option>
-                <option value="1">Lorem</option>
-                <option value="2">Ipsum</option>
-                <option value="3">Dolor</option>
-                <option value="4">Sit</option>
-                <option value="5">Amet</option>
+            <select class="form-control" name="trigger_re" id="trigger_re" value="{{trigger_re}}">
+                <option value="0">No Retrigger - Konstant Pulse Length</option>
+                <option value="1">Retrigger - Variable Pulse Length</option>
             </select>
         </div>
     </div>
@@ -131,32 +127,5 @@
     <button type="submit" class="btn btn-primary float-right">Submit</button>
 
 </form>
-
-<script>
-    $(document).ready(function () {
-        $("select").each(function () { $(this).find('option[value="' + $(this).attr("value") + '"]').prop('selected', true); });
-    });
-</script>
-<script>
-    $("select").each(function () { $(this).find('option[value="' + $(this).attr("value") + '"]').prop('selected', true); });
-</script>
-    
-
-
-<script>
-    function setSelectedIndex(s, valsearch) {
-        // Loop through all the items in drop down list
-        for (i = 0; i < s.options.length; i++) {
-            if (s.options[i].value == valsearch) {
-                // Item is found. Set its property and exit
-                s.options[i].selected = true;
-                break;
-            }
-        }
-        return;
-    }
-
-    setSelectedIndex(document.getElementById("trigger_re"), "{{trigger_re}}");
-</script> 
 
 {{ include ../t_std_foot.html }}
