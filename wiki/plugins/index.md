@@ -8,7 +8,11 @@ _UNDER CONSTRUCTION_
 
 ## Gateways
 
+* [FileLogger](gateways/FileLogger) Log Readings to File
+
 ## Rules
+
+* [TimeSw](rules/TimeSw) Time Switch - Retriggerable long Pulse Generator 
 
 ## Machines
 

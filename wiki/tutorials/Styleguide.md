@@ -13,7 +13,7 @@ Spelling: [&#716;i&#720;zi &#712;pi&#720;zi] like "Easy Peasy"
 ### Colors for Web-Page
 
 |Color|Typical Usage|
-|-|-|
+|-|:---|
 |`#FFFDE5`|Card BkGnd
 |`#FFEEAA`|Text on dark BkGnd
 |`#F5980C`|
@@ -27,7 +27,7 @@ Spelling: [&#716;i&#720;zi &#712;pi&#720;zi] like "Easy Peasy"
 #### Main 
 
 |Color|Item|
-|-|-|
+|-|:---|
 |`#F5FFEB`|Gadgets
 |`#EBF2FF`|Gateways
 |`#FFF3EB`|Rules
@@ -35,7 +35,7 @@ Spelling: [&#716;i&#720;zi &#712;pi&#720;zi] like "Easy Peasy"
 #### Pastel
 
 |Color|Item|
-|-|-|
+|-|:---|
 |`#FAFFF5`|Gadgets
 |`#F5F8FF`|Gateways
 |`#FFF9F5`|Rules

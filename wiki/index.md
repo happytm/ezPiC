@@ -6,7 +6,7 @@
 
 ezPiC [ˌiːzi ˈpiːzi] is an all-in-one web configurable IoT device in Hybrid-Python for RaspberryPi, \*Pi, ESP32 and PC (for development and debugging)
 
-See right navigation for details...
+It's Open Source and can be found at [GitGub](https://github.com/fablab-wue/ezPiC)
 
 ## Content
 
@@ -22,6 +22,10 @@ See right navigation for details...
   * [Gateway](commands/Gaateway)
 * [MQTT](tutorials/MQTT)
 
+### Plugins
+
+==> [Plugins - Index](plugins/index)
+
 ### Tutorials
 
-[Tutorial Index](tutorials/index)
+==> [Tutorials - Index](tutorials/index)

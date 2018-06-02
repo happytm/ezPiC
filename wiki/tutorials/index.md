@@ -6,7 +6,7 @@
 
 ## Development
 
-* [HyperPython](HyperPython)
+* [HypridPython](HypridPython)
 * [GUI Styleguide](Styleguide)
 
 _UNDER CONSTRUCTION_
