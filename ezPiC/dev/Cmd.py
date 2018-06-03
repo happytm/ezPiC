@@ -14,7 +14,7 @@ COMMANDS = []
 #######
 #Decorator
 
-def route(command: str, arg_keys: str=None, security_level: int=0):
+def route(command:str, arg_keys:str=None, security_level:int=0, menu:str=None, html:str=None, text:str=None):
     """ Adds a command handler function to the command list """
     def route_decorator(func):
         global COMMANDS

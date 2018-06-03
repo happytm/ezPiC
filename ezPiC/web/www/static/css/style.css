@@ -1,18 +1,13 @@
-.entries        { list-style: none; margin: 0; padding: 0; }
-.entries li     { margin: 0.8em 1.2em; }
-.entries li h2  { margin-left: -1em; }
-.add-entry      { font-size: 0.9em; border-bottom: 1px solid #ccc; }
-.add-entry dl   { font-weight: bold; }
-.metanav        { text-align: right; font-size: 0.8em; padding: 0.3em;
-                  margin-bottom: 1em; background: #fafafa; }
-.flash          { background: #cee5F5; padding: 0.5em;
-                  border: 1px solid #aacbe2; }
-.error          { background: #f0d6d6; padding: 0.5em; }
 
-.Xgadgets, .card {
+body {
+    background-color: #F5F2DC !important;
+}
+
+.XXXgadgets, .card {
     background-color: #FCFCFC !important;
     border: 1px solid #8a8a8a !important;
     border-radius: 4px;
+    margin: 0.5rem;
 }
 .gadgets .card-header {
     background-color: #F5FFEB;
@@ -24,34 +19,42 @@
     background-color: #FFF3EB;
 }
 
+
+.badge-dark {
+    text-align: left;
+    font-weight: 500;
+    color: #17A2B8 !important;
+    background-color: #343A40 !important;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
 .badge-secondary {
-    color: #FFEEAA !important;
-    background-color: #1F1300 !important;
-}
-.Xbadge-secondary {
-    color: #FFFAE5 !important;
-    background-color: #885511 !important;
+    text-align: left;
+    font-weight: 500;
+    padding: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 
-.bg-dark {
-    background-color: #1F1300 !important;
-}
 .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
-    color: #885511 !important;
+    color: #ED5121 !important;
+    background-color: #F5F2DC !important;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: #FFEEAA;
+    color: #FFC107;
 }
 
+
 .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
-    color: #fff;
     margin-bottom: -10px !important;
+    border-bottom: 0
 }
 
 .nav-tabs {
-    border-bottom: 2px solid #FFEEAA;
+    border-bottom: 2px solid #17A2B8;
 }
 
 .navbar-expand-md .navbar-nav .nav-link {
@@ -60,20 +63,15 @@
 }
 
 
-.Xnav-tabs .nav-item {
-    margin-bottom: -1px;
-}
-
 .table .thead-dark th {
-    color: #FFFAE5 !important;
-    background-color: #1F1300 !important;
-    border-color: #FFEEAA !important;
-    border: 2px solid #FFEEAA !important;
+    color: #FFC107 !important;
+    background-color: #343A40 !important;
+    border: 2px solid #17A2B8 !important;
 }
 
 
 
 
 .ezTest {
-    background-color: #1F1300 !important;
+    background-color: #343A40 !important;
 }
