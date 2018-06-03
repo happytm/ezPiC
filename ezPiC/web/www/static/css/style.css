@@ -10,20 +10,20 @@ body {
     margin: 0.5rem;
 }
 .gadgets .card-header {
-    background-color: #F5FFEB;
+    background-color: #E0FFB2;
 }
 .gateways .card-header {
-    background-color: #EBF2FF;
+    background-color: #D0EBF0;
 }
 .rules .card-header {
-    background-color: #FFF3EB;
+    background-color: #FBD1C5;
 }
 
 
 .badge-dark {
     text-align: left;
     font-weight: 500;
-    color: #17A2B8 !important;
+    color: #3FA8B8 !important;
     background-color: #343A40 !important;
     padding: 0.5rem;
     margin-top: 1.5rem;
@@ -44,7 +44,7 @@ body {
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: #FFC107;
+    color: #FFCE3B;
 }
 
 
@@ -54,7 +54,7 @@ body {
 }
 
 .nav-tabs {
-    border-bottom: 2px solid #17A2B8;
+    border-bottom: 2px solid #3FA8B8;
 }
 
 .navbar-expand-md .navbar-nav .nav-link {
@@ -64,9 +64,9 @@ body {
 
 
 .table .thead-dark th {
-    color: #FFC107 !important;
+    color: #FFCE3B !important;
     background-color: #343A40 !important;
-    border: 2px solid #17A2B8 !important;
+    border: 2px solid #3FA8B8 !important;
 }
 
 
