@@ -59,7 +59,7 @@ class PluginGadget(Gadget.PluginGadgetBase):
 # -----
 
     def timer(self, prepare:bool):
-        #print('A' + str(time.time()))
+        G.log(5, 'ggTestA Timer')
         key = Reading.make_key(self.param['name'], self.param['name_t'])
         Reading.set(key, random.random())
 

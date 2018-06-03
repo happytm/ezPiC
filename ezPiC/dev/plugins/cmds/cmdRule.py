@@ -3,7 +3,6 @@ Command Plugin for handling Rules
 """
 from com.modules import *
 
-import com.G as G
 import dev.Rule as Rule
 import dev.Cmd as Cmd
 

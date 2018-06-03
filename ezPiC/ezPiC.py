@@ -1,9 +1,11 @@
 """
 ...TODO
 """
+__author__ = "Jochen Krapf"
+__license__ = "CC-BY-SA"
+
 from com.modules import *
 
-import com.G as G
 
 if G.WEBSERVER:
     import web.Web as Web
@@ -52,9 +54,6 @@ def main():
         SysConfig.run()
         Reading.run()
 
-        Cmd.excecute("xxx 123 456 789")
-        Cmd.excecute("xxx.99 123 456 789")
-        x = Cmd.excecute("ping")
         Cmd.excecute('vs Lorem_ {"e": 2, "d": 756, "c": 234, "b": 12313, "a": 123}')
         Cmd.excecute('vs Lörém_ [0, 8, 15]')
         Cmd.excecute('vs Lorem {"e":2,"d":756,"c":234,"b":12313,"a":123}')
@@ -77,7 +76,7 @@ def main():
 
 def __exit__():
     G.RUN = False
-    print('<<<<<<<<EXIT>>>>>>>>>')
+    G.log(1, '<<<<<<<<EXIT>>>>>>>>>')
 
 #######
 

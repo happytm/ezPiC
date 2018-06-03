@@ -6,8 +6,6 @@ from com.modules import *
 import gc
 import time
 
-import com.G as G
-
 #######
 
 def load_plugins(path: str, pre :str=None) -> list:
@@ -33,7 +31,7 @@ def load_plugins(path: str, pre :str=None) -> list:
         files = []
         for f in os.ilistdir(full_path):
             files.append(f[0])
-    print(files)
+    G.log(5, 'Plugin files: {}', files)
 
     module_prefix = path.replace('/', '.')
 
@@ -64,40 +62,6 @@ def load_plugins(path: str, pre :str=None) -> list:
 
     gc.collect()
     return modules
-
-#######
-
-def get_random_string(length=12, allowed_chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'):
-    """
-    Returns a securely generated random string.
-
-    The default length of 12 with the a-z, A-Z, 0-9 character set returns
-    a 71-bit value. log_2((26+26+10)^12) =~ 71 bits.
-
-    Taken from the django.utils.crypto module.
-    """
-    return ''.join(random.choice(allowed_chars) for i in range(length))
-
-# =====
-
-def get_secret_key():
-    """
-    Create a random secret key.
-
-    Taken from the Django project.
-    """
-    #chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
-    #return get_random_string(50, chars)
-    return get_random_string(24)
-
-# =====
-
-def make_random_password(length=12, symbols='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@$^_+&'):
-    """ TODO """
-    password = []
-    for i in map(lambda x: int(len(symbols)*x/255.0), os.urandom(length)):
-        password.append(symbols[i])
-    return ''.join(password)
 
 #######
 

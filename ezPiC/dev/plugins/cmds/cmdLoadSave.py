@@ -3,7 +3,6 @@ Command Plugin for Load and Save Parameters
 """
 from com.modules import *
 
-import com.G as G
 import dev.SysConfig as SysConfig
 import dev.Gadget as Gadget
 import dev.Gateway as Gateway

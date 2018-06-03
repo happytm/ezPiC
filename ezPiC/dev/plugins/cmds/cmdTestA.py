@@ -3,7 +3,6 @@ Command Plugin for Testing
 """
 from com.modules import *
 
-import com.G as G
 import dev.Cmd as Cmd
 
 #######

@@ -3,7 +3,6 @@ Command Plugin for handling Readings
 """
 from com.modules import *
 
-import com.G as G
 import dev.Reading as Reading
 import dev.Cmd as Cmd
 

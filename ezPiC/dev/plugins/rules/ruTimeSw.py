@@ -3,7 +3,6 @@ Rule Plugin for Time Switch
 """
 from com.modules import *
 
-import com.G as G
 import dev.Rule as Rule
 import dev.Reading as Reading
 

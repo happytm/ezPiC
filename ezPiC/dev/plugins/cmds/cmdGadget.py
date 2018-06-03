@@ -3,7 +3,6 @@ Command Plugin for handling Gadgets
 """
 from com.modules import *
 
-import com.G as G
 import dev.Gadget as Gadget
 import dev.Cmd as Cmd
 

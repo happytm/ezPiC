@@ -22,3 +22,6 @@ else:   # CPython
     from datetime import datetime
 
 import time
+
+import com.G as G
+

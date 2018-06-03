@@ -5,7 +5,6 @@ from com.modules import *
 
 import socket, select
 
-import com.G as G
 import com.Tool as Tool
 import dev.Cmd as Cmd
 

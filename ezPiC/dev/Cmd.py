@@ -3,7 +3,6 @@
 """
 from com.modules import *
 
-import com.G as G
 import com.Tool as Tool
 
 #######
@@ -98,7 +97,6 @@ def init():
     global COMMANDS
 
     plugins = Tool.load_plugins(PLUGINDIR, 'cmd')
-    #print(plugins)
 
 # =====
 

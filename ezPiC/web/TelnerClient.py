@@ -5,7 +5,6 @@ from com.modules import *
 
 import telnetlib
 
-import com.G as G
 import com.Tool as Tool
 
 #######

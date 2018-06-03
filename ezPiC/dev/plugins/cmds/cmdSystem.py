@@ -4,7 +4,6 @@ Command Plugin for System Commands
 """
 from com.modules import *
 
-import com.G as G
 import dev.SysConfig as SysConfig
 import dev.Cmd as Cmd
 
@@ -25,14 +24,27 @@ def cmd_ping(cmd:dict) -> tuple:
 def cmd_system_info(cmd:dict) -> tuple:
     """ Returns common information about the system and the environment """
     i = {}
+    i['System'] = 'ezPiC'
+    i['Version'] = G.VERSION
+    i['Source'] = cmd['SRC']
+
     try:
-        i['System'] = 'ezPiC'
-        i['Version'] = G.VERSION
-        i['Platform'] = sys.platform
-        i['Python Version'] = sys.version
-        i['Python Implementation'] = sys.implementation.name
-        #i['Implementation'] = sys.implementation
-        i['Source'] = cmd['SRC']
+        i['sys.version'] = sys.version
+        i['sys.platform'] = sys.platform
+        i['sys.implementation.name'] = sys.implementation.name
+        i['sys.maxsize'] = sys.maxsize
+    except:
+        pass
+
+    try:
+        import platform
+        i['platform.node'] = platform.node()
+        i['platform.system'] = platform.system()
+        i['platform.release'] = platform.release()
+        i['platform.version'] = platform.version()
+        i['platform.machine'] = platform.machine()
+        i['platform.processor'] = platform.processor()
+        i['platform.python_version'] = platform.python_version()
     except:
         pass
 

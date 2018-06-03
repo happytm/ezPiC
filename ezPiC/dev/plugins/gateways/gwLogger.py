@@ -3,7 +3,6 @@ Gateway Plugin for Testing
 """
 from com.modules import *
 
-import com.G as G
 import com.Tool as Tool
 import dev.Gateway as Gateway
 import dev.Reading as Reading
@@ -56,7 +55,7 @@ class PluginGateway(Gateway.PluginGatewayBase):
 # -----
 
     def timer(self):
-        print('G' + str(time.time()))
+        G.log(5, 'gwLogger Timer')
 
 # -----
 

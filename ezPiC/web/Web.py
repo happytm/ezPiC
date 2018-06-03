@@ -5,7 +5,6 @@ from com.modules import *
 
 from .MicroWebSrv.microWebSrv import MicroWebSrv
 
-import com.G as G
 import com.Tool as Tool
 
 # check if a direct call of commands are possible else use Telnet
@@ -32,10 +31,8 @@ def init():
     global MWS
 
     www = Tool.load_plugins(PLUGINDIR, 'web')
-    #print(www)
 
     MWS = MicroWebSrv(webPath='web/www') # TCP port 80 and files in /flash/www
-    G.MWS = MWS
 
 # =====
 
@@ -70,9 +67,6 @@ def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None, useC
         request_json = json.dumps(request)
         answer_json = TelnerClient.excecute(request_json)
         answer = json.loads(answer_json)
-
-    #code = answer[0]
-    #result = answer[1]
 
     return tuple(answer)
 

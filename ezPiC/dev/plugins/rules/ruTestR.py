@@ -3,7 +3,6 @@ Rule Plugin for Testing
 """
 from com.modules import *
 
-import com.G as G
 import dev.Rule as Rule
 import dev.Reading as Reading
 
@@ -58,7 +57,7 @@ class PluginRule(Rule.PluginRuleBase):
 # -----
 
     def timer(self):
-        print('R' + str(time.time()))
+        G.log(5, 'rugTestR Timer')
 
 # -----
 

@@ -3,7 +3,6 @@ Command Plugin for handling Machine
 """
 from com.modules import *
 
-import com.G as G
 import dev.M as M
 import dev.Machine as Machine
 import dev.Cmd as Cmd
