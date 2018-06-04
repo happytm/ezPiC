@@ -1,11 +1,16 @@
+#!/usr/bin/env python3
 """
-...TODO
+ezPiC - IoT-Device
 """
 __author__ = "Jochen Krapf"
 __license__ = "CC-BY-SA"
 
 from com.modules import *
 
+try:
+    import Args
+except Exception as e:
+    pass
 
 if G.WEBSERVER:
     import web.Web as Web
