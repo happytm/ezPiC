@@ -1,33 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<!-- Creator: CorelDRAW Home & Student X8 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="150mm" height="45mm" version="1.0" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW Home & Student X6 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="150mm" height="45mm" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
 viewBox="0 0 13473 4042"
  xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style type="text/css">
-   <![CDATA[
-    .fil0 {fill:black}
-    .fil1 {fill:#1F1300}
-    .fil4 {fill:#885511}
-    .fil3 {fill:#F5980C}
-    .fil2 {fill:#FFEEAA}
-    .fil5 {fill:#FFFDE5}
-   ]]>
-  </style>
- </defs>
  <g id="Ebene_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <rect class="fil0" y="1796" width="13473" height="2246"/>
-  <rect class="fil1" x="11228" width="1796" height="1347"/>
-  <rect class="fil1" x="11228" y="2246" width="1796" height="1347"/>
-  <rect class="fil2" x="3144" width="1796" height="1347"/>
-  <rect class="fil3" x="5838" width="1796" height="1347"/>
-  <rect class="fil4" x="8533" width="1796" height="1347"/>
-  <rect class="fil2" x="3144" y="2246" width="1796" height="1347"/>
-  <rect class="fil3" x="5838" y="2246" width="1796" height="1347"/>
-  <rect class="fil4" x="8533" y="2246" width="1796" height="1347"/>
-  <rect class="fil5" x="449" width="1796" height="1347"/>
-  <rect class="fil5" x="449" y="2246" width="1796" height="1347"/>
+  <rect fill="black" y="1796" width="13473" height="2246"/>
+  <rect fill="#343A40" x="11228" width="1796" height="1347"/>
+  <rect fill="#343A40" x="11228" y="2246" width="1796" height="1347"/>
+  <rect fill="#FFCE3B" x="5838" width="1796" height="1347"/>
+  <rect fill="#ED5121" x="3144" width="1796" height="1347"/>
+  <rect fill="#38CAE0" x="8533" width="1796" height="1347"/>
+  <rect fill="#FFCE3B" x="5838" y="2246" width="1796" height="1347"/>
+  <rect fill="#ED5121" x="3144" y="2246" width="1796" height="1347"/>
+  <rect fill="#38CAE0" x="8533" y="2246" width="1796" height="1347"/>
+  <rect fill="#FCFAF3" x="449" width="1796" height="1347"/>
+  <rect fill="#FCFAF3" x="449" y="2246" width="1796" height="1347"/>
  </g>
 </svg>

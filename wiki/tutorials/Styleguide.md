@@ -12,40 +12,33 @@ Spelling: [&#716;i&#720;zi &#712;pi&#720;zi] like "Easy Peasy"
 
 ### Colors for Web-Page
 
-|Color|Typical Usage|
-|-|:---|
-|`#FFFDE5`|Card BkGnd
-|`#FFEEAA`|Text on dark BkGnd
-|`#F5980C`|
-|`#885511`|
-|`#1F1300`|Nav BkGnd, Table Head BkGnd, Form Separator BkGnd 
+|Name|Color|Typical Usage|
+|:---|-|:---|
+|Leight Beige|`#fcfaf3`|Body BkGnd
+|Yellow|`#FFCE3B`|Text in Menu
+|Red|`#ED5121`|Text in selected Menu
+|Blue|`#38cae0`|Test in Headlines
+|Dark Gray|`#343A40`|Nav BkGnd, Table Head BkGnd, Form Separator BkGnd
 
-Example: 
+Example:
 
 ![Logo](Colors.svg)
 
 ### Colors for Items
 
-#### Main 
+|Item|Color Solid|Color Pastel|
+|:---|-|-|
+|Gadgets|`#d6fdd7`|`#e4fce4`
+|Gateways|`#e9e0ff`|`#f3effc`
+|Rules|`#fde2be`|`#fff2df`
+|(Border)|`#d1d7dd`
 
-|Color|Item|
-|-|:---|
-|`#F5FFEB`|Gadgets
-|`#EBF2FF`|Gateways
-|`#FFF3EB`|Rules
-
-#### Pastel
-
-|Color|Item|
-|-|:---|
-|`#FAFFF5`|Gadgets
-|`#F5F8FF`|Gateways
-|`#FFF9F5`|Rules
-
-Example: 
+Example:
 
 ![ColI](ColorsItems.svg)
 
 ## Logo
 
 ![Logo](../ezPiC.svg) ![Logo bw](../ezPiCbw.svg)
+
+Logo Font based on " Source Code Pro Black"

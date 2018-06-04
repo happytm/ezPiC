@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<!-- Creator: CorelDRAW Home & Student X8 -->
-<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="80mm" height="30mm" version="1.0" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-viewBox="0 0 2591 972"
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW Home & Student X6 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="80.25mm" height="30.25mm" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 2605 982"
  xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style type="text/css">
-   <![CDATA[
-    .fil0 {fill:#FFF9F5}
-    .fil3 {fill:#FFF3EB}
-    .fil2 {fill:#FAFFF5}
-    .fil5 {fill:#F5FFEB}
-    .fil4 {fill:#EBF2FF}
-    .fil1 {fill:#F5F8FF}
-   ]]>
-  </style>
- </defs>
  <g id="Ebene_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <rect class="fil0" x="972" y="486" width="648" height="486"/>
-  <rect class="fil1" x="1943" y="486" width="648" height="486"/>
-  <rect class="fil2" y="486" width="648" height="486"/>
-  <rect class="fil3" x="972" width="648" height="486"/>
-  <rect class="fil4" x="1943" width="648" height="486"/>
-  <rect class="fil5" width="648" height="486"/>
+  <rect fill="#FDE2BE" stroke="#D1D7DD" stroke-width="8.11426" x="1951" y="4" width="649" height="487"/>
+  <rect fill="#E9E0FF" stroke="#D1D7DD" stroke-width="8.11426" x="978" y="4" width="649" height="487"/>
+  <rect fill="#D6FDD7" stroke="#D1D7DD" stroke-width="8.11426" x="4" y="4" width="649" height="487"/>
+  <rect fill="#FFF2DF" stroke="#D1D7DD" stroke-width="8.11426" x="1951" y="491" width="649" height="487"/>
+  <rect fill="#F3EFFC" stroke="#D1D7DD" stroke-width="8.11426" x="978" y="491" width="649" height="487"/>
+  <rect fill="#E4FCE4" stroke="#D1D7DD" stroke-width="8.11426" x="4" y="491" width="649" height="487"/>
  </g>
 </svg>

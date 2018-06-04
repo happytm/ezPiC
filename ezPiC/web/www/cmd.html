@@ -1,31 +1,29 @@
 {{ include t_std_head.html }}
 
-    <h2>Command</h2>
+<h2>Command</h2>
 
-  <br />
+<br />
 
-  <form action="/cmd" method="post">
+<form action="/cmd" method="post">
 
-    <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Command:</span>
-        </div>
-        <input type="text" class="form-control" placeholder="type a command" aria-describedby="basic-addon1" id="cmd" name="cmd" value="{{cmd}}">
-        <div class="input-group-append">
-            <button class="btn btn-info" type="submit">Excecute</button>
-        </div>
-        
-    </div><!-- /input-group -->
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Command:</span>
+    </div>
+    <input type="text" class="form-control" placeholder="type a command" aria-describedby="basic-addon1" id="cmd" name="cmd"
+      value="{{cmd}}">
+    <div class="input-group-append">
+      <button class="btn btn-info" type="submit">Excecute</button>
+    </div>
 
-  </form>
+  </div>
+  <!-- /input-group -->
 
-  <hr>
+</form>
 
-  [{{err}}] 
+<hr> [{{err}}]
 <pre>
 {{ret}}
 </pre>
 
-  <hr>
-
-{{ include t_std_foot.html }}
+<hr> {{ include t_std_foot.html }}

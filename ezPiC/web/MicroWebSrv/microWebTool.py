@@ -1,4 +1,5 @@
 from time import localtime
+import json
 
 # Examples for own filter/converter functions for pyHTML templates
 # can be used like buildin functions: {{ timeStr(data.time) }}
@@ -20,3 +21,6 @@ def typeStr(o):
         return parts[1]
     except:
         return type_str
+
+def jsonStr(o):
+    return json.dumps(o)
