@@ -311,7 +311,7 @@ viewBox="0 0 26393 17985"
    <path class="fil16" d="M693 10757l-641 0 0 -156 641 0 0 156zm400 -78l-405 203 0 -405 405 202z"/>
   </g>
   <text x="145" y="7295"  class="fil17 fnt0">Telnet</text>
-  <text x="145" y="7705"  class="fil17 fnt0">Port 23101</text>
+  <text x="145" y="7705"  class="fil17 fnt0">Port 10123</text>
   <text x="1750" y="513"  class="fil12 fnt4">ezPiC IoT-Device-Part</text>
   <text x="13326" y="8564"  class="fil14 fnt3">./dev/Gateway.py</text>
   <text x="16453" y="4916"  class="fil14 fnt3">./dev/plugins/gadgets/ggXXX.py</text>

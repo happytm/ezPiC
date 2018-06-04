@@ -33,6 +33,8 @@ def cmd_system_info(cmd:dict) -> tuple:
         i['platform.version'] = platform.version()
         i['platform.machine'] = platform.machine()
         i['platform.processor'] = platform.processor()
+        i['platform.architecture'] = platform.architecture()
+        i['platform.dist'] = platform.dist()
         i['platform.python_version'] = platform.python_version()
     except:
         pass

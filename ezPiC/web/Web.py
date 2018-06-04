@@ -32,7 +32,7 @@ def init():
 
     www = Tool.load_plugins(PLUGINDIR, 'web')
 
-    MWS = MicroWebSrv(webPath='web/www') # TCP port 80 and files in /flash/www
+    MWS = MicroWebSrv(port=10180, webPath='web/www') # TCP port 80 and files in /flash/www
 
 # =====
 

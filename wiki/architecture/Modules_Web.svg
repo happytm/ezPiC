@@ -171,7 +171,7 @@ viewBox="0 0 18514 14001"
   <text x="271" y="8738"  class="fil18 fnt0">HTTP</text>
   <text x="190" y="9093"  class="fil18 fnt0">Port 80</text>
   <text x="13819" y="2191"  class="fil19 fnt0">Telnet</text>
-  <text x="13465" y="2547"  class="fil19 fnt0">Port 23101</text>
+  <text x="13465" y="2547"  class="fil19 fnt0">Port 10123</text>
   <text x="1473" y="448"  class="fil14 fnt2">ezPiC Web-Server-Part</text>
   <text x="4962" y="4035"  class="fil20 fnt3">./web/plugins/web/webXXX.py</text>
   <text x="2254" y="6292"  class="fil20 fnt3">./web/Web.py</text>

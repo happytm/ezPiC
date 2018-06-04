@@ -70,7 +70,7 @@ class PluginGateway(Gateway.PluginGatewayBase):
                             continue
 
                         t = data['time']
-                        str_log = Tool.time_str(t)
+                        str_log = G.time_to_str(t)
                         str_log += separator
                         str_log += key
                         str_log += separator

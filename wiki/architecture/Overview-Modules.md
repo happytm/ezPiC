@@ -29,7 +29,7 @@ The IoT-device can also be used as data logger without any web access. Log files
 
 ## Simple Device with Telnet Communication only
 
-The IoT-device-part can be configured completely with textual commands via Telnet. To send commands start a terminal program in Telnet or Raw mode and connect to the IoT-device IP address with port 23101.
+The IoT-device-part can be configured completely with textual commands via Telnet. To send commands start a terminal program in Telnet or Raw mode and connect to the IoT-device IP address with port 10123.
 
 For more information about commands see [Command-Wiki](../commands/Commands)
 

@@ -12,7 +12,7 @@
 
 A directory `ezPiC` is created
 
-### Set actual user privilages for socket access
+### Set actual user privileges for socket access
 
 ```
 > sudo touch /etc/authbind/byport/80

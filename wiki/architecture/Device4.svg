@@ -46,7 +46,7 @@ viewBox="0 0 31259 8558"
    <path class="fil3" d="M8758 4894l-4006 0 0 -284 4006 0 0 284zm727 -142l-737 368 0 -736 737 368z"/>
   </g>
   <text x="14088" y="4534"  class="fil4 fnt0">Telnet</text>
-  <text x="13345" y="5498"  class="fil4 fnt0">Port 23101</text>
+  <text x="13345" y="5498"  class="fil4 fnt0">Port 10123</text>
   <text x="7089" y="4534"  class="fil5 fnt0">HTTP</text>
   <text x="6919" y="5525"  class="fil5 fnt0">Port 80</text>
   <g>

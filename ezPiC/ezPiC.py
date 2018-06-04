@@ -18,6 +18,7 @@ if G.IOTDEVICE:
     import dev.Rule as Rule
     import dev.SysConfig as SysConfig
     import dev.Reading as Reading
+    import dev.CLI as CLI
     import dev.TelnetServer as TelnetServer
 
 #######
@@ -27,6 +28,8 @@ def main():
     G.log(1, 'Lorem {} ipsum', 'test')
     G.log(1, 'Lorem {} ipsum {}', 'test', 123)
 
+    cmd_args = sys.argv
+    G.log(1, cmd_args)
 
     """ Entry point for ezPiC """
     G.log(G.LOG_INFO, '# Starting main init #')
@@ -39,6 +42,7 @@ def main():
         Rule.init()
         SysConfig.init()
         Reading.init()
+        CLI.init()
         TelnetServer.init()
     if G.WEBSERVER:
         Web.init()
@@ -53,6 +57,7 @@ def main():
         Rule.run()
         SysConfig.run()
         Reading.run()
+        CLI.run()
 
         Cmd.excecute('vs Lorem_ {"e": 2, "d": 756, "c": 234, "b": 12313, "a": 123}')
         Cmd.excecute('vs Lörém_ [0, 8, 15]')

@@ -14,7 +14,7 @@ import com.Tool as Tool
 TIMEOUT = 3
 TEL = None
 HOST = 'localhost'
-PORT = 23101
+PORT = 10123
 
 #######
 
