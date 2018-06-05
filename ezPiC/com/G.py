@@ -23,6 +23,8 @@ try:   # try MicroPython
 except:   # CPython
     MICROPYTHON = False
 
+CNF = {}
+
 ######## 
 
 def time_to_str(t:time) -> str:

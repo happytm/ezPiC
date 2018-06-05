@@ -29,14 +29,10 @@ def web_cmd(httpClient, httpResponse):
         #cmd = html.escape(cmd)
 
     if cmd:
-        err, ret = Web.command(cmd, useCLI=True)
-        try:
-            ret = json.dumps(ret, indent=2)
-        except:
-            pass
-        ret = str(ret)
+        err, ret = Web.command(cmd, useCLI=True, source=httpClient._addr)
+        ret = Tool.json_str(ret)
         #ret = html.escape(ret)
-        G.log(G.LOG_DEBUG, 'Cmd ' + cmd + ' -> ' + ret)
+        G.log(G.LOG_DEBUG, 'Web command: {}', cmd)
 
     vars = {}
     vars['menu'] = 'tools'

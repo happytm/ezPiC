@@ -10,9 +10,7 @@ import dev.Cmd as Cmd
 
 @Cmd.route('quit')
 def cmd_quit(cmd:dict) -> tuple:
-    """
-    Handle command 'quit' TODO
-    """
+    """ exit program """
     G.log(G.LOG_ERROR, 'QUIT')
     G.RUN = False
     sys.exit(0)
@@ -21,9 +19,9 @@ def cmd_quit(cmd:dict) -> tuple:
 
 #######
 
-@Cmd.route('debug', 'level')
-def cmd_debug(cmd:dict) -> tuple:
-    """ TODO """
+@Cmd.route('loglevel', 'level')
+def cmd_loglevel(cmd:dict) -> tuple:
+    """ set logging level """
     level = int(cmd.get('level', None))
     G.LOGLEVEL = level
 

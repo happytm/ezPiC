@@ -18,6 +18,7 @@ except:
 
 
 MWS = None
+PORT = 80
 
 #######
 # Globals:
@@ -26,27 +27,29 @@ PLUGINDIR = 'web/plugins/web'
 
 #######
 
-def init():
+def init(port):
     """ Prepare module vars and load plugins """
-    global MWS
+    global MWS, PORT
 
+    PORT = port
+    
     www = Tool.load_plugins(PLUGINDIR, 'web')
 
-    MWS = MicroWebSrv(port=10180, webPath='web/www') # TCP port 80 and files in /flash/www
+    MWS = MicroWebSrv(port=port, webPath='web/www') # TCP port 80 and files in /flash/www
 
 # =====
 
 def run(threaded=False):
     """ TODO """
-    global MWS
+    global MWS, PORT
 
-    G.log(G.LOG_DEBUG, 'Starting web server')
+    G.log (G.LOG_INFO, "Web server listen on port {}", PORT)
 
     MWS.Start(threaded=threaded)         # Starts server in a new thread
 
 #######
 
-def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None, useCLI:bool=False) -> tuple:
+def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None, useCLI:bool=False, source:str=None) -> tuple:
     """ TODO """
     if useCLI:
         request = cmd_str
@@ -55,7 +58,10 @@ def command(cmd_str:str, index:int=None, items:dict=None, params:dict=None, useC
         request['CMD'] = cmd_str
         if index is not None:
             request['IDX'] = index
-        request['SRC'] = 'WEB'
+        if source:
+            request['SRC'] = source
+        else:
+            request['SRC'] = 'WEB'
         if params is not None:
             request['params'] = params
         if items is not None:

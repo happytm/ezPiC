@@ -1,17 +1,16 @@
 """
-Command Plugin for System Commands
-
+Command Plugin for Info Commands
 """
 from com.modules import *
 
-import dev.SysConfig as SysConfig
+import dev.Device as Device
 import dev.Cmd as Cmd
 
 #######
 
 @Cmd.route('info')
 def cmd_system_info(cmd:dict) -> tuple:
-    """ Returns common information about the system and the environment """
+    """ gets common information about the system and the environment """
     i = {}
     i['software.name'] = 'ezPiC'
     i['software.version'] = G.VERSION

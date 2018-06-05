@@ -9,33 +9,20 @@ import dev.Cmd as Cmd
 #######
 # Globals:
 
-LOGO = '''\r\n\
-                       _|_|_|    _|     _|_|_|\r\n\
-    _|_|    _|_|_|_|   _|    _|       _|\r\n\
-  _|    _|        _|   _|    _|  _|   _|\r\n\
-  _|_|_|_|      _|     _|_|_|    _|   _|\r\n\
-  _|          _|       _|        _|   _|\r\n\
-    _|_|_|  _|_|_|_|   _|        _|     _|_|_|\r\n\
- \r\n\
- ezPiC IoT-Device - github.com/fablab-wue/ezPiC\r\n\r\n'''
-
 #######
 
 def process_cli():
-    print(LOGO)
+    time.sleep(0.3)
+    print(Tool.LOGO)
     while G.RUN:
-        print('> ', end='')
-        cmd_str = input()
+        cmd_str = input(':-> ')
         if not cmd_str:
             continue
         err, ret = Cmd.excecute(cmd_str, 'CLI')
         if err:
             print( 'ERROR {}: {}'.format(err, ret) )
         elif ret:
-            try:
-                print(json.dumps(ret, indent=2))
-            except:
-                print(ret)
+            print(Tool.json_str(ret))
         print()
 
 #######

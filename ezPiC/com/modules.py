@@ -9,7 +9,10 @@ except:   # CPython
     MICROPYTHON = False
 
 if MICROPYTHON:
-    import usys as sys
+    try:
+        import usys as sys
+    except:
+        import sys
     import ujson as json
 
     from _thread import allocate_lock as RLock

@@ -3,7 +3,8 @@ Socket server for Configuration the IoT-Device
 """
 from com.modules import *
 
-import socket, select
+import socket
+import select
 
 import com.Tool as Tool
 import dev.Cmd as Cmd
@@ -16,21 +17,13 @@ CONNECTION_SOURCE = {}    # list of socket prop
 RECV_BUFFER = 4096 # Advisable to keep it as an exponent of 2
 PORT = 10123
 
-LOGO = b'''\r\n\
-                       _|_|_|    _|     _|_|_|\r\n\
-    _|_|    _|_|_|_|   _|    _|       _|\r\n\
-  _|    _|        _|   _|    _|  _|   _|\r\n\
-  _|_|_|_|      _|     _|_|_|    _|   _|\r\n\
-  _|          _|       _|        _|   _|\r\n\
-    _|_|_|  _|_|_|_|   _|        _|     _|_|_|\r\n\
- \r\n\
- ezPiC IoT-Device - github.com/fablab-wue/ezPiC\r\n\r\n'''
-
 #######
 
-def init():
+def init(port):
     """ Prepare module vars and load plugins """
-    pass
+    global PORT
+    
+    PORT = port
 
 # =====
 
@@ -46,7 +39,7 @@ def run():
     # Add server socket to the list of readable connections
     CONNECTION_LIST.append(server_socket)
  
-    print ("Telnet server started on port " + str(PORT))
+    G.log (G.LOG_INFO, 'Telnet server listen on port {}', PORT)
  
     while G.RUN:
         # Get the list sockets which are ready to be read through select
@@ -58,17 +51,17 @@ def run():
             if sock == server_socket:
                 # Handle the case in which there is a new connection recieved through server_socket
                 sockfd, addr = server_socket.accept()
-                print (str(addr))
-                print (addr)
+                #print (str(addr))
+                #print (addr)
 
                 CONNECTION_LIST.append(sockfd)
                 source = addr[0] + ':' + str(addr[1])
-                print (source)
-                print(sockfd.fileno())
+                #print (source)
+                #print(sockfd.fileno())
                 CONNECTION_SOURCE[sockfd.fileno()] = source
-                print ("Client (%s) connected" % source)
+                G.log (G.LOG_DEBUG, 'Telnet - client {} connected', source)
 
-                sockfd.send(LOGO)
+                sockfd.send(Tool.LOGO.encode())
 
             #Some incoming message from a client
             else:
@@ -94,30 +87,33 @@ def run():
                         if data_filtered:
                             data_filtered = bytes(data_filtered)   # bytearray -> bytes
                             cmd_str = data_filtered.decode('utf-8', 'backslashreplace')   # bytes -> str
-                            print (cmd_str)
-                            print(sock.fileno())
+                            #print (cmd_str)
+                            #print(sock.fileno())
                             source = CONNECTION_SOURCE[sock.fileno()]   # hash for sock
+                            G.log (G.LOG_DEBUG, 'Command: {}', cmd_str)
                             ret = Cmd.excecute(cmd_str, source)
                             if G.MICROPYTHON:
                                 ret_str = json.dumps(ret) + '\r\n\r\n'   # object -> json-str
                             else:
                                 ret_str = json.dumps(ret, indent=2) + '\n\n'   # object -> json-str
                                 ret_str = ret_str.replace('\n', '\r\n')
-                            print (ret_str)
-                            data = ret_str.encode('utf-8')   # str -> bytes
-                            print (data)
+                            G.log (G.LOG_DEBUG, ' - Answer: {}', ret_str)
+                            #print (ret_str)
+                            data = ret_str.encode()   # str -> bytes
+                            #print (data)
                             sock.send(data)
                  
                 # client disconnected, so remove from socket list
                 except Exception as e:
-                    print (str(e))
+                    #print (str(e))
                     #broadcast_data(sock, "Client (%s, %s) is offline" % addr)
-                    print ("Client (%s, %s) is offline" % addr)
+                    #print ("Client (%s, %s) is offline" % addr)
+                    G.log (G.LOG_DEBUG, 'Telnet - clinet {} disconnected', addr)
                     sock.close()
                     CONNECTION_LIST.remove(sock)
                     continue
          
     server_socket.close()
-    print ("Telnet server closed")
+    G.log (G.LOG_INFO, 'Telnet server closed')
  
 #######

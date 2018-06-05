@@ -11,10 +11,7 @@ import dev.Cmd as Cmd
 @Cmd.route('plugin.gateway.list')
 @Cmd.route('pgl')
 def cmd_gateway_list(cmd:dict) -> tuple:
-    """
-    Handle command 'plugin.gateway.list'.
-    Returns a list of dicts with information about availabe gateway modules 
-    """
+    """ gets a list of all available GATEWAY plugins """
     err, ret = Gateway.get_plugin_list()
 
     return (err, ret)
@@ -24,7 +21,7 @@ def cmd_gateway_list(cmd:dict) -> tuple:
 @Cmd.route('gateway.list')
 @Cmd.route('gl')
 def cmd_gateway_task_list(cmd:dict) -> tuple:
-    """ Handle command 'gateway[] list' """
+    """ gets a list of all GATEWAY instances """
     err, ret = Gateway.get_list()
 
     return (err, ret)
@@ -33,7 +30,7 @@ def cmd_gateway_task_list(cmd:dict) -> tuple:
 
 @Cmd.route('plugin.gateway.info', 'gwpid')
 def cmd_gateway_info(cmd:dict) -> tuple:
-    """ Handle command 'gateway info <gwpid>' """
+    """ gets information for a specific GATEWAY plugin """
     ids = list(cmd.keys())
 
     return (0, ids)
@@ -42,7 +39,7 @@ def cmd_gateway_info(cmd:dict) -> tuple:
 
 @Cmd.route('gateway.add', 'ggpid')
 def cmd_gateway_add(cmd:dict) -> tuple:
-    """ Handle command 'gateway[] add <gwpid>' """
+    """ adds a new instance of a GATEWAY plugin """
     err, ret = Gateway.add(cmd.get('gwpid', None))
 
     return (err, ret)
@@ -52,7 +49,7 @@ def cmd_gateway_add(cmd:dict) -> tuple:
 @Cmd.route('gateway.clear')
 @Cmd.route('gateway.del.all')
 def cmd_gateway_del_all(cmd:dict) -> tuple:
-    """ Handle command 'gateway[] del all' """
+    """ remove all GATEWAY instances """
     err, ret = Gateway.clear()
 
     return (err, ret)
@@ -61,7 +58,7 @@ def cmd_gateway_del_all(cmd:dict) -> tuple:
 
 @Cmd.route('gateway.del.#')
 def cmd_gateway_del(cmd:dict) -> tuple:
-    """ Handle command 'gateway[#] del' """
+    """ remove one GATEWAY instance """
     index = cmd['IDX']
     err, ret = Gateway.delete(index)
 
@@ -71,7 +68,7 @@ def cmd_gateway_del(cmd:dict) -> tuple:
 
 @Cmd.route('gateway.getparam.#', 'key')
 def cmd_gateway_get(cmd:dict) -> tuple:
-    """ Handle command 'gateway[#] get <param> (no <param> for all)' """
+    """ gets params from one GATEWAY instance """
     index = cmd['IDX']
     key = cmd.get('key', None)
     err, ret = Gateway.get_param(index, key)
@@ -82,7 +79,7 @@ def cmd_gateway_get(cmd:dict) -> tuple:
 
 @Cmd.route('gateway.setparam.#', 'params')
 def cmd_gateway_set(cmd:dict) -> tuple:
-    """ Handle command 'gateway[#] set <param>:<value> ...' """
+    """ sets params for one GATEWAY instance """
     index = cmd['IDX']
     params = cmd.get('params', None)
     if params and type(params) is str:
@@ -93,44 +90,12 @@ def cmd_gateway_set(cmd:dict) -> tuple:
 
 #######
 
-@Cmd.route('gateway.cmd.#')
-def cmd_gateway_cmd(cmd:dict) -> tuple:
-    """ Handle command 'gateway[#] cmd <command>' """
-    index = cmd['IDX']
-
-    return (0, None)
-
-#######
-
 @Cmd.route('gateway.gethtml.#')
 def cmd_gateway_html(cmd:dict) -> tuple:
-    """ Handle command 'gateway[#] html' """
+    """ gets the correcponding html page name for the GATEWAY instance/plugin """
     index = cmd['IDX']
     err, ret = Gateway.get_html(index)
 
     return (err, ret)
-
-#######
-
-@Cmd.route('gateway.event.#')
-def cmd_gateway_event(cmd:dict) -> tuple:
-    """ Handle command 'gateway[#] event' """
-    index = cmd['IDX']
-
-    return (0, None)
-
-#######
-
-@Cmd.route('gateway.help')
-def cmd_gateway_help(cmd:dict) -> tuple:
-    """ Handle command 'gateway help' """
-    return (0, 'Help?!?')
-
-#######
-
-@Cmd.route('gateway')
-def cmd_gateway__(cmd:dict) -> tuple:
-    """ Handle command 'gateway help' """
-    return (0, 'Häh? Type "gateway help" for help on gateway commands')
 
 #######

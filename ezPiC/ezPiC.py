@@ -7,77 +7,86 @@ __license__ = "CC-BY-SA"
 
 from com.modules import *
 
-try:
-    import Args
+# get program configuration
+import com.Tool as Tool
+Tool.load_cnf()
+try:   # CPython only
+    import com.Args
 except Exception as e:
     pass
+G.LOGLEVEL = G.CNF['logLevel']
 
-if G.WEBSERVER:
+
+# load module dependent on configuration
+if G.CNF['useWeb']:
     import web.Web as Web
-if G.IOTDEVICE:
+if G.CNF['useIoT']:
     import dev.Cmd as Cmd
     import dev.Timer as Timer
     import dev.Machine as Machine
     import dev.Gadget as Gadget
     import dev.Gateway as Gateway
     import dev.Rule as Rule
-    import dev.SysConfig as SysConfig
+    import dev.Device as Device
     import dev.Reading as Reading
-    import dev.CLI as CLI
-    import dev.TelnetServer as TelnetServer
+    if G.CNF['useCLI']:
+        import dev.CLI as CLI
+    if G.CNF['useTelnet']:
+        import dev.TelnetServer as TelnetServer
 
 #######
 
 def main():
-    G.log(1, 'Lorem ipsum')
-    G.log(1, 'Lorem {} ipsum', 'test')
-    G.log(1, 'Lorem {} ipsum {}', 'test', 123)
-
-    cmd_args = sys.argv
-    G.log(1, cmd_args)
-
     """ Entry point for ezPiC """
-    G.log(G.LOG_INFO, '# Starting main init #')
-    if G.IOTDEVICE:
+
+    G.log(G.LOG_DEBUG, '# Starting main init')
+    if G.CNF['useIoT']:
         Timer.init()
         Cmd.init()
         Machine.init()
         Gadget.init()
         Gateway.init()
         Rule.init()
-        SysConfig.init()
+        Device.init()
         Reading.init()
-        CLI.init()
-        TelnetServer.init()
-    if G.WEBSERVER:
-        Web.init()
+        if G.CNF['useCLI']:
+            CLI.init()
+        if G.CNF['useTelnet']:
+            TelnetServer.init(port=G.CNF['portTelnet'])
+    if G.CNF['useWeb']:
+        Web.init(port=G.CNF['portWeb'])
 
-    G.log(G.LOG_INFO, '# Starting main run #')
-    if G.IOTDEVICE:
+    G.log(G.LOG_INFO, '# Starting main run')
+    if G.CNF['useCLI']:
         Timer.run()
         Cmd.run()
         Machine.run()
         Gadget.run()
         Gateway.run()
         Rule.run()
-        SysConfig.run()
+        Device.run()
         Reading.run()
-        CLI.run()
+        if G.CNF['useCLI']:
+            G.log(G.LOG_DEBUG, '# Starting CLI')
+            CLI.run()
 
+        # DEBUG
         Cmd.excecute('vs Lorem_ {"e": 2, "d": 756, "c": 234, "b": 12313, "a": 123}')
         Cmd.excecute('vs Lörém_ [0, 8, 15]')
         Cmd.excecute('vs Lorem {"e":2,"d":756,"c":234,"b":12313,"a":123}')
         Cmd.excecute('vs Lörém [0,8,15]')
 
+        G.log(G.LOG_DEBUG, '# Load settings')
         Cmd.excecute("load")
 
-    if G.WEBSERVER:
-        G.log(G.LOG_INFO, 'Starting web server')
-        Web.run(threaded=G.IOTDEVICE)   # this call never comes back .. normally
+    if G.CNF['useWeb']:
+        G.log(G.LOG_DEBUG, '# Starting web server')
+        Web.run(threaded=G.CNF['useIoT'])   # this call never comes back .. normally
 
-    if G.IOTDEVICE:
-        G.log(G.LOG_INFO, 'Starting telnet server')
-        TelnetServer.run()   # this call never comes back .. normally
+    if G.CNF['useIoT']:
+        G.log(G.LOG_DEBUG, '# Starting telnet server')
+        if G.CNF['useTelnet']:
+            TelnetServer.run()   # this call never comes back .. normally
 
     G.log(G.LOG_ERROR, 'PANIC! Server terminated')
     G.RUN = False
@@ -86,7 +95,7 @@ def main():
 
 def __exit__():
     G.RUN = False
-    G.log(1, '<<<<<<<<EXIT>>>>>>>>>')
+    G.log(G.LOG_ERROR, '<<<<<<<<EXIT>>>>>>>>>')
 
 #######
 

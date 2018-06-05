@@ -12,10 +12,7 @@ import dev.Cmd as Cmd
 @Cmd.route('plugin.machine.list')
 @Cmd.route('pml')
 def cmd_machine_list(cmd:dict) -> tuple:
-    """
-    Handle command 'plugin.machine.list'.
-    Returns a list of dicts with information about availabe machine modules
-    """
+    """ gets a list of all available MACHINE plugins """
     err, ret = Machine.get_plugin_list()
 
     return (err, ret)
@@ -25,7 +22,7 @@ def cmd_machine_list(cmd:dict) -> tuple:
 @Cmd.route('machine.list')
 @Cmd.route('ml')
 def cmd_machine_task_list(cmd:dict) -> tuple:
-    """ Handle command 'machine[] list' """
+    """ gets a list of all MACHINE instances """
     err, ret = Machine.get_list()
 
     return (err, ret)
@@ -34,7 +31,7 @@ def cmd_machine_task_list(cmd:dict) -> tuple:
 
 @Cmd.route('machine.getparam', 'key')
 def cmd_machine_get(cmd:dict) -> tuple:
-    """ Handle command 'machine[#] get <param> (no <param> for all)' """
+    """ gets params from MACHINE instances (merged) """
     key = cmd.get('key', None)
     err, ret = Machine.get_param(key)
 
@@ -44,19 +41,12 @@ def cmd_machine_get(cmd:dict) -> tuple:
 
 @Cmd.route('machine.setparam', 'params')
 def cmd_machine_set(cmd:dict) -> tuple:
-    """ Handle command 'machine[#] set <param>:<value> ...' """
+    """ sets params for MACHINE instances (merged) """
     params = cmd.get('params', None)
     if params and type(params) is str:
         params = json.loads(params)
     err, ret = Machine.set_param(params)
 
     return (err, ret)
-
-#######
-
-@Cmd.route('machine.help')
-def cmd_machine_help(cmd:dict) -> tuple:
-    """ Handle command 'machine help' """
-    return (0, 'Help?!?')
 
 #######

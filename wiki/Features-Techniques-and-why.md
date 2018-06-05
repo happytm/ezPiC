@@ -11,13 +11,14 @@ Platform:
 * RaspberryPi, \*Pi (initially planned)
 * PC (for development and debugging)
 * ESP32
+* PyBoard ?
 * ~~ESP8266~~ too less memory :-(
 * Other platforms running MicroPython with 100 kByte free RAM (`gc.mem_free()`)
 
 Programming Lanuage:
 * Hybrid-Python to fit all platforms:
     * CPython 3.4.x  (or higher) for Raspberry Pi and PC
-    * MicroPython 1.9.3 (or higher) for ESP32
+    * MicroPython 1.9.4 (or higher) for ESP32 and PyBoard
 
 User GUI:
 * Web server front end on the platform based on the project [MicroWebSrc](https://github.com/jczic/MicroWebSrv) which is already in Hybrid-Python

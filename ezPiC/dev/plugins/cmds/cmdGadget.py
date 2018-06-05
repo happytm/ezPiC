@@ -11,10 +11,7 @@ import dev.Cmd as Cmd
 @Cmd.route('plugin.gadget.list')
 @Cmd.route('pdl')
 def cmd_gadget_list(cmd:dict) -> tuple:
-    """
-    Handle command 'plugin.gadget.list'.
-    Returns a list of dicts with information about availabe gadget modules
-    """
+    """ gets a list of all available GADGET plugins """
     err, ret = Gadget.get_plugin_list()
 
     return (err, ret)
@@ -24,7 +21,7 @@ def cmd_gadget_list(cmd:dict) -> tuple:
 @Cmd.route('gadget.list')
 @Cmd.route('dl')
 def cmd_gadget_task_list(cmd:dict) -> tuple:
-    """ Handle command 'gadget[] list' """
+    """ gets a list of all GADGET instances """
     err, ret = Gadget.get_list()
 
     return (err, ret)
@@ -33,7 +30,7 @@ def cmd_gadget_task_list(cmd:dict) -> tuple:
 
 @Cmd.route('plugin.gadget.info', 'ggpid')
 def cmd_gadget_info(cmd:dict) -> tuple:
-    """ Handle command 'gadget info <ggpid>' """
+    """ gets information for a specific GADGET plugin """
 
     return (0, None)
 
@@ -41,7 +38,7 @@ def cmd_gadget_info(cmd:dict) -> tuple:
 
 @Cmd.route('gadget.add', 'ggpid')
 def cmd_gadget_add(cmd:dict) -> tuple:
-    """ Handle command 'gadget[] add <ggpid>' """
+    """ adds a new instance of a GADGET plugin """
     err, ret = Gadget.add(cmd.get('ggpid', None))
 
     return (err, ret)
@@ -51,7 +48,7 @@ def cmd_gadget_add(cmd:dict) -> tuple:
 @Cmd.route('gadget.clear')
 @Cmd.route('gadget.del.all')
 def cmd_gadget_del_all(cmd:dict) -> tuple:
-    """ Handle command 'gadget[] del all' """
+    """ remove all GADGET instances """
     err, ret = Gadget.clear()
 
     return (err, ret)
@@ -60,7 +57,7 @@ def cmd_gadget_del_all(cmd:dict) -> tuple:
 
 @Cmd.route('gadget.del.#')
 def cmd_gadget_del(cmd:dict) -> tuple:
-    """ Handle command 'gadget.del.<index>' """
+    """ remove one GADGET instance """
     index = cmd['IDX']
     err, ret = Gadget.delete(index)
 
@@ -70,7 +67,7 @@ def cmd_gadget_del(cmd:dict) -> tuple:
 
 @Cmd.route('gadget.getparam.#', 'key')
 def cmd_gadget_get(cmd:dict) -> tuple:
-    """ Handle command 'gadget[#] get <param> (no <param> for all)' """
+    """ gets params from one GADGET instance """
     index = cmd['IDX']
     key = cmd.get('key', None)
     err, ret = Gadget.get_param(index, key)
@@ -81,7 +78,7 @@ def cmd_gadget_get(cmd:dict) -> tuple:
 
 @Cmd.route('gadget.setparam.#', 'params')
 def cmd_gadget_set(cmd:dict) -> tuple:
-    """ Handle command 'gadget[#] set <param>:<value> ...' """
+    """ sets params for one GADGET instance """
     index = cmd['IDX']
     params = cmd.get('params', None)
     if params and type(params) is str:
@@ -92,38 +89,12 @@ def cmd_gadget_set(cmd:dict) -> tuple:
 
 #######
 
-@Cmd.route('gadget.cmd.#', 'cmd')
-def cmd_gadget_cmd(cmd:dict) -> tuple:
-    """ Handle command 'gadget[#] cmd <command>' """
-    index = cmd['IDX']
-
-    return (0, None)
-
-#######
-
 @Cmd.route('gadget.gethtml.#')
 def cmd_gadget_html(cmd:dict) -> tuple:
-    """ Handle command 'gadget[#] html' """
+    """ gets the correcponding html page name for the GADGET instance/plugin """
     index = cmd['IDX']
     err, ret = Gadget.get_html(index)
 
     return (err, ret)
-
-#######
-
-@Cmd.route('gadget.event.#')
-def cmd_gadget_event(cmd:dict) -> tuple:
-    """ Handle command 'gadget[#] event' """
-    index = cmd['IDX']
-
-    return (0, None)
-
-#######
-
-@Cmd.route('gadget.help')
-def cmd_gadget_help(cmd:dict) -> tuple:
-    """ Handle command 'gadget help' """
-    
-    return (0, 'Help?!?')
 
 #######
