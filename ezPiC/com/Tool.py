@@ -1,14 +1,13 @@
 """
 Common tools
 """
-from com.modules import *
+from com.Globals import *
 
 import gc
-import time
 
 #######
 
-LOGO = '''\r\n\
+LOGO = const('''\r\n\
                        _|_|_|    _|     _|_|_|\r\n\
     _|_|    _|_|_|_|   _|    _|       _|\r\n\
   _|    _|        _|   _|    _|  _|   _|\r\n\
@@ -16,7 +15,7 @@ LOGO = '''\r\n\
   _|          _|       _|        _|   _|\r\n\
     _|_|_|  _|_|_|_|   _|        _|     _|_|_|\r\n\
  \r\n\
- ezPiC IoT-Device - github.com/fablab-wue/ezPiC\r\n\r\n'''
+ ezPiC IoT-Device - github.com/fablab-wue/ezPiC\r\n\r\n''')
 
 #######
 
@@ -33,17 +32,20 @@ def load_plugins(path: str, pre :str=None) -> list:
         full_path = os.path.join(os.path.dirname(__file__), '..', path)
     except:   # MicroPython has no os.path
         full_path = '../' + path
-    G.log(G.LOG_DEBUG, 'Loading plugins from path "{}"', full_path)
+    log(LOG_DEBUG, 'Loading plugins from path "{}"', full_path)
 
     modules = []
 
+    files = []
     try:
         files = os.listdir(full_path)
-    except:   # Micropython on WIN32
-        files = []
-        for f in os.ilistdir(full_path):
-            files.append(f[0])
-    G.log(G.LOG_EXT_DEBUG, ' - Plugin files: {}', files)
+    except:   # Micropython on Windows/Linux or path does not exist
+        try:
+            for f in os.ilistdir(full_path):
+                files.append(f[0])
+        except:
+            pass
+    log(LOG_EXT_DEBUG, ' - Plugin files: {}', files)
 
     module_prefix = path.replace('/', '.')
 
@@ -60,17 +62,17 @@ def load_plugins(path: str, pre :str=None) -> list:
         module_name = module_prefix + '.' + file[:-3]
         try:
             gc.collect()
-            #G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
+            #log(LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
             module = __import__(module_name, globals(), locals(), ['object'], 0)
             gc.collect()
             modules.append(module)
             gc.collect()
-            #G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
-            G.log(G.LOG_DEBUG, ' - Import plugin "{}"', module_name)
+            #log(LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
+            log(LOG_DEBUG, ' - Import plugin "{}"', module_name)
         except Exception as e:
             gc.collect()
-            #G.log(G.LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
-            G.log(G.LOG_DEBUG, ' - Fail to import plugin "{}"\n{}', module_name, e)
+            #log(LOG_DEBUG, 'MEM "{}"'.format(gc.mem_free()))
+            log(LOG_DEBUG, ' - Fail to import plugin "{}"\n{}', module_name, e)
 
     gc.collect()
     return modules
@@ -94,7 +96,7 @@ def str_to_params(paramstr:str) -> dict:
 def start_thread(func, *args):
     gc.collect()
 
-    #if G.MICROPYTHON:
+    #if MICROPYTHON:
     if True:
         from _thread import start_new_thread
 
@@ -111,21 +113,21 @@ def start_thread(func, *args):
 #######
 
 def load_cnf():
-    G.CNF['logLevel'] = 4
-    G.CNF['logFile'] = None
+    CNF['logLevel']   = LOG_DEBUG
+    CNF['logFile']    = None
 
-    G.CNF['useIoT'] = True
-    G.CNF['useWeb'] = not G.MICROPYTHON
-    G.CNF['useCLI'] = True
-    G.CNF['useTelnet'] = True
+    CNF['useIoT']     = True
+    CNF['useWeb']     = not MICROPYTHON
+    CNF['useCLI']     = True
+    CNF['useTelnet']  = True
 
-    G.CNF['portWeb'] = 10180
-    G.CNF['portTelnet'] = 10123
+    CNF['portWeb']    = 10180
+    CNF['portTelnet'] = 10123
 
     try:
         with open('ezPiC.cnf', 'r') as infile:
             cnf = json.load(infile)
-            G.CNF.update(cnf)
+            CNF.update(cnf)
     except:
         pass
 
@@ -133,7 +135,7 @@ def load_cnf():
 
 def json_str(o):
     try:
-        if G.MICROPYTHON:
+        if MICROPYTHON:
             return json.dumps(o)
         else:
             return json.dumps(o, indent=2)

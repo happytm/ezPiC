@@ -1,7 +1,7 @@
 """
 Command Plugin for System Commands
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Device as Device
 import dev.Cmd as Cmd
@@ -11,7 +11,7 @@ import dev.Cmd as Cmd
 @Cmd.route('ping')
 def cmd_ping(cmd:dict) -> tuple:
     """ tests communication - returns string 'pong' """
-    G.log(G.LOG_DEBUG, 'Ping')
+    log(LOG_DEBUG, 'Ping')
 
     return (0, 'pong')
 
@@ -20,7 +20,7 @@ def cmd_ping(cmd:dict) -> tuple:
 @Cmd.route('version')
 def cmd_system_version(cmd:dict) -> tuple:
     """ gets the version of ezPiC """
-    return (0, G.VERSION)
+    return (0, VERSION)
 
 #######
 
@@ -46,7 +46,7 @@ def cmd_system_commands(cmd:dict) -> tuple:
             for key in args:
                 cmd_str += ' <' + key + '>'
         func = cmd['func']
-        if not G.MICROPYTHON and func.__doc__:
+        if not MICROPYTHON and func.__doc__:
             cmd_str += '   # ' + func.__doc__.replace('\n', ' ').strip()
         cl.append(cmd_str)
 

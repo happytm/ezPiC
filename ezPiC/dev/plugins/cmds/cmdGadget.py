@@ -1,7 +1,7 @@
 """
 Command Plugin for handling Gadgets
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Gadget as Gadget
 import dev.Cmd as Cmd

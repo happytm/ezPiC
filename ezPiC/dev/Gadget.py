@@ -1,7 +1,7 @@
 """
 ...TODO
 """
-from com.modules import *
+from com.Globals import *
 
 import com.Tool as Tool
 import dev.Timer as Timer
@@ -81,7 +81,7 @@ def load(config_all: dict):
         running_version = GADGETS[idx].version
 
         if not err and loaded_version != running_version:
-            G.log(G.LOG_WARN, "task " +  ggpid + " has change version form " + loaded_version + " to " + running_version)
+            log(LOG_WARN, "task " +  ggpid + " has change version form " + loaded_version + " to " + running_version)
 
 # =====
 

@@ -1,7 +1,7 @@
 """
 Gateway Plugin for Testing
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Gateway as Gateway
 import dev.Reading as Reading
@@ -57,11 +57,11 @@ class PluginGateway(Gateway.PluginGatewayBase):
 # -----
 
     def timer(self):
-        G.log(5, 'gwTestG Timer')
+        log(5, 'gwTestG Timer')
 
 # -----
 
     def readings(self, news:dict):
-        G.log(G.LOG_INFO, 'Readings in gwTestG: {}', news)
+        log(LOG_INFO, 'Readings in gwTestG: {}', news)
 
 #######

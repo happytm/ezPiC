@@ -1,7 +1,7 @@
 """
 ...TODO
 """
-from com.modules import *
+from com.Globals import *
 
 import telnetlib
 

@@ -2,7 +2,7 @@
 Temperature Sensors supported by the "dht" micropython module
 MicroPython ONLY!
 """
-from com.modules import *
+from com.Globals import *
 
 if not MICROPYTHON:
     raise Exception('module not designed for CPython')

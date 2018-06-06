@@ -1,7 +1,7 @@
 """
 Command Plugin for Load and Save Parameters
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Device as Device
 import dev.Gadget as Gadget
@@ -29,7 +29,7 @@ def cmd_system_save(cmd:dict) -> tuple:
             Gateway.save(save_dict)
             Rule.save(save_dict)
             # add other stuff like Gateway
-            if G.MICROPYTHON:
+            if MICROPYTHON:
                 json.dump(save_dict, outfile)
             else:
                 json.dump(save_dict, outfile, indent=2)

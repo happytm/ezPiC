@@ -1,7 +1,7 @@
 """
 Command Plugin for System Commands
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Cmd as Cmd
 

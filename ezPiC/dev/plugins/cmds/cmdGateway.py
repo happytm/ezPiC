@@ -1,7 +1,7 @@
 """
 Command Plugin for handling Gateways
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Gateway as Gateway
 import dev.Cmd as Cmd

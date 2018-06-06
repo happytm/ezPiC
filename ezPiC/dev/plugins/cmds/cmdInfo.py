@@ -1,7 +1,7 @@
 """
 Command Plugin for Info Commands
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Device as Device
 import dev.Cmd as Cmd
@@ -13,7 +13,7 @@ def cmd_system_info(cmd:dict) -> tuple:
     """ gets common information about the system and the environment """
     i = {}
     i['software.name'] = 'ezPiC'
-    i['software.version'] = G.VERSION
+    i['software.version'] = VERSION
     i['command.source'] = cmd['SRC']
 
     try:

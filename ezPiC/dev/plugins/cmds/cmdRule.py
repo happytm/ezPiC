@@ -1,7 +1,7 @@
 """
 Command Plugin for handling Rules
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Rule as Rule
 import dev.Cmd as Cmd

@@ -1,7 +1,7 @@
 """
 Command Plugin for Testing
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Cmd as Cmd
 
@@ -19,7 +19,7 @@ def cmd_xxx(cmd:dict) -> tuple:
 @Cmd.route(r'b')
 def cmd_b(cmd:dict) -> tuple:
     """ TESTING """
-    G.log(G.LOG_DEBUG, 'cmdB ' + str(cmd))
+    log(LOG_DEBUG, 'cmdB ' + str(cmd))
     x = cmd.get('x', '0')
     return (0, 'b')
 

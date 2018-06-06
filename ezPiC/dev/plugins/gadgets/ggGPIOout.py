@@ -1,7 +1,7 @@
 """
 Gadget Plugin for GPIO output
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Gadget as Gadget
 import dev.Reading as Reading

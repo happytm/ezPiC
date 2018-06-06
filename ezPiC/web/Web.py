@@ -1,7 +1,7 @@
 """
 ...TODO
 """
-from com.modules import *
+from com.Globals import *
 
 from .MicroWebSrv.microWebSrv import MicroWebSrv
 
@@ -43,7 +43,7 @@ def run(threaded=False):
     """ TODO """
     global MWS, PORT
 
-    G.log (G.LOG_INFO, "Web server listen on port {}", PORT)
+    log (LOG_INFO, "Web server listen on port {}", PORT)
 
     MWS.Start(threaded=threaded)         # Starts server in a new thread
 

@@ -1,7 +1,7 @@
 """
 Machine Plugin for Testing
 """
-from com.modules import *
+from com.Globals import *
 
 import random
 

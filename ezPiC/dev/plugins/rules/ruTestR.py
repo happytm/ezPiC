@@ -1,7 +1,7 @@
 """
 Rule Plugin for Testing
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Rule as Rule
 import dev.Reading as Reading
@@ -57,11 +57,11 @@ class PluginRule(Rule.PluginRuleBase):
 # -----
 
     def timer(self):
-        G.log(5, 'rugTestR Timer')
+        log(5, 'rugTestR Timer')
 
 # -----
 
     def readings(self, news:dict):
-        G.log(G.LOG_INFO, 'Readings in ruTestR: {}', news)
+        log(LOG_INFO, 'Readings in ruTestR: {}', news)
 
 #######

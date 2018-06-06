@@ -1,7 +1,7 @@
 """
 Socket server for Configuration the IoT-Device
 """
-from com.modules import *
+from com.Globals import *
 
 import socket
 import select
@@ -39,9 +39,9 @@ def run():
     # Add server socket to the list of readable connections
     CONNECTION_LIST.append(server_socket)
  
-    G.log (G.LOG_INFO, 'Telnet server listen on port {}', PORT)
+    log (LOG_INFO, 'Telnet server listen on port {}', PORT)
  
-    while G.RUN:
+    while RUN:
         # Get the list sockets which are ready to be read through select
         read_sockets, write_sockets, error_sockets = select.select(CONNECTION_LIST,[],[])
  
@@ -59,7 +59,7 @@ def run():
                 #print (source)
                 #print(sockfd.fileno())
                 CONNECTION_SOURCE[sockfd.fileno()] = source
-                G.log (G.LOG_DEBUG, 'Telnet - client {} connected', source)
+                log (LOG_DEBUG, 'Telnet - client {} connected', source)
 
                 sockfd.send(Tool.LOGO.encode())
 
@@ -90,14 +90,14 @@ def run():
                             #print (cmd_str)
                             #print(sock.fileno())
                             source = CONNECTION_SOURCE[sock.fileno()]   # hash for sock
-                            G.log (G.LOG_DEBUG, 'Command: {}', cmd_str)
+                            log (LOG_DEBUG, 'Command: {}', cmd_str)
                             ret = Cmd.excecute(cmd_str, source)
-                            if G.MICROPYTHON:
+                            if MICROPYTHON:
                                 ret_str = json.dumps(ret) + '\r\n\r\n'   # object -> json-str
                             else:
                                 ret_str = json.dumps(ret, indent=2) + '\n\n'   # object -> json-str
                                 ret_str = ret_str.replace('\n', '\r\n')
-                            G.log (G.LOG_DEBUG, ' - Answer: {}', ret_str)
+                            log (LOG_DEBUG, ' - Answer: {}', ret_str)
                             #print (ret_str)
                             data = ret_str.encode()   # str -> bytes
                             #print (data)
@@ -108,12 +108,12 @@ def run():
                     #print (str(e))
                     #broadcast_data(sock, "Client (%s, %s) is offline" % addr)
                     #print ("Client (%s, %s) is offline" % addr)
-                    G.log (G.LOG_DEBUG, 'Telnet - clinet {} disconnected', addr)
+                    log (LOG_DEBUG, 'Telnet - clinet {} disconnected', addr)
                     sock.close()
                     CONNECTION_LIST.remove(sock)
                     continue
          
     server_socket.close()
-    G.log (G.LOG_INFO, 'Telnet server closed')
+    log (LOG_INFO, 'Telnet server closed')
  
 #######

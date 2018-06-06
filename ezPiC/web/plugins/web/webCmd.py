@@ -1,7 +1,7 @@
 """
 Web Plugin for Command-Test-Page
 """
-from com.modules import *
+from com.Globals import *
 
 from web.MicroWebSrv.microWebSrv import MicroWebSrv
 
@@ -32,7 +32,7 @@ def web_cmd(httpClient, httpResponse):
         err, ret = Web.command(cmd, useCLI=True, source=httpClient._addr)
         ret = Tool.json_str(ret)
         #ret = html.escape(ret)
-        G.log(G.LOG_DEBUG, 'Web command: {}', cmd)
+        log(LOG_DEBUG, 'Web command: {}', cmd)
 
     vars = {}
     vars['menu'] = 'tools'

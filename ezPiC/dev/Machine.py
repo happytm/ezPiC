@@ -1,7 +1,7 @@
 """
 ...TODO
 """
-from com.modules import *
+from com.Globals import *
 
 import com.Tool as Tool
 import dev.Timer as Timer

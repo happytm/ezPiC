@@ -1,7 +1,7 @@
 """
 Command Plugin for handling Machine
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.M as M
 import dev.Machine as Machine

@@ -1,7 +1,7 @@
 """
 Gadget Plugin for Testing
 """
-from com.modules import *
+from com.Globals import *
 
 import random
 
@@ -59,7 +59,7 @@ class PluginGadget(Gadget.PluginGadgetBase):
 # -----
 
     def timer(self, prepare:bool):
-        G.log(5, 'ggTestA Timer')
+        log(5, 'ggTestA Timer')
         key = Reading.make_key(self.param['name'], self.param['name_t'])
         Reading.set(key, random.random())
 

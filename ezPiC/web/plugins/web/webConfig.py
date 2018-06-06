@@ -1,7 +1,7 @@
 """
 Web Plugin for System-Config-Page
 """
-from com.modules import *
+from com.Globals import *
 
 from web.MicroWebSrv.microWebSrv import MicroWebSrv
 

@@ -2,7 +2,7 @@
   "logLevel": 4,
   "logFile": null,
   "useIoT": true,
-  "useWeb": false,
+  "useWeb": true,
   "useCLI": true,
   "useTelnet": true,
   "portWeb": 10180,

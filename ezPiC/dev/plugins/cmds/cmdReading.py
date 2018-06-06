@@ -1,7 +1,7 @@
 """
 Command Plugin for handling Readings
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Reading as Reading
 import dev.Cmd as Cmd

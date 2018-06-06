@@ -1,7 +1,7 @@
 """
 ...TODO
 """
-from com.modules import *
+from com.Globals import *
 
 import com.Tool as Tool
 
@@ -35,7 +35,7 @@ def route(command:str, arg_keys:str=None, security_level:int=0, menu:str=None, h
         item['func'] = func
 
         COMMANDS.append(item)
-        G.log(G.LOG_EXT_DEBUG, '    - Added command "{}" with function "{}()"', command, func.__name__)
+        log(LOG_EXT_DEBUG, '    - Added command "{}" with function "{}()"', command, func.__name__)
         return func
 
     return route_decorator

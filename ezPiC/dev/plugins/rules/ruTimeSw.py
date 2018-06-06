@@ -1,7 +1,7 @@
 """
 Rule Plugin for Time Switch
 """
-from com.modules import *
+from com.Globals import *
 
 import dev.Rule as Rule
 import dev.Reading as Reading
@@ -55,7 +55,7 @@ class PluginRule(Rule.PluginRuleBase):
         self.triggered = False
         self.timer_next = None
         Reading.set(self.param['out_key'], self.param['out_val_0'])
-        G.log(G.LOG_DEBUG, 'TimeSwitch reset')
+        log(LOG_DEBUG, 'TimeSwitch reset')
 
 # -----
 
@@ -83,6 +83,6 @@ class PluginRule(Rule.PluginRuleBase):
             self.timer_next = time.time() + out_time
 
             Reading.set(self.param['out_key'], self.param['out_val_1'])
-            G.log(G.LOG_DEBUG, 'TimeSwitch for trigger {}', trigger_key)
+            log(LOG_DEBUG, 'TimeSwitch for trigger {}', trigger_key)
 
 #######

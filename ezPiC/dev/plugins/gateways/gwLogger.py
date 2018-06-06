@@ -1,7 +1,7 @@
 """
 Gateway Plugin for Testing
 """
-from com.modules import *
+from com.Globals import *
 
 import com.Tool as Tool
 import dev.Gateway as Gateway
@@ -55,7 +55,7 @@ class PluginGateway(Gateway.PluginGatewayBase):
 # -----
 
     def timer(self):
-        G.log(5, 'gwLogger Timer')
+        log(5, 'gwLogger Timer')
 
 # -----
 
@@ -75,7 +75,7 @@ class PluginGateway(Gateway.PluginGatewayBase):
                         str_log += key
                         str_log += separator
                         str_log += str(data['value'])
-                        G.log(G.LOG_DEBUG, 'Logger: {}', str_log)
+                        log(LOG_DEBUG, 'Logger: {}', str_log)
 
                         str_log += '\n'
                         b = f.write(str_log)

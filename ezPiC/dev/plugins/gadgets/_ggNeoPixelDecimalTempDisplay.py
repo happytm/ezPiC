@@ -3,7 +3,7 @@ A demo device for a room thermometer in pseudonixie style as described ...
 MicroPython ONLY!
 """
 # TODO Make one and publish design files for it..
-from com.modules import *
+from com.Globals import *
 
 if not MICROPYTHON:
     raise Exception('module not designed for CPython')

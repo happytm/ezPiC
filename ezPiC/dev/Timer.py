@@ -1,7 +1,7 @@
 """
 ...TODO
 """
-from com.modules import *
+from com.Globals import *
 
 import com.Tool as Tool
 import dev.Reading as Reading
@@ -21,7 +21,7 @@ def thread_timer_loop():
 
     _reading_tick = 0
 
-    while G.RUN:
+    while RUN:
         if Reading.is_new(_reading_tick):
             _reading_tick, _news = Reading.get_news(_reading_tick)
         else:
@@ -47,7 +47,7 @@ def run():
     """ TODO """
     global THREAD
 
-    G.log(G.LOG_DEBUG, 'Starting timer thread')
+    log(LOG_DEBUG, 'Starting timer thread')
     if not THREAD:
         THREAD = Tool.start_thread(thread_timer_loop)
 

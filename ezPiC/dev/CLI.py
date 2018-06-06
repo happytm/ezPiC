@@ -1,7 +1,7 @@
 """
 Command Line Interface for Configuration the IoT-Device
 """
-from com.modules import *
+from com.Globals import *
 
 import com.Tool as Tool
 import dev.Cmd as Cmd
@@ -14,7 +14,7 @@ import dev.Cmd as Cmd
 def process_cli():
     time.sleep(0.75)
     print(Tool.LOGO)
-    while G.RUN:
+    while RUN:
         cmd_str = input(':-> ')
         if not cmd_str:
             continue
