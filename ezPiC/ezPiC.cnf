@@ -1,0 +1,10 @@
+{
+  "logLevel": 4,
+  "logFile": null,
+  "useIoT": true,
+  "useWeb": false,
+  "useCLI": true,
+  "useTelnet": true,
+  "portWeb": 10180,
+  "portTelnet": 10123
+}

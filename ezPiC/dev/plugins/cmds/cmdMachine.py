@@ -10,7 +10,7 @@ import dev.Cmd as Cmd
 #######
 
 @Cmd.route('plugin.machine.list')
-@Cmd.route('pml')
+@Cmd.route('pmal')
 def cmd_machine_list(cmd:dict) -> tuple:
     """ gets a list of all available MACHINE plugins """
     err, ret = Machine.get_plugin_list()
@@ -20,7 +20,7 @@ def cmd_machine_list(cmd:dict) -> tuple:
 #######
 
 @Cmd.route('machine.list')
-@Cmd.route('ml')
+@Cmd.route('mal')
 def cmd_machine_task_list(cmd:dict) -> tuple:
     """ gets a list of all MACHINE instances """
     err, ret = Machine.get_list()

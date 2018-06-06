@@ -46,7 +46,7 @@ def cmd_system_commands(cmd:dict) -> tuple:
             for key in args:
                 cmd_str += ' <' + key + '>'
         func = cmd['func']
-        if func.__doc__:
+        if not G.MICROPYTHON and func.__doc__:
             cmd_str += '   # ' + func.__doc__.replace('\n', ' ').strip()
         cl.append(cmd_str)
 

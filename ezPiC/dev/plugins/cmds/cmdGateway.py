@@ -9,7 +9,7 @@ import dev.Cmd as Cmd
 #######
 
 @Cmd.route('plugin.gateway.list')
-@Cmd.route('pgl')
+@Cmd.route('pgyl')
 def cmd_gateway_list(cmd:dict) -> tuple:
     """ gets a list of all available GATEWAY plugins """
     err, ret = Gateway.get_plugin_list()
@@ -19,7 +19,7 @@ def cmd_gateway_list(cmd:dict) -> tuple:
 #######
 
 @Cmd.route('gateway.list')
-@Cmd.route('gl')
+@Cmd.route('gyl')
 def cmd_gateway_task_list(cmd:dict) -> tuple:
     """ gets a list of all GATEWAY instances """
     err, ret = Gateway.get_list()

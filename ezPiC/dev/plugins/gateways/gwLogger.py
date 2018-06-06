@@ -24,7 +24,7 @@ class PluginGateway(Gateway.PluginGatewayBase):
         self.param = {
             # must be params
             'name':'Logger',
-            'enable':False,
+            'enable':True,
             'timer':0,
             'filter':'',
             # instance specific params

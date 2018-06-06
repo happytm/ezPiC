@@ -23,7 +23,7 @@ class PluginRule(Rule.PluginRuleBase):
         self.param = {
             # must be params
             'name':'G',
-            'enable':False,
+            'enable':True,
             'timer':3,
             'filter':'',
             # instance specific params

@@ -11,8 +11,8 @@ def noneStr(s):
         return str(s)
     
 def timeStr(t):
-    y, m, d, hh, mm, ss, _, _, _ = localtime(t)
-    return "%04d-%02d-%02d %02d:%02d:%02d" % (y, m, d, hh, mm, ss)
+    time_t = localtime(t)
+    return "%04d-%02d-%02d %02d:%02d:%02d" % time_t[0:6]
 
 def typeStr(o):
     type_str = str(type(o))

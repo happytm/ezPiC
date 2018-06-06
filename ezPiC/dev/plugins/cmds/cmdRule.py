@@ -9,7 +9,7 @@ import dev.Cmd as Cmd
 #######
 
 @Cmd.route('plugin.rule.list')
-@Cmd.route('prl')
+@Cmd.route('prul')
 def cmd_rule_list(cmd:dict) -> tuple:
     """ gets a list of all available RULE plugins """
     err, ret = Rule.get_plugin_list()
@@ -19,7 +19,7 @@ def cmd_rule_list(cmd:dict) -> tuple:
 #######
 
 @Cmd.route('rule.list')
-@Cmd.route('rl')
+@Cmd.route('rul')
 def cmd_rule_task_list(cmd:dict) -> tuple:
     """ gets a list of all RULE instances """
     err, ret = Rule.get_list()

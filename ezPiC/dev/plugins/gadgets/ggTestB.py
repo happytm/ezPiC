@@ -26,7 +26,7 @@ class PluginGadget(Gadget.PluginGadgetBase):
         self.param = {
             # must be params
             'name':'B', 
-            'enable':False,
+            'enable':True,
             'timer':5,
             # instance specific params
             'abc':12345, 

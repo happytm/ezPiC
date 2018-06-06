@@ -70,7 +70,7 @@ class PluginRule(Rule.PluginRuleBase):
         trigger_val = self.param['trigger_val']
         if trigger_val and trigger_val != new_val: return
 
-        #TODO if...
+        #TODO if..
 
         out_time = int(self.param['out_time'])
         if self.triggered:

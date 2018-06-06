@@ -5,25 +5,17 @@ try:   # try MicroPython
     import uos as os
     MICROPYTHON = True
 except:   # CPython
-    import os
     MICROPYTHON = False
 
 if MICROPYTHON:
-    try:
-        import usys as sys
-    except:
-        import sys
     import ujson as json
-
     from _thread import allocate_lock as RLock
-
 else:   # CPython
-    import sys
+    import os
     import json
-
     from threading import RLock
-    from datetime import datetime
 
+import sys
 import time
 
 import com.G as G

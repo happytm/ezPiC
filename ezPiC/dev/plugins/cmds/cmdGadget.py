@@ -9,7 +9,7 @@ import dev.Cmd as Cmd
 #######
 
 @Cmd.route('plugin.gadget.list')
-@Cmd.route('pdl')
+@Cmd.route('pgdl')
 def cmd_gadget_list(cmd:dict) -> tuple:
     """ gets a list of all available GADGET plugins """
     err, ret = Gadget.get_plugin_list()
@@ -19,7 +19,7 @@ def cmd_gadget_list(cmd:dict) -> tuple:
 #######
 
 @Cmd.route('gadget.list')
-@Cmd.route('dl')
+@Cmd.route('gdl')
 def cmd_gadget_task_list(cmd:dict) -> tuple:
     """ gets a list of all GADGET instances """
     err, ret = Gadget.get_list()

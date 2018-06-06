@@ -195,7 +195,7 @@ class Filter():
         pass
 
     def init(self, filter_pattern_str:str):
-        """ init a new instance ... TODO """
+        """ init a new instance - TODO """
         self.tags = []
 
         if not filter_pattern_str:

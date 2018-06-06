@@ -12,14 +12,16 @@ import dev.Cmd as Cmd
 #######
 
 def process_cli():
-    time.sleep(0.3)
+    time.sleep(0.75)
     print(Tool.LOGO)
     while G.RUN:
         cmd_str = input(':-> ')
         if not cmd_str:
             continue
         err, ret = Cmd.excecute(cmd_str, 'CLI')
-        if err:
+        #print (err)  #JK DEBUG
+        #print (ret)  #JK DEBUG
+        if err is not None and err != 0:
             print( 'ERROR {}: {}'.format(err, ret) )
         elif ret:
             print(Tool.json_str(ret))

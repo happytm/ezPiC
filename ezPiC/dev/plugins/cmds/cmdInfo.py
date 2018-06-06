@@ -20,7 +20,7 @@ def cmd_system_info(cmd:dict) -> tuple:
         i['sys.version'] = sys.version
         i['sys.platform'] = sys.platform
         i['sys.implementation.name'] = sys.implementation.name
-        i['sys.maxsize'] = sys.maxsize
+        #i['sys.maxsize'] = sys.maxsize
     except:
         pass
 
@@ -35,6 +35,19 @@ def cmd_system_info(cmd:dict) -> tuple:
         i['platform.architecture'] = platform.architecture()
         i['platform.dist'] = platform.dist()
         i['platform.python_version'] = platform.python_version()
+    except:
+        pass
+
+    try:
+        import micropython
+        i['micropython.mem_info'] = micropython.mem_info()
+        i['micropython.opt_level'] = micropython.opt_level()
+    except:
+        pass
+
+    try:
+        import gc
+        i['gc.mem_free'] = gc.mem_free()
     except:
         pass
 
